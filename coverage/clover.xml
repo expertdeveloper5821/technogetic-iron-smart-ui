@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1675341268867" clover="3.2.0">
-  <project timestamp="1675341268867" name="All files">
-    <metrics statements="11" coveredstatements="11" conditionals="6" coveredconditionals="4" methods="3" coveredmethods="3" elements="20" coveredelements="18" complexity="0" loc="11" ncloc="11" packages="3" files="4" classes="4"/>
+<coverage generated="1675665094732" clover="3.2.0">
+  <project timestamp="1675665094732" name="All files">
+    <metrics statements="15" coveredstatements="15" conditionals="12" coveredconditionals="7" methods="3" coveredmethods="3" elements="30" coveredelements="25" complexity="0" loc="15" ncloc="15" packages="3" files="3" classes="3"/>
     <package name="Button">
       <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="4" methods="1" coveredmethods="1"/>
       <file name="Button.tsx" path="C:\Users\user1\Downloads\UI-Library\src\components\Button\Button.tsx">
@@ -14,24 +14,25 @@
         <line num="16" count="4" type="stmt"/>
       </file>
     </package>
-    <package name="Input">
-      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="Input.css" path="C:\Users\user1\Downloads\UI-Library\src\components\Input\Input.css">
-        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      </file>
-      <file name="Input.tsx" path="C:\Users\user1\Downloads\UI-Library\src\components\Input\Input.tsx">
-        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="4" type="stmt"/>
+    <package name="Card">
+      <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="3" methods="1" coveredmethods="1"/>
+      <file name="Card.tsx" path="C:\Users\user1\Downloads\UI-Library\src\components\Card\Card.tsx">
+        <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="15" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="16" count="2" type="stmt"/>
       </file>
     </package>
     <package name="Switch">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="Switch.tsx" path="C:\Users\user1\Downloads\UI-Library\src\components\Switch\Switch.tsx">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="2" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="12" count="4" type="stmt"/>
       </file>
     </package>
   </project>
