@@ -1,14 +1,15 @@
 .card {
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 2px;
     /* color: #000000a6; */
     line-height: 1.5;
+    word-break: break-all;
     border: 1px solid #e8e8e8;
 }
 
 .cardHead {
     border-bottom: 1px solid #e8e8e8;
-    padding: 0 1.8rem;
+    padding: 0 1.6rem;
     font-size: 1.1rem;
     display: flex;
     justify-content: space-between;
