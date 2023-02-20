@@ -1,0 +1,30 @@
+import React from 'react';
+import TableHeader from './TableHeader';
+import TableRow from './TableRow';
+import './Table.module.css';
+
+export interface IColumnType<T> {
+    key: string;
+    title: string;
+    width?: number;
+    render?: (column: IColumnType<T>, item: T) => void;
+}
+
+type TableProps<T> = {
+    data: T[];
+    columns: IColumnType<T>[];
+};
+
+export const Table = <T extends TableProps<T>>({ data, columns }: TableProps<T>): JSX.Element => {
+    console.log('data ==>', data, 'columns ==>', columns);
+    return (
+        <table className="mainTable">
+            <thead>
+                <TableHeader columns={columns} />
+            </thead>
+            <tbody>
+                <TableRow data={data} columns={columns} />
+            </tbody>
+        </table>
+    );
+};

@@ -1,7 +1,18 @@
-import React from 'react';
-import './Card.css';
-export const Card: any = (props: any) => {
-    const { className, padding, title, children } = props;
+import React, { PropsWithChildren } from 'react';
+import styles from './Card.module.css';
+interface CardProps {
+    className: string;
+    padding: string;
+    title: string;
+    border: string;
+}
+export const Card: any = (props: PropsWithChildren<CardProps>) => {
+    let { className, padding, title, children, border } = props;
+    let borderStyle = '';
+    if (border === 'none') {
+        5467;
+        borderStyle = styles.noBorderCard;
+    }
     const cardHeader = title ? (
         <div className="cardHead">
             <div className="cardHeadTitle">
@@ -9,13 +20,12 @@ export const Card: any = (props: any) => {
             </div>
         </div>
     ) : null;
-    let _padding = padding;
     // Add the className if necessary
-    let _className = className ? className : '';
+    className = className ? className : '';
     return (
-        <div {...props} className={`card ${_className}`}>
+        <div {...props} className={`${styles.card} ${borderStyle} ${className}`}>
             {cardHeader}
-            <div style={padding && { padding: `${_padding}` }} className="cardBody">
+            <div style={padding && { padding }} className={`${styles.cardBody}`}>
                 {children}
             </div>
         </div>

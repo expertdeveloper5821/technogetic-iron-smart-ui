@@ -14,7 +14,7 @@ export interface InputProps extends React.DetailedHTMLProps<React.InputHTMLAttri
 export const Input: React.FunctionComponent<InputProps> = (props) => {
     return (
         <>
-            <input {...props} />
+            <input className="commonInput" {...props} />
         </>
     );
 };
