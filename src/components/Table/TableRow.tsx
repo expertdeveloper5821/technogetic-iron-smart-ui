@@ -8,7 +8,6 @@ interface Props<T> {
 }
 
 const TableRow = <T extends Props<T>>({ data, columns }: Props<T>): JSX.Element => {
-    // console.log('data ==>', data, 'columns ==>', columns);
     return (
         <>
             {data?.map((item, itemIndex) => (

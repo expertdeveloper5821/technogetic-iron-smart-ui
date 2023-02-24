@@ -30,11 +30,3 @@ Primary.args = {
         console.log(val);
     }
 };
-
-// export const Secondary = Template.bind({});
-// Secondary.args = {
-//     value: 'atul is awesome',
-//     onChange: function (val): void {
-//         val = val;
-//     }
-// };

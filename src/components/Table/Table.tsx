@@ -1,7 +1,7 @@
 import React from 'react';
 import TableHeader from './TableHeader';
 import TableRow from './TableRow';
-import './Table.module.css';
+import './Table.css';
 
 export interface IColumnType<T> {
     key: string;
@@ -16,7 +16,6 @@ type TableProps<T> = {
 };
 
 export const Table = <T extends TableProps<T>>({ data, columns }: TableProps<T>): JSX.Element => {
-    console.log('data ==>', data, 'columns ==>', columns);
     return (
         <table className="mainTable">
             <thead>

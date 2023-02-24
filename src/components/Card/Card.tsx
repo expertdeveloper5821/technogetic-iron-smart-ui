@@ -10,7 +10,6 @@ export const Card: any = (props: PropsWithChildren<CardProps>) => {
     let { className, padding, title, children, border } = props;
     let borderStyle = '';
     if (border === 'none') {
-        5467;
         borderStyle = styles.noBorderCard;
     }
     const cardHeader = title ? (
