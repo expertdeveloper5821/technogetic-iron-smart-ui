@@ -15,18 +15,4 @@ export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
     checked: true
-    // style: {
-    //     width: '50%',
-    //     marginBottom: '1rem',
-    //     marginTop: '1rem',
-    //     borderRadius: '0.25rem',
-    //     border: '1px solid #ccc',
-    //     padding: '0.5rem',
-    //     fontSize: '1rem'
-    // }
-};
-
-export const Secondary = Template.bind({});
-Secondary.args = {
-    checked: false
 };

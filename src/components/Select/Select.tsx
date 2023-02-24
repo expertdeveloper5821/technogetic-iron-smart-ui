@@ -1,8 +1,7 @@
 import React, { ChangeEvent, InputHTMLAttributes, Ref, useEffect, useRef, useState } from 'react';
 import { Icon } from '../../assets/DropdownIcon';
 import { CloseIcon } from '../../assets/CloseIcon';
-import './Select.module.css';
-import { InputProps } from '../Input';
+import './Select.css';
 
 export interface SelectProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
     onChange?: any;
@@ -33,7 +32,7 @@ export const Select: React.FunctionComponent<SelectProps> = ({ isMulti, options,
     const [searchValue, setSearchValue] = useState<string>('');
     const searchRef = useRef<HTMLInputElement>();
     const inputRef = useRef<any>();
-    const [selectedValue, setSelectedValue] = useState<any>(isMulti ? [] : { value: null, label: null });
+    const [selectedValue, setSelectedValue] = useState<any>(isMulti ? [] : null);
 
     useEffect(() => {
         const handler = (e: { target: any }) => {
@@ -54,9 +53,12 @@ export const Select: React.FunctionComponent<SelectProps> = ({ isMulti, options,
         }
     }, [showMenu]);
 
+    // Here OnSearch function is used to track the latest value of the search
     const onSearch = (e: { target: HTMLInputElement }) => {
         setSearchValue(e.target.value);
     };
+
+    // Here getOptions is used to configure the options passed through props
     const getOptions = () => {
         if (!searchValue) {
             return options;
@@ -68,8 +70,10 @@ export const Select: React.FunctionComponent<SelectProps> = ({ isMulti, options,
         setShowMenu(!showMenu);
     };
 
+    // Here getDisplay is used to check if we have to show placeholder or not
     const getDisplay = () => {
         if (!selectedValue || selectedValue.length === 0) {
+            console.log('inside if', selectedValue);
             return placeholder;
         }
         if (isMulti) {

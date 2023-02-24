@@ -18,6 +18,3 @@ Primary.args = {
     children: "Hey i am card's children",
     className: 'card'
 };
-
-export const Secondary = Template.bind({});
-Secondary.args = {};
