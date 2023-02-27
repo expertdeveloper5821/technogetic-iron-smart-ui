@@ -8,5 +8,6 @@ export interface InputProps extends React.DetailedHTMLProps<React.InputHTMLAttri
     disabled?: boolean;
     name?: string;
     type?: 'email' | 'password' | 'text';
+    className?: string;
 }
 export declare const Input: React.FunctionComponent<InputProps>;

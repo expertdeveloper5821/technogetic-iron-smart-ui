@@ -63,7 +63,7 @@ export const Select: React.FunctionComponent<SelectProps> = ({ isMulti, options,
         if (!searchValue) {
             return options;
         }
-        return options.filter((option: optionType) => option.label.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0);
+        return options.filter((option: any) => option.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0);
     };
 
     const handleInputClick = () => {
@@ -79,9 +79,9 @@ export const Select: React.FunctionComponent<SelectProps> = ({ isMulti, options,
         if (isMulti) {
             return (
                 <div className="dropdown-tags">
-                    {selectedValue.map((option: optionType) => (
-                        <div key={option.value} className="dropdown-tag-item">
-                            {option.label}
+                    {selectedValue.map((option: any) => (
+                        <div key={option} className="dropdown-tag-item">
+                            {option}
                             <span onClick={(e) => onTagRemove(e, option)} className="dropdown-tag-close">
                                 <CloseIcon />
                             </span>
@@ -90,11 +90,11 @@ export const Select: React.FunctionComponent<SelectProps> = ({ isMulti, options,
                 </div>
             );
         }
-        return selectedValue.label;
+        return selectedValue;
     };
 
     const removeOption = (option: optionType) => {
-        return selectedValue.filter((item: itemType) => item.value !== option.value);
+        return selectedValue.filter((item: itemType) => item !== option);
     };
     const onTagRemove = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>, option: optionType) => {
         e.stopPropagation();
@@ -106,7 +106,7 @@ export const Select: React.FunctionComponent<SelectProps> = ({ isMulti, options,
     const onItemClick = (option: optionType) => {
         let newValue;
         if (isMulti) {
-            if (selectedValue.findIndex((item: itemType) => item.value === option.value) >= 0) {
+            if (selectedValue.findIndex((item: itemType) => item === option) >= 0) {
                 newValue = removeOption(option);
             } else {
                 newValue = [...selectedValue, option];
@@ -120,12 +120,12 @@ export const Select: React.FunctionComponent<SelectProps> = ({ isMulti, options,
 
     const isSelected = (option: optionType) => {
         if (isMulti) {
-            return selectedValue.filter((item: itemType) => item.value === option.value).length > 0;
+            return selectedValue.filter((item: itemType) => item === option).length > 0;
         }
         if (!selectedValue) {
             return false;
         }
-        return selectedValue.value === option.value;
+        return selectedValue === option;
     };
 
     return (
@@ -146,9 +146,9 @@ export const Select: React.FunctionComponent<SelectProps> = ({ isMulti, options,
                                 </div>
                             )}
                             {options ? (
-                                getOptions().map((option: optionType) => (
-                                    <div onClick={() => onItemClick(option)} key={option.value} className={`dropdown-item ${isSelected(option) && 'selected'}`}>
-                                        {option.label}
+                                getOptions().map((option: any) => (
+                                    <div onClick={() => onItemClick(option)} key={option} className={`dropdown-item ${isSelected(option) && 'selected'}`}>
+                                        {option}
                                     </div>
                                 ))
                             ) : (
