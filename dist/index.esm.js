@@ -1,16 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-const IButton = (props) => {
-    const { children, backgroundColor, color, style } = props;
-    let _style = style || {};
-    /**Override defaults */
-    if (color)
-        _style.color = color;
-    if (backgroundColor)
-        _style.backgroundColor = backgroundColor;
-    return (React.createElement("button", Object.assign({ style: _style }, props), children));
-};
-
 function styleInject(css, ref) {
   if ( ref === void 0 ) ref = {};
   var insertAt = ref.insertAt;
@@ -38,12 +27,32 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z$3 = ".commonInput {\r\n    width: 50%;\r\n    margin-bottom: 1rem;\r\n    margin-top: 1rem;\r\n    border-radius: 0.25rem;\r\n    border: 1px solid #ccc;\r\n    padding: 0.5rem;\r\n    font-size: 1rem;\r\n}\r\n";
+var css_248z$4 = ".commonButton {\r\n    padding: 8px 12px;\r\n    border: none;\r\n    border-radius: 5px;\r\n    font-size: 16px;\r\n    background-color: #029cca;\r\n    color: white;\r\n    cursor: pointer;\r\n}\r\n\r\n.commonButton:hover {\r\n    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\r\n}\r\n";
+styleInject(css_248z$4);
+
+const Button = (props) => {
+    const { children, backgroundColor, color, style, onClick, className, type } = props;
+    let _style = style || {};
+    let _className = 'commonButton';
+    /**Override defaults */
+    if (color)
+        _style.color = color;
+    if (className)
+        _className = className;
+    if (backgroundColor)
+        _style.backgroundColor = backgroundColor;
+    return (React.createElement("button", Object.assign({ className: _className, style: _style }, props, { onClick: onClick, type: type }), children));
+};
+
+var css_248z$3 = ".commonInput {\r\n    width: 50%;\r\n    margin-bottom: 1rem;\r\n    margin-top: 1rem;\r\n    border-radius: 0.25rem;\r\n    border: 1px solid #ccc;\r\n    padding: 0.5rem;\r\n    font-size: 1rem;\r\n}\r\n\r\n.commonInput:focus {\r\n    outline: none;\r\n    border: 2px solid #029cca;\r\n}\r\n";
 styleInject(css_248z$3);
 
 const Input = (props) => {
+    let _className = 'commonInput';
+    if (props.className)
+        _className = props.className;
     return (React.createElement(React.Fragment, null,
-        React.createElement("input", Object.assign({ className: "commonInput" }, props))));
+        React.createElement("input", Object.assign({ className: _className }, props))));
 };
 
 const Switch = (props) => {
@@ -1393,7 +1402,6 @@ const TableRowCell = ({ item, column }) => {
 };
 
 const TableRow = ({ data, columns }) => {
-    // console.log('data ==>', data, 'columns ==>', columns);
     return (React.createElement(React.Fragment, null, data === null || data === void 0 ? void 0 : data.map((item, itemIndex) => (React.createElement("tr", { className: "tableRowItem", key: `table-body-${itemIndex}` }, columns === null || columns === void 0 ? void 0 : columns.map((column, columnIndex) => (React.createElement(TableRowCell, { key: `table-row-cell-${columnIndex}`, item: item, column: column }))))))));
 };
 
@@ -1401,7 +1409,6 @@ var css_248z$1 = ".mainTable {\r\n    border-collapse: collapse;\r\n    border: 
 styleInject(css_248z$1);
 
 const Table = ({ data, columns }) => {
-    console.log('data ==>', data, 'columns ==>', columns);
     return (React.createElement("table", { className: "mainTable" },
         React.createElement("thead", null,
             React.createElement(TableHeader, { columns: columns })),
@@ -1419,7 +1426,7 @@ const CloseIcon = () => {
         React.createElement("path", { d: "M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z" })));
 };
 
-var css_248z = ".dropdown-container {\r\n    text-align: left;\r\n    border: 1px solid #ccc;\r\n    position: relative;\r\n    border-radius: 5px;\r\n}\r\n\r\n.dropdown-input {\r\n    padding: 5px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    user-select: none;\r\n}\r\n\r\n.dropdown-menu {\r\n    position: absolute;\r\n    transform: translateY(100px);\r\n    width: 100%;\r\n    border: 1px solid #ccc;\r\n    border-radius: 5px;\r\n    overflow: auto;\r\n    max-height: 150px;\r\n    background-color: #fff;\r\n}\r\n\r\n.dropdown-item {\r\n    padding: 5px;\r\n    cursor: pointer;\r\n}\r\n\r\n.dropdown-item.selected {\r\n    background-color: #0d6efd;\r\n    color: #fff;\r\n}\r\n\r\n.dropdown-item:hover {\r\n    background-color: #9fc3f870;\r\n}\r\n\r\n.dropdown-tags {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    gap: 5px;\r\n}\r\n.dropdown-tag-item {\r\n    background-color: #ddd;\r\n    padding: 2px 4px;\r\n    border-radius: 2px;\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n.dropdown-tag-close {\r\n    display: flex;\r\n    align-items: center;\r\n    cursor: pointer;\r\n}\r\n\r\n.search-box {\r\n    padding: 4px;\r\n    background-color: #eee;\r\n}\r\n.search-box input {\r\n    width: 100%;\r\n    box-sizing: border-box;\r\n    padding: 6px;\r\n    border: 1px solid #ccc;\r\n    border-radius: 5px;\r\n}\r\n";
+var css_248z = ".dropdown-container {\r\n    text-align: left;\r\n    border: 1px solid #ccc;\r\n    position: relative;\r\n    border-radius: 5px;\r\n}\r\n\r\n.dropdown-input {\r\n    padding: 5px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    user-select: none;\r\n}\r\n\r\n.dropdown-menu {\r\n    position: absolute;\r\n    transform: translateY(97px);\r\n    margin-left: -5px;\r\n    width: 100%;\r\n    border: 1px solid #ccc;\r\n    border-radius: 5px;\r\n    overflow: auto;\r\n    max-height: 150px;\r\n    background-color: #fff;\r\n}\r\n\r\n.dropdown-item {\r\n    padding: 5px;\r\n    cursor: pointer;\r\n}\r\n\r\n.dropdown-item.selected {\r\n    background-color: #0d6efd;\r\n    color: #fff;\r\n}\r\n\r\n.dropdown-item:hover {\r\n    background-color: #9fc3f870;\r\n}\r\n\r\n.dropdown-tags {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    gap: 5px;\r\n}\r\n.dropdown-tag-item {\r\n    background-color: #ddd;\r\n    padding: 2px 4px;\r\n    border-radius: 2px;\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n.dropdown-tag-close {\r\n    display: flex;\r\n    align-items: center;\r\n    cursor: pointer;\r\n}\r\n\r\n.search-box {\r\n    padding: 4px;\r\n    background-color: #eee;\r\n}\r\n.search-box input {\r\n    width: 100%;\r\n    box-sizing: border-box;\r\n    padding: 6px;\r\n    border: 1px solid #ccc;\r\n    border-radius: 5px;\r\n}\r\n";
 styleInject(css_248z);
 
 const Select = ({ isMulti, options, placeholder, isSearchable, onChange }) => {
@@ -1427,7 +1434,7 @@ const Select = ({ isMulti, options, placeholder, isSearchable, onChange }) => {
     const [searchValue, setSearchValue] = useState('');
     const searchRef = useRef();
     const inputRef = useRef();
-    const [selectedValue, setSelectedValue] = useState(isMulti ? [] : { value: null, label: null });
+    const [selectedValue, setSelectedValue] = useState(isMulti ? [] : null);
     useEffect(() => {
         const handler = (e) => {
             if (inputRef.current && !inputRef.current.contains(e.target)) {
@@ -1445,32 +1452,36 @@ const Select = ({ isMulti, options, placeholder, isSearchable, onChange }) => {
             searchRef.current.focus();
         }
     }, [showMenu]);
+    // Here OnSearch function is used to track the latest value of the search
     const onSearch = (e) => {
         setSearchValue(e.target.value);
     };
+    // Here getOptions is used to configure the options passed through props
     const getOptions = () => {
         if (!searchValue) {
             return options;
         }
-        return options.filter((option) => option.label.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0);
+        return options.filter((option) => option.value.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0);
     };
     const handleInputClick = () => {
         setShowMenu(!showMenu);
     };
+    // Here getDisplay is used to check if we have to show placeholder or not
     const getDisplay = () => {
         if (!selectedValue || selectedValue.length === 0) {
+            console.log('inside if', selectedValue);
             return placeholder;
         }
         if (isMulti) {
-            return (React.createElement("div", { className: "dropdown-tags" }, selectedValue.map((option) => (React.createElement("div", { key: option.value, className: "dropdown-tag-item" },
-                option.label,
+            return (React.createElement("div", { className: "dropdown-tags" }, selectedValue.map((option) => (React.createElement("div", { key: option, className: "dropdown-tag-item" },
+                option,
                 React.createElement("span", { onClick: (e) => onTagRemove(e, option), className: "dropdown-tag-close" },
                     React.createElement(CloseIcon, null)))))));
         }
-        return selectedValue.label;
+        return selectedValue;
     };
     const removeOption = (option) => {
-        return selectedValue.filter((item) => item.value !== option.value);
+        return selectedValue.filter((item) => item !== option);
     };
     const onTagRemove = (e, option) => {
         e.stopPropagation();
@@ -1481,7 +1492,7 @@ const Select = ({ isMulti, options, placeholder, isSearchable, onChange }) => {
     const onItemClick = (option) => {
         let newValue;
         if (isMulti) {
-            if (selectedValue.findIndex((item) => item.value === option.value) >= 0) {
+            if (selectedValue.findIndex((item) => item === option) >= 0) {
                 newValue = removeOption(option);
             }
             else {
@@ -1496,12 +1507,12 @@ const Select = ({ isMulti, options, placeholder, isSearchable, onChange }) => {
     };
     const isSelected = (option) => {
         if (isMulti) {
-            return selectedValue.filter((item) => item.value === option.value).length > 0;
+            return selectedValue.filter((item) => item === option).length > 0;
         }
         if (!selectedValue) {
             return false;
         }
-        return selectedValue.value === option.value;
+        return selectedValue === option;
     };
     return (React.createElement(React.Fragment, null,
         React.createElement("div", { className: "dropdown-container" },
@@ -1513,8 +1524,8 @@ const Select = ({ isMulti, options, placeholder, isSearchable, onChange }) => {
                 showMenu && (React.createElement("div", { className: "dropdown-menu" },
                     isSearchable && (React.createElement("div", { className: "search-box" },
                         React.createElement("input", { onChange: onSearch, value: searchValue, ref: searchRef }))),
-                    getOptions().map((option) => (React.createElement("div", { onClick: () => onItemClick(option), key: option.value, className: `dropdown-item ${isSelected(option) && 'selected'}` }, option.label)))))))));
+                    options ? (getOptions().map((option) => (React.createElement("div", { onClick: () => onItemClick(option), key: option, className: `dropdown-item ${isSelected(option) && 'selected'}` }, option)))) : (React.createElement("div", null, "Please add options"))))))));
 };
 
-export { Card, IButton, Input, Select, Switch, Table };
+export { Button, Card, Input, Select, Switch, Table };
 //# sourceMappingURL=index.esm.js.map

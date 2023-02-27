@@ -8,4 +8,3 @@ declare const _default: ComponentMeta<(<T extends {
 }) => JSX.Element)>;
 export default _default;
 export declare const Primary: any;
-export declare const Secondary: any;
