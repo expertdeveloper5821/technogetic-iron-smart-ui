@@ -145,11 +145,15 @@ export const Select: React.FunctionComponent<SelectProps> = ({ isMulti, options,
                                     <input onChange={onSearch} value={searchValue} ref={searchRef} />
                                 </div>
                             )}
-                            {getOptions().map((option: optionType) => (
-                                <div onClick={() => onItemClick(option)} key={option.value} className={`dropdown-item ${isSelected(option) && 'selected'}`}>
-                                    {option.label}
-                                </div>
-                            ))}
+                            {options ? (
+                                getOptions().map((option: optionType) => (
+                                    <div onClick={() => onItemClick(option)} key={option.value} className={`dropdown-item ${isSelected(option) && 'selected'}`}>
+                                        {option.label}
+                                    </div>
+                                ))
+                            ) : (
+                                <div>Please add options</div>
+                            )}
                         </div>
                     )}
                 </div>
