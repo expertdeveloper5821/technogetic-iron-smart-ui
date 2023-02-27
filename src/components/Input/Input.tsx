@@ -9,12 +9,15 @@ export interface InputProps extends React.DetailedHTMLProps<React.InputHTMLAttri
     disabled?: boolean;
     name?: string;
     type?: 'email' | 'password' | 'text';
+    className?: string;
 }
 
 export const Input: React.FunctionComponent<InputProps> = (props) => {
+    let _className: string = 'commonInput';
+    if (props.className) _className = props.className;
     return (
         <>
-            <input className="commonInput" {...props} />
+            <input className={_className} {...props} />
         </>
     );
 };

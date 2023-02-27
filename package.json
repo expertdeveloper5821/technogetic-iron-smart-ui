@@ -1,6 +1,6 @@
 {
     "name": "library-i",
-    "version": "1.0.17",
+    "version": "1.0.18",
     "description": "A component library for react",
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
