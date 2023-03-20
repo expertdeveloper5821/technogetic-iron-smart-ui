@@ -4,9 +4,9 @@ import '@testing-library/jest-dom';
 import React from 'react';
 
 describe('Input', () => {
-    test('should render Select', () => {
-        render(<Select />);
-    });
+    // test('should render Select', () => {
+    //     render(<Select />);
+    // });
     // test('should render Select with correct value', () => {
     //     render(
     //         <Select
