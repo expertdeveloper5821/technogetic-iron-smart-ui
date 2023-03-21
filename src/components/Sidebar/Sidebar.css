@@ -1,9 +1,11 @@
 .sidebar {
-    background: #eeeeee;
+    background: #edf7f7;
     color: black;
     width: 200px;
     font-size: 18px;
+    padding: 10px;
     height: 100vh;
+    font-family: sans-serif;
     display: flex;
     flex-direction: column;
     text-align: 'start';
@@ -11,17 +13,19 @@
 
 .SidebarItem {
     cursor: pointer;
+    margin-bottom: 6px;
+    border-radius: 8px;
     padding: 10px 14px 10px 14px;
 }
 
 .active {
-    background-color: #1ea7fd;
-    color: #eeeeee;
+    background-color: #d0e8e8;
+    color: black;
 }
 
 .SidebarItem:hover,
 .sidebarSubItems:hover {
-    background-color: #6cc4fc;
+    background-color: #d0e8e8;
 }
 
 .sidebarSubItems {
@@ -30,5 +34,6 @@
     text-decoration: none;
     color: black;
     margin-left: 15px;
+    border-radius: 8px;
     padding: 10px 14px 10px 14px;
 }
