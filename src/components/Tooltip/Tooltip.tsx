@@ -15,7 +15,7 @@ export const Tooltip: React.FunctionComponent<PropsWithChildren<TooltipProps>> =
     };
 
     return (
-        <div className="tooltipMainDiv" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <div className="tooltipMainDiv" data-testId="tooltipHover" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             {children}
             {showTooltip && <span className="textContainer ">{text}</span>}
         </div>

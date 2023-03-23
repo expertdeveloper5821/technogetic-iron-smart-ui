@@ -2,7 +2,7 @@ import React from 'react';
 import './Input.css';
 
 export interface InputProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
-    value: string;
+    value?: string;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     placeholder?: string;
     autoFocus?: boolean;

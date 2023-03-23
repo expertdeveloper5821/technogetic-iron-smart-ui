@@ -5,20 +5,18 @@ import React from 'react';
 
 describe('Input', () => {
     test('should render input', () => {
-        render(<Input type="text" value="Hi rendering" />);
+        render(<Input type="text" value="Hi rendering" onChange={() => {}} />);
     });
     test('should render input with correct value', () => {
-        render(<Input type="text" data-testid="email-input" value="test@mail.com" />);
-        expect(screen.getByTestId('email-input')).toHaveValue('test@mail.com');
+        render(<Input type="text" data-testid="email-input" value="test@mail.com" onChange={() => {}} />);
+        expect(screen.getByDisplayValue('test@mail.com')).toHaveValue('test@mail.com');
     });
-    // test('should update the value when input changes', () => {
-    //     const value = 'test value';
-    //     const newValue = 'new test value';
-    //     const datatestid = 'email-input';
-    //     const onChange = jest.fn();
-    //     render(<Input value={value} data-testid={datatestid} onChange={onChange} />);
-    //     const input = screen.getByTestId('email-input');
-    //     fireEvent.change(input, { target: { value: newValue } });
-    //     expect(onChange).toHaveBeenCalledWith(newValue);
-    // });
+    test('should update the value when input changes', async () => {
+        const onChange = jest.fn();
+        render(<Input data-testid="email-input" defaultValue="default" onChange={onChange} />);
+        const inputElement = screen.getByTestId('email-input');
+        fireEvent.change(inputElement, { target: { value: 'new test value' } });
+        expect(onChange).toHaveBeenCalled();
+        expect(inputElement).toHaveValue('new test value');
+    });
 });
