@@ -27,7 +27,7 @@ export const Alert: React.FunctionComponent<AlertProps> = ({ message = 'This is 
         <div className={`alert alert-${type}`}>
             <div>{message}</div>
             {isClosable && (
-                <div className="closeIcon" onClick={handleClose}>
+                <div className="closeIcon" data-testid="close-button" onClick={handleClose}>
                     <CloseIcon />
                 </div>
             )}

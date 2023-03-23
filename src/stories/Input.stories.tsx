@@ -12,7 +12,9 @@ const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 export const Primary = Template.bind({});
 
 Primary.args = {
-    onChange: function (): void {},
+    onChange: function (e: any): void {
+        console.log('onChange', e.target.value);
+    },
     placeholder: 'I am a placeholder',
-    value: 'Hello, world'
+    defaultValue: 'Hello, world'
 };
