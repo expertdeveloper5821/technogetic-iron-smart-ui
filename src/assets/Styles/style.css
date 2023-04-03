@@ -1,0 +1,371 @@
+.step-item {
+    @apply flex flex-col relative w-60;
+}
+
+.step-item:not(:first-child)::before {
+    @apply content-[''] block bg-gray absolute -top-14 sm:left-4 left-6 h-full w-0.5 border border-gray;
+}
+
+.step {
+    @apply sm:w-8 w-11 sm:h-8 h-11 mb-2 flex items-center justify-center z-10 relative text-black text-[18px] sm:text-[14px] bg-gray rounded-full font-semibold;
+}
+
+.active .step {
+    @apply bg-sky text-white;
+}
+
+.complete .step {
+    @apply bg-green text-white;
+}
+
+.stepStatus {
+    @apply w-[80px] rounded-full h-[20px] ml-2 text-xs flex justify-center items-center;
+}
+
+.alert .overlay {
+    @apply flex fixed h-full w-full items-center justify-center;
+}
+.overlay {
+    @apply bg-white blur-sm;
+}
+
+.containerboxover {
+    @apply flex flex-col w-full h-full;
+}
+.cancel {
+    @apply flex absolute text-xs -right-2.5 -top-2.5 bg-black hover:bg-black focus:outline-none font-medium rounded-full pl-2 pr-2 py-[4px] dark:bg-sky;
+}
+
+.documentimgstyle {
+    @apply p-8 text-sm text-extrdarkgray border border-darkgray rounded-md bg-gray border-dashed flex flex-col justify-center items-center;
+}
+
+.documentbtn {
+    @apply text-white text-xs bottom-1.5 bg-sky font-medium rounded-md pl-2 pr-2 py-[6px] w-fit flex mr-2 justify-center items-center;
+}
+
+.videoKyc {
+    @apply w-full py-3 pl-2 text-sm text-extrdarkgray border border-darkgray rounded-md bg-gray border-dashed;
+}
+
+.vidoKyCambtn {
+    @apply text-white text-xs bg-sky hover:bg-black focus:ring-4 focus:outline-none focus:ring-sky font-medium rounded-md pl-2 pr-2 py-[6px] w-fit flex justify-center items-center right-2.5 absolute;
+}
+
+.side {
+    @apply hidden sm:block h-0 w-0 mt-4 border-t-white border-b-white border-r-red border-r-[12px] border-t-[8px] border-b-[8px];
+}
+
+li {
+    list-style-type: none;
+    position: relative;
+}
+
+li::before {
+    content: '•';
+    position: absolute;
+    left: -0.6em;
+    top: -0.4em;
+    font-size: 2em;
+}
+
+/* Welcome page */
+
+.welcome {
+    @apply w-full min-h-[80vh] sm:min-h-[85%] flex items-center justify-center bg-white rounded-2xl;
+}
+
+.welcome_img {
+    @apply flex items-center text-center h-48 w-48 sm:h-52 sm:w-52 mr-auto ml-auto sm:mt-auto mb-6 sm:mb-6;
+}
+
+.welcome_btn {
+    @apply bg-sky hover:bg-black text-white font-bold mt-6 sm:mt-8 py-2 px-8 rounded;
+}
+
+/* Welcome page */
+
+/* Location capture */
+
+.location_ul {
+    @apply pt-2 pl-5 text-[18px] sm:text-[16px] font-[300];
+}
+
+/* Location capture */
+
+/* Aadhaar verification */
+
+.attmp_alt {
+    @apply flex justify-center items-center p-3 text-white text-[16px] rounded-md bg-red;
+}
+
+/* Aadhaar verification */
+
+/* PanAadharMatch */
+
+.panaadhar_thumb {
+    @apply rounded-[100%] w-[16vw] h-[16vw] sm:w-16 sm:h-16 border-2 flex justify-center items-center;
+}
+/* PanAadharMatch */
+
+/* Business */
+
+.busin_drpdwn_btn {
+    @apply px-3 py-2 bg-white text-darkgray font-medium text-sm hover:bg-sky focus:bg-sky focus:outline-none focus:ring-0 active:bg-sky active:text-white transition duration-150 ease-in-out flex justify-between whitespace-nowrap w-full border-2 border-gray rounded-md;
+}
+
+.busin_drpdwn_ul {
+    @apply min-w-max absolute bg-white text-base z-50 float-left py-2 list-none text-left rounded-lg mt-1 hidden m-0 bg-clip-padding border-none;
+}
+
+.busin_drpdwn_li_a {
+    @apply text-sm py-2 px-4 font-normal block w-full whitespace-nowrap text-gray hover:bg-gray;
+}
+
+.busin_drpdwn_input {
+    @apply block w-full border-2 border-gray rounded py-2 px-3 leading-tight focus:outline-none;
+}
+
+/* Business */
+
+/* Onboarding */
+
+.onbord_thump_icn {
+    @apply rounded-[100%] w-[16vw] h-[16vw] sm:w-16 sm:h-16 flex items-center justify-center border-2 border-green;
+}
+
+.onbord_rty_btn {
+    @apply flex items-center justify-center bg-sky  hover:bg-black text-white font-semibold w-28 h-8 px-5 rounded;
+}
+
+.onbord_disqual_spn {
+    @apply hidden sm:flex mt-8 mb-4 items-center justify-between w-[60%];
+}
+
+.onbord_attmp_msg {
+    @apply w-fit rounded-full p-2 text-xs text-center text-red bg-white border-red border-2;
+}
+
+/* Onboarding */
+
+/* Mobile css */
+
+.mobile_secnd_head {
+    @apply block shadow-xl;
+}
+
+.mbl_snd_head_step {
+    @apply w-6 h-6 flex items-center justify-center z-10 relative text-white text-[14px] bg-sky rounded-full;
+}
+
+.documentimgstylemobl {
+    @apply p-4 text-sm text-extrdarkgray border border-darkgray rounded-md bg-gray border-dashed flex flex-col justify-center items-center;
+}
+.videokycmobl {
+    @apply p-5 text-lg text-extrdarkgray border border-darkgray rounded-md bg-gray border-dashed flex flex-col justify-center items-center;
+}
+
+.side_arrow_alt {
+    @apply h-0 w-0 mt-2 pt-2 border-t-white border-b-red border-r-white border-l-white border-r-[10px] border-l-[10px] border-b-[12px];
+}
+
+.mbl_sidebar {
+    @apply z-20 absolute top-14 sm:top-0 backdrop-blur-[1px] left-0 bottom-0 right-0 rounded-2xl flex justify-center;
+}
+
+/* Onboarding */
+
+.onbord_disqual_spn_mbl {
+    @apply flex items-center justify-between w-[100%] border-b-2 border-gray p-5;
+}
+
+.onbord_rty_btn_mbl {
+    @apply flex items-center justify-center bg-sky  hover:bg-black text-white font-[400] w-28 h-8 px-2 rounded text-[18px] py-5;
+}
+
+.onbord_attmp_msg_mbl {
+    @apply w-fit rounded-full py-2 px-5 text-[14px] text-center text-red bg-white border-red border-2;
+}
+
+/* Onboarding */
+
+/* Common Component */
+
+/* Alert */
+
+.alert_comn {
+    @apply z-20 absolute top-14 sm:top-0 backdrop-blur-[32px] left-0 bottom-0 right-0 sm:rounded-2xl flex flex-col items-center justify-center;
+}
+
+.alert_comn_spn_img {
+    @apply w-32 h-32 items-center justify-center flex rounded-full border-4 border-pink;
+}
+
+.alert_comn_sndI_spn {
+    @apply w-24 h-24 items-center justify-center flex rounded-full bg-white;
+}
+
+.alert_comn_msg {
+    @apply mt-2 sm:mt-4 text-black sm:text-[16px] p-5 sm:p-0 text-[18px] sm:w-[35%] text-center;
+}
+.alert_comn_btn {
+    @apply bg-sky hover:bg-black text-white font-semibold mt-8 sm:py-2 py-2 px-8 w-[80%] sm:w-[10%] text-lg sm:px-8 rounded;
+}
+
+/* Alert */
+
+/* Backcam */
+
+.backcam_rty_btn {
+    @apply bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem];
+}
+/* Backcam */
+
+/* Browse */
+
+.brws_img_div {
+    @apply relative p-[5px] text-sm text-black border border-darkgray rounded-md;
+}
+
+.brws_detls {
+    @apply block w-full p-3 mt-5 text-sm text-extrdarkgray border border-darkgray rounded-md;
+}
+.brws_detls_spn {
+    @apply font-[600] sm:font-[500] text-lg sm:text-sm text-black;
+}
+
+.brws_detls_name {
+    @apply text-black text-[18px] sm:text-[14px] font-[400] mt-2;
+}
+.brws_detls_attmp {
+    @apply hidden sm:w-[10rem] sm:flex justify-center items-center p-2 text-white text-[12px] rounded-md bg-red;
+}
+.brws_detls_attmp_msg {
+    @apply mt-2 text-[14px] sm:text-[12px] max-w-[37rem] sm:max-w-[32rem] text-extrdarkgray flex font-sans;
+}
+
+.brws_detls_pan {
+    @apply text-black text-[18px] sm:text-[14px] font-[400] mt-2;
+}
+
+.brws_detls_err {
+    @apply w-[100%] sm:w-[32rem] sm:mr-3 p-[5px] text-sm text-black border rounded-md bg-lightred border-red;
+}
+
+.brws_detls_err_div {
+    @apply text-xs text-extrdarkgray font-sans font-[300];
+}
+
+.brws_btn {
+    @apply border-sky border-[1px] py-1 px-6 rounded text-[16px];
+}
+/* Browse */
+
+/* Camera */
+
+.cam_btn {
+    @apply bg-sky flex justify-center items-center text-white text-[12px] p-1 rounded-[4px] w-[6rem];
+}
+/* Camera */
+
+/* Capture img */
+
+.capture_im {
+    @apply md:container lg:container h-full w-full justify-center items-center flex flex-col;
+}
+
+/* Capture img */
+
+/* Fetching */
+
+.fetching {
+    @apply z-20 absolute top-[7.5rem] sm:top-0 backdrop-blur-[70px] left-0 bottom-0 right-0 sm:rounded-2xl flex flex-col items-center justify-center;
+}
+
+.fetching_spn {
+    @apply w-32 h-32 items-center justify-center flex rounded-full border-4 border-green;
+}
+
+.fetching_spn_spn {
+    @apply w-24 h-24 items-center justify-center flex rounded-full bg-white drop-shadow-2xl;
+}
+
+.fetching_spn_img {
+    @apply w-24 h-24 items-center justify-center flex flex-col rounded-full;
+}
+.fetching_msg {
+    @apply mt-4 text-black text-[16px] sm:text-[16px] font-[500] sm:font-normal text-center sm:text-start p-2;
+}
+/* Fetching */
+
+/* Header */
+
+.header {
+    @apply w-full px-5 sm:px-24 h-[56px] z-10 bg-white;
+}
+
+.header_div {
+    @apply px-2 flex justify-between items-center w-full h-full;
+}
+
+.header_img_div {
+    @apply text-sm font-[500] mr-4;
+}
+/* Header */
+
+/* Modal */
+
+.modal {
+    @apply justify-center items-center p-6 flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none;
+}
+.modal_content {
+    @apply border-0 rounded-lg relative flex flex-col w-full bg-white outline-none focus:outline-none;
+}
+
+.modal_close_btn {
+    @apply flex absolute text-lg -right-2.5 -top-2.5 bg-black text-white focus:outline-none font-medium rounded-full p-2 dark:bg-sky;
+}
+
+.modal_close_btn_spn {
+    @apply w-[8px] h-[8px] text-xl flex justify-center items-center;
+}
+
+.modal_attntn {
+    @apply flex flex-col justify-center items-center p-5 sm:p-10 text-center;
+}
+
+.modal_attntn_msg {
+    @apply p-5 sm:p-6 text-[20px] sm:text-[16px] text-center;
+}
+
+.modal_attn_proc_btn {
+    @apply bg-sky text-white active:bg-black text-[18px] sm:text-[14px] px-8 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 block sm:inline-block text-center font-[500] sm:font-normal;
+}
+
+.modal_cancl_btn {
+    @apply px-[3.5rem] text-[18px] sm:text-[14px] py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 block sm:inline-block mt-7 sm:mt-0 font-[500] sm:font-normal;
+}
+/* Modal */
+
+/* Sidebar */
+
+.sidebar {
+    @apply px-5 pt-5 sm:p-5 bg-sky sm:rounded-t-2xl h-[15vh] sm:h-full;
+}
+
+.sidebar_step_circl {
+    @apply w-[100%] bg-white rounded-full h-[12px] sm:h-2.5 mb-4;
+}
+
+.sidebar_step_indictr {
+    @apply text-[14px] sm:text-xs text-end pt-1 text-white mt-2 sm:mt-1;
+}
+
+.sidebar_step_name {
+    @apply pt-4 pl-3 sm:p-5 bg-white sm:rounded-b-2xl h-[79vh] sm:h-full;
+}
+
+.sidebar_step_num {
+    @apply text-black ml-2 pb-2 pr-2 text-[16px] font-[500] sm:font-normal;
+}
+/* Sidebar */

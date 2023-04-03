@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1679555221893" clover="3.2.0">
-  <project timestamp="1679555221893" name="All files">
-    <metrics statements="48" coveredstatements="43" conditionals="31" coveredconditionals="20" methods="13" coveredmethods="10" elements="92" coveredelements="73" complexity="0" loc="48" ncloc="48" packages="8" files="8" classes="8"/>
+<coverage generated="1679557849091" clover="3.2.0">
+  <project timestamp="1679557849092" name="All files">
+    <metrics statements="48" coveredstatements="45" conditionals="31" coveredconditionals="21" methods="13" coveredmethods="12" elements="92" coveredelements="78" complexity="0" loc="48" ncloc="48" packages="8" files="8" classes="8"/>
     <package name="assets">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="CloseIcon.tsx" path="C:\Users\user1\Downloads\UI-Library\src\assets\CloseIcon.tsx">
@@ -86,16 +86,16 @@
       </file>
     </package>
     <package name="components.Tooltip">
-      <metrics statements="7" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="1"/>
+      <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
       <file name="Tooltip.tsx" path="C:\Users\user1\Downloads\UI-Library\src\components\Tooltip\Tooltip.tsx">
-        <metrics statements="7" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="1"/>
+        <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
         <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
       </file>
     </package>
   </project>
