@@ -5,11 +5,11 @@
 input[type='text'],
 input[type='email'] {
     padding: 8px 20px;
+    background: #FFFFFF;
     border: 1px solid rgba(147, 128, 108, 0.25);
     border-radius: 6px;
     width: 357px;
     height: 30px;
-    color: #000000;
     font-size: 16px;
     line-height: 16px;
     font-weight: 400;
@@ -28,7 +28,9 @@ input[type='password'] {
 }
 
 .inputField input:focus {
-    border: 1.8px solid #6b6b6b;
+    background: #FFFFFF;
+    border: 0.5px solid #0094DA;
+    /* border: 1.8px solid #6b6b6b; */
     outline: none;
 }
 
@@ -95,6 +97,7 @@ input.InputAddOn-field {
 
 .InputAddOn-field,
 .InputAddOn-item {
+    /* border: 0.5px solid #0094DA; */
     border: 1px solid rgba(147, 128, 108, 0.25);
     padding: 14px 15px;
 }
