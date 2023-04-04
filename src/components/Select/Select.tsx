@@ -1,5 +1,6 @@
 import React, { ChangeEvent, InputHTMLAttributes, Ref, useEffect, useRef, useState } from 'react';
 import { Icon } from '../../assets/DropdownIcon';
+import { UpIcon } from '../../assets/DropUpIcon';
 import { CloseIcon } from '../../assets/CloseIcon';
 import './Select.css';
 
@@ -134,9 +135,7 @@ export const Select: React.FunctionComponent<SelectProps> = ({ isMulti, options,
                 <div ref={inputRef} className="dropdown-input" onClick={handleInputClick}>
                     <div className="dropdown-selected-value">{getDisplay()}</div>
                     <div className="dropdown-tools">
-                        <div className="dropdown-tool">
-                            <Icon />
-                        </div>
+                        <div className="dropdown-tool">{showMenu ? <UpIcon /> : <Icon />}</div>
                     </div>
                     {showMenu && (
                         <div className="dropdown-menu">

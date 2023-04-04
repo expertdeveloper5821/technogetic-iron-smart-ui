@@ -1,6 +1,7 @@
 import { type } from 'os';
 import React from 'react';
 import './Button.css';
+
 export interface ButtonProps extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
     backgroundColor?: string;
     color?: string;
@@ -14,7 +15,7 @@ export const Button: React.FunctionComponent<ButtonProps> = (props) => {
     let _style: React.CSSProperties = style || {};
     let _className: string = 'commonButton';
     let _type: string = 'submit';
-    /**Override defaults */
+    /* Override defaults */
     if (color) _style.color = color;
     if (type) _type = type;
     if (className) _className = className;
