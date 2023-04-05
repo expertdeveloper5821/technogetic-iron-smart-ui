@@ -34,7 +34,7 @@ export const Select: React.FunctionComponent<SelectProps> = ({ isMulti, options,
     const searchRef = useRef<HTMLInputElement>();
     const inputRef = useRef<any>();
     const [selectedValue, setSelectedValue] = useState<any>(isMulti ? [] : null);
-
+    
     useEffect(() => {
         const handler = (e: { target: any }) => {
             if (inputRef.current && !inputRef.current.contains(e.target)) {
