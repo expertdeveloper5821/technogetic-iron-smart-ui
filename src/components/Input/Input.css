@@ -102,6 +102,10 @@ input.InputAddOn-field {
     padding: 14px 15px;
 }
 
+.inputField input.InputAddOn-field:focus+span.InputAddOn-item {
+    border: 0.5px solid #0094DA;
+}
+
 .InputAddOn-field:first-child,
 .InputAddOn-item:first-child {
     border-radius: 6px 0 0 6px;
