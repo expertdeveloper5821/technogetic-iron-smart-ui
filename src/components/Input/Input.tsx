@@ -49,7 +49,7 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
             {type !== 'password' && !adornment && !ornament && (
                 <>
                     <div className={`inputField ${className}`}>
-                        <input {...rest} type={inputType} placeholder="&nbsp;" type={inputType} />
+                        <input {...rest} type={inputType} placeholder="&nbsp;" />
                         <span className="togglePlaceholderVisibility">{placeholder}</span>
                     </div>
                 </>
