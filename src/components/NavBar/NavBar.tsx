@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './NavBar.css';
 
-export interface itemsInterface {
+export interface itemInterface {
     id: number;
     title: string;
     link: string;
@@ -16,7 +16,7 @@ export interface navbarArray {
     id: number;
     title?: string;
     link?: string;
-    items?: itemsInterface[];
+    items?: itemInterface[];
     image?: string;
     button?: buttonInterface[];
 }

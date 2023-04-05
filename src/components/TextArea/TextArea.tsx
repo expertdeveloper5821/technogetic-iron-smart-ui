@@ -1,7 +1,7 @@
 import React from 'react';
 import './TextArea.css';
 
-export interface InputProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
+export interface TextAreaInputProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
     placeholder?: string;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     rows?: string;
@@ -11,7 +11,7 @@ export interface InputProps extends React.DetailedHTMLProps<React.InputHTMLAttri
     maxLength?: string;
 }
 
-export const TextArea: React.FunctionComponent<InputProps> = (props) => {
+export const TextArea: React.FunctionComponent<TextAreaInputProps> = (props) => {
     const { cols, rows, placeholder, className } = props;
     // Setting Default Value
     let _className: string = 'textField';
