@@ -1,15 +1,12 @@
 .textField {
   padding: 15px;
   box-sizing: border-box;
-  position: absolute;
-  /* width: 746px;
-  height: 283px; */
   background: #FFFFFF;
-  border: 0.5px solid #0094DA;
+  border: 1.8px solid #6b6b6b;
   border-radius: 18px;
 }
 
 .textField:focus {
-  border: 1.8px solid #6b6b6b;
+  border: 0.5px solid #0094DA;
   outline: none;
 }

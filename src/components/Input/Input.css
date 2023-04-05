@@ -1,5 +1,8 @@
 .inputField {
     position: relative;
+    Margin: 0;
+    Width: 100%;
+    Padding: 0px;
 }
 
 input[type='text'],
