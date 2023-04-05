@@ -1,18 +1,10 @@
 import React from "react";
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { NavBar } from "../components/Nav/NavBar";
+import { render } from "react-dom";
+import { NavBar } from "./Nav";
+import "@testing-library/jest-dom";
 
-export default {
-  title: "ReactComponen's/NavBar",
-  component: NavBar,
-} as ComponentMeta<typeof NavBar>;
-
-const Template: ComponentStory<typeof NavBar> = (args) => <NavBar {...args} />;
-
-export const Primary = Template.bind({});
-
-Primary.args = {
-  navbarData: [
+describe("NavBar component", () => {
+  const navbarData = [
     {
       id: 0,
       name: "Title",
@@ -50,5 +42,5 @@ Primary.args = {
         { id: 12, title: "SignUp", link: "/signup" },
       ],
     },
-  ],
-};
+  ];
+});
