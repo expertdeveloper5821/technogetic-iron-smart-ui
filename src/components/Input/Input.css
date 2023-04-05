@@ -1,11 +1,8 @@
-.commonInput {
-    width: 50%;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-    border-radius: 0.25rem;
-    border: 1px solid #ccc;
-    padding: 0.5rem;
-    font-size: 1rem;
+.inputField {
+    /* position: relative; */
+    Margin: 0;
+    Width: 100%;
+    Padding: 0px;
 }
 
 input[type='text'],
@@ -55,8 +52,8 @@ span.togglePlaceholderVisibility {
     color: #6b6b6b;
     position: absolute;
     padding-left: 20px;
-    left: 0px;
-    top: 15px;
+    left: 20px;
+    top: 30px;
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -66,8 +63,8 @@ span.togglePlaceholderVisibility {
 
 .inputField input:not(:placeholder-shown)+span.togglePlaceholderVisibility,
 .inputField input:focus+span.togglePlaceholderVisibility {
-    top: 2px;
-    left: -15px;
+    top: 18px;
+    left: -2px;
     padding: 0px;
     color: #9E9E9E;
     -webkit-transform: scale(0.7) translateY(-10%) translateX(-8.5px);
@@ -108,7 +105,16 @@ input.InputAddOn-field {
     padding: 14px 15px;
 }
 
+.inputField input.InputAddOn-field:focus+span.InputAddOn-item {
+    border: 0.5px solid #0094DA;
+}
+
 .InputAddOn-field:first-child,
 .InputAddOn-item:first-child {
     border-radius: 6px 0 0 6px;
+}
+
+.InputAddOn-field:last-child,
+.InputAddOn-item:last-child {
+    border-radius: 0 6px 6px 0;
 }

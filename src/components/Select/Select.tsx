@@ -1,5 +1,6 @@
 import React, { ChangeEvent, InputHTMLAttributes, Ref, useEffect, useRef, useState } from 'react';
 import { Icon } from '../../assets/DropdownIcon';
+import { UpIcon } from '../../assets/DropUpIcon';
 import { CloseIcon } from '../../assets/CloseIcon';
 import './Select.css';
 
@@ -33,7 +34,7 @@ export const Select: React.FunctionComponent<SelectProps> = ({ isMulti, options,
     const searchRef = useRef<HTMLInputElement>();
     const inputRef = useRef<any>();
     const [selectedValue, setSelectedValue] = useState<any>(isMulti ? [] : null);
-
+    
     useEffect(() => {
         const handler = (e: { target: any }) => {
             if (inputRef.current && !inputRef.current.contains(e.target)) {
@@ -134,17 +135,15 @@ export const Select: React.FunctionComponent<SelectProps> = ({ isMulti, options,
                 <div ref={inputRef} className="dropdown-input" onClick={handleInputClick}>
                     <div className="dropdown-selected-value">{getDisplay()}</div>
                     <div className="dropdown-tools">
-                        <div className="dropdown-tool">
-                            <Icon />
-                        </div>
+                        <div className="dropdown-tool">{showMenu ? <UpIcon /> : <Icon />}</div>
                     </div>
                     {showMenu && (
                         <div className="dropdown-menu">
-                            {isSearchable && (
+                            {/* {isSearchable && (
                                 <div className="search-box">
                                     <input onChange={onSearch} value={searchValue} ref={searchRef} />
                                 </div>
-                            )}
+                            )} */}
                             {options ? (
                                 getOptions().map((option: any) => (
                                     <div onClick={() => onItemClick(option)} key={option} className={`dropdown-item ${isSelected(option) && 'selected'}`}>

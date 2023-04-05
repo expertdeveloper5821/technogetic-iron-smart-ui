@@ -26,7 +26,9 @@ export const TextArea: React.FunctionComponent<InputProps> = (props) => {
     if (placeholder) _placeholder = placeholder;
     return (
         <>
-            <textarea className={_className} rows={_rows} cols={_cols} form={props.form} maxlength={props.maxLength} placeholder={_placeholder}></textarea>
+            <div className={`inputField ${className}`}>
+                <textarea className={_className} rows={_rows} cols={_cols} form={props.form} maxlength={props.maxLength} placeholder={_placeholder}></textarea>
+            </div>
         </>
     );
 };
