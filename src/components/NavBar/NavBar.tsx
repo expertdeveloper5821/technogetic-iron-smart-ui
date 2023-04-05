@@ -62,14 +62,6 @@ export const NavBar: React.FunctionComponent<NavbarProps> = ({ navbarData }) => 
                                                 handleItemClick(data.id);
                                             }}
                                         />
-                                        <div
-                                            className="title"
-                                            onClick={() => {
-                                                handleItemClick(data.id);
-                                            }}
-                                        >
-                                            {data.name}
-                                        </div>
                                     </>
                                 ) : (
                                     ''
@@ -149,7 +141,7 @@ export const NavBar: React.FunctionComponent<NavbarProps> = ({ navbarData }) => 
             </div>
 
             <input type="checkbox" id="checkbox_toggle" />
-            <label for="checkbox_toggle" className="hamburger" onClick={dropNav}>
+            <label htmlFor="checkbox_toggle" className="hamburger" onClick={dropNav}>
                 &#9776;
             </label>
         </div>
