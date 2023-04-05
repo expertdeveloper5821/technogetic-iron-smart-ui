@@ -139,11 +139,11 @@ export const Select: React.FunctionComponent<SelectProps> = ({ isMulti, options,
                     </div>
                     {showMenu && (
                         <div className="dropdown-menu">
-                            {isSearchable && (
+                            {/* {isSearchable && (
                                 <div className="search-box">
                                     <input onChange={onSearch} value={searchValue} ref={searchRef} />
                                 </div>
-                            )}
+                            )} */}
                             {options ? (
                                 getOptions().map((option: any) => (
                                     <div onClick={() => onItemClick(option)} key={option} className={`dropdown-item ${isSelected(option) && 'selected'}`}>
