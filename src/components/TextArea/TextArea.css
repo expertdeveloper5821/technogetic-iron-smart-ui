@@ -3,7 +3,7 @@
   box-sizing: border-box;
   background: #FFFFFF;
   border: 1.8px solid #6b6b6b;
-  border-radius: 18px;
+  border-radius: 8px;
 }
 
 .textField:focus {
