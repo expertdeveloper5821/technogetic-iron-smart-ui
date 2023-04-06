@@ -3,5 +3,8 @@ declare const _default: {
     collectCoverage: boolean;
     coverageDirectory: string;
     testEnvironment: string;
+    moduleNameMapper: {
+        "\\.(css|sass)$": string;
+    };
 };
 export default _default;

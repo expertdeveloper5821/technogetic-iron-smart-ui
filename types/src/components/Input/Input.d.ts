@@ -1,7 +1,7 @@
 import React from 'react';
 import './Input.css';
 export interface InputProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
-    value: string;
+    value?: string;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     placeholder?: string;
     autoFocus?: boolean;
@@ -9,5 +9,7 @@ export interface InputProps extends React.DetailedHTMLProps<React.InputHTMLAttri
     name?: string;
     type?: 'email' | 'password' | 'text';
     className?: string;
+    adornment?: string;
+    ornament?: string;
 }
 export declare const Input: React.FunctionComponent<InputProps>;
