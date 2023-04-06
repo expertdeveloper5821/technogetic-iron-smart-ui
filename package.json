@@ -66,6 +66,7 @@
     },
     "dependencies": {
         "postcss": "^8.4.21",
+        "react-router-dom": "^6.10.0",
         "rollup-plugin-typescript2": "^0.34.1",
         "ts-node": "^10.9.1"
     },
