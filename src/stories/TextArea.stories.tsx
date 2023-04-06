@@ -14,7 +14,4 @@ Primary.args = {
     onChange: function (e: any): void {
         console.log('onChange', e.target.value);
     }
-    // placeholder: 'I am a placeholder',
-    // rows: '5',
-    // cols: '33'
 };

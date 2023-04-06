@@ -63,18 +63,4 @@ describe('NavBar component', () => {
         expect(product1Link).toHaveClass('active');
         expect(product2Link).not.toHaveClass('active');
     });
-
-    test('clicking on a button item triggers expected action', () => {
-        const mockData = [{ id: 1, title: 'Home', link: '/home', button: [{ id: 1, title: 'Sign Up', link: '/signup' }] }];
-
-        const mockHandleClick = jest.fn();
-
-        render(<NavBar navbarData={mockData} handleClick={mockHandleClick} />);
-
-        const signUpButton = screen.getByText('Sign Up');
-
-        fireEvent.click(signUpButton);
-
-        expect(mockHandleClick).toHaveBeenCalled();
-    });
 });

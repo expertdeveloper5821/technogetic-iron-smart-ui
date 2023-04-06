@@ -1,32 +1,41 @@
 import React, { PropsWithChildren } from 'react';
 import styles from './Card.module.css';
 
-interface CardProps {
+export interface CardProps {
     className?: string;
     padding?: string;
     title?: string;
     border?: string;
     footer?: React.ReactNode;
+    headerImage?: string;
 }
 
 export const Card = (props: PropsWithChildren<CardProps>) => {
-    const { className = '', padding = '', title = 'Card Title', border = '', footer } = props;
+    const { className = '', padding = '', title = 'Card Title', border = '', footer = 'Card Footer', headerImage } = props;
     const borderStyle = border === 'none' ? styles.noBorderCard : '';
-    const cardHeader = title ? (
+    const cardHeader = (
         <div className="cardHead">
+            {headerImage && <img src={headerImage} alt="Card Header Image" />}
             <div className="cardHeadTitle">
                 <span>{title}</span>
             </div>
         </div>
-    ) : null;
+    );
+    const cardFooter = (
+        <div className="cardFooter">
+            <div className={`${styles.cardFooter}`}>
+                <span>{footer}</span>
+            </div>
+        </div>
+    );
 
     return (
         <div {...props} className={`${styles.card} ${borderStyle} ${className}`}>
             {cardHeader}
-            <div style={{ padding }} className={`${styles.cardBody}`}>
+            <div style={{ padding }} className={`cardBody ${styles.cardBody}`}>
                 {props.children}
             </div>
-            {footer && <div className={`${styles.cardFooter}`}>{footer}</div>}
+            {cardFooter}
         </div>
     );
 };

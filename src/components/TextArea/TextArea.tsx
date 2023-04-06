@@ -14,8 +14,8 @@ export const TextArea: React.FunctionComponent<TextAreaInputProps> = (props) => 
     const { cols, rows, placeholder, className } = props;
     // Setting Default Value
     let _className: string = 'textField';
-    let _rows: string = '10';
-    let _cols: string = '50';
+    let _rows: number = 10;
+    let _cols: number = 50;
     let _placeholder: string = 'Write here..';
 
     // Overwrite the default Value
