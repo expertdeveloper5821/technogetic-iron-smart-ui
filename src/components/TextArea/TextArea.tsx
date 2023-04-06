@@ -4,11 +4,10 @@ import './TextArea.css';
 export interface TextAreaInputProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
     placeholder?: string;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    rows?: string;
-    cols?: string;
+    rows?: number;
+    cols?: number;
     className?: string;
     form?: string;
-    maxLength?: string;
 }
 
 export const TextArea: React.FunctionComponent<TextAreaInputProps> = (props) => {
@@ -27,7 +26,7 @@ export const TextArea: React.FunctionComponent<TextAreaInputProps> = (props) => 
     return (
         <>
             <div className={`inputField ${className}`}>
-                <textarea className={_className} rows={_rows} cols={_cols} form={props.form} maxlength={props.maxLength} placeholder={_placeholder}></textarea>
+                <textarea className={_className} rows={_rows} cols={_cols} form={props.form} placeholder={_placeholder}></textarea>
             </div>
         </>
     );
