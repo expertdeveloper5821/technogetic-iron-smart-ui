@@ -1,22 +1,22 @@
 .card {
     background-color: #ffffff;
-    border-radius: 2px;
+    border-radius: 8px;
     /* color: #000000a6; */
     line-height: 1.5;
     word-break: break-all;
     border: 1px solid #e8e8e8;
-    width: 18rem;
+    /* width: 18rem; */
 }
 
 .cardHead {
-    border-bottom: 1px solid #e8e8e8;
+    /* border-bottom: 1px solid #e8e8e8; */
     padding: 0 1.6rem;
-    font-size: 1.1rem;
+    /* font-size: 1.1rem; */
     text-align: center;
 }
 
 .cardFooter {
-    border-top: 1px solid #e8e8e8;
+    /* border-top: 1px solid #e8e8e8; */
     padding: 0 1.6rem;
     font-size: 1.1rem;
     display: flex;
@@ -27,7 +27,7 @@
 }
 
 .cardHeadTitle {
-    padding: 1.1rem 0;
+    /* padding: 1.1rem 0; */
     font-weight: 500;
     margin: 0;
     font-size: 16px;
@@ -36,7 +36,7 @@
 }
 
 .cardBody {
-    /* padding: 1.2rem 1.8rem; */
+    padding: 1.2rem 1.8rem;
     border-radius: 2px 2px 0 0;
     text-align: center;
 }

@@ -1,50 +1,38 @@
 .inputField {
-    /* position: relative; */
-    Margin: 0;
-    Width: 100%;
-    Padding: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    user-select: none;
 }
 
 input[type='text'],
 input[type='email'] {
-    padding: 8px 20px;
     background: #FFFFFF;
     border: 1px solid rgba(147, 128, 108, 0.25);
     border-radius: 6px;
-    width: 357px;
-    height: 30px;
-    font-size: 16px;
-    line-height: 16px;
-    font-weight: 400;
+    padding: 8px;
 }
 
 input[type='password'] {
-    padding: 8px 20px;
+    background: #FFFFFF;
     border: 1px solid rgba(147, 128, 108, 0.25);
     border-radius: 6px;
-    width: 357px;
-    height: 30px;
-    color: #000000;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 16px;
+    padding: 8px;
 }
 
 .inputField input:focus {
     background: #FFFFFF;
     border: 0.5px solid #0094DA;
-    /* border: 1.8px solid #6b6b6b; */
     outline: none;
 }
 
 span.togglePasswordVisibility {
-    float: right;
-    margin-left: -50px;
-    margin-top: 12px;
     position: absolute;
+    right: 12px;
 }
 
-span.togglePlaceholderVisibility {
+/* span.togglePlaceholderVisibility {
     pointer-events: none;
     height: 16.23px;
     width: 245.69px;
@@ -59,9 +47,9 @@ span.togglePlaceholderVisibility {
     font-size: 18px;
     line-height: 19px;
     cursor: text;
-}
+} */
 
-.inputField input:not(:placeholder-shown)+span.togglePlaceholderVisibility,
+/* .inputField input:not(:placeholder-shown)+span.togglePlaceholderVisibility,
 .inputField input:focus+span.togglePlaceholderVisibility {
     top: 18px;
     left: -2px;
@@ -69,7 +57,7 @@ span.togglePlaceholderVisibility {
     color: #9E9E9E;
     -webkit-transform: scale(0.7) translateY(-10%) translateX(-8.5px);
     transform: scale(0.7) translateY(-10%) translateX(-8.5px);
-}
+} */
 
 /* Code for the inline span and input Field */
 .InputAddOn {
@@ -100,9 +88,8 @@ input.InputAddOn-field {
 
 .InputAddOn-field,
 .InputAddOn-item {
-    /* border: 0.5px solid #0094DA; */
     border: 1px solid rgba(147, 128, 108, 0.25);
-    padding: 14px 15px;
+    padding: 6.5px;
 }
 
 .inputField input.InputAddOn-field:focus+span.InputAddOn-item {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Card } from '../components/Card/Card';
+import { Secondary } from './Button.stories';
 
 export default {
     title: 'ReactComponentLibrary/Card',
@@ -11,8 +12,12 @@ const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-    // title: 'First Card',
     padding: '10px',
+    children: "Hey i am card's children"
+};
+
+export const cardWithImage = Template.bind({});
+cardWithImage.args = {
     children: "Hey i am card's children",
-    className: 'card'
+    headerImage: 'https://www.w3schools.com/bootstrap4/img_avatar3.png'
 };
