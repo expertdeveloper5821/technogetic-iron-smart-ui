@@ -8,33 +8,26 @@
 }
 
 .dropdown-input {
-    padding: 5px;
+    padding: 12px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     user-select: none;
-    position: absolute;
-    width: 221px;
-    height: 50px;
-    left: 4px;
-    top: 1px;
     background: #F0F0F0;
-    /* text color */
     border: 0.5px solid #858585;
     border-radius: 4px;
 }
 
 .dropdown-menu {
     position: absolute;
-    transform: translateY(97px);
-    margin-left: -5px;
-    margin-top: 25px;
-    width: 100%;
+    transform: translateY(94px);
     border: 1px solid #ccc;
     border-radius: 4px 4px 12px 12px;
     overflow: auto;
     max-height: 150px;
+    left: 15px;
     background-color: #fff;
+    right: 15px;
 }
 
 .dropdown-item {

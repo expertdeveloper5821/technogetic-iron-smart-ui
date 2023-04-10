@@ -17,6 +17,7 @@
 .tableHeader:first-child {
     border-top-left-radius: 12px;
 }
+
 .tableHeader:last-child {
     border-top-right-radius: 12px;
 }
@@ -24,9 +25,11 @@
 .tableRowItem {
     cursor: auto;
 }
+
 .tableRowItem:nth-child(odd) {
     background-color: #f9f9f9;
 }
+
 .tableRowItem:last-child {
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
@@ -36,4 +39,8 @@
     padding: 12px;
     font-size: 14px;
     color: grey;
+}
+
+.btn {
+    cursor: pointer;
 }
