@@ -6,6 +6,16 @@
     user-select: none;
 }
 
+.defInputField {
+    user-select: none;
+}
+
+.defInputField input:focus {
+    background: #FFFFFF;
+    border: 0.5px solid #0094DA;
+    outline: none;
+}
+
 input[type='text'],
 input[type='email'] {
     background: #FFFFFF;

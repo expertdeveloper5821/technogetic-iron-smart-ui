@@ -115,13 +115,13 @@ export const NavBar: React.FunctionComponent<NavbarProps> = ({ navbarData }) => 
                                             return (
                                                 <>
                                                     <div className={`btnItems repNavLink  ${!resOpen ? 'resNavBar' : ''}`}>
-                                                        <button
+                                                        <a
                                                             onClick={() => {
                                                                 handleItemClick(data.id);
                                                             }}
                                                         >
                                                             {btns.title}
-                                                        </button>
+                                                        </a>
                                                     </div>
                                                 </>
                                             );

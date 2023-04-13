@@ -6,6 +6,7 @@ import { ClosePassword } from '../../assets/ClosePassword';
 export interface InputProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
     value?: string;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    label?: string;
     placeholder?: string;
     autoFocus?: boolean;
     disabled?: boolean;
@@ -48,9 +49,8 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
             )}
             {type !== 'password' && !adornment && !ornament && (
                 <>
-                    <div className={`inputField ${className}`}>
+                    <div className={`defInputField ${className}`}>
                         <input {...rest} type={inputType} placeholder={placeholder} />
-                        {/* <span className="togglePlaceholderVisibility">{placeholder}</span> */}
                     </div>
                 </>
             )}
