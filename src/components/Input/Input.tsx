@@ -59,15 +59,15 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
             )}
             {type !== 'password' && adornment && (
                 <>
-                    <div className={`inputField ${className}`}>
-                        <span className="InputAddOn-item">{adornment}</span>
-                        <input className="InputAddOn-field right" placeholder={placeholder} {...rest} type={inputType} required={_required} />
+                    <div className={`inputBlock ${className}`}>
+                        <span className="InputAddOn-item InputAddOn-field">{adornment}</span>
+                        <input className="InputAddOn-field" placeholder={placeholder} {...rest} type={inputType} required={_required} />
                     </div>
                 </>
             )}
             {type !== 'password' && ornament && (
                 <>
-                    <div className={`inputField ${className}`}>
+                    <div className={`inputBlock ${className}`}>
                         <input className="InputAddOn-field" placeholder={placeholder} {...rest} type={inputType} required={_required} />
                         <span className="InputAddOn-item">{ornament}</span>
                     </div>
