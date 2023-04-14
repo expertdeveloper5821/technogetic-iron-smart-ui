@@ -7,6 +7,9 @@ export interface IColumnType<T> {
     key: string;
     title: string;
     width?: number;
+    type?: string;
+    buttonType?: string;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>, rowData: T) => void;
     render?: (column: IColumnType<T>, item: T) => void;
 }
 

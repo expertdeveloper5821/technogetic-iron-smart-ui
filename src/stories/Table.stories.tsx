@@ -34,6 +34,10 @@ Primary.args = {
             width: 100,
             type: 'button',
             buttonType: 'edit'
+            // onClick: function (event, item, buttonType) {
+            //     console.log(item);
+            //     console.log(buttonType);
+            // }
         },
         {
             key: 'delete',
@@ -41,6 +45,10 @@ Primary.args = {
             width: 100,
             type: 'button',
             buttonType: 'delete'
+            // onClick: function (event, item, buttonType) {
+            //     console.log(item);
+            //     console.log(buttonType);
+            // }
         },
         {
             key: 'show',
@@ -48,6 +56,10 @@ Primary.args = {
             width: 100,
             type: 'button',
             buttonType: 'show'
+            // onClick: function (event, item, buttonType) {
+            //     console.log(item);
+            //     console.log(buttonType);
+            // }
         }
     ],
     data: [

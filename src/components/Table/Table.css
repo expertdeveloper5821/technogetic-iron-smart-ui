@@ -41,6 +41,8 @@
     color: grey;
 }
 
-.btn {
+button {
     cursor: pointer;
+    border: 0;
+    background-color: transparent;
 }

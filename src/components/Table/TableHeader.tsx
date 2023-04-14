@@ -13,9 +13,6 @@ const TableHeader = <T extends Props<T>>({ columns }: Props<T>): JSX.Element => 
                     {column.title}
                 </th>
             ))}
-            {/* <th className="tableHeader" key="table-head-cell-actions" style={{ width: 150 }}>
-                Actions
-            </th> */}
         </tr>
     );
 };

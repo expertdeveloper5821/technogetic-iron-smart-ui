@@ -3,6 +3,9 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Button } from '../components/Button/Button';
 
 export default {
+    onClick: function (e: any): void {
+        console.log('onClick', e.target.value);
+    },
     title: 'ReactComponentLibrary/Button',
     component: Button
 } as ComponentMeta<typeof Button>;

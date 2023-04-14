@@ -1,15 +1,4 @@
-.inputField {
-    display: flex;
-    align-items: start;
-    justify-content: space-between;
-    align-items: center;
-    user-select: none;
-    background: #FFFFFF;
-    border: 1px solid rgba(147, 128, 108, 0.25);
-    border-radius: 6px;
-    padding: 8px;
-}
-
+.inputField,
 .defInputField {
     display: flex;
     align-items: start;
@@ -33,11 +22,7 @@
 }
 
 input[type='text'],
-input[type='email'] {
-    border: 0;
-    width: 100%;
-}
-
+input[type='email'],
 input[type='password'] {
     border: 0;
     width: 100%;
@@ -53,31 +38,6 @@ input[type='password'] {
     outline: none;
 }
 
-/* Code for the inline span and input Field */
-.inputBlock {
-    display: inline-flex;
-    /* flex-direction: column; */
-    vertical-align: top;
-    width: 100%;
-    margin: 8px;
-    /* display: flex;
-    align-items: start;
-    justify-content: space-between;
-    align-items: center;
-    user-select: none;
-    background: #FFFFFF; */
-    border: 1px solid rgba(147, 128, 108, 0.25);
-    border-radius: 6px;
-}
-
-.input.InputAddOn-field {
-    padding: 8px;
-}
-
-/* .inputBlock input {
-    border: 1px solid rgba(147, 128, 108, 0.25);
-} */
-
 span.InputAddOn-item {
     padding: 0px 4px;
 }
@@ -88,36 +48,8 @@ input.InputAddOn-field:focus {
     outline: none;
 }
 
-.InputAddOn-field:not(:first-child) {
-    border-left: 0;
-}
-
-.InputAddOn-field:not(:last-child) {
-    border-right: 0;
-}
-
 .InputAddOn-item {
-    background-color: rgba(147, 128, 108, 0.1);
     color: #666666;
     font: inherit;
     font-weight: normal;
-}
-
-.inputBlock:focus-within {
-    border: 0.5px solid #0094DA;
-    border-radius: 6px;
-}
-
-.inputBlock .InputAddOn-field input:focus {
-    border: none;
-}
-
-.InputAddOn-field:first-child,
-.InputAddOn-item:first-child {
-    border-radius: 6px 0 0 6px;
-}
-
-.InputAddOn-field:last-child,
-.InputAddOn-item:last-child {
-    border-radius: 0 6px 6px 0;
 }
