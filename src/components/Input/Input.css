@@ -11,13 +11,16 @@
     padding: 8px;
 }
 
-.defInputField input:focus {
+.defInputField input:focus,
+.inputField input:focus,
+input.InputAddOn-field:focus {
     background: #FFFFFF;
     border: none;
     outline: none;
 }
 
-.defInputField:focus-within {
+.defInputField:focus-within,
+.inputField:focus-within {
     border: 0.5px solid #0094DA;
 }
 
@@ -28,24 +31,8 @@ input[type='password'] {
     width: 100%;
 }
 
-.inputField:focus-within {
-    border: 0.5px solid #0094DA;
-}
-
-.inputField input:focus {
-    background: #FFFFFF;
-    border: none;
-    outline: none;
-}
-
 span.InputAddOn-item {
     padding: 0px 4px;
-}
-
-input.InputAddOn-field:focus {
-    background: #FFFFFF;
-    border: none;
-    outline: none;
 }
 
 .InputAddOn-item {

@@ -29,11 +29,11 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
     const inputType = type === 'password' ? (showPassword ? 'text' : 'password') : type;
 
     const inputClassName = `inputField ${className} ${type === 'password' ? 'password' : ''}`;
-    // Set Defalut Values
+
     let _placeholder: string = 'Input Field';
     let _type: string = 'text';
     let _required: boolean = false;
-    // OverWrite the Default Values
+
     if (placeholder) _placeholder = placeholder;
     if (type) _type = type;
     if (required) _required = required;

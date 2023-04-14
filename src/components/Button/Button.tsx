@@ -15,7 +15,7 @@ export const Button: React.FunctionComponent<ButtonProps> = (props) => {
     let _style: React.CSSProperties = style || {};
     let _className: string = 'commonButton';
     let _type: string = 'submit';
-    /* Override defaults */
+
     if (color) _style.color = color;
     if (type) _type = type;
     if (className) _className = className;

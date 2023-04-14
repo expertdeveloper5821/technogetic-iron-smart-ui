@@ -11,7 +11,7 @@ const TableRow = <T extends Props<T>>({ data, columns }: Props<T>): JSX.Element 
     return (
         <>
             {data?.map((item, rowIndex) => (
-                <tr key={`table-row-${rowIndex}`}>
+                <tr className="tableRowItem" key={`table-row-${rowIndex}`}>
                     {columns?.map((column, columnIndex) => (
                         <TableRowCell key={`table-cell-${rowIndex}-${columnIndex}`} item={item} column={column} />
                     ))}
