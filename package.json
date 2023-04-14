@@ -1,6 +1,6 @@
 {
     "name": "technogetic-iron-smart-ui",
-    "version": "1.0.0",
+    "version": "1.0.6",
     "description": "A component library for react",
     "main": "dist/index.js",
     "module": "dist/index.esm.js",
