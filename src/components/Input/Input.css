@@ -1,73 +1,91 @@
 .inputField {
     display: flex;
+    align-items: start;
     justify-content: space-between;
     align-items: center;
-    position: absolute;
     user-select: none;
+    background: #FFFFFF;
+    border: 1px solid rgba(147, 128, 108, 0.25);
+    border-radius: 6px;
+    padding: 8px;
+}
+
+.defInputField {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    background: #FFFFFF;
+    border: 1px solid rgba(147, 128, 108, 0.25);
+    border-radius: 6px;
+    padding: 8px;
+}
+
+.defInputField input:focus {
+    background: #FFFFFF;
+    border: none;
+    outline: none;
+}
+
+.defInputField:focus-within {
+    border: 0.5px solid #0094DA;
 }
 
 input[type='text'],
 input[type='email'] {
-    background: #FFFFFF;
-    border: 1px solid rgba(147, 128, 108, 0.25);
-    border-radius: 6px;
-    padding: 8px;
+    border: 0;
+    width: 100%;
 }
 
 input[type='password'] {
-    background: #FFFFFF;
-    border: 1px solid rgba(147, 128, 108, 0.25);
-    border-radius: 6px;
-    padding: 8px;
+    border: 0;
+    width: 100%;
+}
+
+.inputField:focus-within {
+    border: 0.5px solid #0094DA;
 }
 
 .inputField input:focus {
     background: #FFFFFF;
-    border: 0.5px solid #0094DA;
+    border: none;
     outline: none;
 }
 
-span.togglePasswordVisibility {
-    position: absolute;
-    right: 12px;
-}
-
-/* span.togglePlaceholderVisibility {
-    pointer-events: none;
-    height: 16.23px;
-    width: 245.69px;
-    opacity: 0.5;
-    color: #6b6b6b;
-    position: absolute;
-    padding-left: 20px;
-    left: 20px;
-    top: 30px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 19px;
-    cursor: text;
-} */
-
-/* .inputField input:not(:placeholder-shown)+span.togglePlaceholderVisibility,
-.inputField input:focus+span.togglePlaceholderVisibility {
-    top: 18px;
-    left: -2px;
-    padding: 0px;
-    color: #9E9E9E;
-    -webkit-transform: scale(0.7) translateY(-10%) translateX(-8.5px);
-    transform: scale(0.7) translateY(-10%) translateX(-8.5px);
-} */
-
 /* Code for the inline span and input Field */
-.InputAddOn {
-    display: flex;
-    margin-bottom: 1.5em;
+.inputBlock {
+    display: inline-flex;
+    /* flex-direction: column; */
+    vertical-align: top;
+    width: 100%;
+    margin: 8px;
+    /* display: flex;
+    align-items: start;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    background: #FFFFFF; */
+    border: 1px solid rgba(147, 128, 108, 0.25);
+    border-radius: 6px;
 }
 
-input.InputAddOn-field {
-    color: #000000;
-    font-weight: 400;
+.input.InputAddOn-field {
+    padding: 8px;
+}
+
+/* .inputBlock input {
+    border: 1px solid rgba(147, 128, 108, 0.25);
+} */
+
+span.InputAddOn-item {
+    padding: 0px 4px;
+}
+
+input.InputAddOn-field:focus {
+    background: #FFFFFF;
+    border: none;
+    outline: none;
 }
 
 .InputAddOn-field:not(:first-child) {
@@ -85,14 +103,13 @@ input.InputAddOn-field {
     font-weight: normal;
 }
 
-.InputAddOn-field,
-.InputAddOn-item {
-    border: 1px solid rgba(147, 128, 108, 0.25);
-    padding: 6.5px;
+.inputBlock:focus-within {
+    border: 0.5px solid #0094DA;
+    border-radius: 6px;
 }
 
-.inputField input.InputAddOn-field:focus+span.InputAddOn-item {
-    border: 0.5px solid #0094DA;
+.inputBlock .InputAddOn-field input:focus {
+    border: none;
 }
 
 .InputAddOn-field:first-child,

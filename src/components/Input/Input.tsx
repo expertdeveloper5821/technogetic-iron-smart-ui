@@ -6,6 +6,8 @@ import { ClosePassword } from '../../assets/ClosePassword';
 export interface InputProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
     value?: string;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    label?: string;
+    required?: boolean;
     placeholder?: string;
     autoFocus?: boolean;
     disabled?: boolean;
@@ -17,7 +19,7 @@ export interface InputProps extends React.DetailedHTMLProps<React.InputHTMLAttri
 }
 
 export const Input: React.FunctionComponent<InputProps> = (props) => {
-    const { className, placeholder, type, adornment, ornament, ...rest } = props;
+    const { className, placeholder, type, adornment, required, ornament, ...rest } = props;
     const [showPassword, setShowPassword] = useState(false);
 
     const togglePasswordVisibility = () => {
@@ -30,16 +32,18 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
     // Set Defalut Values
     let _placeholder: string = 'Input Field';
     let _type: string = 'text';
+    let _required: boolean = false;
     // OverWrite the Default Values
     if (placeholder) _placeholder = placeholder;
     if (type) _type = type;
+    if (required) _required = required;
 
     return (
         <>
             {type === 'password' && (
                 <>
                     <div className={`inputField ${className}`}>
-                        <input {...rest} type={inputType} placeholder={_placeholder} />
+                        <input {...rest} type={inputType} placeholder={_placeholder} required={_required} />
                         <span className="togglePasswordVisibility" onClick={togglePasswordVisibility}>
                             {showPassword ? <ClosePassword /> : <ShowPassword />}
                         </span>
@@ -48,24 +52,23 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
             )}
             {type !== 'password' && !adornment && !ornament && (
                 <>
-                    <div className={`inputField ${className}`}>
-                        <input {...rest} type={inputType} placeholder={placeholder} />
-                        {/* <span className="togglePlaceholderVisibility">{placeholder}</span> */}
+                    <div className={`defInputField ${className}`}>
+                        <input {...rest} type={inputType} placeholder={placeholder} required={_required} />
                     </div>
                 </>
             )}
             {type !== 'password' && adornment && (
                 <>
-                    <div className={`inputField ${className}`}>
-                        <span className="InputAddOn-item">{adornment}</span>
-                        <input className="InputAddOn-field right" placeholder={placeholder} {...rest} type={inputType} />
+                    <div className={`inputBlock ${className}`}>
+                        <span className="InputAddOn-item InputAddOn-field">{adornment}</span>
+                        <input className="InputAddOn-field" placeholder={placeholder} {...rest} type={inputType} required={_required} />
                     </div>
                 </>
             )}
             {type !== 'password' && ornament && (
                 <>
-                    <div className={`inputField ${className}`}>
-                        <input className="InputAddOn-field" placeholder={placeholder} {...rest} type={inputType} />
+                    <div className={`inputBlock ${className}`}>
+                        <input className="InputAddOn-field" placeholder={placeholder} {...rest} type={inputType} required={_required} />
                         <span className="InputAddOn-item">{ornament}</span>
                     </div>
                 </>

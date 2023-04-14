@@ -1,7 +1,3 @@
-* {
-  padding: 0;
-}
-
 .dropdown {
   width: 100%;
 }
@@ -14,7 +10,6 @@ img.logoSize {
   background: #eeeeee;
   color: black;
   width: 100%;
-  font-size: 18px;
   display: flex;
   flex-direction: row;
 }
@@ -32,7 +27,7 @@ img.logoSize {
 
 .navbarItem:hover,
 .navbarSubItems:hover {
-  background-color: #6cc4fc;
+  color: #6cc4fc;
 }
 
 .dropdown-content {
@@ -86,10 +81,14 @@ input[type=checkbox] {
   padding: 10px;
 }
 
+.btnItems:hover {
+  color: #6cc4fc;
+}
+
 button {
   padding: 5px 10px;
   cursor: pointer;
-  border-radius: 15px;
+  border-radius: 8px;
   border: 0;
   background-color: #1ea7fd;
 }
