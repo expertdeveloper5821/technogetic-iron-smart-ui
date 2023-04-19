@@ -14,52 +14,40 @@ export const Primary = Template.bind({});
 Primary.args = {
     columns: [
         {
-            key: 'name',
+            id: 'name',
             title: 'Name',
             width: 200
         },
         {
-            key: 'age',
+            id: 'age',
             title: 'Age',
             width: 100
         },
         {
-            key: 'email',
+            id: 'email',
             title: 'Email',
             width: 300
         },
         {
-            key: 'edit',
+            id: 'edit',
             title: 'Edit',
             width: 100,
             type: 'button',
             buttonType: 'edit'
-            // onClick: function (event, item, buttonType) {
-            //     console.log(item);
-            //     console.log(buttonType);
-            // }
         },
         {
-            key: 'delete',
+            id: 'delete',
             title: 'Delete',
             width: 100,
             type: 'button',
             buttonType: 'delete'
-            // onClick: function (event, item, buttonType) {
-            //     console.log(item);
-            //     console.log(buttonType);
-            // }
         },
         {
-            key: 'show',
+            id: 'show',
             title: 'Show',
             width: 100,
             type: 'button',
             buttonType: 'show'
-            // onClick: function (event, item, buttonType) {
-            //     console.log(item);
-            //     console.log(buttonType);
-            // }
         }
     ],
     data: [

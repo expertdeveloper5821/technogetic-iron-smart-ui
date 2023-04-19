@@ -35,9 +35,10 @@
     padding: 12px;
     font-size: 14px;
     color: grey;
+    text-align: left;
 }
 
-button {
+button.tableBtn {
     cursor: pointer;
     border: 0;
     background-color: transparent;

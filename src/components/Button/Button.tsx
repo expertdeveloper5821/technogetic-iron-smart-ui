@@ -15,15 +15,17 @@ export const Button: React.FunctionComponent<ButtonProps> = (props) => {
     let _style: React.CSSProperties = style || {};
     let _className: string = 'commonButton';
     let _type: string = 'submit';
+    let _children: any = 'Button';
 
     if (color) _style.color = color;
     if (type) _type = type;
     if (className) _className = className;
+    if (children) _children = children;
     if (backgroundColor) _style.backgroundColor = backgroundColor;
 
     return (
         <button className={_className} style={_style} {...props} onClick={onClick} type={type}>
-            {children}
+            {_children}
         </button>
     );
 };

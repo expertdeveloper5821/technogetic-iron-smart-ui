@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useReducer, useEffect, useState } from 'react';
 
 function styleInject(css, ref) {
   if ( ref === void 0 ) ref = {};
@@ -27,21 +27,23 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z$9 = "button.commonButton {\n    color: white;\n    cursor: pointer;\n    border-radius: 6px;\n    padding: 10px;\n    background-color: #1ea7fd;\n    border: 0;\n}\n\n.commonButton:hover {\n    background-color: #9E9E9E;\n}\n\n.commonButton:hover {\n    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\n}";
+var css_248z$9 = "button.commonButton {\n    color: white;\n    cursor: pointer;\n    border-radius: 6px;\n    padding: 10px;\n    background-color: red;\n    border: 0;\n}\n\n.commonButton:hover {\n    background-color: #9E9E9E;\n}\n\n.commonButton:hover {\n    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\n}";
 styleInject(css_248z$9);
 
 const Button = (props) => {
     const { children, backgroundColor, color, style, onClick, className, type } = props;
     let _style = style || {};
     let _className = 'commonButton';
-    /* Override defaults */
+    let _children = 'Button';
     if (color)
         _style.color = color;
     if (className)
         _className = className;
+    if (children)
+        _children = children;
     if (backgroundColor)
         _style.backgroundColor = backgroundColor;
-    return (React.createElement("button", Object.assign({ className: _className, style: _style }, props, { onClick: onClick, type: type }), children));
+    return (React.createElement("button", Object.assign({ className: _className, style: _style }, props, { onClick: onClick, type: type }), _children));
 };
 
 /******************************************************************************
@@ -71,7 +73,7 @@ function __rest(s, e) {
     return t;
 }
 
-var css_248z$8 = ".inputField,\n.defInputField {\n    display: flex;\n    align-items: start;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px;\n    padding: 8px;\n}\n\n.defInputField input:focus {\n    background: #FFFFFF;\n    border: none;\n    outline: none;\n}\n\n.defInputField:focus-within {\n    border: 0.5px solid #0094DA;\n}\n\ninput[type='text'],\ninput[type='email'],\ninput[type='password'] {\n    border: 0;\n    width: 100%;\n}\n\n.inputField:focus-within {\n    border: 0.5px solid #0094DA;\n}\n\n.inputField input:focus {\n    background: #FFFFFF;\n    border: none;\n    outline: none;\n}\n\nspan.InputAddOn-item {\n    padding: 0px 4px;\n}\n\ninput.InputAddOn-field:focus {\n    background: #FFFFFF;\n    border: none;\n    outline: none;\n}\n\n.InputAddOn-item {\n    color: #666666;\n    font: inherit;\n    font-weight: normal;\n}";
+var css_248z$8 = ".inputField {\n    display: flex;\n    align-items: start;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px;\n    padding: 8px;\n}\n\n.inputField input:focus,\ninput.InputAddOn-field:focus {\n    background: #FFFFFF;\n    border: none;\n    outline: none;\n}\n\n.inputField:focus-within {\n    border: 0.5px solid #0094DA;\n}\n\ninput[type='text'],\ninput[type='email'],\ninput[type='password'] {\n    border: 0;\n    width: 100%;\n}\n\nspan.InputAddOn-item {\n    padding: 0px 4px;\n}\n\n.InputAddOn-item {\n    color: #666666;\n    font: inherit;\n    font-weight: normal;\n}";
 styleInject(css_248z$8);
 
 const ShowPassword = () => {
@@ -88,34 +90,39 @@ const ClosePassword = () => {
 
 const Input = (props) => {
     const { className, placeholder, type, adornment, required, ornament } = props, rest = __rest(props, ["className", "placeholder", "type", "adornment", "required", "ornament"]);
-    const [showPassword, setShowPassword] = useState(false);
-    const togglePasswordVisibility = () => {
-        setShowPassword((prevState) => !prevState);
-    };
-    const inputType = type === 'password' ? (showPassword ? 'text' : 'password') : type;
-    // Set Defalut Values
+    const inputType = type === 'password' ? 'password' : type;
     let _placeholder = 'Input Field';
+    let _type = 'text';
     let _required = false;
-    // OverWrite the Default Values
     if (placeholder)
         _placeholder = placeholder;
+    if (type)
+        _type = type;
     if (required)
         _required = required;
+    let passwordVisibilityButton = null;
+    if (type === 'password') {
+        const togglePasswordVisibility = () => {
+            const input = document.querySelector('.passwordInput');
+            input.type = input.type === 'password' ? 'text' : 'password';
+        };
+        passwordVisibilityButton = (React.createElement("span", { className: "togglePasswordVisibility", onClick: togglePasswordVisibility }, inputType === 'password' ? React.createElement(ShowPassword, null) : React.createElement(ClosePassword, null)));
+    }
     return (React.createElement(React.Fragment, null,
         type === 'password' && (React.createElement(React.Fragment, null,
             React.createElement("div", { className: `inputField ${className}` },
-                React.createElement("input", Object.assign({}, rest, { type: inputType, placeholder: _placeholder, required: _required })),
-                React.createElement("span", { className: "togglePasswordVisibility", onClick: togglePasswordVisibility }, showPassword ? React.createElement(ClosePassword, null) : React.createElement(ShowPassword, null))))),
+                React.createElement("input", Object.assign({}, rest, { type: inputType, placeholder: _placeholder, required: _required, className: type === 'password' ? 'passwordInput' : '' })),
+                passwordVisibilityButton))),
         type !== 'password' && !adornment && !ornament && (React.createElement(React.Fragment, null,
-            React.createElement("div", { className: `defInputField ${className}` },
-                React.createElement("input", Object.assign({}, rest, { type: inputType, placeholder: placeholder, required: _required }))))),
+            React.createElement("div", { className: `inputField ${className}` },
+                React.createElement("input", { type: _type, placeholder: _placeholder, required: _required })))),
         type !== 'password' && adornment && (React.createElement(React.Fragment, null,
             React.createElement("div", { className: `inputField ${className}` },
                 React.createElement("span", { className: "InputAddOn-item InputAddOn-field" }, adornment),
-                React.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: placeholder }, rest, { type: inputType, required: _required }))))),
+                React.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: _placeholder }, rest, { type: _type, required: _required }))))),
         type !== 'password' && ornament && (React.createElement(React.Fragment, null,
             React.createElement("div", { className: `inputField ${className}` },
-                React.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: placeholder }, rest, { type: inputType, required: _required })),
+                React.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: _placeholder }, rest, { type: _type, required: _required })),
                 React.createElement("span", { className: "InputAddOn-item" }, ornament))))));
 };
 
@@ -1459,29 +1466,25 @@ function get(object, path, defaultValue) {
 var get_1 = get;
 
 const TableRowCell = ({ item, column, onClick }) => {
-    const value = get_1(item, column.key);
-    const handleButtonClick = (event) => {
-        const buttonType = column.buttonType;
-        if (typeof column.onClick === 'function') {
-            column.onClick(event, item, buttonType);
-        }
-    };
-    return React.createElement("td", { className: "tableRowCell" }, column.type === 'button' ? React.createElement("button", { onClick: handleButtonClick }, value) : value);
+    const value = get_1(item, column.id);
+    return (React.createElement("td", { className: "tableRowCell" }, column.type === 'button' ? (React.createElement("button", { className: "tableBtn", onClick: () => {
+            onClick(item, column.id);
+        } }, value)) : (value)));
 };
 
-const TableRow = ({ data, columns }) => {
-    return (React.createElement(React.Fragment, null, data === null || data === void 0 ? void 0 : data.map((item, rowIndex) => (React.createElement("tr", { key: `table-row-${rowIndex}` }, columns === null || columns === void 0 ? void 0 : columns.map((column, columnIndex) => (React.createElement(TableRowCell, { key: `table-cell-${rowIndex}-${columnIndex}`, item: item, column: column }))))))));
+const TableRow = ({ data, columns, onClick }) => {
+    return (React.createElement(React.Fragment, null, data === null || data === void 0 ? void 0 : data.map((item, rowIndex) => (React.createElement("tr", { className: "tableRowItem", key: `table-row-${rowIndex}` }, columns === null || columns === void 0 ? void 0 : columns.map((column, columnIndex) => (React.createElement(TableRowCell, { key: `table-cell-${rowIndex}-${columnIndex}`, item: item, column: column, onClick: onClick }))))))));
 };
 
-var css_248z$6 = ".mainTable {\n    border-collapse: collapse;\n    border: none;\n    font-family: sans-serif;\n}\n\n.tableHeader {\n    background-color: #f1f1f1;\n    padding: 12px;\n    margin: 10px 0 10px 0;\n    font-weight: 600;\n    text-align: left;\n    font-size: 15px;\n    color: #2c3e50;\n}\n\n.tableHeader:first-child {\n    border-top-left-radius: 12px;\n}\n\n.tableHeader:last-child {\n    border-top-right-radius: 12px;\n}\n\n.tableRowItem {\n    cursor: auto;\n}\n\n.tableRowItem:nth-child(odd) {\n    background-color: #f9f9f9;\n}\n\n.tableRowItem:last-child {\n    border-top-left-radius: 12px;\n    border-top-right-radius: 12px;\n}\n\n.tableRowCell {\n    padding: 12px;\n    font-size: 14px;\n    color: grey;\n}\n\nbutton {\n    cursor: pointer;\n    border: 0;\n    background-color: transparent;\n}";
+var css_248z$6 = ".mainTable {\n    border-collapse: collapse;\n    border: none;\n    font-family: sans-serif;\n}\n\n.tableHeader {\n    background-color: #f1f1f1;\n    padding: 12px;\n    margin: 10px 0 10px 0;\n    font-weight: 600;\n    text-align: left;\n    font-size: 15px;\n    color: #2c3e50;\n}\n\n.tableHeader:first-child {\n    border-top-left-radius: 12px;\n}\n\n.tableHeader:last-child {\n    border-top-right-radius: 12px;\n}\n\n.tableRowItem:nth-child(odd) {\n    background-color: #f9f9f9;\n}\n\n.tableRowItem:last-child {\n    border-top-left-radius: 12px;\n    border-top-right-radius: 12px;\n}\n\n.tableRowCell {\n    padding: 12px;\n    font-size: 14px;\n    color: grey;\n    text-align: left;\n}\n\nbutton.tableBtn {\n    cursor: pointer;\n    border: 0;\n    background-color: transparent;\n}";
 styleInject(css_248z$6);
 
-const Table = ({ data, columns }) => {
+const Table = ({ data, columns, onClick }) => {
     return (React.createElement("table", { className: "mainTable" },
         React.createElement("thead", null,
             React.createElement(TableHeader, { columns: columns })),
         React.createElement("tbody", null,
-            React.createElement(TableRow, { data: data, columns: columns }))));
+            React.createElement(TableRow, { data: data, columns: columns, onClick: onClick }))));
 };
 
 const Icon = () => {
@@ -1494,102 +1497,84 @@ const UpIcon = () => {
         React.createElement("path", { d: "M0 16.67l2.829 2.83 9.175-9.339 9.167 9.339 2.829-2.83-11.996-12.17z" })));
 };
 
-const CloseIcon = () => {
-    return (React.createElement("svg", { height: "20", width: "20", viewBox: "0 0 20 20" },
-        React.createElement("path", { d: "M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z" })));
-};
-
 var css_248z$5 = ".dropdown-container {\n    text-align: left;\n    /* border: 1px solid #ccc; */\n    /* position: relative; */\n    color: #858585;\n    background: #f0f0f0;\n    border-radius: 5px;\n}\n\n.dropdown-input {\n    padding: 12px;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    user-select: none;\n    background: #F0F0F0;\n    border: 0.5px solid #858585;\n    border-radius: 4px;\n}\n\n.dropdown-menu {\n    position: absolute;\n    transform: translateY(94px);\n    border: 1px solid #ccc;\n    border-radius: 4px 4px 12px 12px;\n    overflow: auto;\n    max-height: 150px;\n    left: 15px;\n    background-color: #fff;\n    right: 15px;\n}\n\n.dropdown-item {\n    padding: 12px;\n    cursor: pointer;\n}\n\n.dropdown-item.selected {\n    background-color: #f5f5f5;\n    color: #0788dd;\n}\n\n.dropdown-selected-value {\n    position: absolute;\n    margin-left: 15px;\n}\n\n.dropdown-item:hover {\n    background-color: #f5f5f5;\n}\n\n.dropdown-tags {\n    display: flex;\n    flex-wrap: wrap;\n    gap: 5px;\n}\n\n.dropdown-tools {\n    right: 25px;\n    position: absolute;\n}\n\n.dropdown-tag-item {\n    background-color: #ddd;\n    padding: 2px 4px;\n    border-radius: 2px;\n    display: flex;\n    align-items: center;\n}\n\n.dropdown-tag-close {\n    display: flex;\n    align-items: center;\n    cursor: pointer;\n}\n\n.search-box {\n    padding: 4px;\n    background-color: #eee;\n}\n\n.search-box input {\n    /* width: 100%; */\n    box-sizing: border-box;\n    padding: 6px;\n    border: 1px solid #ccc;\n    border-radius: 5px;\n}";
 styleInject(css_248z$5);
 
+const initialState = {
+    showMenu: false,
+    searchValue: '',
+    selectedValue: []
+};
+const reducer = (state, action) => {
+    switch (action.type) {
+        case 'SET_SHOW_MENU':
+            return Object.assign(Object.assign({}, state), { showMenu: action.payload });
+        case 'SET_SEARCH_VALUE':
+            return Object.assign(Object.assign({}, state), { searchValue: action.payload });
+        case 'SET_SELECTED_VALUE':
+            return Object.assign(Object.assign({}, state), { selectedValue: action.payload });
+        default:
+            return state;
+    }
+};
 const Select = ({ isMulti, options, placeholder, isSearchable, onChange }) => {
-    const [showMenu, setShowMenu] = useState(false);
-    const [searchValue, setSearchValue] = useState('');
-    const searchRef = useRef();
+    // const searchRef = useRef<HTMLInputElement>();
     const inputRef = useRef();
-    const [selectedValue, setSelectedValue] = useState(isMulti ? [] : null);
+    const [state, dispatch] = useReducer(reducer, initialState);
+    console.log(inputRef);
     useEffect(() => {
         const handler = (e) => {
-            if (inputRef.current && !inputRef.current.contains(e.target)) {
-                setShowMenu(false);
+            var _a;
+            if ((inputRef === null || inputRef === void 0 ? void 0 : inputRef.current) && !((_a = inputRef === null || inputRef === void 0 ? void 0 : inputRef.current) === null || _a === void 0 ? void 0 : _a.contains(e.target))) {
+                dispatch({ type: 'SET_SHOW_MENU', payload: false });
             }
         };
         window.addEventListener('click', handler);
         return () => {
             window.removeEventListener('click', handler);
         };
-    });
-    useEffect(() => {
-        setSearchValue('');
-        if (showMenu && searchRef.current) {
-            searchRef.current.focus();
-        }
-    }, [showMenu]);
+    }, []);
     // Here getOptions is used to configure the options passed through props
     const getOptions = () => {
-        if (!searchValue) {
+        if (!state.searchValue) {
             return options;
         }
-        return options.filter((option) => option.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0);
+        return options.filter((option) => option.toLowerCase().indexOf(state.searchValue.toLowerCase()) >= 0);
     };
     const handleInputClick = () => {
-        setShowMenu(!showMenu);
+        dispatch({ type: 'SET_SHOW_MENU', payload: !state.showMenu });
     };
     // Here getDisplay is used to check if we have to show placeholder or not
     const getDisplay = () => {
-        if (!selectedValue || selectedValue.length === 0) {
-            console.log('inside if', selectedValue);
+        if (!state.selectedValue || state.selectedValue.length === 0) {
             return placeholder;
         }
-        if (isMulti) {
-            return (React.createElement("div", { className: "dropdown-tags" }, selectedValue.map((option) => (React.createElement("div", { key: option, className: "dropdown-tag-item" },
-                option,
-                React.createElement("span", { onClick: (e) => onTagRemove(e, option), className: "dropdown-tag-close" },
-                    React.createElement(CloseIcon, null)))))));
-        }
-        return selectedValue;
-    };
-    const removeOption = (option) => {
-        return selectedValue.filter((item) => item !== option);
-    };
-    const onTagRemove = (e, option) => {
-        e.stopPropagation();
-        const newValue = removeOption(option);
-        setSelectedValue(newValue);
-        onChange(newValue);
+        return state.selectedValue;
     };
     const onItemClick = (option) => {
         let newValue;
-        if (isMulti) {
-            if (selectedValue.findIndex((item) => item === option) >= 0) {
-                newValue = removeOption(option);
-            }
-            else {
-                newValue = [...selectedValue, option];
-            }
-        }
-        else {
-            newValue = option;
-        }
-        setSelectedValue(newValue);
-        onChange(newValue);
+        newValue = option;
+        dispatch({ type: 'SET_SELECTED_VALUE', payload: newValue });
+        console.log('Selected value:', newValue);
     };
     const isSelected = (option) => {
-        if (isMulti) {
-            return selectedValue.filter((item) => item === option).length > 0;
-        }
-        if (!selectedValue) {
+        if (!state.selectedValue) {
             return false;
         }
-        return selectedValue === option;
+        return state.selectedValue === option;
     };
     return (React.createElement(React.Fragment, null,
         React.createElement("div", { className: "dropdown-container" },
             React.createElement("div", { ref: inputRef, className: "dropdown-input", onClick: handleInputClick },
                 React.createElement("div", { className: "dropdown-selected-value" }, getDisplay()),
                 React.createElement("div", { className: "dropdown-tools" },
-                    React.createElement("div", { className: "dropdown-tool" }, showMenu ? React.createElement(UpIcon, null) : React.createElement(Icon, null))),
-                showMenu && (React.createElement("div", { className: "dropdown-menu" }, options ? (getOptions().map((option) => (React.createElement("div", { onClick: () => onItemClick(option), key: option, className: `dropdown-item ${isSelected(option) && 'selected'}` }, option)))) : (React.createElement("div", null, "Please add options"))))))));
+                    React.createElement("div", { className: "dropdown-tool" }, state.showMenu ? React.createElement(UpIcon, null) : React.createElement(Icon, null))),
+                state.showMenu && (React.createElement("div", { className: "dropdown-menu" }, options ? (getOptions().map((option) => (React.createElement("div", { onClick: () => onItemClick(option), key: option, className: `dropdown-item ${isSelected(option) && 'selected'}` }, option)))) : (React.createElement("div", null, "Please add options"))))))));
+};
+
+const CloseIcon = () => {
+    return (React.createElement("svg", { height: "20", width: "20", viewBox: "0 0 20 20" },
+        React.createElement("path", { d: "M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z" })));
 };
 
 var css_248z$4 = ".alert {\n    padding: 10px;\n    border-radius: 5px;\n    display: flex;\n    justify-content: space-between;\n}\n\n.alert-success {\n    border: 2px solid #78d178;\n    background-color: #d1ffcd;\n}\n\n.alert-failure {\n    border: 2px solid #d17878;\n    background-color: rgb(255, 205, 205);\n}\n\n.alert-warning {\n    border: 2px solid #ecdd68;\n    background-color: #faf4c7;\n}\n\n.closeIcon {\n    cursor: pointer;\n}\n";
@@ -1676,7 +1661,7 @@ const NavBar = ({ navbarData }) => {
         setCurrSubItem(null);
     };
     const handleSubItemClick = (id) => {
-        setCurrSubItem(id === currSubItem ? null : id);
+        setCurrSubItem(id === currSubItem ? '' : id);
     };
     const dropNav = () => {
         setResOpen(!resOpen);
@@ -1722,13 +1707,13 @@ const NavBar = ({ navbarData }) => {
         React.createElement("label", { htmlFor: "checkbox_toggle", className: "hamburger", onClick: dropNav }, "\u2630")));
 };
 
-var css_248z = ".textField {\n  padding: 15px;\n  box-sizing: border-box;\n  background: #FFFFFF;\n  border: 1.8px solid #6b6b6b;\n  border-radius: 8px;\n}\n\n.textField:focus {\n  border: 0.5px solid #0094DA;\n  outline: none;\n}";
+var css_248z = ".textAreaField {\n  display: flex;\n  align-items: start;\n  justify-content: space-between;\n  align-items: center;\n  user-select: none;\n  background: #FFFFFF;\n  border: 1px solid rgba(147, 128, 108, 0.25);\n  border-radius: 6px;\n  padding: 8px;\n}\n\n.textAreaField:focus-within {\n  border: 0.5px solid #0094DA;\n  outline: none;\n}\n\n.textAreaInput,\n.textAreaInput:focus {\n  background: #FFFFFF;\n  border: none;\n  width: 100%;\n  outline: none;\n}";
 styleInject(css_248z);
 
 const TextArea = (props) => {
     const { cols, rows, placeholder, className } = props;
     // Setting Default Value
-    let _className = 'textField';
+    let _className = 'textAreaInput';
     let _rows = 10;
     let _cols = 50;
     let _placeholder = 'Write here..';
@@ -1742,7 +1727,7 @@ const TextArea = (props) => {
     if (placeholder)
         _placeholder = placeholder;
     return (React.createElement(React.Fragment, null,
-        React.createElement("div", { className: `inputField ${className}` },
+        React.createElement("div", { className: `textAreaField ${className}` },
             React.createElement("textarea", { className: _className, rows: _rows, cols: _cols, form: props.form, placeholder: _placeholder }))));
 };
 

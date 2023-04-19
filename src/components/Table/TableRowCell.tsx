@@ -5,18 +5,28 @@ import { IColumnType } from './Table';
 interface Props<T> {
     item: T;
     column: IColumnType<T>;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>, rowData: T) => void;
 }
 
 const TableRowCell = <T extends Props<T>>({ item, column, onClick }: any): JSX.Element => {
-    const value = get(item, column.key);
-    const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        const buttonType = column.buttonType;
-        if (typeof column.onClick === 'function') {
-            column.onClick(event, item, buttonType);
-        }
-    };
+    const value = get(item, column.id);
 
-    return <td className="tableRowCell">{column.type === 'button' ? <button onClick={handleButtonClick}>{value}</button> : value}</td>;
+    return (
+        <td className="tableRowCell">
+            {column.type === 'button' ? (
+                <button
+                    className="tableBtn"
+                    onClick={() => {
+                        onClick(item, column.id);
+                    }}
+                >
+                    {value}
+                </button>
+            ) : (
+                value
+            )}
+        </td>
+    );
 };
 
 export default TableRowCell;

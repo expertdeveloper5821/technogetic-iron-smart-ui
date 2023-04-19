@@ -1,5 +1,4 @@
-.inputField,
-.defInputField {
+.inputField {
     display: flex;
     align-items: start;
     justify-content: space-between;
@@ -11,7 +10,6 @@
     padding: 8px;
 }
 
-.defInputField input:focus,
 .inputField input:focus,
 input.InputAddOn-field:focus {
     background: #FFFFFF;
@@ -19,7 +17,6 @@ input.InputAddOn-field:focus {
     outline: none;
 }
 
-.defInputField:focus-within,
 .inputField:focus-within {
     border: 0.5px solid #0094DA;
 }

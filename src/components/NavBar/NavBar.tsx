@@ -38,7 +38,7 @@ export const NavBar: React.FunctionComponent<NavbarProps> = ({ navbarData }) => 
     };
 
     const handleSubItemClick = (id: any) => {
-        setCurrSubItem(id === currSubItem ? null : id);
+        setCurrSubItem(id === currSubItem ? '' : id);
     };
 
     const dropNav = () => {

@@ -6,12 +6,12 @@ export interface IColumnType<T> {
     width?: number;
     type?: string;
     buttonType?: string;
-    onClick?: (event: React.MouseEvent<HTMLButtonElement>, rowData: T) => void;
     render?: (column: IColumnType<T>, item: T) => void;
 }
 type TableProps<T> = {
     data: T[];
     columns: IColumnType<T>[];
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>, rowData: T) => void;
 };
-export declare const Table: <T extends TableProps<T>>({ data, columns }: TableProps<T>) => JSX.Element;
+export declare const Table: <T extends TableProps<T>>({ data, columns, onClick }: TableProps<T>) => JSX.Element;
 export {};

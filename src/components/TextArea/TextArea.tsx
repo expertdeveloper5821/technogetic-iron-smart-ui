@@ -13,7 +13,7 @@ export interface TextAreaInputProps extends React.DetailedHTMLProps<React.InputH
 export const TextArea: React.FunctionComponent<TextAreaInputProps> = (props) => {
     const { cols, rows, placeholder, className } = props;
     // Setting Default Value
-    let _className: string = 'textField';
+    let _className: string = 'textAreaInput';
     let _rows: number = 10;
     let _cols: number = 50;
     let _placeholder: string = 'Write here..';
@@ -25,7 +25,7 @@ export const TextArea: React.FunctionComponent<TextAreaInputProps> = (props) => 
     if (placeholder) _placeholder = placeholder;
     return (
         <>
-            <div className={`inputField ${className}`}>
+            <div className={`textAreaField ${className}`}>
                 <textarea className={_className} rows={_rows} cols={_cols} form={props.form} placeholder={_placeholder}></textarea>
             </div>
         </>
