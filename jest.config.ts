@@ -9,6 +9,6 @@ export default {
     coverageDirectory: 'coverage',
     testEnvironment: 'jsdom',
     moduleNameMapper: {
-    "\\.(css|sass)$": "identity-obj-proxy",
-  },
+        '\\.(css|sass)$': 'identity-obj-proxy'
+    }
 };

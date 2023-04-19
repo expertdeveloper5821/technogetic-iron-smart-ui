@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for components/Tooltip/Tooltip.tsx</title>
+    <title>Code coverage report for components/TextArea/TextArea.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/Tooltip</a> Tooltip.tsx</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/TextArea</a> TextArea.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">28.57% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/7</span>
+                <span class='fraction'>12/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">62.5% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>5/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/3</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">28.57% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/7</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -87,7 +87,21 @@
 <a name='L22'></a><a href='#L22'>22</a>
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -95,44 +109,57 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { PropsWithChildren, useState } from 'react';
-import './Tooltip.css';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import './TextArea.css';
 &nbsp;
-type TooltipProps = {
-    text?: string;
-};
+export interface TextAreaInputProps extends React.DetailedHTMLProps&lt;React.InputHTMLAttributes&lt;HTMLInputElement&gt;, HTMLInputElement&gt; {
+    placeholder?: string;
+    onChange?: (event: React.ChangeEvent&lt;HTMLInputElement&gt;) =&gt; void;
+    rows?: number;
+    cols?: number;
+    className?: string;
+    form?: string;
+}
 &nbsp;
-export const Tooltip: React.FunctionComponent&lt;PropsWithChildren&lt;TooltipProps&gt;&gt; = ({ text, children }) =&gt; {
-    const [showTooltip, setShowTooltip] = useState&lt;boolean&gt;(false);
+export const TextArea: React.FunctionComponent&lt;TextAreaInputProps&gt; = (props) =&gt; {
+    const { cols, rows, placeholder, className } = props;
+    // Setting Default Value
+    let _className: string = 'textAreaInput';
+    let _rows: number = 10;
+    let _cols: number = 50;
+    let _placeholder: string = 'Write here..';
 &nbsp;
-    const handleMouseEnter = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        setShowTooltip(true);</span>
-    };
-    const handleMouseLeave = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        setShowTooltip(false);</span>
-    };
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    return (</span>
-        &lt;div className="tooltipMainDiv" data-testId="tooltipHover" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}&gt;
-            {children}
-            {showTooltip &amp;&amp; &lt;span className="textContainer "&gt;{text}&lt;/span&gt;}
-        &lt;/div&gt;
+    // Overwrite the default Value
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (className) <span class="cstat-no" title="statement not covered" >_className = className;</span>
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (rows) <span class="cstat-no" title="statement not covered" >_rows = rows;</span>
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (cols) <span class="cstat-no" title="statement not covered" >_cols = cols;</span>
+    if (placeholder) _placeholder = placeholder;
+    return (
+        &lt;&gt;
+            &lt;div className={`textAreaField ${className}`}&gt;
+                &lt;textarea className={_className} rows={_rows} cols={_cols} form={props.form} placeholder={_placeholder}&gt;&lt;/textarea&gt;
+            &lt;/div&gt;
+        &lt;/&gt;
     );
 };
 &nbsp;</pre></td></tr></table></pre>

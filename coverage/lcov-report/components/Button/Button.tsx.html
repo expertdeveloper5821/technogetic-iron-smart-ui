@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.42% </span>
+                <span class="strong">76.47% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/14</span>
+                <span class='fraction'>13/17</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60% </span>
+                <span class="strong">58.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/10</span>
+                <span class='fraction'>7/12</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/10</span>
+                <span class='fraction'>12/12</span>
             </div>
         
             
@@ -91,7 +91,11 @@
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -103,17 +107,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -122,6 +128,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { type } from 'os';
 import React from 'react';
 import './Button.css';
+&nbsp;
 export interface ButtonProps extends React.DetailedHTMLProps&lt;React.ButtonHTMLAttributes&lt;HTMLButtonElement&gt;, HTMLButtonElement&gt; {
     backgroundColor?: string;
     color?: string;
@@ -135,15 +142,17 @@ export const Button: React.FunctionComponent&lt;ButtonProps&gt; = (props) =&gt; 
     let _style: React.CSSProperties = style || {};
     let _className: string = 'commonButton';
     let _type: string = 'submit';
-    /**Override defaults */
+    let _children: string = 'Button';
+&nbsp;
     <span class="missing-if-branch" title="if path not taken" >I</span>if (color) <span class="cstat-no" title="statement not covered" >_style.color = color;</span>
     <span class="missing-if-branch" title="if path not taken" >I</span>if (type) <span class="cstat-no" title="statement not covered" >_type = type;</span>
     <span class="missing-if-branch" title="if path not taken" >I</span>if (className) <span class="cstat-no" title="statement not covered" >_className = className;</span>
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (children) _children = children;
     <span class="missing-if-branch" title="if path not taken" >I</span>if (backgroundColor) <span class="cstat-no" title="statement not covered" >_style.backgroundColor = backgroundColor;</span>
 &nbsp;
     return (
         &lt;button className={_className} style={_style} {...props} onClick={onClick} type={type}&gt;
-            {children}
+            {_children}
         &lt;/button&gt;
     );
 };
@@ -154,7 +163,7 @@ export const Button: React.FunctionComponent&lt;ButtonProps&gt; = (props) =&gt; 
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-23T07:07:01.629Z
+                at 2023-04-19T07:05:49.086Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

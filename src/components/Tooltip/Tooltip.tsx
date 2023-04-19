@@ -6,7 +6,8 @@ type TooltipProps = {
 };
 
 export const Tooltip: React.FunctionComponent<PropsWithChildren<TooltipProps>> = ({ text, children }) => {
-    const [showTooltip, setShowTooltip] = useState(false);
+    const [showTooltip, setShowTooltip] = useState<boolean>(false);
+
     const handleMouseEnter = () => {
         setShowTooltip(true);
     };
