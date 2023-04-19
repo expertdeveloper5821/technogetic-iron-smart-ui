@@ -1,4 +1,4 @@
-import React, { useRef, useReducer, useEffect, useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 function styleInject(css, ref) {
   if ( ref === void 0 ) ref = {};
@@ -27,7 +27,7 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z$9 = "button.commonButton {\n    color: white;\n    cursor: pointer;\n    border-radius: 6px;\n    padding: 10px;\n    background-color: red;\n    border: 0;\n}\n\n.commonButton:hover {\n    background-color: #9E9E9E;\n}\n\n.commonButton:hover {\n    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\n}";
+var css_248z$9 = "button.commonButton {\n    color: white;\n    cursor: pointer;\n    border-radius: 6px;\n    padding: 10px;\n    background-color: #1ea7fd;\n    border: 0;\n}\n\n.commonButton:hover {\n    background-color: #9E9E9E;\n}\n\n.commonButton:hover {\n    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\n}";
 styleInject(css_248z$9);
 
 const Button = (props) => {
@@ -1497,84 +1497,102 @@ const UpIcon = () => {
         React.createElement("path", { d: "M0 16.67l2.829 2.83 9.175-9.339 9.167 9.339 2.829-2.83-11.996-12.17z" })));
 };
 
+const CloseIcon = () => {
+    return (React.createElement("svg", { height: "20", width: "20", viewBox: "0 0 20 20" },
+        React.createElement("path", { d: "M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z" })));
+};
+
 var css_248z$5 = ".dropdown-container {\n    text-align: left;\n    /* border: 1px solid #ccc; */\n    /* position: relative; */\n    color: #858585;\n    background: #f0f0f0;\n    border-radius: 5px;\n}\n\n.dropdown-input {\n    padding: 12px;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    user-select: none;\n    background: #F0F0F0;\n    border: 0.5px solid #858585;\n    border-radius: 4px;\n}\n\n.dropdown-menu {\n    position: absolute;\n    transform: translateY(94px);\n    border: 1px solid #ccc;\n    border-radius: 4px 4px 12px 12px;\n    overflow: auto;\n    max-height: 150px;\n    left: 15px;\n    background-color: #fff;\n    right: 15px;\n}\n\n.dropdown-item {\n    padding: 12px;\n    cursor: pointer;\n}\n\n.dropdown-item.selected {\n    background-color: #f5f5f5;\n    color: #0788dd;\n}\n\n.dropdown-selected-value {\n    position: absolute;\n    margin-left: 15px;\n}\n\n.dropdown-item:hover {\n    background-color: #f5f5f5;\n}\n\n.dropdown-tags {\n    display: flex;\n    flex-wrap: wrap;\n    gap: 5px;\n}\n\n.dropdown-tools {\n    right: 25px;\n    position: absolute;\n}\n\n.dropdown-tag-item {\n    background-color: #ddd;\n    padding: 2px 4px;\n    border-radius: 2px;\n    display: flex;\n    align-items: center;\n}\n\n.dropdown-tag-close {\n    display: flex;\n    align-items: center;\n    cursor: pointer;\n}\n\n.search-box {\n    padding: 4px;\n    background-color: #eee;\n}\n\n.search-box input {\n    /* width: 100%; */\n    box-sizing: border-box;\n    padding: 6px;\n    border: 1px solid #ccc;\n    border-radius: 5px;\n}";
 styleInject(css_248z$5);
 
-const initialState = {
-    showMenu: false,
-    searchValue: '',
-    selectedValue: []
-};
-const reducer = (state, action) => {
-    switch (action.type) {
-        case 'SET_SHOW_MENU':
-            return Object.assign(Object.assign({}, state), { showMenu: action.payload });
-        case 'SET_SEARCH_VALUE':
-            return Object.assign(Object.assign({}, state), { searchValue: action.payload });
-        case 'SET_SELECTED_VALUE':
-            return Object.assign(Object.assign({}, state), { selectedValue: action.payload });
-        default:
-            return state;
-    }
-};
 const Select = ({ isMulti, options, placeholder, isSearchable, onChange }) => {
-    // const searchRef = useRef<HTMLInputElement>();
+    const [showMenu, setShowMenu] = useState(false);
+    const [searchValue, setSearchValue] = useState('');
+    const searchRef = useRef();
     const inputRef = useRef();
-    const [state, dispatch] = useReducer(reducer, initialState);
-    console.log(inputRef);
+    const [selectedValue, setSelectedValue] = useState(isMulti ? [] : '');
     useEffect(() => {
         const handler = (e) => {
-            var _a;
-            if ((inputRef === null || inputRef === void 0 ? void 0 : inputRef.current) && !((_a = inputRef === null || inputRef === void 0 ? void 0 : inputRef.current) === null || _a === void 0 ? void 0 : _a.contains(e.target))) {
-                dispatch({ type: 'SET_SHOW_MENU', payload: false });
+            if (inputRef.current && !inputRef.current.contains(e.target)) {
+                setShowMenu(false);
             }
         };
         window.addEventListener('click', handler);
         return () => {
             window.removeEventListener('click', handler);
         };
-    }, []);
+    });
+    useEffect(() => {
+        setSearchValue('');
+        if (showMenu && (searchRef === null || searchRef === void 0 ? void 0 : searchRef.current)) {
+            searchRef.current.focus();
+        }
+    }, [showMenu]);
     // Here getOptions is used to configure the options passed through props
     const getOptions = () => {
-        if (!state.searchValue) {
+        if (!searchValue) {
             return options;
         }
-        return options.filter((option) => option.toLowerCase().indexOf(state.searchValue.toLowerCase()) >= 0);
+        return options.filter((option) => option.toLowerCase().indexOf(searchValue === null || searchValue === void 0 ? void 0 : searchValue.toLowerCase()) >= 0);
     };
     const handleInputClick = () => {
-        dispatch({ type: 'SET_SHOW_MENU', payload: !state.showMenu });
+        setShowMenu(!showMenu);
     };
     // Here getDisplay is used to check if we have to show placeholder or not
     const getDisplay = () => {
-        if (!state.selectedValue || state.selectedValue.length === 0) {
+        if (!selectedValue || (selectedValue === null || selectedValue === void 0 ? void 0 : selectedValue.length) === 0) {
+            console.log('inside if', selectedValue);
             return placeholder;
         }
-        return state.selectedValue;
+        if (isMulti) {
+            return (React.createElement("div", { className: "dropdown-tags" }, selectedValue.map((option) => (React.createElement("div", { key: option, className: "dropdown-tag-item" },
+                option,
+                React.createElement("span", { onClick: (e) => onTagRemove(e, option), className: "dropdown-tag-close" },
+                    React.createElement(CloseIcon, null)))))));
+        }
+        return selectedValue;
+    };
+    const removeOption = (option) => {
+        return selectedValue === null || selectedValue === void 0 ? void 0 : selectedValue.filter((item) => item !== option);
+    };
+    const onTagRemove = (e, option) => {
+        e.stopPropagation();
+        const newValue = removeOption(option);
+        setSelectedValue(newValue);
+        onChange(newValue);
     };
     const onItemClick = (option) => {
         let newValue;
-        newValue = option;
-        dispatch({ type: 'SET_SELECTED_VALUE', payload: newValue });
-        console.log('Selected value:', newValue);
+        if (isMulti) {
+            if ((selectedValue === null || selectedValue === void 0 ? void 0 : selectedValue.findIndex((item) => item === option)) >= 0) {
+                newValue = removeOption(option);
+            }
+            else {
+                newValue = [...selectedValue, option];
+            }
+        }
+        else {
+            newValue = option;
+        }
+        setSelectedValue(newValue);
+        onChange(newValue);
     };
     const isSelected = (option) => {
-        if (!state.selectedValue) {
+        if (isMulti) {
+            return (selectedValue === null || selectedValue === void 0 ? void 0 : selectedValue.filter((item) => item === option).length) > 0;
+        }
+        if (!selectedValue) {
             return false;
         }
-        return state.selectedValue === option;
+        return selectedValue === option;
     };
     return (React.createElement(React.Fragment, null,
         React.createElement("div", { className: "dropdown-container" },
             React.createElement("div", { ref: inputRef, className: "dropdown-input", onClick: handleInputClick },
                 React.createElement("div", { className: "dropdown-selected-value" }, getDisplay()),
                 React.createElement("div", { className: "dropdown-tools" },
-                    React.createElement("div", { className: "dropdown-tool" }, state.showMenu ? React.createElement(UpIcon, null) : React.createElement(Icon, null))),
-                state.showMenu && (React.createElement("div", { className: "dropdown-menu" }, options ? (getOptions().map((option) => (React.createElement("div", { onClick: () => onItemClick(option), key: option, className: `dropdown-item ${isSelected(option) && 'selected'}` }, option)))) : (React.createElement("div", null, "Please add options"))))))));
-};
-
-const CloseIcon = () => {
-    return (React.createElement("svg", { height: "20", width: "20", viewBox: "0 0 20 20" },
-        React.createElement("path", { d: "M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z" })));
+                    React.createElement("div", { className: "dropdown-tool" }, showMenu ? React.createElement(UpIcon, null) : React.createElement(Icon, null))),
+                showMenu && (React.createElement("div", { className: "dropdown-menu" }, options ? (getOptions().map((option) => (React.createElement("div", { onClick: () => onItemClick(option), key: option, className: `dropdown-item ${isSelected(option) && 'selected'}` }, option)))) : (React.createElement("div", null, "Please add options"))))))));
 };
 
 var css_248z$4 = ".alert {\n    padding: 10px;\n    border-radius: 5px;\n    display: flex;\n    justify-content: space-between;\n}\n\n.alert-success {\n    border: 2px solid #78d178;\n    background-color: #d1ffcd;\n}\n\n.alert-failure {\n    border: 2px solid #d17878;\n    background-color: rgb(255, 205, 205);\n}\n\n.alert-warning {\n    border: 2px solid #ecdd68;\n    background-color: #faf4c7;\n}\n\n.closeIcon {\n    cursor: pointer;\n}\n";
