@@ -33,7 +33,7 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = ({ sidebarData }) 
         <div className="sidebar">
             {sidebarData.map((data, index: any) => {
                 return (
-                    <div key={data.id}>
+                    <div key={`Sidebar-Data -${data.id}`}>
                         <div
                             className={`SidebarItem ${curr === data.id ? 'active' : ''}`}
                             onClick={() => {
@@ -49,6 +49,7 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = ({ sidebarData }) 
                                 return (
                                     <a
                                         href={itemval.link}
+                                        key={`Sidebar-Link -${data.id}`}
                                         onClick={() => {
                                             handleSubItemClick(itemval.id);
                                         }}
