@@ -5,7 +5,7 @@ import { CloseIcon } from '../../assets/CloseIcon';
 import './Select.css';
 
 export interface SelectProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
-    onChange?: any;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     placeholder?: string;
     disabled?: boolean;
     position?: string;

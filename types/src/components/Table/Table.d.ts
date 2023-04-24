@@ -13,11 +13,10 @@ export interface IButtonType<T> {
     type: string;
     value: string;
 }
-type TableProps<T> = {
-    data: any[];
+export type TableProps<T> = {
+    data: T[];
     columns: IColumnType<T>[];
     buttons?: IButtonType<T>[];
     onClick?: (event: React.MouseEvent<HTMLButtonElement>, rowData: T) => void;
 };
 export declare const Table: <T extends TableProps<T>>({ data, columns, buttons, onClick }: TableProps<T>) => JSX.Element;
-export {};
