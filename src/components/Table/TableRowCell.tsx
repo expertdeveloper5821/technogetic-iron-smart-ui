@@ -22,7 +22,7 @@ const TableRowCell = <T extends Props<T>>({ item, column, buttons, onClick }: an
                 <button
                     className="tableBtn"
                     onClick={() => {
-                        onClick(item, buttons.id);
+                        onClick(item, buttons.title);
                     }}
                 >
                     {buttons.value}

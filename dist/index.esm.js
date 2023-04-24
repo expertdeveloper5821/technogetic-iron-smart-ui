@@ -1482,7 +1482,7 @@ const TableRowCell = ({ item, column, buttons, onClick }) => {
     if (buttons) {
         return (React.createElement("td", { className: "tableRowCell" },
             React.createElement("button", { className: "tableBtn", onClick: () => {
-                    onClick(item, buttons.id);
+                    onClick(item, buttons.title);
                 } }, buttons.value)));
     }
     return React.createElement(React.Fragment, null);
@@ -1644,7 +1644,7 @@ const Sidebar = ({ sidebarData }) => {
         setCurrSubItem(id === currSubItem ? null : id);
     };
     return (React.createElement("div", { className: "sidebar" }, sidebarData.map((data, index) => {
-        return (React.createElement("div", { key: data.id },
+        return (React.createElement("div", { key: `Sidebar-Data -${data.id}` },
             React.createElement("div", { className: `SidebarItem ${curr === data.id ? 'active' : ''}`, onClick: () => {
                     handleItemClick(data.id);
                 } }, data.title),
@@ -1652,7 +1652,7 @@ const Sidebar = ({ sidebarData }) => {
                 data.items &&
                 isOpen &&
                 (data === null || data === void 0 ? void 0 : data.items.map((itemval) => {
-                    return (React.createElement("a", { href: itemval.link, onClick: () => {
+                    return (React.createElement("a", { href: itemval.link, key: `Sidebar-Link -${data.id}`, onClick: () => {
                             handleSubItemClick(itemval.id);
                         }, className: `sidebarSubItems ${currSubItem === itemval.id ? 'active' : ''}` }, itemval.title));
                 }))));
