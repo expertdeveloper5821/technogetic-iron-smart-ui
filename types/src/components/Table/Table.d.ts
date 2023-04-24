@@ -14,7 +14,7 @@ export interface IButtonType<T> {
     value: string;
 }
 type TableProps<T> = {
-    data: [];
+    data: any[];
     columns: IColumnType<T>[];
     buttons?: IButtonType<T>[];
     onClick?: (event: React.MouseEvent<HTMLButtonElement>, rowData: T) => void;

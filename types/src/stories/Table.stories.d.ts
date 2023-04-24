@@ -1,12 +1,12 @@
 import React from 'react';
 import { ComponentMeta } from '@storybook/react';
 declare const _default: ComponentMeta<(<T extends {
-    data: [];
+    data: any[];
     columns: import("../components/Table/Table").IColumnType<T>[];
     buttons?: import("../components/Table/Table").IButtonType<T>[];
     onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, rowData: T) => void;
 }>({ data, columns, buttons, onClick }: {
-    data: [];
+    data: any[];
     columns: import("../components/Table/Table").IColumnType<T>[];
     buttons?: import("../components/Table/Table").IButtonType<T>[];
     onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, rowData: T) => void;

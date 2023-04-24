@@ -73,7 +73,7 @@ function __rest(s, e) {
     return t;
 }
 
-var css_248z$8 = ".inputField {\n    display: flex;\n    align-items: start;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px;\n    padding: 8px;\n}\n\n.inputField input:focus,\ninput.InputAddOn-field:focus {\n    background: #FFFFFF;\n    border: none;\n    outline: none;\n}\n\n.inputField:focus-within {\n    border: 0.5px solid #0094DA;\n}\n\ninput[type='text'],\ninput[type='email'],\ninput[type='password'] {\n    border: 0;\n    width: 100%;\n}\n\nspan.InputAddOn-item {\n    padding: 0px 4px;\n}\n\n.InputAddOn-item {\n    color: #666666;\n    font: inherit;\n    font-weight: normal;\n}";
+var css_248z$8 = ".ornamnent-Container,\n.adornment-Container {\n    display: flex;\n    align-items: center;\n}\n\n.inputField {\n    display: flex;\n    align-items: start;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px;\n    padding: 8px;\n}\n\n.adornmentContent {\n    background-color: #f5f5f5;\n    padding: 8px;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px 0px 0px 6px;\n}\n\n.adornInputField {\n    display: flex;\n    align-items: start;\n    width: 100%;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 0px 6px 6px 0px;\n    padding: 8px;\n}\n\n.oranInputField {\n    display: flex;\n    align-items: start;\n    width: 100%;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px 0px 0px 6px;\n    padding: 8px;\n}\n\n.oranmentContent {\n    background-color: #f5f5f5;\n    padding: 8px;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 0px 6px 6px 0px;\n}\n\n.inputField input:focus,\ninput.InputAddOn-field:focus {\n    background: #FFFFFF;\n    border: none;\n    outline: none;\n}\n\n.inputField:focus-within,\n.oranInputField:focus-within,\n.adornInputField:focus-within {\n    border: 0.5px solid #0094DA;\n}\n\ninput[type='text'],\ninput[type='email'],\ninput[type='password'] {\n    border: 0;\n    width: 100%;\n}\n\nspan.InputAddOn-item {\n    padding: 0px 4px;\n}\n\n.InputAddOn-item {\n    color: #666666;\n    font: inherit;\n    font-weight: normal;\n}";
 styleInject(css_248z$8);
 
 const ShowPassword = () => {
@@ -119,13 +119,17 @@ const Input = (props) => {
             React.createElement("div", { className: `inputField ${className}` },
                 React.createElement("input", Object.assign({ type: _type, placeholder: _placeholder, required: _required }, rest, { onChange: onChange }))))),
         type !== 'password' && adornment && (React.createElement(React.Fragment, null,
-            React.createElement("div", { className: `inputField ${className}` },
-                React.createElement("span", { className: "InputAddOn-item InputAddOn-field" }, adornment),
-                React.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: _placeholder }, rest, { type: _type, required: _required, onChange: onChange }))))),
+            React.createElement("div", { className: "adornment-Container" },
+                React.createElement("div", { className: "adornmentContent" },
+                    React.createElement("span", { className: "InputAddOn-item InputAddOn-field" }, adornment)),
+                React.createElement("div", { className: `adornInputField ${className}` },
+                    React.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: _placeholder }, rest, { type: _type, required: _required, onChange: onChange })))))),
         type !== 'password' && ornament && (React.createElement(React.Fragment, null,
-            React.createElement("div", { className: `inputField ${className}` },
-                React.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: _placeholder }, rest, { type: _type, required: _required, onChange: onChange })),
-                React.createElement("span", { className: "InputAddOn-item" }, ornament))))));
+            React.createElement("div", { className: "ornamnent-Container" },
+                React.createElement("div", { className: `oranInputField ${className}` },
+                    React.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: _placeholder }, rest, { type: _type, required: _required, onChange: onChange }))),
+                React.createElement("div", { className: "oranmentContent" },
+                    React.createElement("span", { className: "InputAddOn-item" }, ornament)))))));
 };
 
 const Switch = (props) => {
@@ -1482,7 +1486,7 @@ const TableRowCell = ({ item, column, buttons, onClick }) => {
     if (buttons) {
         return (React.createElement("td", { className: "tableRowCell" },
             React.createElement("button", { className: "tableBtn", onClick: () => {
-                    onClick(item, buttons.title);
+                    onClick(item, buttons.id);
                 } }, buttons.value)));
     }
     return React.createElement(React.Fragment, null);
@@ -1526,7 +1530,7 @@ const CloseIcon = () => {
         React.createElement("path", { d: "M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z" })));
 };
 
-var css_248z$5 = ".dropdown-container {\n    text-align: left;\n    /* border: 1px solid #ccc; */\n    /* position: relative; */\n    color: #858585;\n    background: #f0f0f0;\n    border-radius: 5px;\n}\n\n.dropdown-input {\n    padding: 12px;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    user-select: none;\n    background: #F0F0F0;\n    border: 0.5px solid #858585;\n    border-radius: 4px;\n}\n\n.dropdown-menu {\n    position: absolute;\n    transform: translateY(94px);\n    border: 1px solid #ccc;\n    border-radius: 4px 4px 12px 12px;\n    overflow: auto;\n    max-height: 150px;\n    left: 15px;\n    background-color: #fff;\n    right: 15px;\n}\n\n.dropdown-item {\n    padding: 12px;\n    cursor: pointer;\n}\n\n.dropdown-item.selected {\n    background-color: #f5f5f5;\n    color: #0788dd;\n}\n\n.dropdown-selected-value {\n    position: absolute;\n    margin-left: 15px;\n}\n\n.dropdown-item:hover {\n    background-color: #f5f5f5;\n}\n\n.dropdown-tags {\n    display: flex;\n    flex-wrap: wrap;\n    gap: 5px;\n}\n\n.dropdown-tools {\n    right: 25px;\n    position: absolute;\n}\n\n.dropdown-tag-item {\n    background-color: #ddd;\n    padding: 2px 4px;\n    border-radius: 2px;\n    display: flex;\n    align-items: center;\n}\n\n.dropdown-tag-close {\n    display: flex;\n    align-items: center;\n    cursor: pointer;\n}\n\n.search-box {\n    padding: 4px;\n    background-color: #eee;\n}\n\n.search-box input {\n    /* width: 100%; */\n    box-sizing: border-box;\n    padding: 6px;\n    border: 1px solid #ccc;\n    border-radius: 5px;\n}";
+var css_248z$5 = ".dropdown-container {\n    text-align: left;\n    /* border: 1px solid #ccc; */\n    /* position: relative; */\n    color: #858585;\n    background: #f0f0f0;\n    border-radius: 5px;\n}\n\n.dropdown-input {\n    padding: 12px;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    user-select: none;\n    background: #F0F0F0;\n    border: 0.5px solid #858585;\n    border-radius: 4px;\n}\n\n.dropdown-menu {\n    position: absolute;\n    transform: translateY(94px);\n    border: 1px solid #ccc;\n    border-radius: 4px 4px 12px 12px;\n    overflow: auto;\n    max-height: 150px;\n    left: 15px;\n    background-color: #fff;\n    right: 15px;\n}\n\n.dropdown-item {\n    padding: 12px;\n    cursor: pointer;\n}\n\n.dropdown-item.selected {\n    background-color: #f5f5f5;\n    color: #0788dd;\n}\n\n.dropdown-selected-value {\n    position: absolute;\n    margin-left: 15px;\n}\n\n.dropdown-item:hover {\n    background-color: #f5f5f5;\n    color: #0788dd;\n}\n\n.dropdown-tags {\n    display: flex;\n    flex-wrap: wrap;\n    gap: 5px;\n}\n\n.dropdown-tools {\n    right: 25px;\n    position: absolute;\n}\n\n.dropdown-tag-item {\n    background-color: #ddd;\n    padding: 2px 4px;\n    border-radius: 2px;\n    display: flex;\n    align-items: center;\n}\n\n.dropdown-tag-close {\n    display: flex;\n    align-items: center;\n    cursor: pointer;\n}\n\n.search-box {\n    padding: 4px;\n    background-color: #eee;\n}\n\n.search-box input {\n    /* width: 100%; */\n    box-sizing: border-box;\n    padding: 6px;\n    border: 1px solid #ccc;\n    border-radius: 5px;\n}";
 styleInject(css_248z$5);
 
 const Select = ({ isMulti, options, placeholder, isSearchable, onChange }) => {
