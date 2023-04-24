@@ -1,5 +1,5 @@
 import { render, fireEvent } from '@testing-library/react';
-import { Sidebar } from './Sidebar';
+import { Sidebar, sidebarArray } from './Sidebar';
 import '@testing-library/jest-dom';
 import React from 'react';
 
