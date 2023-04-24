@@ -1,6 +1,7 @@
-import { IColumnType } from './Table';
+import { IColumnType, IButtonType } from './Table';
 interface Props<T> {
     columns: IColumnType<T>[];
+    buttons?: IButtonType<T>[];
 }
-declare const TableHeader: <T extends Props<T>>({ columns }: Props<T>) => JSX.Element;
+declare const TableHeader: <T extends Props<T>>({ columns, buttons }: Props<T>) => JSX.Element;
 export default TableHeader;

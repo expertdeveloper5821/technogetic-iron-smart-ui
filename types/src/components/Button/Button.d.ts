@@ -6,5 +6,6 @@ export interface ButtonProps extends React.DetailedHTMLProps<React.ButtonHTMLAtt
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
     className?: string;
     type?: 'submit' | 'reset' | 'button';
+    children?: string | number;
 }
 export declare const Button: React.FunctionComponent<ButtonProps>;

@@ -19,7 +19,7 @@ export interface InputProps extends React.DetailedHTMLProps<React.InputHTMLAttri
 }
 
 export const Input: React.FunctionComponent<InputProps> = (props) => {
-    const { className, placeholder, type, adornment, required, ornament, ...rest } = props;
+    const { className, placeholder, type, adornment, required, onChange, ornament, ...rest } = props;
 
     const inputType = type === 'password' ? 'password' : type;
 
@@ -34,8 +34,10 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
     let passwordVisibilityButton = null;
     if (type === 'password') {
         const togglePasswordVisibility = () => {
-            const input = document.querySelector('.passwordInput') as HTMLInputElement;
-            input.type = input.type === 'password' ? 'text' : 'password';
+            const input = document.querySelector('.passwordInput') as HTMLInputElement | null;
+            if (input != null) {
+                input.type = input.type === 'password' ? 'text' : 'password';
+            }
         };
         passwordVisibilityButton = (
             <span className="togglePasswordVisibility" onClick={togglePasswordVisibility}>
@@ -48,7 +50,7 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
             {type === 'password' && (
                 <>
                     <div className={`inputField ${className}`}>
-                        <input {...rest} type={inputType} placeholder={_placeholder} required={_required} className={type === 'password' ? 'passwordInput' : ''} />
+                        <input {...rest} type={inputType} placeholder={_placeholder} required={_required} className={type === 'password' ? 'passwordInput' : ''} onChange={onChange} />
                         {passwordVisibilityButton}
                     </div>
                 </>
@@ -56,7 +58,7 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
             {type !== 'password' && !adornment && !ornament && (
                 <>
                     <div className={`inputField ${className}`}>
-                        <input type={_type} placeholder={_placeholder} required={_required} />
+                        <input type={_type} placeholder={_placeholder} required={_required} {...rest} onChange={onChange} />
                     </div>
                 </>
             )}
@@ -64,14 +66,14 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
                 <>
                     <div className={`inputField ${className}`}>
                         <span className="InputAddOn-item InputAddOn-field">{adornment}</span>
-                        <input className="InputAddOn-field" placeholder={_placeholder} {...rest} type={_type} required={_required} />
+                        <input className="InputAddOn-field" placeholder={_placeholder} {...rest} type={_type} required={_required} onChange={onChange} />
                     </div>
                 </>
             )}
             {type !== 'password' && ornament && (
                 <>
                     <div className={`inputField ${className}`}>
-                        <input className="InputAddOn-field" placeholder={_placeholder} {...rest} type={_type} required={_required} />
+                        <input className="InputAddOn-field" placeholder={_placeholder} {...rest} type={_type} required={_required} onChange={onChange} />
                         <span className="InputAddOn-item">{ornament}</span>
                     </div>
                 </>

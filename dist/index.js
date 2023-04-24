@@ -91,7 +91,7 @@ const ClosePassword = () => {
 };
 
 const Input = (props) => {
-    const { className, placeholder, type, adornment, required, ornament } = props, rest = __rest(props, ["className", "placeholder", "type", "adornment", "required", "ornament"]);
+    const { className, placeholder, type, adornment, required, onChange, ornament } = props, rest = __rest(props, ["className", "placeholder", "type", "adornment", "required", "onChange", "ornament"]);
     const inputType = type === 'password' ? 'password' : type;
     let _placeholder = 'Input Field';
     let _type = 'text';
@@ -106,25 +106,27 @@ const Input = (props) => {
     if (type === 'password') {
         const togglePasswordVisibility = () => {
             const input = document.querySelector('.passwordInput');
-            input.type = input.type === 'password' ? 'text' : 'password';
+            if (input != null) {
+                input.type = input.type === 'password' ? 'text' : 'password';
+            }
         };
         passwordVisibilityButton = (React.createElement("span", { className: "togglePasswordVisibility", onClick: togglePasswordVisibility }, inputType === 'password' ? React.createElement(ShowPassword, null) : React.createElement(ClosePassword, null)));
     }
     return (React.createElement(React.Fragment, null,
         type === 'password' && (React.createElement(React.Fragment, null,
             React.createElement("div", { className: `inputField ${className}` },
-                React.createElement("input", Object.assign({}, rest, { type: inputType, placeholder: _placeholder, required: _required, className: type === 'password' ? 'passwordInput' : '' })),
+                React.createElement("input", Object.assign({}, rest, { type: inputType, placeholder: _placeholder, required: _required, className: type === 'password' ? 'passwordInput' : '', onChange: onChange })),
                 passwordVisibilityButton))),
         type !== 'password' && !adornment && !ornament && (React.createElement(React.Fragment, null,
             React.createElement("div", { className: `inputField ${className}` },
-                React.createElement("input", { type: _type, placeholder: _placeholder, required: _required })))),
+                React.createElement("input", Object.assign({ type: _type, placeholder: _placeholder, required: _required }, rest, { onChange: onChange }))))),
         type !== 'password' && adornment && (React.createElement(React.Fragment, null,
             React.createElement("div", { className: `inputField ${className}` },
                 React.createElement("span", { className: "InputAddOn-item InputAddOn-field" }, adornment),
-                React.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: _placeholder }, rest, { type: _type, required: _required }))))),
+                React.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: _placeholder }, rest, { type: _type, required: _required, onChange: onChange }))))),
         type !== 'password' && ornament && (React.createElement(React.Fragment, null,
             React.createElement("div", { className: `inputField ${className}` },
-                React.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: _placeholder }, rest, { type: _type, required: _required })),
+                React.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: _placeholder }, rest, { type: _type, required: _required, onChange: onChange })),
                 React.createElement("span", { className: "InputAddOn-item" }, ornament))))));
 };
 
@@ -151,8 +153,15 @@ const Card = (props) => {
         cardFooter));
 };
 
-const TableHeader = ({ columns }) => {
-    return (React.createElement("tr", null, columns === null || columns === void 0 ? void 0 : columns.map((column, columnIndex) => (React.createElement("th", { className: "tableHeader", key: `table-head-cell-${columnIndex}`, style: { width: column.width } }, column.title)))));
+const TableHeader = ({ columns, buttons }) => {
+    if (columns && buttons) {
+        let addedcolumn = [...columns, ...buttons];
+        return (React.createElement(React.Fragment, null,
+            React.createElement("tr", null, addedcolumn === null || addedcolumn === void 0 ? void 0 : addedcolumn.map((addedcolumn, columnIndex) => (React.createElement("th", { className: "tableHeader", key: `table-head-cell-${columnIndex}`, style: { width: addedcolumn.width } }, addedcolumn.title))))));
+    }
+    if (columns && !buttons) {
+        return (React.createElement(React.Fragment, null, columns && !buttons && (React.createElement("tr", null, columns === null || columns === void 0 ? void 0 : columns.map((column, columnIndex) => (React.createElement("th", { className: "tableHeader", key: `table-head-cell-${columnIndex}`, style: { width: column.width } }, column.title)))))));
+    }
 };
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -1467,26 +1476,41 @@ function get(object, path, defaultValue) {
 
 var get_1 = get;
 
-const TableRowCell = ({ item, column, onClick }) => {
-    const value = get_1(item, column.id);
-    return (React.createElement("td", { className: "tableRowCell" }, column.type === 'button' ? (React.createElement("button", { className: "tableBtn", onClick: () => {
-            onClick(item, column.id);
-        } }, value)) : (value)));
+const TableRowCell = ({ item, column, buttons, onClick }) => {
+    const value = get_1(item, column === null || column === void 0 ? void 0 : column.id);
+    if (!buttons) {
+        return React.createElement("td", { className: "tableRowCell" }, value);
+    }
+    if (buttons) {
+        return (React.createElement("td", { className: "tableRowCell" },
+            React.createElement("button", { className: "tableBtn", onClick: () => {
+                    onClick(item, buttons.id);
+                } }, buttons.value)));
+    }
+    return React.createElement(React.Fragment, null);
 };
 
-const TableRow = ({ data, columns, onClick }) => {
-    return (React.createElement(React.Fragment, null, data === null || data === void 0 ? void 0 : data.map((item, rowIndex) => (React.createElement("tr", { className: "tableRowItem", key: `table-row-${rowIndex}` }, columns === null || columns === void 0 ? void 0 : columns.map((column, columnIndex) => (React.createElement(TableRowCell, { key: `table-cell-${rowIndex}-${columnIndex}`, item: item, column: column, onClick: onClick }))))))));
+const TableRow = ({ data, columns, buttons, onClick }) => {
+    if (!buttons) {
+        return (React.createElement(React.Fragment, null, data && !buttons && (React.createElement(React.Fragment, null, data === null || data === void 0 ? void 0 : data.map((item, rowIndex) => (React.createElement("tr", { className: "tableRowItem", key: `table-row-${rowIndex}` }, columns === null || columns === void 0 ? void 0 : columns.map((column, columnIndex) => (React.createElement(TableRowCell, { key: `table-cell-${rowIndex}-${columnIndex}`, item: item, column: column }))))))))));
+    }
+    if (data && buttons) {
+        return (React.createElement(React.Fragment, null, data === null || data === void 0 ? void 0 : data.map((item, rowIndex) => (React.createElement("tr", { className: "tableRowItem", key: `table-row-${rowIndex}` }, columns === null || columns === void 0 ? void 0 :
+            columns.map((column, columnIndex) => (React.createElement(TableRowCell, { key: `table-cell-${rowIndex}-${columnIndex}`, item: item, column: column }))),
+            buttons.map((buttons, buttonIndex) => (React.createElement(TableRowCell, { key: `table-cell-${rowIndex}-${buttonIndex}`, item: item, buttons: buttons, onClick: onClick }))))))));
+    }
+    return React.createElement(React.Fragment, null);
 };
 
-var css_248z$6 = ".mainTable {\n    border-collapse: collapse;\n    border: none;\n    font-family: sans-serif;\n}\n\n.tableHeader {\n    background-color: #f1f1f1;\n    padding: 12px;\n    margin: 10px 0 10px 0;\n    font-weight: 600;\n    text-align: left;\n    font-size: 15px;\n    color: #2c3e50;\n}\n\n.tableHeader:first-child {\n    border-top-left-radius: 12px;\n}\n\n.tableHeader:last-child {\n    border-top-right-radius: 12px;\n}\n\n.tableRowItem:nth-child(odd) {\n    background-color: #f9f9f9;\n}\n\n.tableRowItem:last-child {\n    border-top-left-radius: 12px;\n    border-top-right-radius: 12px;\n}\n\n.tableRowCell {\n    padding: 12px;\n    font-size: 14px;\n    color: grey;\n    text-align: left;\n}\n\nbutton.tableBtn {\n    cursor: pointer;\n    border: 0;\n    background-color: transparent;\n}";
+var css_248z$6 = ".mainTable {\n    border-collapse: collapse;\n    border: none;\n    font-family: sans-serif;\n}\n\n.tableHeader {\n    background-color: #f1f1f1;\n    padding: 12px;\n    margin: 10px 0 10px 0;\n    font-weight: 600;\n    text-align: left;\n    font-size: 15px;\n    color: #2c3e50;\n}\n\n.tableHeader:first-child {\n    border-top-left-radius: 12px;\n}\n\n.tableHeader:last-child {\n    border-top-right-radius: 12px;\n}\n\n.tableRowItem:nth-child(odd) {\n    background-color: #f9f9f9;\n}\n\n.tableRowItem:last-child {\n    border-top-left-radius: 12px;\n    border-top-right-radius: 12px;\n}\n\n.tableRowCell {\n    padding: 12px;\n    font-size: 14px;\n    color: grey;\n    text-align: left;\n}\n\n.tableBtn {\n    cursor: pointer;\n    border: 0;\n    background-color: transparent;\n}";
 styleInject(css_248z$6);
 
-const Table = ({ data, columns, onClick }) => {
+const Table = ({ data, columns, buttons, onClick }) => {
     return (React.createElement("table", { className: "mainTable" },
         React.createElement("thead", null,
-            React.createElement(TableHeader, { columns: columns })),
+            React.createElement(TableHeader, { columns: columns, buttons: buttons })),
         React.createElement("tbody", null,
-            React.createElement(TableRow, { data: data, columns: columns, onClick: onClick }))));
+            React.createElement(TableRow, { data: data, columns: columns, buttons: buttons, onClick: onClick }))));
 };
 
 const Icon = () => {
@@ -1509,41 +1533,12 @@ styleInject(css_248z$5);
 
 const Select = ({ isMulti, options, placeholder, isSearchable, onChange }) => {
     const [showMenu, setShowMenu] = React.useState(false);
-    const [searchValue, setSearchValue] = React.useState('');
-    const searchRef = React.useRef();
-    const inputRef = React.useRef();
     const [selectedValue, setSelectedValue] = React.useState(isMulti ? [] : '');
-    React.useEffect(() => {
-        const handler = (e) => {
-            if (inputRef.current && !inputRef.current.contains(e.target)) {
-                setShowMenu(false);
-            }
-        };
-        window.addEventListener('click', handler);
-        return () => {
-            window.removeEventListener('click', handler);
-        };
-    });
-    React.useEffect(() => {
-        setSearchValue('');
-        if (showMenu && (searchRef === null || searchRef === void 0 ? void 0 : searchRef.current)) {
-            searchRef.current.focus();
-        }
-    }, [showMenu]);
-    // Here getOptions is used to configure the options passed through props
-    const getOptions = () => {
-        if (!searchValue) {
-            return options;
-        }
-        return options.filter((option) => option.toLowerCase().indexOf(searchValue === null || searchValue === void 0 ? void 0 : searchValue.toLowerCase()) >= 0);
-    };
     const handleInputClick = () => {
         setShowMenu(!showMenu);
     };
-    // Here getDisplay is used to check if we have to show placeholder or not
     const getDisplay = () => {
         if (!selectedValue || (selectedValue === null || selectedValue === void 0 ? void 0 : selectedValue.length) === 0) {
-            console.log('inside if', selectedValue);
             return placeholder;
         }
         if (isMulti) {
@@ -1590,11 +1585,11 @@ const Select = ({ isMulti, options, placeholder, isSearchable, onChange }) => {
     };
     return (React.createElement(React.Fragment, null,
         React.createElement("div", { className: "dropdown-container" },
-            React.createElement("div", { ref: inputRef, className: "dropdown-input", onClick: handleInputClick },
+            React.createElement("div", { className: "dropdown-input", onClick: handleInputClick },
                 React.createElement("div", { className: "dropdown-selected-value" }, getDisplay()),
                 React.createElement("div", { className: "dropdown-tools" },
                     React.createElement("div", { className: "dropdown-tool" }, showMenu ? React.createElement(UpIcon, null) : React.createElement(Icon, null))),
-                showMenu && (React.createElement("div", { className: "dropdown-menu" }, options ? (getOptions().map((option) => (React.createElement("div", { onClick: () => onItemClick(option), key: option, className: `dropdown-item ${isSelected(option) && 'selected'}` }, option)))) : (React.createElement("div", null, "Please add options"))))))));
+                showMenu && (React.createElement("div", { className: "dropdown-menu" }, options ? (options.map((option) => (React.createElement("div", { onClick: () => onItemClick(option), key: option, className: `dropdown-item ${isSelected(option) && 'selected'}` }, option)))) : (React.createElement("div", { className: "dropdown-menu" }, "...Please add options"))))))));
 };
 
 var css_248z$4 = ".alert {\n    padding: 10px;\n    border-radius: 5px;\n    display: flex;\n    justify-content: space-between;\n}\n\n.alert-success {\n    border: 2px solid #78d178;\n    background-color: #d1ffcd;\n}\n\n.alert-failure {\n    border: 2px solid #d17878;\n    background-color: rgb(255, 205, 205);\n}\n\n.alert-warning {\n    border: 2px solid #ecdd68;\n    background-color: #faf4c7;\n}\n\n.closeIcon {\n    cursor: pointer;\n}\n";
@@ -1622,6 +1617,19 @@ const Alert = ({ message = 'This is a success message', type = 'success', timeou
 var css_248z$3 = ".tooltipMainDiv {\n    position: relative;\n    display: inline-block;\n}\n\n.textContainer {\n    visibility: visible;\n    min-width: 30px;\n    background-color: rgb(49, 49, 49);\n    color: #fff;\n    text-align: center;\n    border-radius: 4px;\n    padding: 5px 5px 5px 5px;\n    position: absolute;\n    z-index: 1;\n    top: 100%;\n    left: 50%;\n    margin-left: -60px;\n    opacity: 0.8;\n    font-size: 14px;\n}\n";
 styleInject(css_248z$3);
 
+const Tooltip = ({ text, children }) => {
+    const [showTooltip, setShowTooltip] = React.useState(false);
+    const handleMouseEnter = () => {
+        setShowTooltip(true);
+    };
+    const handleMouseLeave = () => {
+        setShowTooltip(false);
+    };
+    return (React.createElement("div", { className: "tooltipMainDiv", "data-testId": "tooltipHover", onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave },
+        children,
+        showTooltip && React.createElement("span", { className: "textContainer " }, text)));
+};
+
 var css_248z$2 = ".sidebar {\n    background: #edf7f7;\n    color: black;\n    width: 200px;\n    font-size: 18px;\n    padding: 10px;\n    height: 100vh;\n    font-family: sans-serif;\n    display: flex;\n    flex-direction: column;\n    text-align: 'start';\n}\n\n.SidebarItem {\n    cursor: pointer;\n    margin-bottom: 6px;\n    border-radius: 8px;\n    padding: 10px 14px 10px 14px;\n}\n\n.active {\n    background-color: #d0e8e8;\n    color: black;\n}\n\n.SidebarItem:hover,\n.sidebarSubItems:hover {\n    background-color: #d0e8e8;\n}\n\n.sidebarSubItems {\n    cursor: pointer;\n    display: flex;\n    text-decoration: none;\n    color: black;\n    margin-left: 15px;\n    border-radius: 8px;\n    padding: 10px 14px 10px 14px;\n}\n";
 styleInject(css_248z$2);
 
@@ -1638,19 +1646,18 @@ const Sidebar = ({ sidebarData }) => {
         setCurrSubItem(id === currSubItem ? null : id);
     };
     return (React.createElement("div", { className: "sidebar" }, sidebarData.map((data, index) => {
-        return (React.createElement(React.Fragment, null,
-            React.createElement("div", null,
-                React.createElement("div", { className: `SidebarItem ${curr === data.id ? 'active' : ''}`, onClick: () => {
-                        handleItemClick(data.id);
-                    } }, data.title),
-                curr === data.id &&
-                    data.items &&
-                    isOpen &&
-                    (data === null || data === void 0 ? void 0 : data.items.map((itemval) => {
-                        return (React.createElement("a", { href: itemval.link, onClick: () => {
-                                handleSubItemClick(itemval.id);
-                            }, className: `sidebarSubItems ${currSubItem === itemval.id ? 'active' : ''}` }, itemval.title));
-                    })))));
+        return (React.createElement("div", { key: data.id },
+            React.createElement("div", { className: `SidebarItem ${curr === data.id ? 'active' : ''}`, onClick: () => {
+                    handleItemClick(data.id);
+                } }, data.title),
+            curr === data.id &&
+                data.items &&
+                isOpen &&
+                (data === null || data === void 0 ? void 0 : data.items.map((itemval) => {
+                    return (React.createElement("a", { href: itemval.link, onClick: () => {
+                            handleSubItemClick(itemval.id);
+                        }, className: `sidebarSubItems ${currSubItem === itemval.id ? 'active' : ''}` }, itemval.title));
+                }))));
     })));
 };
 
@@ -1718,7 +1725,7 @@ var css_248z = ".textAreaField {\n  display: flex;\n  align-items: start;\n  jus
 styleInject(css_248z);
 
 const TextArea = (props) => {
-    const { cols, rows, placeholder, className } = props;
+    const { cols, rows, placeholder, onChange, className } = props; __rest(props, ["cols", "rows", "placeholder", "onChange", "className"]);
     // Setting Default Value
     let _className = 'textAreaInput';
     let _rows = 10;
@@ -1735,7 +1742,7 @@ const TextArea = (props) => {
         _placeholder = placeholder;
     return (React.createElement(React.Fragment, null,
         React.createElement("div", { className: `textAreaField ${className}` },
-            React.createElement("textarea", { className: _className, rows: _rows, cols: _cols, form: props.form, placeholder: _placeholder }))));
+            React.createElement("textarea", { className: _className, rows: _rows, cols: _cols, form: props.form, placeholder: _placeholder, onChange: onChange }))));
 };
 
 exports.Alert = Alert;
@@ -1748,4 +1755,5 @@ exports.Sidebar = Sidebar;
 exports.Switch = Switch;
 exports.Table = Table;
 exports.TextArea = TextArea;
+exports.Tooltip = Tooltip;
 //# sourceMappingURL=index.js.map

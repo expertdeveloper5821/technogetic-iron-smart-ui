@@ -3,5 +3,5 @@ import './Tooltip.css';
 type TooltipProps = {
     text?: string;
 };
-declare const Tooltip: React.FunctionComponent<PropsWithChildren<TooltipProps>>;
-export default Tooltip;
+export declare const Tooltip: React.FunctionComponent<PropsWithChildren<TooltipProps>>;
+export {};

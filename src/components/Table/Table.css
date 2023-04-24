@@ -38,7 +38,7 @@
     text-align: left;
 }
 
-button.tableBtn {
+.tableBtn {
     cursor: pointer;
     border: 0;
     background-color: transparent;

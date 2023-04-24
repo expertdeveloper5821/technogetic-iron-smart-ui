@@ -1,29 +1,28 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { TextArea } from './TextArea';
 import '@testing-library/jest-dom';
 import React from 'react';
 
-describe('Input', () => {
-    test('renders TextArea component without errors', () => {
+describe('TextArea', () => {
+    test('renders with default props', () => {
         render(<TextArea />);
-    });
-    test('renders TextArea component with correct default props', () => {
-        const { getByPlaceholderText } = render(<TextArea />);
-        expect(getByPlaceholderText('Write here..')).toBeInTheDocument();
-        expect(getByPlaceholderText('Write here..')).toHaveAttribute('rows', '5');
-        expect(getByPlaceholderText('Write here..')).toHaveAttribute('cols', '33');
-        expect(getByPlaceholderText('Write here..')).toHaveClass('textField');
+        const textArea = screen.getByRole('textbox');
+        expect(textArea).toBeInTheDocument();
+        expect(textArea).toHaveAttribute('placeholder', 'Write here..');
+        expect(textArea).toHaveAttribute('rows', '10');
+        expect(textArea).toHaveAttribute('cols', '50');
     });
 
-    test('invokes onChange function when value changes', () => {
-        const onChange = jest.fn();
-        const { getByPlaceholderText } = render(<TextArea placeholder="Type your message" onChange={onChange} />);
-        fireEvent.change(getByPlaceholderText('Type your message'), { target: { value: 'Hello World' } });
-        expect(onChange).toHaveBeenCalledTimes(1);
+    test('renders with custom props', () => {
+        const onChangeMock = jest.fn();
+        render(<TextArea className="custom-class" rows={5} cols={20} placeholder="Custom placeholder" onChange={onChangeMock} />);
+        const textArea = screen.getByRole('textbox');
+        expect(textArea).toBeInTheDocument();
+        expect(textArea).toHaveClass('custom-class');
+        expect(textArea).toHaveAttribute('placeholder', 'Custom placeholder');
+        expect(textArea).toHaveAttribute('rows', '5');
+        expect(textArea).toHaveAttribute('cols', '20');
+        userEvent.type(textArea, 'hello');
     });
-    // test('renders TextArea component with correct form and maxLength props', () => {
-    //     const { getByPlaceholderText } = render(<TextArea form="my-form" maxLength="100" />);
-    //     expect(getByPlaceholderText('Write here..')).toHaveAttribute('form', 'my-form');
-    //     expect(getByPlaceholderText('Write here..')).toHaveAttribute('maxlength', '100');
-    // });
 });

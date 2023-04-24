@@ -1,37 +1,49 @@
-import React from 'react';
-import { render } from 'react-dom';
+import { render, fireEvent } from '@testing-library/react';
 import { Sidebar } from './Sidebar';
 import '@testing-library/jest-dom';
+import React from 'react';
 
 describe('Sidebar component', () => {
-    const sidebarData = [
-        { id: 1, title: 'Home', link: '/', items: [] },
+    interface sidebarArray {
+        id: number;
+        title: string;
+        link: string;
+        items: { id: number; title: string; link: string }[];
+    }
+    const sidebarData: sidebarArray[] = [
         {
-            id: 2,
-            title: 'About',
-            link: '/about',
+            id: 1,
+            title: 'Menu 1',
+            link: '/menu1',
             items: [
-                { id: 4, title: 'Our Story', link: '/about/story' },
-                { id: 5, title: 'Our Team', link: '/about/team' }
+                { id: 1, title: 'Submenu 1', link: '/submenu1' },
+                { id: 2, title: 'Submenu 2', link: '/submenu2' }
             ]
         },
         {
-            id: 3,
-            title: 'Contact',
-            link: '/contact',
-            items: [
-                { id: 6, title: 'CTO', link: '/contact/cto' },
-                { id: 7, title: 'Manager', link: '/contact/manager' }
-            ]
+            id: 2,
+            title: 'Menu 2',
+            link: '/menu2',
+            items: [{ id: 3, title: 'Submenu 3', link: '/submenu3' }]
         }
     ];
-    // test('renders main items correctly', () => {
-    //     const { getByText } = render(<Sidebar sidebarData={sidebarData} />);
-    //     const homeItem = getByText('Home');
-    //     const aboutItem = getByText('About');
-    //     const contactItem = getByText('Contact');
-    //     expect(homeItem).toBeInTheDocument();
-    //     expect(aboutItem).toBeInTheDocument();
-    //     expect(contactItem).toBeInTheDocument();
-    // });
+
+    test('activates menu item on click', () => {
+        const { getByText } = render(<Sidebar sidebarData={sidebarData} />);
+
+        // Click on the first menu item
+        const menuItem1 = getByText('Menu 1');
+        fireEvent.click(menuItem1);
+
+        // Check if the first menu item is active
+        expect(menuItem1.classList.contains('active')).toBe(true);
+
+        // Click on the second menu item
+        const menuItem2 = getByText('Menu 2');
+        fireEvent.click(menuItem2);
+
+        // Check if the first menu item is inactive and the second menu item is active
+        expect(menuItem1.classList.contains('active')).toBe(false);
+        expect(menuItem2.classList.contains('active')).toBe(true);
+    });
 });

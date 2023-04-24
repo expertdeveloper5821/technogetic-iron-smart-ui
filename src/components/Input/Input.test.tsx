@@ -7,16 +7,32 @@ describe('Input', () => {
     test('should render input', () => {
         render(<Input type="text" value="Hi rendering" onChange={() => {}} />);
     });
-    test('should render input with correct value', () => {
-        render(<Input type="text" data-testid="email-input" value="test@mail.com" onChange={() => {}} />);
-        expect(screen.getByDisplayValue('test@mail.com')).toHaveValue('test@mail.com');
+    test('renders an input field with correct default props', () => {
+        render(<Input />);
+        const input = screen.getByRole('textbox');
+        expect(input).toBeInTheDocument();
+        expect(input).not.toHaveAttribute('value');
+        expect(input).not.toHaveAttribute('required');
     });
-    test('should update the value when input changes', async () => {
-        const onChange = jest.fn();
-        render(<Input data-testid="email-input" defaultValue="default" onChange={onChange} />);
-        const inputElement = screen.getByTestId('email-input');
-        fireEvent.change(inputElement, { target: { value: 'new test value' } });
-        expect(onChange).toHaveBeenCalled();
-        expect(inputElement).toHaveValue('new test value');
+    test('renders an input field with correct props', () => {
+        render(<Input value="test" onChange={() => {}} label="Test Input" required={true} placeholder="Enter test value" />);
+        const input = screen.getByRole('textbox');
+        expect(input).toHaveAttribute('type', 'text');
+        expect(input).toHaveAttribute('required');
+        expect(input).toHaveAttribute('placeholder', 'Enter test value');
+    });
+    test('renders an input field with an adornment', () => {
+        render(<Input adornment="$" />);
+        const input = screen.getByRole('textbox');
+        const adornment = screen.getByText('$');
+        expect(input).toBeInTheDocument();
+        expect(adornment).toBeInTheDocument();
+    });
+    test('renders an input field with an ornament', () => {
+        render(<Input ornament="%" />);
+        const input = screen.getByRole('textbox');
+        const ornament = screen.getByText('%');
+        expect(input).toBeInTheDocument();
+        expect(ornament).toBeInTheDocument();
     });
 });

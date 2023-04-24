@@ -1,13 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1681887949135" clover="3.2.0">
-  <project timestamp="1681887949135" name="All files">
-    <metrics statements="80" coveredstatements="69" conditionals="66" coveredconditionals="42" methods="26" coveredmethods="19" elements="172" coveredelements="130" complexity="0" loc="80" ncloc="80" packages="9" files="9" classes="9"/>
+<coverage generated="1682250349498" clover="3.2.0">
+  <project timestamp="1682250349499" name="All files">
+    <metrics statements="162" coveredstatements="111" conditionals="132" coveredconditionals="79" methods="52" coveredmethods="26" elements="346" coveredelements="216" complexity="0" loc="162" ncloc="162" packages="12" files="19" classes="19"/>
     <package name="assets">
-      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="10" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="2"/>
       <file name="CloseIcon.tsx" path="/home/technogetic/technogetic-iron-smart-ui/src/assets/CloseIcon.tsx">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="3" count="1" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
         <line num="4" count="3" type="stmt"/>
+      </file>
+      <file name="ClosePassword.tsx" path="/home/technogetic/technogetic-iron-smart-ui/src/assets/ClosePassword.tsx">
+        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+      </file>
+      <file name="DropUpIcon.tsx" path="/home/technogetic/technogetic-iron-smart-ui/src/assets/DropUpIcon.tsx">
+        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+      </file>
+      <file name="DropdownIcon.tsx" path="/home/technogetic/technogetic-iron-smart-ui/src/assets/DropdownIcon.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+      </file>
+      <file name="ShowPassword.tsx" path="/home/technogetic/technogetic-iron-smart-ui/src/assets/ShowPassword.tsx">
+        <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
       </file>
     </package>
     <package name="components.Alert">
@@ -42,18 +62,18 @@
       <metrics statements="12" coveredstatements="12" conditionals="12" coveredconditionals="7" methods="1" coveredmethods="1"/>
       <file name="Button.tsx" path="/home/technogetic/technogetic-iron-smart-ui/src/components/Button/Button.tsx">
         <metrics statements="12" coveredstatements="12" conditionals="12" coveredconditionals="7" methods="1" coveredmethods="1"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="5" type="stmt"/>
-        <line num="15" count="5" type="cond" truecount="2" falsecount="0"/>
-        <line num="16" count="5" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="5" type="stmt"/>
+        <line num="16" count="5" type="cond" truecount="2" falsecount="0"/>
         <line num="17" count="5" type="stmt"/>
         <line num="18" count="5" type="stmt"/>
-        <line num="20" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="19" count="5" type="stmt"/>
         <line num="21" count="5" type="cond" truecount="1" falsecount="1"/>
         <line num="22" count="5" type="cond" truecount="1" falsecount="1"/>
         <line num="23" count="5" type="cond" truecount="1" falsecount="1"/>
         <line num="24" count="5" type="cond" truecount="1" falsecount="1"/>
-        <line num="26" count="5" type="stmt"/>
+        <line num="25" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="27" count="5" type="stmt"/>
       </file>
     </package>
     <package name="components.Card">
@@ -68,33 +88,90 @@
         <line num="30" count="2" type="stmt"/>
       </file>
     </package>
-    <package name="components.NavBar">
-      <metrics statements="23" coveredstatements="19" conditionals="22" coveredconditionals="14" methods="13" coveredmethods="9"/>
-      <file name="NavBar.tsx" path="/home/technogetic/technogetic-iron-smart-ui/src/components/NavBar/NavBar.tsx">
-        <metrics statements="23" coveredstatements="19" conditionals="22" coveredconditionals="14" methods="13" coveredmethods="9"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="29" count="8" type="stmt"/>
-        <line num="30" count="8" type="stmt"/>
-        <line num="31" count="8" type="stmt"/>
-        <line num="32" count="8" type="stmt"/>
-        <line num="34" count="8" type="stmt"/>
-        <line num="35" count="1" type="stmt"/>
-        <line num="36" count="1" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="40" count="8" type="stmt"/>
-        <line num="41" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="44" count="8" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="48" count="8" type="stmt"/>
-        <line num="53" count="8" type="stmt"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="75" count="8" type="stmt"/>
-        <line num="82" count="1" type="stmt"/>
-        <line num="93" count="4" type="stmt"/>
-        <line num="98" count="1" type="stmt"/>
-        <line num="115" count="0" type="stmt"/>
-        <line num="120" count="0" type="stmt"/>
-        <line num="134" count="8" type="stmt"/>
+    <package name="components.Input">
+      <metrics statements="17" coveredstatements="12" conditionals="30" coveredconditionals="19" methods="2" coveredmethods="1"/>
+      <file name="Input.tsx" path="/home/technogetic/technogetic-iron-smart-ui/src/components/Input/Input.tsx">
+        <metrics statements="17" coveredstatements="12" conditionals="30" coveredconditionals="19" methods="2" coveredmethods="1"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+        <line num="24" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="26" count="5" type="stmt"/>
+        <line num="27" count="5" type="stmt"/>
+        <line num="28" count="5" type="stmt"/>
+        <line num="30" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="31" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="32" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="34" count="5" type="stmt"/>
+        <line num="35" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="39" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="48" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.Select">
+      <metrics statements="36" coveredstatements="12" conditionals="24" coveredconditionals="7" methods="14" coveredmethods="2"/>
+      <file name="Select.tsx" path="/home/technogetic/technogetic-iron-smart-ui/src/components/Select/Select.tsx">
+        <metrics statements="36" coveredstatements="12" conditionals="24" coveredconditionals="7" methods="14" coveredmethods="2"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="4" type="stmt"/>
+        <line num="33" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="35" count="4" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="39" count="4" type="stmt"/>
+        <line num="40" count="4" type="cond" truecount="3" falsecount="1"/>
+        <line num="41" count="4" type="stmt"/>
+        <line num="43" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="60" count="4" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="63" count="4" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="70" count="4" type="stmt"/>
+        <line num="72" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="73" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="81" count="0" type="stmt"/>
+        <line num="82" count="0" type="stmt"/>
+        <line num="85" count="4" type="stmt"/>
+        <line num="86" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="89" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="92" count="0" type="stmt"/>
+        <line num="95" count="4" type="stmt"/>
+        <line num="107" count="0" type="cond" truecount="0" falsecount="2"/>
+      </file>
+    </package>
+    <package name="components.Sidebar">
+      <metrics statements="15" coveredstatements="13" conditionals="10" coveredconditionals="7" methods="7" coveredmethods="5"/>
+      <file name="Sidebar.tsx" path="/home/technogetic/technogetic-iron-smart-ui/src/components/Sidebar/Sidebar.tsx">
+        <metrics statements="15" coveredstatements="13" conditionals="10" coveredconditionals="7" methods="7" coveredmethods="5"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="24" count="3" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
+        <line num="30" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="32" count="3" type="stmt"/>
+        <line num="35" count="6" type="stmt"/>
+        <line num="40" count="2" type="stmt"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
       </file>
     </package>
     <package name="components.Switch">
@@ -106,34 +183,78 @@
         <line num="12" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="components.TextArea">
-      <metrics statements="11" coveredstatements="11" conditionals="8" coveredconditionals="5" methods="1" coveredmethods="1"/>
-      <file name="TextArea.tsx" path="/home/technogetic/technogetic-iron-smart-ui/src/components/TextArea/TextArea.tsx">
-        <metrics statements="11" coveredstatements="11" conditionals="8" coveredconditionals="5" methods="1" coveredmethods="1"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="3" type="stmt"/>
-        <line num="16" count="3" type="stmt"/>
-        <line num="17" count="3" type="stmt"/>
-        <line num="18" count="3" type="stmt"/>
+    <package name="components.Table">
+      <metrics statements="29" coveredstatements="16" conditionals="24" coveredconditionals="14" methods="12" coveredmethods="7"/>
+      <file name="Table.tsx" path="/home/technogetic/technogetic-iron-smart-ui/src/components/Table/Table.tsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+      </file>
+      <file name="TableHeader.tsx" path="/home/technogetic/technogetic-iron-smart-ui/src/components/Table/TableHeader.tsx">
+        <metrics statements="8" coveredstatements="5" conditionals="11" coveredconditionals="9" methods="3" coveredmethods="2"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="24" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="30" count="3" type="stmt"/>
+      </file>
+      <file name="TableRow.tsx" path="/home/technogetic/technogetic-iron-smart-ui/src/components/Table/TableRow.tsx">
+        <metrics statements="11" coveredstatements="5" conditionals="9" coveredconditionals="4" methods="6" coveredmethods="3"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="14" count="1" type="stmt"/>
         <line num="19" count="3" type="stmt"/>
-        <line num="22" count="3" type="cond" truecount="1" falsecount="1"/>
-        <line num="23" count="3" type="cond" truecount="1" falsecount="1"/>
-        <line num="24" count="3" type="cond" truecount="1" falsecount="1"/>
-        <line num="25" count="3" type="cond" truecount="2" falsecount="0"/>
-        <line num="26" count="3" type="stmt"/>
+        <line num="21" count="9" type="stmt"/>
+        <line num="30" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+      </file>
+      <file name="TableRowCell.tsx" path="/home/technogetic/technogetic-iron-smart-ui/src/components/Table/TableRowCell.tsx">
+        <metrics statements="8" coveredstatements="4" conditionals="4" coveredconditionals="1" methods="2" coveredmethods="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="9" type="stmt"/>
+        <line num="15" count="9" type="cond" truecount="1" falsecount="1"/>
+        <line num="16" count="9" type="stmt"/>
+        <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.TextArea">
+      <metrics statements="11" coveredstatements="11" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
+      <file name="TextArea.tsx" path="/home/technogetic/technogetic-iron-smart-ui/src/components/TextArea/TextArea.tsx">
+        <metrics statements="11" coveredstatements="11" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="22" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="24" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="25" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="2" type="stmt"/>
       </file>
     </package>
     <package name="components.Tooltip">
-      <metrics statements="7" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="1"/>
+      <metrics statements="7" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="1"/>
       <file name="Tooltip.tsx" path="/home/technogetic/technogetic-iron-smart-ui/src/components/Tooltip/Tooltip.tsx">
-        <metrics statements="7" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <metrics statements="7" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="1"/>
         <line num="8" count="1" type="stmt"/>
-        <line num="9" count="4" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
       </file>
     </package>
   </project>

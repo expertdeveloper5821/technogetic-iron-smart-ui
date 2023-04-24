@@ -33,34 +33,32 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = ({ sidebarData }) 
         <div className="sidebar">
             {sidebarData.map((data, index: any) => {
                 return (
-                    <>
-                        <div>
-                            <div
-                                className={`SidebarItem ${curr === data.id ? 'active' : ''}`}
-                                onClick={() => {
-                                    handleItemClick(data.id);
-                                }}
-                            >
-                                {data.title}
-                            </div>
-                            {curr === data.id &&
-                                data.items &&
-                                isOpen &&
-                                data?.items.map((itemval: any) => {
-                                    return (
-                                        <a
-                                            href={itemval.link}
-                                            onClick={() => {
-                                                handleSubItemClick(itemval.id);
-                                            }}
-                                            className={`sidebarSubItems ${currSubItem === itemval.id ? 'active' : ''}`}
-                                        >
-                                            {itemval.title}
-                                        </a>
-                                    );
-                                })}
+                    <div key={data.id}>
+                        <div
+                            className={`SidebarItem ${curr === data.id ? 'active' : ''}`}
+                            onClick={() => {
+                                handleItemClick(data.id);
+                            }}
+                        >
+                            {data.title}
                         </div>
-                    </>
+                        {curr === data.id &&
+                            data.items &&
+                            isOpen &&
+                            data?.items.map((itemval: any) => {
+                                return (
+                                    <a
+                                        href={itemval.link}
+                                        onClick={() => {
+                                            handleSubItemClick(itemval.id);
+                                        }}
+                                        className={`sidebarSubItems ${currSubItem === itemval.id ? 'active' : ''}`}
+                                    >
+                                        {itemval.title}
+                                    </a>
+                                );
+                            })}
+                    </div>
                 );
             })}
         </div>

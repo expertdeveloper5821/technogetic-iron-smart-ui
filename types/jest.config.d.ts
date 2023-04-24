@@ -4,7 +4,7 @@ declare const _default: {
     coverageDirectory: string;
     testEnvironment: string;
     moduleNameMapper: {
-        "\\.(css|sass)$": string;
+        '\\.(css|sass)$': string;
     };
 };
 export default _default;
