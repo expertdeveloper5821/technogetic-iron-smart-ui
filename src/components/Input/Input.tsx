@@ -64,17 +64,25 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
             )}
             {type !== 'password' && adornment && (
                 <>
-                    <div className={`inputField ${className}`}>
-                        <span className="InputAddOn-item InputAddOn-field">{adornment}</span>
-                        <input className="InputAddOn-field" placeholder={_placeholder} {...rest} type={_type} required={_required} onChange={onChange} />
+                    <div className="adornment-Container">
+                        <div className="adornmentContent">
+                            <span className="InputAddOn-item InputAddOn-field">{adornment}</span>
+                        </div>
+                        <div className={`adornInputField ${className}`}>
+                            <input className="InputAddOn-field" placeholder={_placeholder} {...rest} type={_type} required={_required} onChange={onChange} />
+                        </div>
                     </div>
                 </>
             )}
             {type !== 'password' && ornament && (
                 <>
-                    <div className={`inputField ${className}`}>
-                        <input className="InputAddOn-field" placeholder={_placeholder} {...rest} type={_type} required={_required} onChange={onChange} />
-                        <span className="InputAddOn-item">{ornament}</span>
+                    <div className="ornamnent-Container">
+                        <div className={`oranInputField ${className}`}>
+                            <input className="InputAddOn-field" placeholder={_placeholder} {...rest} type={_type} required={_required} onChange={onChange} />
+                        </div>
+                        <div className="oranmentContent">
+                            <span className="InputAddOn-item">{ornament}</span>
+                        </div>
                     </div>
                 </>
             )}
