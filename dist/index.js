@@ -1487,9 +1487,9 @@ const TableRowCell = ({ item, column, buttons, onClick }) => {
     }
     if (buttons) {
         return (React.createElement("td", { className: "tableRowCell" },
-            React.createElement("button", { className: "tableBtn", onClick: () => {
-                    onClick(item, buttons.id);
-                } }, buttons.value)));
+            React.createElement("button", { className: "tableBtn", onClick: (event) => {
+                    onClick(event, item, (buttons === null || buttons === void 0 ? void 0 : buttons.title) || '');
+                } }, buttons === null || buttons === void 0 ? void 0 : buttons.value)));
     }
     return React.createElement(React.Fragment, null);
 };

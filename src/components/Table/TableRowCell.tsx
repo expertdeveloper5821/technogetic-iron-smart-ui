@@ -6,10 +6,10 @@ interface Props<T> {
     item: T;
     column: IColumnType<T>;
     buttons?: IButtonType<T>;
-    onClick?: (event: React.MouseEvent<HTMLButtonElement>, rowData: T) => void;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>, rowData: T, buttonTitle: string) => void;
 }
 
-const TableRowCell = <T extends Props<T>>({ item, column, buttons, onClick }: any): JSX.Element => {
+const TableRowCell = <T extends Props<T>>({ item, column, buttons, onClick }: Props<T>): JSX.Element => {
     const value = get(item, column?.id);
 
     if (!buttons) {
@@ -21,11 +21,11 @@ const TableRowCell = <T extends Props<T>>({ item, column, buttons, onClick }: an
             <td className="tableRowCell">
                 <button
                     className="tableBtn"
-                    onClick={() => {
-                        onClick(item, buttons.id);
+                    onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+                        onClick(event, item, buttons?.title || '');
                     }}
                 >
-                    {buttons.value}
+                    {buttons?.value}
                 </button>
             </td>
         );
