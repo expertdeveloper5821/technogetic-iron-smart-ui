@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Input.css';
 import { ShowPassword } from '../../assets/ShowPassword';
 import { ClosePassword } from '../../assets/ClosePassword';

@@ -2,6 +2,8 @@
     border-collapse: collapse;
     border: none;
     font-family: sans-serif;
+    overflow-x: auto;
+    display: block;
 }
 
 .tableHeader {

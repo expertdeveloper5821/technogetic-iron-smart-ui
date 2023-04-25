@@ -11,7 +11,7 @@ export interface CardProps {
 }
 
 export const Card = (props: PropsWithChildren<CardProps>) => {
-    const { className = '', padding = '', title = 'Card Title', border = '', footer = 'Card Footer', headerImage } = props;
+    const { className, padding, title = 'Card Title', border, footer = 'Card Footer', headerImage } = props;
     const borderStyle = border === 'none' ? styles.noBorderCard : '';
 
     const cardHeader = (

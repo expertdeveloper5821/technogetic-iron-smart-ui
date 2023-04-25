@@ -29,21 +29,17 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z$9 = "button.commonButton {\r\n    color: white;\r\n    cursor: pointer;\r\n    border-radius: 6px;\r\n    padding: 10px;\r\n    background-color: #1ea7fd;\r\n    border: 0;\r\n}\r\n\r\n.commonButton:hover {\r\n    background-color: #9E9E9E;\r\n}\r\n\r\n.commonButton:hover {\r\n    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\r\n}";
+var css_248z$9 = "button.commonButton {\n    color: white;\n    cursor: pointer;\n    border-radius: 6px;\n    padding: 10px;\n    background-color: #1ea7fd;\n    border: 0;\n}\n\n.commonButton:hover {\n    background-color: #9E9E9E;\n}\n\n.commonButton:hover {\n    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\n}";
 styleInject(css_248z$9);
 
 const Button = (props) => {
     const { children, backgroundColor, color, style, onClick, className, type } = props;
     let _style = style || {};
-    let _className = 'commonButton';
-    /* Override defaults */
     if (color)
         _style.color = color;
-    if (className)
-        _className = className;
     if (backgroundColor)
         _style.backgroundColor = backgroundColor;
-    return (React.createElement("button", Object.assign({ className: _className, style: _style }, props, { onClick: onClick, type: type }), children));
+    return (React.createElement("button", Object.assign({ className: className ? className : 'commonButton', style: _style }, props, { onClick: onClick, type: type ? type : 'submit' }), children ? children : 'Button'));
 };
 
 /******************************************************************************
@@ -73,52 +69,63 @@ function __rest(s, e) {
     return t;
 }
 
-var css_248z$8 = ".inputField {\r\n    display: flex;\r\n    align-items: start;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    user-select: none;\r\n    background: #FFFFFF;\r\n    border: 1px solid rgba(147, 128, 108, 0.25);\r\n    border-radius: 6px;\r\n    padding: 8px;\r\n}\r\n\r\n.defInputField {\r\n    display: flex;\r\n    align-items: start;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    user-select: none;\r\n    background: #FFFFFF;\r\n    border: 1px solid rgba(147, 128, 108, 0.25);\r\n    border-radius: 6px;\r\n    padding: 8px;\r\n}\r\n\r\n.defInputField input:focus {\r\n    background: #FFFFFF;\r\n    border: none;\r\n    outline: none;\r\n}\r\n\r\n.defInputField:focus-within {\r\n    border: 0.5px solid #0094DA;\r\n}\r\n\r\ninput[type='text'],\r\ninput[type='email'] {\r\n    border: 0;\r\n    width: 100%;\r\n}\r\n\r\ninput[type='password'] {\r\n    border: 0;\r\n    width: 100%;\r\n}\r\n\r\n.inputField:focus-within {\r\n    border: 0.5px solid #0094DA;\r\n}\r\n\r\n.inputField input:focus {\r\n    background: #FFFFFF;\r\n    border: none;\r\n    outline: none;\r\n}\r\n\r\n/* Code for the inline span and input Field */\r\n.inputBlock {\r\n    display: inline-flex;\r\n    /* flex-direction: column; */\r\n    vertical-align: top;\r\n    width: 100%;\r\n    margin: 8px;\r\n    /* display: flex;\r\n    align-items: start;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    user-select: none;\r\n    background: #FFFFFF; */\r\n    border: 1px solid rgba(147, 128, 108, 0.25);\r\n    border-radius: 6px;\r\n}\r\n\r\n.input.InputAddOn-field {\r\n    padding: 8px;\r\n}\r\n\r\n/* .inputBlock input {\r\n    border: 1px solid rgba(147, 128, 108, 0.25);\r\n} */\r\n\r\nspan.InputAddOn-item {\r\n    padding: 0px 4px;\r\n}\r\n\r\ninput.InputAddOn-field:focus {\r\n    background: #FFFFFF;\r\n    border: none;\r\n    outline: none;\r\n}\r\n\r\n.InputAddOn-field:not(:first-child) {\r\n    border-left: 0;\r\n}\r\n\r\n.InputAddOn-field:not(:last-child) {\r\n    border-right: 0;\r\n}\r\n\r\n.InputAddOn-item {\r\n    background-color: rgba(147, 128, 108, 0.1);\r\n    color: #666666;\r\n    font: inherit;\r\n    font-weight: normal;\r\n}\r\n\r\n.inputBlock:focus-within {\r\n    border: 0.5px solid #0094DA;\r\n    border-radius: 6px;\r\n}\r\n\r\n.inputBlock .InputAddOn-field input:focus {\r\n    border: none;\r\n}\r\n\r\n.InputAddOn-field:first-child,\r\n.InputAddOn-item:first-child {\r\n    border-radius: 6px 0 0 6px;\r\n}\r\n\r\n.InputAddOn-field:last-child,\r\n.InputAddOn-item:last-child {\r\n    border-radius: 0 6px 6px 0;\r\n}";
+var css_248z$8 = ".ornamnent-Container,\n.adornment-Container {\n    display: flex;\n    align-items: center;\n}\n\n.inputField {\n    display: flex;\n    align-items: start;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px;\n    padding: 8px;\n}\n\n.adornmentContent {\n    background-color: #f5f5f5;\n    padding: 8px;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px 0px 0px 6px;\n}\n\n.adornInputField {\n    display: flex;\n    align-items: start;\n    width: 100%;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 0px 6px 6px 0px;\n    padding: 8px;\n}\n\n.oranInputField {\n    display: flex;\n    align-items: start;\n    width: 100%;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px 0px 0px 6px;\n    padding: 8px;\n}\n\n.oranmentContent {\n    background-color: #f5f5f5;\n    padding: 8px;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 0px 6px 6px 0px;\n}\n\n.inputField input:focus,\ninput.InputAddOn-field:focus {\n    background: #FFFFFF;\n    border: none;\n    outline: none;\n}\n\n.inputField:focus-within,\n.oranInputField:focus-within,\n.adornInputField:focus-within {\n    border: 0.5px solid #0094DA;\n}\n\ninput[type='text'],\ninput[type='email'],\ninput[type='password'] {\n    border: 0;\n    width: 100%;\n}\n\nspan.InputAddOn-item {\n    padding: 0px 4px;\n}\n\n.InputAddOn-item {\n    color: #666666;\n    font: inherit;\n    font-weight: normal;\n}";
 styleInject(css_248z$8);
 
 const ShowPassword = () => {
     return (React.createElement("div", null,
-        React.createElement("svg", { width: "24", height: "20", xmlns: "http://www.w3.org/2000/svg", "fill-rule": "evenodd", "clip-rule": "evenodd" },
+        React.createElement("svg", { width: "24", height: "20", xmlns: "http://www.w3.org/2000/svg", fillRule: "evenodd", clipRule: "evenodd" },
             React.createElement("path", { d: "M12.01 20c-5.065 0-9.586-4.211-12.01-8.424 2.418-4.103 6.943-7.576 12.01-7.576 5.135 0 9.635 3.453 11.999 7.564-2.241 4.43-6.726 8.436-11.999 8.436zm-10.842-8.416c.843 1.331 5.018 7.416 10.842 7.416 6.305 0 10.112-6.103 10.851-7.405-.772-1.198-4.606-6.595-10.851-6.595-6.116 0-10.025 5.355-10.842 6.584zm10.832-4.584c2.76 0 5 2.24 5 5s-2.24 5-5 5-5-2.24-5-5 2.24-5 5-5zm0 1c2.208 0 4 1.792 4 4s-1.792 4-4 4-4-1.792-4-4 1.792-4 4-4z" }))));
 };
 
 const ClosePassword = () => {
     return (React.createElement("div", null,
-        React.createElement("svg", { width: "24", height: "20", xmlns: "http://www.w3.org/2000/svg", "fill-rule": "evenodd", "clip-rule": "evenodd" },
+        React.createElement("svg", { width: "24", height: "20", xmlns: "http://www.w3.org/2000/svg", fillRule: "evenodd", clipRule: "evenodd" },
             React.createElement("path", { d: "M8.137 15.147c-.71-.857-1.146-1.947-1.146-3.147 0-2.76 2.241-5 5-5 1.201 0 2.291.435 3.148 1.145l1.897-1.897c-1.441-.738-3.122-1.248-5.035-1.248-6.115 0-10.025 5.355-10.842 6.584.529.834 2.379 3.527 5.113 5.428l1.865-1.865zm6.294-6.294c-.673-.53-1.515-.853-2.44-.853-2.207 0-4 1.792-4 4 0 .923.324 1.765.854 2.439l5.586-5.586zm7.56-6.146l-19.292 19.293-.708-.707 3.548-3.548c-2.298-1.612-4.234-3.885-5.548-6.169 2.418-4.103 6.943-7.576 12.01-7.576 2.065 0 4.021.566 5.782 1.501l3.501-3.501.707.707zm-2.465 3.879l-.734.734c2.236 1.619 3.628 3.604 4.061 4.274-.739 1.303-4.546 7.406-10.852 7.406-1.425 0-2.749-.368-3.951-.938l-.748.748c1.475.742 3.057 1.19 4.699 1.19 5.274 0 9.758-4.006 11.999-8.436-1.087-1.891-2.63-3.637-4.474-4.978zm-3.535 5.414c0-.554-.113-1.082-.317-1.562l.734-.734c.361.69.583 1.464.583 2.296 0 2.759-2.24 5-5 5-.832 0-1.604-.223-2.295-.583l.734-.735c.48.204 1.007.318 1.561.318 2.208 0 4-1.792 4-4z" }))));
 };
 
 const Input = (props) => {
-    const { className, placeholder, type, adornment, required, ornament } = props, rest = __rest(props, ["className", "placeholder", "type", "adornment", "required", "ornament"]);
-    const [showPassword, setShowPassword] = React.useState(false);
-    const togglePasswordVisibility = () => {
-        setShowPassword((prevState) => !prevState);
-    };
-    const inputType = type === 'password' ? (showPassword ? 'text' : 'password') : type;
-    // Set Defalut Values
+    const { className, placeholder, type, adornment, required, onChange, ornament } = props, rest = __rest(props, ["className", "placeholder", "type", "adornment", "required", "onChange", "ornament"]);
+    const inputType = type === 'password' ? 'password' : type;
     let _placeholder = 'Input Field';
+    let _type = 'text';
     let _required = false;
-    // OverWrite the Default Values
     if (placeholder)
         _placeholder = placeholder;
+    if (type)
+        _type = type;
     if (required)
         _required = required;
+    let passwordVisibilityButton = null;
+    if (type === 'password') {
+        const togglePasswordVisibility = () => {
+            const input = document.querySelector('.passwordInput');
+            if (input != null) {
+                input.type = input.type === 'password' ? 'text' : 'password';
+            }
+        };
+        passwordVisibilityButton = (React.createElement("span", { className: "togglePasswordVisibility", onClick: togglePasswordVisibility }, inputType === 'password' ? React.createElement(ShowPassword, null) : React.createElement(ClosePassword, null)));
+    }
     return (React.createElement(React.Fragment, null,
         type === 'password' && (React.createElement(React.Fragment, null,
             React.createElement("div", { className: `inputField ${className}` },
-                React.createElement("input", Object.assign({}, rest, { type: inputType, placeholder: _placeholder, required: _required })),
-                React.createElement("span", { className: "togglePasswordVisibility", onClick: togglePasswordVisibility }, showPassword ? React.createElement(ClosePassword, null) : React.createElement(ShowPassword, null))))),
+                React.createElement("input", Object.assign({}, rest, { type: inputType, placeholder: _placeholder, required: _required, className: type === 'password' ? 'passwordInput' : '', onChange: onChange })),
+                passwordVisibilityButton))),
         type !== 'password' && !adornment && !ornament && (React.createElement(React.Fragment, null,
-            React.createElement("div", { className: `defInputField ${className}` },
-                React.createElement("input", Object.assign({}, rest, { type: inputType, placeholder: placeholder, required: _required }))))),
+            React.createElement("div", { className: `inputField ${className}` },
+                React.createElement("input", Object.assign({ type: _type, placeholder: _placeholder, required: _required }, rest, { onChange: onChange }))))),
         type !== 'password' && adornment && (React.createElement(React.Fragment, null,
-            React.createElement("div", { className: `inputBlock ${className}` },
-                React.createElement("span", { className: "InputAddOn-item InputAddOn-field" }, adornment),
-                React.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: placeholder }, rest, { type: inputType, required: _required }))))),
+            React.createElement("div", { className: "adornment-Container" },
+                React.createElement("div", { className: "adornmentContent" },
+                    React.createElement("span", { className: "InputAddOn-item InputAddOn-field" }, adornment)),
+                React.createElement("div", { className: `adornInputField ${className}` },
+                    React.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: _placeholder }, rest, { type: _type, required: _required, onChange: onChange })))))),
         type !== 'password' && ornament && (React.createElement(React.Fragment, null,
-            React.createElement("div", { className: `inputBlock ${className}` },
-                React.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: placeholder }, rest, { type: inputType, required: _required })),
-                React.createElement("span", { className: "InputAddOn-item" }, ornament))))));
+            React.createElement("div", { className: "ornamnent-Container" },
+                React.createElement("div", { className: `oranInputField ${className}` },
+                    React.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: _placeholder }, rest, { type: _type, required: _required, onChange: onChange }))),
+                React.createElement("div", { className: "oranmentContent" },
+                    React.createElement("span", { className: "InputAddOn-item" }, ornament)))))));
 };
 
 const Switch = (props) => {
@@ -126,12 +133,12 @@ const Switch = (props) => {
     return React.createElement("input", Object.assign({ name: name, checked: checked, onChange: onChange, disabled: disabled, type: "checkbox" }, props));
 };
 
-var css_248z$7 = ".Card-module_card__Cb1o4 {\r\n    background-color: #ffffff;\r\n    border-radius: 8px;\r\n    line-height: 1.5;\r\n    word-break: break-all;\r\n    border: 1px solid #e8e8e8;\r\n}\r\n\r\n.Card-module_cardHead__X5ZxV {\r\n    padding: 0 1.6rem;\r\n    text-align: center;\r\n}\r\n\r\n.Card-module_cardFooter__-sXuF {\r\n    padding: 0 1.6rem;\r\n    font-size: 1.1rem;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n    padding: 0.4em;\r\n    border-radius: 2px 2px 0 0;\r\n}\r\n\r\n.Card-module_cardHeadTitle__hkszw {\r\n    font-weight: 500;\r\n    margin: 0;\r\n    font-size: 16px;\r\n    line-height: 22px;\r\n    font-weight: 500;\r\n}\r\n\r\n.Card-module_cardBody__-I34R {\r\n    padding: 1.2rem 1.8rem;\r\n    border-radius: 2px 2px 0 0;\r\n    text-align: center;\r\n}\r\n\r\n.Card-module_noBorderCard__ej-zo {\r\n    border: none;\r\n}\r\n\r\n.Card-module_topRightBtn__EwYaO {\r\n    display: flex;\r\n    align-items: center;\r\n}";
+var css_248z$7 = ".Card-module_card__Cb1o4 {\n    background-color: #ffffff;\n    border-radius: 8px;\n    line-height: 1.5;\n    word-break: break-all;\n    border: 1px solid #e8e8e8;\n}\n\n.Card-module_cardHead__X5ZxV {\n    padding: 0 1.6rem;\n    text-align: center;\n}\n\n.Card-module_cardFooter__-sXuF {\n    padding: 0 1.6rem;\n    font-size: 1.1rem;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding: 0.4em;\n    border-radius: 2px 2px 0 0;\n}\n\n.Card-module_cardHeadTitle__hkszw {\n    font-weight: 500;\n    margin: 0;\n    font-size: 16px;\n    line-height: 22px;\n    font-weight: 500;\n}\n\n.Card-module_cardBody__-I34R {\n    padding: 1.2rem 1.8rem;\n    border-radius: 2px 2px 0 0;\n    text-align: center;\n}\n\n.Card-module_noBorderCard__ej-zo {\n    border: none;\n}\n\n.Card-module_topRightBtn__EwYaO {\n    display: flex;\n    align-items: center;\n}";
 var styles = {"card":"Card-module_card__Cb1o4","cardHead":"Card-module_cardHead__X5ZxV","cardFooter":"Card-module_cardFooter__-sXuF","cardHeadTitle":"Card-module_cardHeadTitle__hkszw","cardBody":"Card-module_cardBody__-I34R","noBorderCard":"Card-module_noBorderCard__ej-zo","topRightBtn":"Card-module_topRightBtn__EwYaO"};
 styleInject(css_248z$7);
 
 const Card = (props) => {
-    const { className = '', padding = '', title = 'Card Title', border = '', footer = 'Card Footer', headerImage } = props;
+    const { className, padding, title = 'Card Title', border, footer = 'Card Footer', headerImage } = props;
     const borderStyle = border === 'none' ? styles.noBorderCard : '';
     const cardHeader = (React.createElement("div", { className: "cardHead" },
         React.createElement("div", { className: "cardHeadTitle" }, headerImage ? headerImage && React.createElement("img", { src: headerImage, alt: "Card Header Image" }) : React.createElement("span", null, title))));
@@ -144,8 +151,15 @@ const Card = (props) => {
         cardFooter));
 };
 
-const TableHeader = ({ columns }) => {
-    return (React.createElement("tr", null, columns === null || columns === void 0 ? void 0 : columns.map((column, columnIndex) => (React.createElement("th", { className: "tableHeader", key: `table-head-cell-${columnIndex}`, style: { width: column.width } }, column.title)))));
+const TableHeader = ({ columns, buttons }) => {
+    if (columns && buttons) {
+        let addedcolumn = [...columns, ...buttons];
+        return (React.createElement(React.Fragment, null,
+            React.createElement("tr", null, addedcolumn === null || addedcolumn === void 0 ? void 0 : addedcolumn.map((addedcolumn, columnIndex) => (React.createElement("th", { className: "tableHeader", key: `table-head-cell-${columnIndex}`, style: { width: addedcolumn.width } }, addedcolumn.title))))));
+    }
+    if (columns && !buttons) {
+        return (React.createElement(React.Fragment, null, columns && !buttons && (React.createElement("tr", null, columns === null || columns === void 0 ? void 0 : columns.map((column, columnIndex) => (React.createElement("th", { className: "tableHeader", key: `table-head-cell-${columnIndex}`, style: { width: column.width } }, column.title)))))));
+    }
 };
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -1460,7 +1474,6 @@ function get(object, path, defaultValue) {
 
 var get_1 = get;
 
-<<<<<<< HEAD
 const TableRowCell = ({ item, column, buttons, onClick }) => {
     const value = get_1(item, column === null || column === void 0 ? void 0 : column.id);
     if (!buttons) {
@@ -1473,26 +1486,29 @@ const TableRowCell = ({ item, column, buttons, onClick }) => {
                 } }, buttons === null || buttons === void 0 ? void 0 : buttons.value)));
     }
     return React.createElement(React.Fragment, null);
-=======
-const TableRowCell = ({ item, column, onClick }) => {
-    const value = get_1(item, column.key);
-    return React.createElement("td", { className: "tableRowCell" }, column.type === 'button' ? React.createElement("a", { onClick: onClick }, value) : value);
->>>>>>> 3722d2c7989660d48f05453b80fe15a520003e00
 };
 
-const TableRow = ({ data, columns }) => {
-    return (React.createElement(React.Fragment, null, data === null || data === void 0 ? void 0 : data.map((item, rowIndex) => (React.createElement("tr", { key: `table-row-${rowIndex}` }, columns === null || columns === void 0 ? void 0 : columns.map((column, columnIndex) => (React.createElement(TableRowCell, { key: `table-cell-${rowIndex}-${columnIndex}`, item: item, column: column }))))))));
+const TableRow = ({ data, columns, buttons, onClick }) => {
+    if (!buttons) {
+        return (React.createElement(React.Fragment, null, data && !buttons && (React.createElement(React.Fragment, null, data === null || data === void 0 ? void 0 : data.map((item, rowIndex) => (React.createElement("tr", { className: "tableRowItem", key: `table-row-${rowIndex}` }, columns === null || columns === void 0 ? void 0 : columns.map((column, columnIndex) => (React.createElement(TableRowCell, { key: `table-cell-${rowIndex}-${columnIndex}`, item: item, column: column }))))))))));
+    }
+    if (data && buttons) {
+        return (React.createElement(React.Fragment, null, data === null || data === void 0 ? void 0 : data.map((item, rowIndex) => (React.createElement("tr", { className: "tableRowItem", key: `table-row-${rowIndex}` }, columns === null || columns === void 0 ? void 0 :
+            columns.map((column, columnIndex) => (React.createElement(TableRowCell, { key: `table-cell-${rowIndex}-${columnIndex}`, item: item, column: column }))),
+            buttons.map((buttons, buttonIndex) => (React.createElement(TableRowCell, { key: `table-cell-${rowIndex}-${buttonIndex}`, item: item, buttons: buttons, onClick: onClick }))))))));
+    }
+    return React.createElement(React.Fragment, null);
 };
 
-var css_248z$6 = ".mainTable {\r\n    border-collapse: collapse;\r\n    border: none;\r\n    font-family: sans-serif;\r\n}\r\n\r\n.tableHeader {\r\n    background-color: #f1f1f1;\r\n    padding: 12px;\r\n    margin: 10px 0 10px 0;\r\n    font-weight: 600;\r\n    text-align: left;\r\n    font-size: 15px;\r\n    color: #2c3e50;\r\n}\r\n\r\n.tableHeader:first-child {\r\n    border-top-left-radius: 12px;\r\n}\r\n\r\n.tableHeader:last-child {\r\n    border-top-right-radius: 12px;\r\n}\r\n\r\n.tableRowItem {\r\n    cursor: auto;\r\n}\r\n\r\n.tableRowItem:nth-child(odd) {\r\n    background-color: #f9f9f9;\r\n}\r\n\r\n.tableRowItem:last-child {\r\n    border-top-left-radius: 12px;\r\n    border-top-right-radius: 12px;\r\n}\r\n\r\n.tableRowCell {\r\n    padding: 12px;\r\n    font-size: 14px;\r\n    color: grey;\r\n}\r\n\r\n.btn {\r\n    cursor: pointer;\r\n}";
+var css_248z$6 = ".mainTable {\n    border-collapse: collapse;\n    border: none;\n    font-family: sans-serif;\n    overflow-x: auto;\n    display: block;\n}\n\n.tableHeader {\n    background-color: #f1f1f1;\n    padding: 12px;\n    margin: 10px 0 10px 0;\n    font-weight: 600;\n    text-align: left;\n    font-size: 15px;\n    color: #2c3e50;\n}\n\n.tableHeader:first-child {\n    border-top-left-radius: 12px;\n}\n\n.tableHeader:last-child {\n    border-top-right-radius: 12px;\n}\n\n.tableRowItem:nth-child(odd) {\n    background-color: #f9f9f9;\n}\n\n.tableRowItem:last-child {\n    border-top-left-radius: 12px;\n    border-top-right-radius: 12px;\n}\n\n.tableRowCell {\n    padding: 12px;\n    font-size: 14px;\n    color: grey;\n    text-align: left;\n}\n\n.tableBtn {\n    cursor: pointer;\n    border: 0;\n    background-color: transparent;\n}";
 styleInject(css_248z$6);
 
-const Table = ({ data, columns }) => {
+const Table = ({ data, columns, buttons, onClick }) => {
     return (React.createElement("table", { className: "mainTable" },
         React.createElement("thead", null,
-            React.createElement(TableHeader, { columns: columns })),
+            React.createElement(TableHeader, { columns: columns, buttons: buttons })),
         React.createElement("tbody", null,
-            React.createElement(TableRow, { data: data, columns: columns }))));
+            React.createElement(TableRow, { data: data, columns: columns, buttons: buttons, onClick: onClick }))));
 };
 
 const Icon = () => {
@@ -1505,90 +1521,34 @@ const UpIcon = () => {
         React.createElement("path", { d: "M0 16.67l2.829 2.83 9.175-9.339 9.167 9.339 2.829-2.83-11.996-12.17z" })));
 };
 
-const CloseIcon = () => {
-    return (React.createElement("svg", { height: "20", width: "20", viewBox: "0 0 20 20" },
-        React.createElement("path", { d: "M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z" })));
-};
-
-var css_248z$5 = ".dropdown-container {\r\n    text-align: left;\r\n    /* border: 1px solid #ccc; */\r\n    /* position: relative; */\r\n    color: #858585;\r\n    background: #f0f0f0;\r\n    border-radius: 5px;\r\n}\r\n\r\n.dropdown-input {\r\n    padding: 12px;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    user-select: none;\r\n    background: #F0F0F0;\r\n    border: 0.5px solid #858585;\r\n    border-radius: 4px;\r\n}\r\n\r\n.dropdown-menu {\r\n    position: absolute;\r\n    transform: translateY(94px);\r\n    border: 1px solid #ccc;\r\n    border-radius: 4px 4px 12px 12px;\r\n    overflow: auto;\r\n    max-height: 150px;\r\n    left: 15px;\r\n    background-color: #fff;\r\n    right: 15px;\r\n}\r\n\r\n.dropdown-item {\r\n    padding: 12px;\r\n    cursor: pointer;\r\n}\r\n\r\n.dropdown-item.selected {\r\n    background-color: #f5f5f5;\r\n    color: #0788dd;\r\n}\r\n\r\n.dropdown-selected-value {\r\n    position: absolute;\r\n    margin-left: 15px;\r\n}\r\n\r\n.dropdown-item:hover {\r\n    background-color: #f5f5f5;\r\n}\r\n\r\n.dropdown-tags {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    gap: 5px;\r\n}\r\n\r\n.dropdown-tools {\r\n    right: 25px;\r\n    position: absolute;\r\n}\r\n\r\n.dropdown-tag-item {\r\n    background-color: #ddd;\r\n    padding: 2px 4px;\r\n    border-radius: 2px;\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n\r\n.dropdown-tag-close {\r\n    display: flex;\r\n    align-items: center;\r\n    cursor: pointer;\r\n}\r\n\r\n.search-box {\r\n    padding: 4px;\r\n    background-color: #eee;\r\n}\r\n\r\n.search-box input {\r\n    /* width: 100%; */\r\n    box-sizing: border-box;\r\n    padding: 6px;\r\n    border: 1px solid #ccc;\r\n    border-radius: 5px;\r\n}";
+var css_248z$5 = ".dropdown-container {\n    text-align: left;\n    /* border: 1px solid #ccc; */\n    /* position: relative; */\n    color: #858585;\n    background: #f0f0f0;\n    border-radius: 5px;\n}\n\n.dropdown-input {\n    padding: 12px;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    user-select: none;\n    background: #F0F0F0;\n    border: 0.5px solid #858585;\n    border-radius: 4px;\n}\n\n.dropdown-menu {\n    position: absolute;\n    transform: translateY(94px);\n    border: 1px solid #ccc;\n    border-radius: 4px 4px 12px 12px;\n    overflow: auto;\n    max-height: 150px;\n    left: 15px;\n    background-color: #fff;\n    right: 15px;\n}\n\n.dropdown-item {\n    padding: 12px;\n    cursor: pointer;\n}\n\n.dropdown-item.selected {\n    background-color: #f5f5f5;\n    color: #0788dd;\n}\n\n.dropdown-selected-value {\n    position: absolute;\n    margin-left: 15px;\n}\n\n.dropdown-item:hover {\n    background-color: #f5f5f5;\n    color: #0788dd;\n}\n\n.dropdown-tags {\n    display: flex;\n    flex-wrap: wrap;\n    gap: 5px;\n}\n\n.dropdown-tools {\n    right: 25px;\n    position: absolute;\n}\n\n.dropdown-tag-item {\n    background-color: #ddd;\n    padding: 2px 4px;\n    border-radius: 2px;\n    display: flex;\n    align-items: center;\n}\n\n.dropdown-tag-close {\n    display: flex;\n    align-items: center;\n    cursor: pointer;\n}\n\n.search-box {\n    padding: 4px;\n    background-color: #eee;\n}\n\n.search-box input {\n    /* width: 100%; */\n    box-sizing: border-box;\n    padding: 6px;\n    border: 1px solid #ccc;\n    border-radius: 5px;\n}";
 styleInject(css_248z$5);
 
-const Select = ({ isMulti, options, placeholder, isSearchable, onChange }) => {
-    const [showMenu, setShowMenu] = React.useState(false);
-    const [searchValue, setSearchValue] = React.useState('');
-    const searchRef = React.useRef();
-    const inputRef = React.useRef();
-    const [selectedValue, setSelectedValue] = React.useState(isMulti ? [] : null);
-    React.useEffect(() => {
-        const handler = (e) => {
-            if (inputRef.current && !inputRef.current.contains(e.target)) {
-                setShowMenu(false);
-            }
-        };
-        window.addEventListener('click', handler);
-        return () => {
-            window.removeEventListener('click', handler);
-        };
-    });
-    React.useEffect(() => {
-        setSearchValue('');
-        if (showMenu && searchRef.current) {
-            searchRef.current.focus();
-        }
-    }, [showMenu]);
-    // Here getOptions is used to configure the options passed through props
-    const getOptions = () => {
-        if (!searchValue) {
-            return options;
-        }
-        return options.filter((option) => option.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0);
-    };
+const Select = ({ options, placeholder, isSearchable, onChange }) => {
+    const [showMenu, setShowMenu] = React.useState(true);
+    const [selectedValue, setSelectedValue] = React.useState('');
+    console.log(selectedValue, 'this is console');
     const handleInputClick = () => {
         setShowMenu(!showMenu);
     };
-    // Here getDisplay is used to check if we have to show placeholder or not
     const getDisplay = () => {
-        if (!selectedValue || selectedValue.length === 0) {
-            console.log('inside if', selectedValue);
-            return placeholder;
-        }
-        if (isMulti) {
-            return (React.createElement("div", { className: "dropdown-tags" }, selectedValue.map((option) => (React.createElement("div", { key: option, className: "dropdown-tag-item" },
-                option,
-                React.createElement("span", { onClick: (e) => onTagRemove(e, option), className: "dropdown-tag-close" },
-                    React.createElement(CloseIcon, null)))))));
+        if (!selectedValue) {
+            return placeholder || '';
         }
         return selectedValue;
     };
-    const removeOption = (option) => {
-        return selectedValue.filter((item) => item !== option);
-    };
-    const onTagRemove = (e, option) => {
-        e.stopPropagation();
-        const newValue = removeOption(option);
-        setSelectedValue(newValue);
-        onChange(newValue);
-    };
     const onItemClick = (option) => {
         let newValue;
-        if (isMulti) {
-            if (selectedValue.findIndex((item) => item === option) >= 0) {
-                newValue = removeOption(option);
-            }
-            else {
-                newValue = [...selectedValue, option];
-            }
-        }
-        else {
-            newValue = option;
-        }
+        newValue = option;
         setSelectedValue(newValue);
-        onChange(newValue);
+        const syntheticEvent = {
+            target: {
+                value: newValue.value
+            }
+        };
+        onChange && onChange(syntheticEvent);
     };
     const isSelected = (option) => {
-        if (isMulti) {
-            return selectedValue.filter((item) => item === option).length > 0;
-        }
         if (!selectedValue) {
             return false;
         }
@@ -1596,14 +1556,19 @@ const Select = ({ isMulti, options, placeholder, isSearchable, onChange }) => {
     };
     return (React.createElement(React.Fragment, null,
         React.createElement("div", { className: "dropdown-container" },
-            React.createElement("div", { ref: inputRef, className: "dropdown-input", onClick: handleInputClick },
+            React.createElement("div", { className: "dropdown-input", onClick: handleInputClick },
                 React.createElement("div", { className: "dropdown-selected-value" }, getDisplay()),
                 React.createElement("div", { className: "dropdown-tools" },
                     React.createElement("div", { className: "dropdown-tool" }, showMenu ? React.createElement(UpIcon, null) : React.createElement(Icon, null))),
-                showMenu && (React.createElement("div", { className: "dropdown-menu" }, options ? (getOptions().map((option) => (React.createElement("div", { onClick: () => onItemClick(option), key: option, className: `dropdown-item ${isSelected(option) && 'selected'}` }, option)))) : (React.createElement("div", null, "Please add options"))))))));
+                showMenu && (React.createElement("div", { className: "dropdown-menu" }, options ? (options.map((option) => (React.createElement("div", { onClick: () => onItemClick(option), key: option, className: `dropdown-item ${isSelected(option) && 'selected'}` }, option)))) : (React.createElement("div", { className: "dropdown-menu" }, "...Please add options"))))))));
 };
 
-var css_248z$4 = ".alert {\r\n    padding: 10px;\r\n    border-radius: 5px;\r\n    display: flex;\r\n    justify-content: space-between;\r\n}\r\n\r\n.alert-success {\r\n    border: 2px solid #78d178;\r\n    background-color: #d1ffcd;\r\n}\r\n\r\n.alert-failure {\r\n    border: 2px solid #d17878;\r\n    background-color: rgb(255, 205, 205);\r\n}\r\n\r\n.alert-warning {\r\n    border: 2px solid #ecdd68;\r\n    background-color: #faf4c7;\r\n}\r\n\r\n.closeIcon {\r\n    cursor: pointer;\r\n}\r\n";
+const CloseIcon = () => {
+    return (React.createElement("svg", { height: "20", width: "20", viewBox: "0 0 20 20" },
+        React.createElement("path", { d: "M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z" })));
+};
+
+var css_248z$4 = ".alert {\n    padding: 10px;\n    border-radius: 5px;\n    display: flex;\n    justify-content: space-between;\n}\n\n.alert-success {\n    border: 2px solid #78d178;\n    background-color: #d1ffcd;\n}\n\n.alert-failure {\n    border: 2px solid #d17878;\n    background-color: rgb(255, 205, 205);\n}\n\n.alert-warning {\n    border: 2px solid #ecdd68;\n    background-color: #faf4c7;\n}\n\n.closeIcon {\n    cursor: pointer;\n}\n";
 styleInject(css_248z$4);
 
 const Alert = ({ message = 'This is a success message', type = 'success', timeout, isClosable = true }) => {
@@ -1625,7 +1590,7 @@ const Alert = ({ message = 'This is a success message', type = 'success', timeou
             React.createElement(CloseIcon, null)))));
 };
 
-var css_248z$3 = ".tooltipMainDiv {\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.textContainer {\r\n    visibility: visible;\r\n    min-width: 30px;\r\n    background-color: rgb(49, 49, 49);\r\n    color: #fff;\r\n    text-align: center;\r\n    border-radius: 4px;\r\n    padding: 5px 5px 5px 5px;\r\n    position: absolute;\r\n    z-index: 1;\r\n    top: 100%;\r\n    left: 50%;\r\n    margin-left: -60px;\r\n    opacity: 0.8;\r\n    font-size: 14px;\r\n}\r\n";
+var css_248z$3 = ".tooltipMainDiv {\n    position: relative;\n    display: inline-block;\n}\n\n.textContainer {\n    visibility: visible;\n    min-width: 30px;\n    background-color: rgb(49, 49, 49);\n    color: #fff;\n    text-align: center;\n    border-radius: 4px;\n    padding: 5px 5px 5px 5px;\n    position: absolute;\n    z-index: 1;\n    top: 100%;\n    left: 50%;\n    margin-left: -60px;\n    opacity: 0.8;\n    font-size: 14px;\n}\n";
 styleInject(css_248z$3);
 
 const Tooltip = ({ text, children }) => {
@@ -1641,7 +1606,7 @@ const Tooltip = ({ text, children }) => {
         showTooltip && React.createElement("span", { className: "textContainer " }, text)));
 };
 
-var css_248z$2 = ".sidebar {\r\n    background: #edf7f7;\r\n    color: black;\r\n    width: 200px;\r\n    font-size: 18px;\r\n    padding: 10px;\r\n    height: 100vh;\r\n    font-family: sans-serif;\r\n    display: flex;\r\n    flex-direction: column;\r\n    text-align: 'start';\r\n}\r\n\r\n.SidebarItem {\r\n    cursor: pointer;\r\n    margin-bottom: 6px;\r\n    border-radius: 8px;\r\n    padding: 10px 14px 10px 14px;\r\n}\r\n\r\n.active {\r\n    background-color: #d0e8e8;\r\n    color: black;\r\n}\r\n\r\n.SidebarItem:hover,\r\n.sidebarSubItems:hover {\r\n    background-color: #d0e8e8;\r\n}\r\n\r\n.sidebarSubItems {\r\n    cursor: pointer;\r\n    display: flex;\r\n    text-decoration: none;\r\n    color: black;\r\n    margin-left: 15px;\r\n    border-radius: 8px;\r\n    padding: 10px 14px 10px 14px;\r\n}\r\n";
+var css_248z$2 = ".sidebar {\n    background: #edf7f7;\n    color: black;\n    width: 200px;\n    font-size: 18px;\n    padding: 10px;\n    height: 100vh;\n    font-family: sans-serif;\n    display: flex;\n    flex-direction: column;\n    text-align: 'start';\n}\n\n.SidebarItem {\n    cursor: pointer;\n    margin-bottom: 6px;\n    border-radius: 8px;\n    padding: 10px 14px 10px 14px;\n}\n\n.active {\n    background-color: #d0e8e8;\n    color: black;\n}\n\n.SidebarItem:hover,\n.sidebarSubItems:hover {\n    background-color: #d0e8e8;\n}\n\n.sidebarSubItems {\n    cursor: pointer;\n    display: flex;\n    text-decoration: none;\n    color: black;\n    margin-left: 15px;\n    border-radius: 8px;\n    padding: 10px 14px 10px 14px;\n}\n";
 styleInject(css_248z$2);
 
 const Sidebar = ({ sidebarData }) => {
@@ -1657,23 +1622,22 @@ const Sidebar = ({ sidebarData }) => {
         setCurrSubItem(id === currSubItem ? null : id);
     };
     return (React.createElement("div", { className: "sidebar" }, sidebarData.map((data, index) => {
-        return (React.createElement(React.Fragment, null,
-            React.createElement("div", null,
-                React.createElement("div", { className: `SidebarItem ${curr === data.id ? 'active' : ''}`, onClick: () => {
-                        handleItemClick(data.id);
-                    } }, data.title),
-                curr === data.id &&
-                    data.items &&
-                    isOpen &&
-                    (data === null || data === void 0 ? void 0 : data.items.map((itemval) => {
-                        return (React.createElement("a", { href: itemval.link, onClick: () => {
-                                handleSubItemClick(itemval.id);
-                            }, className: `sidebarSubItems ${currSubItem === itemval.id ? 'active' : ''}` }, itemval.title));
-                    })))));
+        return (React.createElement("div", { key: `Sidebar-Data -${data.id}` },
+            React.createElement("div", { className: `SidebarItem ${curr === data.id ? 'active' : ''}`, onClick: () => {
+                    handleItemClick(data.id);
+                } }, data.title),
+            curr === data.id &&
+                data.items &&
+                isOpen &&
+                (data === null || data === void 0 ? void 0 : data.items.map((itemval) => {
+                    return (React.createElement("a", { href: itemval.link, key: `Sidebar-Link -${data.id}`, onClick: () => {
+                            handleSubItemClick(itemval.id);
+                        }, className: `sidebarSubItems ${currSubItem === itemval.id ? 'active' : ''}` }, itemval.title));
+                }))));
     })));
 };
 
-var css_248z$1 = ".dropdown {\r\n  width: 100%;\r\n}\r\n\r\nimg.logoSize {\r\n  width: 40px;\r\n}\r\n\r\n.navbar {\r\n  background: #eeeeee;\r\n  color: black;\r\n  width: 100%;\r\n  display: flex;\r\n  flex-direction: row;\r\n}\r\n\r\n.navbarItem {\r\n  cursor: pointer;\r\n  padding: 10px 5px;\r\n  display: inline-flex;\r\n}\r\n\r\n.active {\r\n  background-color: #1ea7fd;\r\n  color: #eeeeee;\r\n}\r\n\r\n.navbarItem:hover,\r\n.navbarSubItems:hover {\r\n  color: #6cc4fc;\r\n}\r\n\r\n.dropdown-content {\r\n  position: absolute;\r\n  background-color: #f1f1f1;\r\n  min-width: 160px;\r\n  z-index: 1;\r\n  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.navbarItem:hover .dropdown-content {\r\n  display: block;\r\n}\r\n\r\n.dropdown-content a {\r\n  color: black;\r\n  padding: 12px 16px;\r\n  display: block;\r\n  text-decoration: none;\r\n}\r\n\r\n.navbarSubItems {\r\n  cursor: pointer;\r\n  text-decoration: none;\r\n  color: black;\r\n}\r\n\r\ninput[type=checkbox] {\r\n  display: none;\r\n}\r\n\r\n.hamburger {\r\n  display: none;\r\n  font-size: 24px;\r\n  user-select: none;\r\n}\r\n\r\n.dropdown {\r\n  position: relative;\r\n  display: inline-block;\r\n}\r\n\r\n.btnContainer {\r\n  display: flex;\r\n  flex-direction: row;\r\n  position: absolute;\r\n  right: 0;\r\n}\r\n\r\n.btnItems {\r\n  padding: 10px;\r\n}\r\n\r\n.btnItems:hover {\r\n  color: #6cc4fc;\r\n}\r\n\r\nbutton {\r\n  padding: 5px 10px;\r\n  cursor: pointer;\r\n  border-radius: 8px;\r\n  border: 0;\r\n  background-color: #1ea7fd;\r\n}\r\n\r\n.allLinks {\r\n  display: flex;\r\n  flex-direction: row;\r\n  place-self: center;\r\n}\r\n\r\n.navTitle {\r\n  display: flex;\r\n  flex-direction: row;\r\n  padding: 10px 15px;\r\n}\r\n\r\n.title {\r\n  place-self: center;\r\n  padding: 10px;\r\n  cursor: pointer;\r\n}\r\n\r\n.title:hover {\r\n  color: #1ea7fd;\r\n}\r\n\r\n@media screen and (min-width: 300px) and (max-width: 640px) {\r\n  .navbar {\r\n    background-color: transparent;\r\n  }\r\n\r\n  .repNavLink {\r\n    display: none;\r\n  }\r\n\r\n  .allLinks {\r\n    position: fixed;\r\n    background-color: #f1f1f1;\r\n    min-width: 50%;\r\n    right: 50px;\r\n    z-index: 1;\r\n    top: 30px;\r\n    display: block;\r\n    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);\r\n  }\r\n\r\n  .resNavBar {\r\n    display: flex;\r\n    flex-direction: column;\r\n  }\r\n\r\n  .dropdown-content {\r\n    position: inherit;\r\n    z-index: 1;\r\n  }\r\n\r\n  .navbarSubItems {\r\n    display: none;\r\n  }\r\n\r\n  .hamburger {\r\n    display: block;\r\n    font-size: 25px;\r\n    cursor: pointer;\r\n    position: absolute;\r\n  }\r\n\r\n  label.hamburger {\r\n    right: 5px;\r\n    top: 10px;\r\n  }\r\n\r\n  .hamburger:hover {\r\n    color: #6cc4fc;\r\n  }\r\n\r\n  #checkbox_toggle:checked~.dropdown-content {\r\n    display: block;\r\n  }\r\n}";
+var css_248z$1 = ".dropdown {\n  width: 100%;\n}\n\nimg.logoSize {\n  width: 40px;\n}\n\n.navbar {\n  background: #eeeeee;\n  color: black;\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n}\n\n.navbarItem {\n  cursor: pointer;\n  padding: 10px 5px;\n  display: inline-flex;\n}\n\n.active {\n  background-color: #1ea7fd;\n  color: #eeeeee;\n}\n\n.navbarItem:hover,\n.navbarSubItems:hover {\n  color: #6cc4fc;\n}\n\n.dropdown-content {\n  position: absolute;\n  background-color: #f1f1f1;\n  min-width: 160px;\n  z-index: 1;\n  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);\n}\n\n.navbarItem:hover .dropdown-content {\n  display: block;\n}\n\n.dropdown-content a {\n  color: black;\n  padding: 12px 16px;\n  display: block;\n  text-decoration: none;\n}\n\n.navbarSubItems {\n  cursor: pointer;\n  text-decoration: none;\n  color: black;\n}\n\ninput[type=checkbox] {\n  display: none;\n}\n\n.hamburger {\n  display: none;\n  font-size: 24px;\n  user-select: none;\n}\n\n.dropdown {\n  position: relative;\n  display: inline-block;\n}\n\n.btnContainer {\n  display: flex;\n  flex-direction: row;\n  position: absolute;\n  right: 0;\n}\n\n.btnItems {\n  padding: 10px;\n}\n\n.btnItems:hover {\n  color: #6cc4fc;\n}\n\nbutton {\n  padding: 5px 10px;\n  cursor: pointer;\n  border-radius: 8px;\n  border: 0;\n  background-color: #1ea7fd;\n}\n\n.allLinks {\n  display: flex;\n  flex-direction: row;\n  place-self: center;\n}\n\n.navTitle {\n  display: flex;\n  flex-direction: row;\n  padding: 10px 15px;\n}\n\n.title {\n  place-self: center;\n  padding: 10px;\n  cursor: pointer;\n}\n\n.title:hover {\n  color: #1ea7fd;\n}\n\n@media screen and (min-width: 300px) and (max-width: 640px) {\n  .navbar {\n    background-color: transparent;\n  }\n\n  .repNavLink {\n    display: none;\n  }\n\n  .allLinks {\n    position: fixed;\n    background-color: #f1f1f1;\n    min-width: 50%;\n    right: 50px;\n    z-index: 1;\n    top: 30px;\n    display: block;\n    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);\n  }\n\n  .resNavBar {\n    display: flex;\n    flex-direction: column;\n  }\n\n  .dropdown-content {\n    position: inherit;\n    z-index: 1;\n  }\n\n  .navbarSubItems {\n    display: none;\n  }\n\n  .hamburger {\n    display: block;\n    font-size: 25px;\n    cursor: pointer;\n    position: absolute;\n  }\n\n  label.hamburger {\n    right: 5px;\n    top: 10px;\n  }\n\n  .hamburger:hover {\n    color: #6cc4fc;\n  }\n\n  #checkbox_toggle:checked~.dropdown-content {\n    display: block;\n  }\n}";
 styleInject(css_248z$1);
 
 const NavBar = ({ navbarData }) => {
@@ -1687,7 +1651,7 @@ const NavBar = ({ navbarData }) => {
         setCurrSubItem(null);
     };
     const handleSubItemClick = (id) => {
-        setCurrSubItem(id === currSubItem ? null : id);
+        setCurrSubItem(id === currSubItem ? '' : id);
     };
     const dropNav = () => {
         setResOpen(!resOpen);
@@ -1733,28 +1697,14 @@ const NavBar = ({ navbarData }) => {
         React.createElement("label", { htmlFor: "checkbox_toggle", className: "hamburger", onClick: dropNav }, "\u2630")));
 };
 
-var css_248z = ".textField {\r\n  padding: 15px;\r\n  box-sizing: border-box;\r\n  background: #FFFFFF;\r\n  border: 1.8px solid #6b6b6b;\r\n  border-radius: 8px;\r\n}\r\n\r\n.textField:focus {\r\n  border: 0.5px solid #0094DA;\r\n  outline: none;\r\n}";
+var css_248z = ".textAreaField {\n  display: flex;\n  align-items: start;\n  justify-content: space-between;\n  align-items: center;\n  user-select: none;\n  background: #FFFFFF;\n  border: 1px solid rgba(147, 128, 108, 0.25);\n  border-radius: 6px;\n  padding: 8px;\n}\n\n.textAreaField:focus-within {\n  border: 0.5px solid #0094DA;\n  outline: none;\n}\n\n.textAreaInput,\n.textAreaInput:focus {\n  background: #FFFFFF;\n  border: none;\n  width: 100%;\n  outline: none;\n}";
 styleInject(css_248z);
 
 const TextArea = (props) => {
-    const { cols, rows, placeholder, className } = props;
-    // Setting Default Value
-    let _className = 'textField';
-    let _rows = 10;
-    let _cols = 50;
-    let _placeholder = 'Write here..';
-    // Overwrite the default Value
-    if (className)
-        _className = className;
-    if (rows)
-        _rows = rows;
-    if (cols)
-        _cols = cols;
-    if (placeholder)
-        _placeholder = placeholder;
+    const { cols, rows, placeholder, onChange, className } = props; __rest(props, ["cols", "rows", "placeholder", "onChange", "className"]);
     return (React.createElement(React.Fragment, null,
-        React.createElement("div", { className: `inputField ${className}` },
-            React.createElement("textarea", { className: _className, rows: _rows, cols: _cols, form: props.form, placeholder: _placeholder }))));
+        React.createElement("div", { className: `textAreaField ${className}` },
+            React.createElement("textarea", { className: className ? className : 'textAreaInput', rows: rows ? rows : 10, cols: cols ? cols : 50, form: props.form, placeholder: placeholder ? placeholder : 'Text Area...', onChange: onChange }))));
 };
 
 exports.Alert = Alert;

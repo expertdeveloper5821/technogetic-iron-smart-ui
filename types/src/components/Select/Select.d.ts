@@ -7,7 +7,6 @@ export interface SelectProps extends React.DetailedHTMLProps<React.InputHTMLAttr
     position?: string;
     name?: string;
     options?: optionType[];
-    isMulti?: boolean;
     isSearchable?: boolean;
 }
 export interface optionType {
@@ -18,6 +17,9 @@ export interface eType {
     target: {
         value: React.SetStateAction<string>;
     };
+}
+export interface itemType {
+    value: string;
 }
 export interface itemType {
     value: string;
