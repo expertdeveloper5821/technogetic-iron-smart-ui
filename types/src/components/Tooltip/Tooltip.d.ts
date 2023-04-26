@@ -3,5 +3,13 @@ import './Tooltip.css';
 type TooltipProps = {
     text?: string;
 };
-export declare const Tooltip: React.FunctionComponent<PropsWithChildren<TooltipProps>>;
+type TooltipState = {
+    showTooltip: boolean;
+};
+export declare class Tooltip extends React.Component<PropsWithChildren<TooltipProps>, TooltipState> {
+    constructor(props: PropsWithChildren<TooltipProps>);
+    handleMouseEnter(): void;
+    handleMouseLeave(): void;
+    render(): JSX.Element;
+}
 export {};

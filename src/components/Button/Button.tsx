@@ -16,7 +16,6 @@ export const Button: React.FunctionComponent<ButtonProps> = (props) => {
     let _style: React.CSSProperties = style || {};
 
     if (color) _style.color = color;
-
     if (backgroundColor) _style.backgroundColor = backgroundColor;
 
     return (

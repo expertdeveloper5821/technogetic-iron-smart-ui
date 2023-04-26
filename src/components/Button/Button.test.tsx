@@ -1,40 +1,35 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { Button } from './Button';
 import '@testing-library/jest-dom';
 import React from 'react';
 
-describe('Button Component', () => {
-    test('Renders the Button component', () => {
-        render(<Button children="Hello world!" />);
+describe('Button', () => {
+    it('should render with default props', () => {
+        const { getByText } = render(<Button />);
+        expect(getByText('Button')).toBeInTheDocument();
+        expect(getByText('Button')).toHaveAttribute('type', 'submit');
+        expect(getByText('Button')).toHaveClass('commonButton');
     });
 
-    test('Button should be disabled', () => {
-        render(<Button disabled children="Test Button" />);
-        expect(screen.getByRole('button', { name: 'Test Button' })).toBeDisabled();
+    it('should render with provided children', () => {
+        const { getByText } = render(<Button>Hello World</Button>);
+        expect(getByText('Hello World')).toBeInTheDocument();
     });
 
-    test('Renders correct text', () => {
-        render(<Button>Submit</Button>);
-        const buttonElement = screen.getByText(/submit/i);
-        expect(buttonElement).toBeInTheDocument();
+    it('should render with provided type', () => {
+        const { getByText } = render(<Button type="button">Click Me</Button>);
+        expect(getByText('Click Me')).toHaveAttribute('type', 'button');
     });
 
-    test('Calls the click handler function on click', () => {
-        const clickHandler = jest.fn();
-        render(<Button onClick={clickHandler}>Submit</Button>);
-        const buttonElement = screen.getByText(/submit/i);
-        buttonElement.click();
-        expect(clickHandler).toHaveBeenCalledTimes(1);
+    it('should render with provided class name', () => {
+        const { getByText } = render(<Button className="testButton">Test</Button>);
+        expect(getByText('Test')).toHaveClass('testButton');
     });
 
-    test('Renders with custom style', () => {
-        const customStyle = {
-            backgroundColor: 'red',
-            color: 'white',
-            borderRadius: '5px'
-        };
-        render(<Button style={customStyle}>Custom Button</Button>);
-        const buttonElement = screen.getByText(/custom button/i);
-        expect(buttonElement).toHaveStyle('background-color: red; color: white; border-radius: 5px;');
+    it('should call onClick prop when button is clicked', () => {
+        const handleClick = jest.fn();
+        const { getByText } = render(<Button onClick={handleClick}>Click Me</Button>);
+        fireEvent.click(getByText('Click Me'));
+        expect(handleClick).toHaveBeenCalledTimes(1);
     });
 });

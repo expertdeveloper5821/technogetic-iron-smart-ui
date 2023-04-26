@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { CloseIcon } from '../../assets/CloseIcon';
 import './Alert.css';
 
@@ -9,28 +9,56 @@ type AlertProps = {
     isClosable?: boolean;
 };
 
-export const Alert: React.FunctionComponent<AlertProps> = ({ message = 'This is a success message', type = 'success', timeout, isClosable = true }) => {
-    const [isOpen, setIsOpen] = useState(true);
-    const handleClose = () => {
-        setIsOpen(false);
-    };
-    if (timeout) {
-        setTimeout(() => {
-            handleClose();
-        }, timeout);
+type AlertState = {
+    isOpen: boolean;
+    timerId?: ReturnType<typeof setTimeout>;
+};
+
+export class Alert extends React.Component<AlertProps, AlertState> {
+    constructor(props: AlertProps) {
+        super(props);
+        this.state = {
+            isOpen: true
+        };
+        this.handleClose = this.handleClose.bind(this);
     }
 
-    if (!isOpen) {
-        return null;
+    componentDidMount() {
+        const { timeout } = this.props;
+        if (timeout) {
+            const timerId = setTimeout(() => {
+                this.handleClose();
+            }, timeout);
+            this.setState({ timerId });
+        }
     }
-    return (
-        <div className={`alert alert-${type}`}>
-            <div>{message}</div>
-            {isClosable && (
-                <div className="closeIcon" data-testid="close-button" onClick={handleClose}>
-                    <CloseIcon />
-                </div>
-            )}
-        </div>
-    );
-};
+
+    componentWillUnmount() {
+        const { timerId } = this.state;
+        if (timerId) {
+            clearTimeout(timerId);
+        }
+    }
+
+    handleClose() {
+        this.setState({ isOpen: false });
+    }
+
+    render() {
+        const { isOpen } = this.state;
+        const { message, type = 'success', isClosable = true } = this.props;
+        if (!isOpen) {
+            return null;
+        }
+        return (
+            <div className={`alert alert-${type}`}>
+                <div>{message ? message : 'This is a success message'}</div>
+                {isClosable && (
+                    <div className="closeIcon" data-testid="close-button" onClick={this.handleClose}>
+                        <CloseIcon />
+                    </div>
+                )}
+            </div>
+        );
+    }
+}

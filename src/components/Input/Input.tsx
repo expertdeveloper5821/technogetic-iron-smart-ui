@@ -50,7 +50,15 @@ export const Input: React.FunctionComponent<InputProps> = (props) => {
             {type === 'password' && (
                 <>
                     <div className={`inputField ${className}`}>
-                        <input {...rest} type={inputType} placeholder={_placeholder} required={_required} className={type === 'password' ? 'passwordInput' : ''} onChange={onChange} />
+                        <input
+                            {...rest}
+                            type={inputType}
+                            placeholder={_placeholder}
+                            required={_required}
+                            className={type === 'password' ? 'passwordInput' : ''}
+                            onChange={onChange}
+                            data-testid="password-visibility-toggle"
+                        />
                         {passwordVisibilityButton}
                     </div>
                 </>

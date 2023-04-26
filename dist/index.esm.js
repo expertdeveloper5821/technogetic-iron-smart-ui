@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 function styleInject(css, ref) {
   if ( ref === void 0 ) ref = {};
@@ -107,7 +107,7 @@ const Input = (props) => {
     return (React.createElement(React.Fragment, null,
         type === 'password' && (React.createElement(React.Fragment, null,
             React.createElement("div", { className: `inputField ${className}` },
-                React.createElement("input", Object.assign({}, rest, { type: inputType, placeholder: _placeholder, required: _required, className: type === 'password' ? 'passwordInput' : '', onChange: onChange })),
+                React.createElement("input", Object.assign({}, rest, { type: inputType, placeholder: _placeholder, required: _required, className: type === 'password' ? 'passwordInput' : '', onChange: onChange, "data-testid": "password-visibility-toggle" })),
                 passwordVisibilityButton))),
         type !== 'password' && !adornment && !ornament && (React.createElement(React.Fragment, null,
             React.createElement("div", { className: `inputField ${className}` },
@@ -1514,51 +1514,28 @@ const Icon = () => {
         React.createElement("path", { d: "M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z" })));
 };
 
-const UpIcon = () => {
-    return (React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "12", height: "12", viewBox: "0 0 24 24" },
-        React.createElement("path", { d: "M0 16.67l2.829 2.83 9.175-9.339 9.167 9.339 2.829-2.83-11.996-12.17z" })));
-};
-
-var css_248z$5 = ".dropdown-container {\n    text-align: left;\n    /* border: 1px solid #ccc; */\n    /* position: relative; */\n    color: #858585;\n    background: #f0f0f0;\n    border-radius: 5px;\n}\n\n.dropdown-input {\n    padding: 12px;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    user-select: none;\n    background: #F0F0F0;\n    border: 0.5px solid #858585;\n    border-radius: 4px;\n}\n\n.dropdown-menu {\n    position: absolute;\n    transform: translateY(94px);\n    border: 1px solid #ccc;\n    border-radius: 4px 4px 12px 12px;\n    overflow: auto;\n    max-height: 150px;\n    left: 15px;\n    background-color: #fff;\n    right: 15px;\n}\n\n.dropdown-item {\n    padding: 12px;\n    cursor: pointer;\n}\n\n.dropdown-item.selected {\n    background-color: #f5f5f5;\n    color: #0788dd;\n}\n\n.dropdown-selected-value {\n    position: absolute;\n    margin-left: 15px;\n}\n\n.dropdown-item:hover {\n    background-color: #f5f5f5;\n    color: #0788dd;\n}\n\n.dropdown-tags {\n    display: flex;\n    flex-wrap: wrap;\n    gap: 5px;\n}\n\n.dropdown-tools {\n    right: 25px;\n    position: absolute;\n}\n\n.dropdown-tag-item {\n    background-color: #ddd;\n    padding: 2px 4px;\n    border-radius: 2px;\n    display: flex;\n    align-items: center;\n}\n\n.dropdown-tag-close {\n    display: flex;\n    align-items: center;\n    cursor: pointer;\n}\n\n.search-box {\n    padding: 4px;\n    background-color: #eee;\n}\n\n.search-box input {\n    /* width: 100%; */\n    box-sizing: border-box;\n    padding: 6px;\n    border: 1px solid #ccc;\n    border-radius: 5px;\n}";
+var css_248z$5 = ".selectContainer {\n    display: flex;\n    flex-direction: row;\n    border-radius: 4px;\n    border: 0.5px solid #858585;\n    background-color: #F0F0F0;\n    background: url(../../assets/ClosePassword) right / 90% no-repeat;\n}\n\nselect.selectInput {\n    width: 100%;\n    border: none;\n    background-color: none;\n    appearance: none;\n    -webkit-appearance: none;\n    padding: 6px;\n}\n\nselect:focus {\n    border: none;\n    outline: none;\n}\n\nselect option {\n    border: 5px solid;\n    border-radius: 14px;\n    color: red;\n}\n\n.selectIcon {\n    -moz-transition: all .3s linear;\n    -webkit-transition: all .3s linear;\n    transition: all .3s linear;\n}\n\n.rotate {\n    -moz-transform: rotate(180deg);\n    -webkit-transform: rotate(180deg);\n    transform: rotate(180deg);\n}";
 styleInject(css_248z$5);
 
-const Select = ({ options, placeholder, isSearchable, onChange }) => {
-    const [showMenu, setShowMenu] = useState(true);
-    const [selectedValue, setSelectedValue] = useState('');
-    console.log(selectedValue, 'this is console');
-    const handleInputClick = () => {
-        setShowMenu(!showMenu);
+const Select = ({ options, placeholder, disabled, name, onChange }) => {
+    const selectIconRef = useRef(null);
+    const handleChange = (event) => {
+        const selectedValue = event.target.value;
+        onChange === null || onChange === void 0 ? void 0 : onChange(Object.assign(Object.assign({}, event), { selectedValue }));
     };
-    const getDisplay = () => {
-        if (!selectedValue) {
-            return placeholder || '';
+    const handleToggleOptions = () => {
+        if (selectIconRef.current) {
+            selectIconRef.current.classList.toggle('rotate');
         }
-        return selectedValue;
     };
-    const onItemClick = (option) => {
-        let newValue;
-        newValue = option;
-        setSelectedValue(newValue);
-        const syntheticEvent = {
-            target: {
-                value: newValue.value
-            }
-        };
-        onChange && onChange(syntheticEvent);
-    };
-    const isSelected = (option) => {
-        if (!selectedValue) {
-            return false;
-        }
-        return selectedValue === option;
-    };
-    return (React.createElement(React.Fragment, null,
-        React.createElement("div", { className: "dropdown-container" },
-            React.createElement("div", { className: "dropdown-input", onClick: handleInputClick },
-                React.createElement("div", { className: "dropdown-selected-value" }, getDisplay()),
-                React.createElement("div", { className: "dropdown-tools" },
-                    React.createElement("div", { className: "dropdown-tool" }, showMenu ? React.createElement(UpIcon, null) : React.createElement(Icon, null))),
-                showMenu && (React.createElement("div", { className: "dropdown-menu" }, options ? (options.map((option) => (React.createElement("div", { onClick: () => onItemClick(option), key: option, className: `dropdown-item ${isSelected(option) && 'selected'}` }, option)))) : (React.createElement("div", { className: "dropdown-menu" }, "...Please add options"))))))));
+    return (React.createElement("div", { className: "selectContainer" },
+        React.createElement("select", { className: "selectInput", onChange: handleChange, onClick: handleToggleOptions },
+            placeholder && (React.createElement("option", { className: "selectOption", value: "", disabled: true, selected: true, hidden: true }, placeholder)), options === null || options === void 0 ? void 0 :
+            options.map((selectdata, selectIndex) => {
+                return (React.createElement("option", { className: "selectOption", key: selectIndex, value: selectdata }, selectdata));
+            })),
+        React.createElement("div", { className: "selectIcon", ref: selectIconRef },
+            React.createElement(Icon, null))));
 };
 
 const CloseIcon = () => {
@@ -1569,40 +1546,71 @@ const CloseIcon = () => {
 var css_248z$4 = ".alert {\n    padding: 10px;\n    border-radius: 5px;\n    display: flex;\n    justify-content: space-between;\n}\n\n.alert-success {\n    border: 2px solid #78d178;\n    background-color: #d1ffcd;\n}\n\n.alert-failure {\n    border: 2px solid #d17878;\n    background-color: rgb(255, 205, 205);\n}\n\n.alert-warning {\n    border: 2px solid #ecdd68;\n    background-color: #faf4c7;\n}\n\n.closeIcon {\n    cursor: pointer;\n}\n";
 styleInject(css_248z$4);
 
-const Alert = ({ message = 'This is a success message', type = 'success', timeout, isClosable = true }) => {
-    const [isOpen, setIsOpen] = useState(true);
-    const handleClose = () => {
-        setIsOpen(false);
-    };
-    if (timeout) {
-        setTimeout(() => {
-            handleClose();
-        }, timeout);
+class Alert extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isOpen: true
+        };
+        this.handleClose = this.handleClose.bind(this);
     }
-    if (!isOpen) {
-        return null;
+    componentDidMount() {
+        const { timeout } = this.props;
+        if (timeout) {
+            const timerId = setTimeout(() => {
+                this.handleClose();
+            }, timeout);
+            this.setState({ timerId });
+        }
     }
-    return (React.createElement("div", { className: `alert alert-${type}` },
-        React.createElement("div", null, message),
-        isClosable && (React.createElement("div", { className: "closeIcon", "data-testid": "close-button", onClick: handleClose },
-            React.createElement(CloseIcon, null)))));
-};
+    componentWillUnmount() {
+        const { timerId } = this.state;
+        if (timerId) {
+            clearTimeout(timerId);
+        }
+    }
+    handleClose() {
+        this.setState({ isOpen: false });
+    }
+    render() {
+        const { isOpen } = this.state;
+        const { message, type = 'success', isClosable = true } = this.props;
+        if (!isOpen) {
+            return null;
+        }
+        return (React.createElement("div", { className: `alert alert-${type}` },
+            React.createElement("div", null, message ? message : 'This is a success message'),
+            isClosable && (React.createElement("div", { className: "closeIcon", "data-testid": "close-button", onClick: this.handleClose },
+                React.createElement(CloseIcon, null)))));
+    }
+}
 
 var css_248z$3 = ".tooltipMainDiv {\n    position: relative;\n    display: inline-block;\n}\n\n.textContainer {\n    visibility: visible;\n    min-width: 30px;\n    background-color: rgb(49, 49, 49);\n    color: #fff;\n    text-align: center;\n    border-radius: 4px;\n    padding: 5px 5px 5px 5px;\n    position: absolute;\n    z-index: 1;\n    top: 100%;\n    left: 50%;\n    margin-left: -60px;\n    opacity: 0.8;\n    font-size: 14px;\n}\n";
 styleInject(css_248z$3);
 
-const Tooltip = ({ text, children }) => {
-    const [showTooltip, setShowTooltip] = useState(false);
-    const handleMouseEnter = () => {
-        setShowTooltip(true);
-    };
-    const handleMouseLeave = () => {
-        setShowTooltip(false);
-    };
-    return (React.createElement("div", { className: "tooltipMainDiv", "data-testId": "tooltipHover", onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave },
-        children,
-        showTooltip && React.createElement("span", { className: "textContainer " }, text)));
-};
+class Tooltip extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showTooltip: false
+        };
+        this.handleMouseEnter = this.handleMouseEnter.bind(this);
+        this.handleMouseLeave = this.handleMouseLeave.bind(this);
+    }
+    handleMouseEnter() {
+        this.setState({ showTooltip: true });
+    }
+    handleMouseLeave() {
+        this.setState({ showTooltip: false });
+    }
+    render() {
+        const { text, children } = this.props;
+        const { showTooltip } = this.state;
+        return (React.createElement("div", { className: "tooltipMainDiv", "data-testid": "tooltipHover", onMouseEnter: this.handleMouseEnter, onMouseLeave: this.handleMouseLeave },
+            children ? children : 'Hello I am a Tooltip',
+            showTooltip && React.createElement("span", { className: "textContainer " }, text ? text : 'This is the Text Area of Tooltip')));
+    }
+}
 
 var css_248z$2 = ".sidebar {\n    background: #edf7f7;\n    color: black;\n    width: 200px;\n    font-size: 18px;\n    padding: 10px;\n    height: 100vh;\n    font-family: sans-serif;\n    display: flex;\n    flex-direction: column;\n    text-align: 'start';\n}\n\n.SidebarItem {\n    cursor: pointer;\n    margin-bottom: 6px;\n    border-radius: 8px;\n    padding: 10px 14px 10px 14px;\n}\n\n.active {\n    background-color: #d0e8e8;\n    color: black;\n}\n\n.SidebarItem:hover,\n.sidebarSubItems:hover {\n    background-color: #d0e8e8;\n}\n\n.sidebarSubItems {\n    cursor: pointer;\n    display: flex;\n    text-decoration: none;\n    color: black;\n    margin-left: 15px;\n    border-radius: 8px;\n    padding: 10px 14px 10px 14px;\n}\n";
 styleInject(css_248z$2);

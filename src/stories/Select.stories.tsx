@@ -14,20 +14,6 @@ export const Primary = Template.bind({});
 Primary.args = {
     options: ['Green', 'Red', 'Yellow', 'Blue', 'Pink', 'Black', 'Orange'],
     placeholder: 'Select...',
-    isMulti: true,
-    isSearchable: true,
-    onChange: function (val: any): void {
-        console.log(val);
-    }
-};
-
-export const Single = Template.bind({});
-
-Single.args = {
-    options: ['Green', 'Red', 'Yellow', 'Blue', 'Pink', 'Black', 'Orange'],
-    placeholder: 'Select...',
-    // isMulti: false,
-    isSearchable: true,
     onChange: function (val: any): void {
         console.log(val);
     }

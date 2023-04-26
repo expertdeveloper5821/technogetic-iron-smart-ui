@@ -12,6 +12,7 @@ const Template: ComponentStory<typeof Alert> = (args) => <Alert {...args} />;
 export const Primary = Template.bind({});
 
 Primary.args = {
-    message: 'I am a Alert',
+    // timeout: 300,
+    // message: 'I am a Alert',
     type: 'success'
 };

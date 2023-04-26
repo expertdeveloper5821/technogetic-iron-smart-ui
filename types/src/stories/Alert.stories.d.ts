@@ -1,10 +1,5 @@
-import React from 'react';
 import { ComponentMeta } from '@storybook/react';
-declare const _default: ComponentMeta<React.FunctionComponent<{
-    message: string;
-    type?: string;
-    timeout?: number;
-    isClosable?: boolean;
-}>>;
+import { Alert } from '../components/Alert/Alert';
+declare const _default: ComponentMeta<typeof Alert>;
 export default _default;
 export declare const Primary: any;

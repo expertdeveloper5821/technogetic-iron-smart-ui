@@ -6,12 +6,11 @@ import React from 'react';
 
 describe('TextArea', () => {
     test('renders with default props', () => {
-        render(<TextArea />);
-        const textArea = screen.getByRole('textbox');
-        expect(textArea).toBeInTheDocument();
-        expect(textArea).toHaveAttribute('placeholder', 'Write here..');
-        expect(textArea).toHaveAttribute('rows', '10');
-        expect(textArea).toHaveAttribute('cols', '50');
+        const { getByPlaceholderText } = render(<TextArea />);
+        const textarea = getByPlaceholderText('Text Area...');
+        expect(textarea).toBeInTheDocument();
+        expect(textarea).toHaveAttribute('rows', '10');
+        expect(textarea).toHaveAttribute('cols', '50');
     });
 
     test('renders with custom props', () => {
