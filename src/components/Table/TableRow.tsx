@@ -9,7 +9,7 @@ interface Props<T> {
     onClick?: (event: React.MouseEvent<HTMLButtonElement>, rowData: T) => void;
 }
 
-const TableRow = <T extends Props<T>>({ data, columns, buttons, onClick }: Props<T>): JSX.Element => {
+const TableRow = <T,>({ data, columns, buttons, onClick }: Props<T>): JSX.Element => {
     if (!buttons) {
         return (
             <>
@@ -43,7 +43,6 @@ const TableRow = <T extends Props<T>>({ data, columns, buttons, onClick }: Props
             </>
         );
     }
-    return <></>;
 };
 
 export default TableRow;

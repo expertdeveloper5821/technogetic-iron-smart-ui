@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 function styleInject(css, ref) {
   if ( ref === void 0 ) ref = {};
@@ -84,31 +84,27 @@ const ClosePassword = () => {
 
 const Input = (props) => {
     const { className, placeholder, type, adornment, required, onChange, ornament } = props, rest = __rest(props, ["className", "placeholder", "type", "adornment", "required", "onChange", "ornament"]);
-    const inputType = type === 'password' ? 'password' : type;
+    const [showPassword, setShowPassword] = useState(false);
+    const togglePasswordVisibility = () => {
+        setShowPassword((prevState) => !prevState);
+    };
+    const inputType = type === 'password' ? (showPassword ? 'text' : 'password') : type;
+    // Set Defalut Values
     let _placeholder = 'Input Field';
     let _type = 'text';
     let _required = false;
+    // OverWrite the Default Values
     if (placeholder)
         _placeholder = placeholder;
     if (type)
         _type = type;
     if (required)
         _required = required;
-    let passwordVisibilityButton = null;
-    if (type === 'password') {
-        const togglePasswordVisibility = () => {
-            const input = document.querySelector('.passwordInput');
-            if (input != null) {
-                input.type = input.type === 'password' ? 'text' : 'password';
-            }
-        };
-        passwordVisibilityButton = (React.createElement("span", { className: "togglePasswordVisibility", onClick: togglePasswordVisibility }, inputType === 'password' ? React.createElement(ShowPassword, null) : React.createElement(ClosePassword, null)));
-    }
     return (React.createElement(React.Fragment, null,
         type === 'password' && (React.createElement(React.Fragment, null,
             React.createElement("div", { className: `inputField ${className}` },
-                React.createElement("input", Object.assign({}, rest, { type: inputType, placeholder: _placeholder, required: _required, className: type === 'password' ? 'passwordInput' : '', onChange: onChange, "data-testid": "password-visibility-toggle" })),
-                passwordVisibilityButton))),
+                React.createElement("input", Object.assign({}, rest, { type: inputType, placeholder: _placeholder, required: _required, onChange: onChange })),
+                React.createElement("span", { className: "togglePasswordVisibility", onClick: togglePasswordVisibility }, showPassword ? React.createElement(ClosePassword, null) : React.createElement(ShowPassword, null))))),
         type !== 'password' && !adornment && !ornament && (React.createElement(React.Fragment, null,
             React.createElement("div", { className: `inputField ${className}` },
                 React.createElement("input", Object.assign({ type: _type, placeholder: _placeholder, required: _required }, rest, { onChange: onChange }))))),
@@ -1495,7 +1491,6 @@ const TableRow = ({ data, columns, buttons, onClick }) => {
             columns.map((column, columnIndex) => (React.createElement(TableRowCell, { key: `table-cell-${rowIndex}-${columnIndex}`, item: item, column: column }))),
             buttons.map((buttons, buttonIndex) => (React.createElement(TableRowCell, { key: `table-cell-${rowIndex}-${buttonIndex}`, item: item, buttons: buttons, onClick: onClick }))))))));
     }
-    return React.createElement(React.Fragment, null);
 };
 
 var css_248z$6 = ".mainTable {\n    border-collapse: collapse;\n    border: none;\n    font-family: sans-serif;\n    overflow-x: auto;\n    display: block;\n}\n\n.tableHeader {\n    background-color: #f1f1f1;\n    padding: 12px;\n    margin: 10px 0 10px 0;\n    font-weight: 600;\n    text-align: left;\n    font-size: 15px;\n    color: #2c3e50;\n}\n\n.tableHeader:first-child {\n    border-top-left-radius: 12px;\n}\n\n.tableHeader:last-child {\n    border-top-right-radius: 12px;\n}\n\n.tableRowItem:nth-child(odd) {\n    background-color: #f9f9f9;\n}\n\n.tableRowItem:last-child {\n    border-top-left-radius: 12px;\n    border-top-right-radius: 12px;\n}\n\n.tableRowCell {\n    padding: 12px;\n    font-size: 14px;\n    color: grey;\n    text-align: left;\n}\n\n.tableBtn {\n    cursor: pointer;\n    border: 0;\n    background-color: transparent;\n}";

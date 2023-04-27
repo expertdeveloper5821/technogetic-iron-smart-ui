@@ -6,5 +6,5 @@ interface Props<T> {
     buttons?: IButtonType<T>[];
     onClick?: (event: React.MouseEvent<HTMLButtonElement>, rowData: T) => void;
 }
-declare const TableRow: <T extends Props<T>>({ data, columns, buttons, onClick }: Props<T>) => JSX.Element;
+declare const TableRow: <T>({ data, columns, buttons, onClick }: Props<T>) => JSX.Element;
 export default TableRow;

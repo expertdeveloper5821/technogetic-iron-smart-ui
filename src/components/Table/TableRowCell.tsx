@@ -3,8 +3,8 @@ import get from 'lodash/get';
 import { IColumnType, IButtonType } from './Table';
 
 interface Props<T> {
-    item: T;
-    column: IColumnType<T>;
+    item?: T;
+    column?: IColumnType<T>;
     buttons?: IButtonType<T>;
     onClick?: (event: React.MouseEvent<HTMLButtonElement>, rowData: T, buttonTitle: string) => void;
 }

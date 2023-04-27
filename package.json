@@ -13,7 +13,7 @@
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook",
         "test": "jest",
-        "test-coverage": "jest --coverage",
+        "test-coverage": "jest --collect-coverage",
         "chromatic": "npx chromatic --project-token=8839761dac56"
     },
     "author": {

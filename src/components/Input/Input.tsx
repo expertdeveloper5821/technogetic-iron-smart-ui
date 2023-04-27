@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Input.css';
 import { ShowPassword } from '../../assets/ShowPassword';
 import { ClosePassword } from '../../assets/ClosePassword';
@@ -21,45 +21,33 @@ export interface InputProps extends React.DetailedHTMLProps<React.InputHTMLAttri
 export const Input: React.FunctionComponent<InputProps> = (props) => {
     const { className, placeholder, type, adornment, required, onChange, ornament, ...rest } = props;
 
-    const inputType = type === 'password' ? 'password' : type;
+    const [showPassword, setShowPassword] = useState(false);
 
+    const togglePasswordVisibility = () => {
+        setShowPassword((prevState) => !prevState);
+    };
+
+    const inputType = type === 'password' ? (showPassword ? 'text' : 'password') : type;
+
+    const inputClassName = `inputField ${className} ${type === 'password' ? 'password' : ''}`;
+    // Set Defalut Values
     let _placeholder: string = 'Input Field';
     let _type: string = 'text';
     let _required: boolean = false;
-
+    // OverWrite the Default Values
     if (placeholder) _placeholder = placeholder;
     if (type) _type = type;
     if (required) _required = required;
 
-    let passwordVisibilityButton = null;
-    if (type === 'password') {
-        const togglePasswordVisibility = () => {
-            const input = document.querySelector('.passwordInput') as HTMLInputElement | null;
-            if (input != null) {
-                input.type = input.type === 'password' ? 'text' : 'password';
-            }
-        };
-        passwordVisibilityButton = (
-            <span className="togglePasswordVisibility" onClick={togglePasswordVisibility}>
-                {inputType === 'password' ? <ShowPassword /> : <ClosePassword />}
-            </span>
-        );
-    }
     return (
         <>
             {type === 'password' && (
                 <>
                     <div className={`inputField ${className}`}>
-                        <input
-                            {...rest}
-                            type={inputType}
-                            placeholder={_placeholder}
-                            required={_required}
-                            className={type === 'password' ? 'passwordInput' : ''}
-                            onChange={onChange}
-                            data-testid="password-visibility-toggle"
-                        />
-                        {passwordVisibilityButton}
+                        <input {...rest} type={inputType} placeholder={_placeholder} required={_required} onChange={onChange} />
+                        <span className="togglePasswordVisibility" onClick={togglePasswordVisibility}>
+                            {showPassword ? <ClosePassword /> : <ShowPassword />}
+                        </span>
                     </div>
                 </>
             )}
