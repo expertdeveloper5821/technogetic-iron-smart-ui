@@ -21,5 +21,6 @@ Primary.args = {
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-    children: 'Click me!'
+    outline: 'dark',
+    children: 'outline Button'
 };

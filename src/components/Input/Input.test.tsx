@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import React from 'react';
 
 describe('Input', () => {
-    it('renders a plain input field when type is not "password" and adornment/ornament props are not present', () => {
+    test('renders a plain input field when type is not "password" and adornment/ornament props are not present', () => {
         const { getByPlaceholderText } = render(<Input placeholder="Enter your name" />);
         const inputElement = getByPlaceholderText('Enter your name');
         expect(inputElement).toBeInTheDocument();

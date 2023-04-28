@@ -42,4 +42,39 @@ describe('Sidebar component', () => {
         expect(menuItem1.classList.contains('active')).toBe(false);
         expect(menuItem2.classList.contains('active')).toBe(true);
     });
+    test('displays submenus on menu item click', () => {
+        const { getByText } = render(<Sidebar sidebarData={sidebarData} />);
+
+        // Click on the first menu item
+        const menuItem1 = getByText('Menu 1');
+        fireEvent.click(menuItem1);
+
+        // Check if submenus are displayed
+        const submenu1 = getByText('Submenu 1');
+        const submenu2 = getByText('Submenu 2');
+        expect(submenu1).toBeVisible();
+        expect(submenu2).toBeVisible();
+    });
+    test('activates submenu item on click', () => {
+        const { getByText } = render(<Sidebar sidebarData={sidebarData} />);
+
+        // Click on the first menu item
+        const menuItem1 = getByText('Menu 1');
+        fireEvent.click(menuItem1);
+
+        // Click on the first submenu item
+        const submenu1 = getByText('Submenu 1');
+        fireEvent.click(submenu1);
+
+        // Check if the first submenu item is active
+        expect(submenu1.classList.contains('active')).toBe(true);
+
+        // Click on the second submenu item
+        const submenu2 = getByText('Submenu 2');
+        fireEvent.click(submenu2);
+
+        // Check if the first submenu item is inactive and the second submenu item is active
+        expect(submenu1.classList.contains('active')).toBe(false);
+        expect(submenu2.classList.contains('active')).toBe(true);
+    });
 });
