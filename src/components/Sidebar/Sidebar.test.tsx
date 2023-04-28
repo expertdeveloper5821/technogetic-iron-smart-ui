@@ -31,18 +31,14 @@ describe('Sidebar component', () => {
     test('activates menu item on click', () => {
         const { getByText } = render(<Sidebar sidebarData={sidebarData} />);
 
-        // Click on the first menu item
         const menuItem1 = getByText('Menu 1');
         fireEvent.click(menuItem1);
 
-        // Check if the first menu item is active
         expect(menuItem1.classList.contains('active')).toBe(true);
 
-        // Click on the second menu item
         const menuItem2 = getByText('Menu 2');
         fireEvent.click(menuItem2);
 
-        // Check if the first menu item is inactive and the second menu item is active
         expect(menuItem1.classList.contains('active')).toBe(false);
         expect(menuItem2.classList.contains('active')).toBe(true);
     });

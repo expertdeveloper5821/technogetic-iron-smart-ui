@@ -103,7 +103,7 @@ const Input = (props) => {
     return (React.createElement(React.Fragment, null,
         type === 'password' && (React.createElement(React.Fragment, null,
             React.createElement("div", { className: `inputField ${className}` },
-                React.createElement("input", Object.assign({}, rest, { type: inputType, placeholder: _placeholder, required: _required, onChange: onChange })),
+                React.createElement("input", Object.assign({}, rest, { type: inputType, placeholder: _placeholder, required: _required, onChange: onChange, "data-testid": "password-visibility-toggle" })),
                 React.createElement("span", { className: "togglePasswordVisibility", onClick: togglePasswordVisibility }, showPassword ? React.createElement(ClosePassword, null) : React.createElement(ShowPassword, null))))),
         type !== 'password' && !adornment && !ornament && (React.createElement(React.Fragment, null,
             React.createElement("div", { className: `inputField ${className}` },
@@ -1623,15 +1623,15 @@ const Sidebar = ({ sidebarData }) => {
         setCurrSubItem(id === currSubItem ? null : id);
     };
     return (React.createElement("div", { className: "sidebar" }, sidebarData.map((data, index) => {
-        return (React.createElement("div", { key: `Sidebar-Data -${data.id}` },
+        return (React.createElement("div", { key: `Sidebar-Data -${index}` },
             React.createElement("div", { className: `SidebarItem ${curr === data.id ? 'active' : ''}`, onClick: () => {
                     handleItemClick(data.id);
                 } }, data.title),
             curr === data.id &&
                 data.items &&
                 isOpen &&
-                (data === null || data === void 0 ? void 0 : data.items.map((itemval) => {
-                    return (React.createElement("a", { href: itemval.link, key: `Sidebar-Link -${data.id}`, onClick: () => {
+                (data === null || data === void 0 ? void 0 : data.items.map((itemval, i) => {
+                    return (React.createElement("a", { href: itemval.link, key: `Sidebar-Link -${i}`, onClick: () => {
                             handleSubItemClick(itemval.id);
                         }, className: `sidebarSubItems ${currSubItem === itemval.id ? 'active' : ''}` }, itemval.title));
                 }))));
