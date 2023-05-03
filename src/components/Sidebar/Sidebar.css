@@ -1,7 +1,5 @@
 .SideBarContainer {
     display: flex;
-    font-family: 'Roboto';
-    font-style: normal;
     font-weight: 400;
     font-size: 16px;
 }
@@ -74,6 +72,13 @@
     margin: 15px 0px;
 }
 
+.linkArea {
+    display: grid;
+    font-family: 'Roboto';
+    font-style: normal;
+    justify-content: center;
+}
+
 a {
     text-decoration: none;
 }
@@ -113,10 +118,11 @@ a.active:hover {
 }
 
 .bars {
-    display: flex;
+    display: grid;
     font-size: 25px;
-    justify-content: center;
-    padding: 15px 0px;
+    justify-content: flex-end;
+    padding: 0px 10px;
+    align-self: center;
 }
 
 .dropDownIcon.rotateNintee {
@@ -141,5 +147,7 @@ a.active:hover {
 
 .footer_section {
     padding: 10px 0px;
+    display: flex;
     align-self: center;
+    cursor: pointer;
 }
