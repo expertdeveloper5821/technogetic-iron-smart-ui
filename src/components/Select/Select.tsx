@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import { Icon } from '../../assets/DropdownIcon';
-import { UpIcon } from '../../assets/DropUpIcon';
+// import { Icon } from '../../assets/DropdownIcon';
+// import { UpIcon } from '../../assets/DropUpIcon';
 import { CloseIcon } from '../../assets/CloseIcon';
 import './Select.css';
 
@@ -50,7 +50,7 @@ export const Select: React.FC<SelectProps> = ({ options, placeholder, disabled, 
                 })}
             </select>
             <div className="selectIcon" ref={selectIconRef}>
-                <Icon />
+                {/* <Icon /> */}
             </div>
         </div>
     );

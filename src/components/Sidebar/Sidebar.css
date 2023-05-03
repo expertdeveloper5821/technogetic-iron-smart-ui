@@ -1,39 +1,134 @@
-.sidebar {
-    background: #edf7f7;
-    color: black;
-    width: 200px;
-    font-size: 18px;
-    padding: 10px;
-    height: 100vh;
-    font-family: sans-serif;
+.SideBarContainer {
     display: flex;
-    flex-direction: column;
-    text-align: 'start';
+
+}
+
+.SideBarContainer.right {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.slimSidebarItem {
+    text-align: center;
+    display: flex;
+    padding: 4px 0px;
+    place-content: center;
 }
 
 .SidebarItem {
+    display: flex;
+    place-content: start;
+    color: #6C757D;
+    gap: 15px;
+    padding: 8px;
     cursor: pointer;
-    margin-bottom: 6px;
-    border-radius: 8px;
-    padding: 10px 14px 10px 14px;
+    width: 100%;
+    transition: all 0.5s;
 }
 
-.active {
-    background-color: #d0e8e8;
+.slimSideBar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 89px;
+    height: 100vh;
+    background-color: #cdefff;
+    overflow-y: auto;
+}
+
+.sidebar {
+    /* position: fixed; */
     color: black;
+    width: 217px;
+    font-size: 18px;
+    padding: 10px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: 'start';
+    overflow-y: auto;
+    background-color: #cdefff;
+    transition: all 0.8s;
+}
+
+.slim_top_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 15px 5px 15px;
+    background: url('../../assets/techno.svg')no-repeat center 0 / 50%;
+}
+
+.top_section {
+    display: flex;
+    margin-top: 10%;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 15px 5px 15px;
+    background: url('../../assets/techno.svg')no-repeat 45% center / 30%;
+}
+
+a {
+    text-decoration: none;
+}
+
+a.active {
+    background-color: transparent;
+}
+
+a.active:hover {
+    color: #d0e8e8;
 }
 
 .SidebarItem:hover,
 .sidebarSubItems:hover {
-    background-color: #d0e8e8;
+    border-radius: 8px;
+    color: #6C757D;
 }
 
 .sidebarSubItems {
+    text-decoration: none;
     cursor: pointer;
     display: flex;
     text-decoration: none;
     color: black;
     margin-left: 15px;
-    border-radius: 8px;
+    border: none;
+    outline: none;
     padding: 10px 14px 10px 14px;
+}
+
+.dropDownIcon {
+    display: inline-flex;
+    padding-left: 8px;
+    vertical-align: middle;
+    transition: all 0.8s;
+}
+
+.bars {
+    display: flex;
+    font-size: 25px;
+}
+
+.rotate {
+    transform: rotate (180deg)
+}
+
+.link:hover {
+    background: lightskyblue;
+    color: #000;
+    transition: all 0.5s;
+}
+
+.icon,
+.link_text {
+    font-size: 20px;
+}
+
+.footer_section {
+    margin-bottom: 10%;
+    padding: 10px 0px;
+    align-self: center;
 }

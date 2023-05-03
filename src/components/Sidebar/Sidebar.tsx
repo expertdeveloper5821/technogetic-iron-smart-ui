@@ -1,67 +1,101 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Logout } from '../../assets/Logout';
+import { Icon } from '../../assets/DropdownIcon';
+import { BrowserRouter, NavLink, NavLinkProps } from 'react-router-dom';
 import './Sidebar.css';
 
 export interface itemsInterface {
     id: number;
-    title: string;
-    link: string;
+    name: string;
+    link?: string;
 }
 
 export interface sidebarArray {
-    id: number;
-    title: string;
-    link: string;
-    items: itemsInterface[];
+    id: string | number;
+    name: string;
+    icon?: string;
+    items?: itemsInterface[];
+    link?: string;
 }
+
 export interface SidebarProps {
     sidebarData?: sidebarArray[];
+    align?: string;
+    imageSrc?: string;
+    openSideBar?: boolean;
 }
-export const Sidebar: React.FunctionComponent<SidebarProps> = ({ sidebarData }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [curr, setCurr] = useState();
-    const [currSubItem, setCurrSubItem] = useState();
 
-    const handleItemClick = (id: any) => {
+export const Sidebar: React.FunctionComponent<SidebarProps> = ({ sidebarData, align, imageSrc, openSideBar }) => {
+    const [btnOpen, setBtnOpen] = useState<boolean>(openSideBar || false);
+    const [isOpen, setIsOpen] = useState<boolean>(true);
+    const [curr, setCurr] = useState<string | number>();
+    const [currSubItem, setCurrSubItem] = useState<string | number>();
+
+    const toggle = () => {
+        setBtnOpen(!btnOpen);
+        setIsOpen(!isOpen);
+    };
+
+    const handleItemClick = (id: number | string) => {
         setIsOpen(!isOpen);
         setCurr(id);
-        setCurrSubItem(null);
+        setCurrSubItem('');
     };
-    const handleSubItemClick = (id: any) => {
-        setCurrSubItem(id === currSubItem ? null : id);
+    const handleSubItemClick = (id: number | string) => {
+        setCurrSubItem(id === currSubItem ? '' : id);
     };
+
     return (
-        <div className="sidebar">
-            {sidebarData.map((data, index: any) => {
-                return (
-                    <div key={`Sidebar-Data -${index}`}>
-                        <div
-                            className={`SidebarItem ${curr === data.id ? 'active' : ''}`}
-                            onClick={() => {
-                                handleItemClick(data.id);
-                            }}
-                        >
-                            {data.title}
-                        </div>
-                        {curr === data.id &&
-                            data.items &&
-                            isOpen &&
-                            data?.items.map((itemval, i) => {
-                                return (
-                                    <a
-                                        href={itemval.link}
-                                        key={`Sidebar-Link -${i}`}
+        <BrowserRouter>
+            <div className={`SideBarContainer ${align}`} data-testid="sidebar-container">
+                <div className={`${btnOpen ? 'sidebar' : 'slimSideBar'}`}>
+                    <div className={`${btnOpen ? 'top_section' : 'slim_top_section'}`}></div>
+                    <div className="linkArea">
+                        {sidebarData?.map((item) => (
+                            <NavLink to={item.link} key={item.id}>
+                                <div className={` ${btnOpen ? 'SidebarItem' : 'slimSidebarItem'}`}>
+                                    <div className="icon">{item.icon}</div>
+                                    <div
+                                        style={{ display: btnOpen ? 'block' : 'none' }}
                                         onClick={() => {
-                                            handleSubItemClick(itemval.id);
+                                            handleItemClick(item.id);
                                         }}
-                                        className={`sidebarSubItems ${currSubItem === itemval.id ? 'active' : ''}`}
                                     >
-                                        {itemval.title}
-                                    </a>
-                                );
-                            })}
+                                        {item.name}
+                                        {item.items && item.items?.length > 0 && <div className={`dropDownIcon ${isOpen && curr === item.id ? 'rotate' : ''}`}>{curr === item.id && <Icon />}</div>}
+                                    </div>
+                                </div>
+
+                                {curr === item.id &&
+                                    item.items &&
+                                    isOpen &&
+                                    item?.items.map((itemval) => {
+                                        return (
+                                            <div key={itemval.id}>
+                                                <a
+                                                    style={{ display: btnOpen ? 'block' : 'none' }}
+                                                    href={itemval.link}
+                                                    onClick={() => {
+                                                        handleSubItemClick(itemval.id);
+                                                    }}
+                                                    className={`sidebarSubItems ${currSubItem === itemval.id ? 'active' : ''}`}
+                                                >
+                                                    {itemval.name}
+                                                </a>
+                                            </div>
+                                        );
+                                    })}
+                            </NavLink>
+                        ))}
                     </div>
-                );
-            })}
-        </div>
+
+                    <div className="footer_section">
+                        <div className={`bars ${btnOpen ? 'rotate' : ''}`} onClick={toggle}>
+                            <Logout />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </BrowserRouter>
     );
 };
