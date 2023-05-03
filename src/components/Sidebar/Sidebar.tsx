@@ -48,7 +48,7 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = ({ sidebarData, al
     return (
         <BrowserRouter>
             <div className={`SideBarContainer ${align}`} data-testid="sidebar-container">
-                <div className={`${btnOpen ? 'sidebar' : 'slimSideBar'}`}>
+                <div className={`${btnOpen ? 'sidebar' : 'slimSideBar'}`} data-testid="Sidebar">
                     <div className={`${btnOpen ? 'top_section' : 'slim_top_section'}`}></div>
                     <div className="linkArea">
                         {sidebarData?.map((item) => (
@@ -60,11 +60,10 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = ({ sidebarData, al
                                         onClick={() => {
                                             handleItemClick(item.id);
                                         }}
+                                        data-testid="SidebarItem"
                                     >
                                         {item.name}
-                                        {item.items && item.items?.length > 0 && (
-                                            <div className={`dropDownIcon ${isOpen && curr === item.id ? 'rotateNintee' : ''}`}>{curr === item.id && <RightArrow />}</div>
-                                        )}
+                                        {item.items && item.items?.length > 0 && <div className={`dropDownIcon ${isOpen && curr === item.id ? 'rotateNintee' : ''}`}>{<RightArrow />}</div>}
                                     </div>
                                 </div>
 
@@ -81,6 +80,7 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = ({ sidebarData, al
                                                         handleSubItemClick(itemval.id);
                                                     }}
                                                     className={`sidebarSubItems ${currSubItem === itemval.id ? 'active' : ''}`}
+                                                    data-testid="SidebarSubItem"
                                                 >
                                                     {itemval.name}
                                                 </a>

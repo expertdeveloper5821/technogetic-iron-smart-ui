@@ -21,12 +21,12 @@ describe('Sidebar', () => {
             link: '/profile',
             items: [
                 {
-                    id: 1,
+                    id: 3,
                     name: 'Settings',
                     link: '/profile/settings'
                 },
                 {
-                    id: 2,
+                    id: 4,
                     name: 'Logout',
                     link: '/logout'
                 }
@@ -36,12 +36,28 @@ describe('Sidebar', () => {
 
     it('renders the Sidebar component', () => {
         render(<Sidebar sidebarData={sidebarData} />);
-
-        // Sidebar container should be present
+        const sidebar = screen.getByTestId('Sidebar');
+        expect(sidebar).toBeInTheDocument();
         expect(screen.getByTestId('sidebar-container')).toBeInTheDocument();
-
-        // Home and Profile menu items should be present
         expect(screen.getByText('Home')).toBeInTheDocument();
         expect(screen.getByText('Profile')).toBeInTheDocument();
     });
+    it('displays the sidebarData items', () => {
+        render(<Sidebar sidebarData={sidebarData} />);
+        const items = screen.getAllByTestId('SidebarItem');
+        expect(items).toHaveLength(2);
+        expect(items[0]).toHaveTextContent('Home');
+        expect(items[1]).toHaveTextContent('Profile');
+    });
+    // it('expands/collapses the subitems when an item is clicked', () => {
+    //     render(<Sidebar openSideBar={true} sidebarData={sidebarData} />);
+    //     const item = screen.getByText('Profile');
+    //     fireEvent.click(item);
+    //     const subItems = screen.getAllByTestId('SidebarSubItem');
+    //     expect(subItems).toHaveLength(2);
+    //     expect(subItems[0]).toHaveTextContent('Settings');
+    //     expect(subItems[1]).toHaveTextContent('Logout');
+    //     fireEvent.click(item);
+    //     expect(subItems[0]).not.toBeVisible();
+    // });
 });

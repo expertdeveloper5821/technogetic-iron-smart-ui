@@ -3187,29 +3187,24 @@ const Logout = () => {
         React.createElement("path", { d: "M16 2v7h-2v-5h-12v16h12v-5h2v7h-16v-20h16zm2 9v-4l6 5-6 5v-4h-10v-2h10z" })));
 };
 
-const Icon = () => {
-    return (React.createElement("svg", { height: "20", width: "20", viewBox: "0 0 20 20" },
-        React.createElement("path", { d: "M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z" })));
+const RightArrow = () => {
+    return (React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24" },
+        React.createElement("path", { d: "M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z" })));
 };
 
-var css_248z$2 = ".SideBarContainer {\n    display: flex;\n\n}\n\n.slimSidebarItem {\n    text-align: center;\n    display: flex;\n    padding: 4px 0px;\n    place-content: center;\n}\n\n.SidebarItem {\n    display: flex;\n    place-content: start;\n    color: #6C757D;\n    gap: 15px;\n    padding: 8px;\n    cursor: pointer;\n    width: 100%;\n    transition: all 0.5s;\n}\n\n.slimSideBar {\n    display: flex;\n    flex-direction: column;\n    justify-content: space-around;\n    width: 89px;\n    height: 100vh;\n    background-color: #cdefff;\n    overflow-y: auto;\n}\n\n.sidebar {\n    position: fixed;\n    color: black;\n    width: 217px;\n    font-size: 18px;\n    padding: 10px;\n    height: 100vh;\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n    text-align: 'start';\n    overflow-y: auto;\n    background-color: #cdefff;\n    transition: all 0.8s;\n}\n\n.slim_top_section {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px 15px 5px 15px;\n    background: url('../../assets/techno.svg')no-repeat center 0 / 50%;\n}\n\n.top_section {\n    display: flex;\n    margin-top: 10%;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px 15px 5px 15px;\n    background: url('../../assets/techno.svg')no-repeat 45% center / 30%;\n}\n\na {\n    text-decoration: none;\n}\n\na.active {\n    background-color: transparent;\n}\n\na.active:hover {\n    color: #d0e8e8;\n}\n\n.SidebarItem:hover,\n.sidebarSubItems:hover {\n    border-radius: 8px;\n    color: #6C757D;\n}\n\n.sidebarSubItems {\n    text-decoration: none;\n    cursor: pointer;\n    display: flex;\n    text-decoration: none;\n    color: black;\n    margin-left: 15px;\n    border: none;\n    outline: none;\n    padding: 10px 14px 10px 14px;\n}\n\n.dropDownIcon {\n    display: inline-flex;\n    padding-left: 8px;\n    vertical-align: middle;\n    transition: all 0.8s;\n}\n\n.bars {\n    display: flex;\n    font-size: 25px;\n}\n\n.rotate {\n    transform: rotate (180deg)\n}\n\n.link:hover {\n    background: lightskyblue;\n    color: #000;\n    transition: all 0.5s;\n}\n\n.icon,\n.link_text {\n    font-size: 20px;\n}\n\n.footer_section {\n    margin-bottom: 10%;\n    padding: 10px 0px;\n    align-self: center;\n}";
+var css_248z$2 = ".SideBarContainer {\n    display: flex;\n\n}\n\n.SideBarContainer.right {\n    position: absolute;\n    top: 0;\n    right: 0;\n}\n\n.slimSidebarItem {\n    text-align: center;\n    display: flex;\n    padding: 4px 0px;\n    place-content: center;\n}\n\n.SidebarItem {\n    display: flex;\n    place-content: start;\n    color: #6C757D;\n    gap: 15px;\n    padding: 8px;\n    cursor: pointer;\n    width: 100%;\n    transition: all 0.5s;\n}\n\n.slimSideBar {\n    display: flex;\n    flex-direction: column;\n    justify-content: space-around;\n    width: 89px;\n    height: 100vh;\n    background-color: #cdefff;\n    overflow-y: auto;\n}\n\n.sidebar {\n    /* position: fixed; */\n    color: black;\n    width: 217px;\n    font-size: 18px;\n    padding: 10px;\n    height: 100vh;\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n    text-align: 'start';\n    overflow-y: auto;\n    background-color: #cdefff;\n    transition: all 0.8s;\n}\n\n.slim_top_section {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px 15px 5px 15px;\n    background: url('../../assets/techno.svg')no-repeat center 0 / 50%;\n}\n\n.top_section {\n    display: flex;\n    margin-top: 10%;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px 15px 5px 15px;\n    background: url('../../assets/techno.svg')no-repeat 45% center / 30%;\n}\n\na {\n    text-decoration: none;\n}\n\na.active {\n    background-color: transparent;\n}\n\na.active:hover {\n    color: #d0e8e8;\n}\n\n.SidebarItem:hover,\n.sidebarSubItems:hover {\n    border-radius: 8px;\n    color: #6C757D;\n}\n\n.sidebarSubItems {\n    text-decoration: none;\n    cursor: pointer;\n    display: flex;\n    text-decoration: none;\n    color: black;\n    margin-left: 15px;\n    border: none;\n    outline: none;\n    padding: 10px 14px 10px 14px;\n}\n\n.dropDownIcon {\n    display: inline-flex;\n    padding-left: 8px;\n    vertical-align: middle;\n    transition: all 0.5s;\n    width: 12px;\n}\n\n.bars {\n    display: flex;\n    font-size: 25px;\n}\n\n.dropDownIcon.rotateNintee {\n    transform: rotateNintee(90deg);\n    transform: rotate(90deg) translateX(1px);\n}\n\n.rotate {\n    transform: rotate (180deg)\n}\n\n.link:hover {\n    background: lightskyblue;\n    color: #000;\n    transition: all 0.5s;\n}\n\n.icon,\n.link_text {\n    font-size: 20px;\n}\n\n.footer_section {\n    margin-bottom: 10%;\n    padding: 10px 0px;\n    align-self: center;\n}";
 styleInject(css_248z$2);
 
 const Sidebar = ({ sidebarData, align, imageSrc, openSideBar }) => {
-    const [btnOpen, setBtnOpen] = React.useState(false);
+    const [btnOpen, setBtnOpen] = React.useState(openSideBar || false);
     const [isOpen, setIsOpen] = React.useState(true);
     const [curr, setCurr] = React.useState();
     const [currSubItem, setCurrSubItem] = React.useState();
-    if (openSideBar === true) {
-        // setBtnOpen(opensideBar);
-        console.log(openSideBar);
-    }
     const toggle = () => {
         setBtnOpen(!btnOpen);
         setIsOpen(!isOpen);
     };
     const handleItemClick = (id) => {
-        console.log('handleItemClick', id, isOpen);
         setIsOpen(!isOpen);
         setCurr(id);
         setCurrSubItem('');
@@ -3218,7 +3213,7 @@ const Sidebar = ({ sidebarData, align, imageSrc, openSideBar }) => {
         setCurrSubItem(id === currSubItem ? '' : id);
     };
     return (React.createElement(BrowserRouter, null,
-        React.createElement("div", { className: "SideBarContainer", "data-testid": "sidebar-container" },
+        React.createElement("div", { className: `SideBarContainer ${align}`, "data-testid": "sidebar-container" },
             React.createElement("div", { className: `${btnOpen ? 'sidebar' : 'slimSideBar'}` },
                 React.createElement("div", { className: `${btnOpen ? 'top_section' : 'slim_top_section'}` }),
                 React.createElement("div", { className: "linkArea" }, sidebarData === null || sidebarData === void 0 ? void 0 : sidebarData.map((item) => {
@@ -3230,7 +3225,7 @@ const Sidebar = ({ sidebarData, align, imageSrc, openSideBar }) => {
                                     handleItemClick(item.id);
                                 } },
                                 item.name,
-                                item.items && ((_a = item.items) === null || _a === void 0 ? void 0 : _a.length) > 0 && React.createElement("div", { className: `dropDownIcon ${isOpen && curr === item.id ? 'rotate' : ''}` }, curr === item.id && React.createElement(Icon, null)))),
+                                item.items && ((_a = item.items) === null || _a === void 0 ? void 0 : _a.length) > 0 && (React.createElement("div", { className: `dropDownIcon ${isOpen && curr === item.id ? 'rotateNintee' : ''}` }, curr === item.id && React.createElement(RightArrow, null))))),
                         curr === item.id &&
                             item.items &&
                             isOpen &&
