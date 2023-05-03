@@ -1,6 +1,9 @@
 .SideBarContainer {
     display: flex;
-
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
 }
 
 .SideBarContainer.right {
@@ -30,7 +33,7 @@
 .slimSideBar {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 89px;
     height: 100vh;
     background-color: #cdefff;
@@ -58,16 +61,17 @@
     flex-direction: column;
     align-items: center;
     padding: 20px 15px 5px 15px;
+    margin: 25px 0px;
     background: url('../../assets/techno.svg')no-repeat center 0 / 50%;
 }
 
 .top_section {
     display: flex;
-    margin-top: 10%;
     flex-direction: column;
     align-items: center;
-    padding: 20px 15px 5px 15px;
+    padding: 15% 0%;
     background: url('../../assets/techno.svg')no-repeat 45% center / 30%;
+    margin: 15px 0px;
 }
 
 a {
@@ -112,6 +116,7 @@ a.active:hover {
     display: flex;
     font-size: 25px;
     justify-content: center;
+    padding: 15px 0px;
 }
 
 .dropDownIcon.rotateNintee {
@@ -135,7 +140,6 @@ a.active:hover {
 }
 
 .footer_section {
-    margin-bottom: 10%;
     padding: 10px 0px;
     align-self: center;
 }
