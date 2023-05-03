@@ -95,6 +95,7 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = ({ sidebarData, al
                         <div className={`bars ${btnOpen ? 'rotate' : ''}`} onClick={toggle}>
                             <Logout />
                         </div>
+                        <p style={{ display: btnOpen ? 'block' : 'none' }}>Logout</p>
                     </div>
                 </div>
             </div>

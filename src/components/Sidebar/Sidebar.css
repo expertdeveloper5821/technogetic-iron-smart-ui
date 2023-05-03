@@ -111,6 +111,7 @@ a.active:hover {
 .bars {
     display: flex;
     font-size: 25px;
+    justify-content: center;
 }
 
 .dropDownIcon.rotateNintee {
