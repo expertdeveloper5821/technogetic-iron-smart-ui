@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Logout } from '../../assets/Logout';
-import { Icon } from '../../assets/DropdownIcon';
+import { RightArrow } from '../../assets/RightArrow';
 import { BrowserRouter, NavLink, NavLinkProps } from 'react-router-dom';
 import './Sidebar.css';
 
@@ -62,7 +62,9 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = ({ sidebarData, al
                                         }}
                                     >
                                         {item.name}
-                                        {item.items && item.items?.length > 0 && <div className={`dropDownIcon ${isOpen && curr === item.id ? 'rotate' : ''}`}>{curr === item.id && <Icon />}</div>}
+                                        {item.items && item.items?.length > 0 && (
+                                            <div className={`dropDownIcon ${isOpen && curr === item.id ? 'rotateNintee' : ''}`}>{curr === item.id && <RightArrow />}</div>
+                                        )}
                                     </div>
                                 </div>
 

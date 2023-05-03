@@ -104,12 +104,18 @@ a.active:hover {
     display: inline-flex;
     padding-left: 8px;
     vertical-align: middle;
-    transition: all 0.8s;
+    transition: all 0.5s;
+    width: 12px;
 }
 
 .bars {
     display: flex;
     font-size: 25px;
+}
+
+.dropDownIcon.rotateNintee {
+    transform: rotateNintee(90deg);
+    transform: rotate(90deg) translateX(1px);
 }
 
 .rotate {
