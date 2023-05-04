@@ -23,9 +23,10 @@ export interface SidebarProps {
     align?: string;
     imageSrc?: string;
     openSideBar?: boolean;
+    onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 
-export const Sidebar: React.FunctionComponent<SidebarProps> = ({ sidebarData, align, imageSrc, openSideBar }) => {
+export const Sidebar: React.FunctionComponent<SidebarProps> = ({ sidebarData, align, imageSrc, openSideBar, onClick }) => {
     const [btnOpen, setBtnOpen] = useState<boolean>(openSideBar || false);
     const [isOpen, setIsOpen] = useState<boolean>(true);
     const [curr, setCurr] = useState<string | number>();

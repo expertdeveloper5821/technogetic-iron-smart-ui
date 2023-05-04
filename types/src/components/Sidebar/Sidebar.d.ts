@@ -17,5 +17,6 @@ export interface SidebarProps {
     align?: string;
     imageSrc?: string;
     openSideBar?: boolean;
+    onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 export declare const Sidebar: React.FunctionComponent<SidebarProps>;

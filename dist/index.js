@@ -3192,18 +3192,14 @@ const RightArrow = () => {
         React.createElement("path", { d: "M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z" })));
 };
 
-var css_248z$2 = ".SideBarContainer {\n    display: flex;\n\n}\n\n.SideBarContainer.right {\n    position: absolute;\n    top: 0;\n    right: 0;\n}\n\n.slimSidebarItem {\n    text-align: center;\n    display: flex;\n    padding: 4px 0px;\n    place-content: center;\n}\n\n.SidebarItem {\n    display: flex;\n    place-content: start;\n    color: #6C757D;\n    gap: 15px;\n    padding: 8px;\n    cursor: pointer;\n    width: 100%;\n    transition: all 0.5s;\n}\n\n.slimSideBar {\n    display: flex;\n    flex-direction: column;\n    justify-content: space-around;\n    width: 89px;\n    height: 100vh;\n    background-color: #cdefff;\n    overflow-y: auto;\n}\n\n.sidebar {\n    /* position: fixed; */\n    color: black;\n    width: 217px;\n    font-size: 18px;\n    padding: 10px;\n    height: 100vh;\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n    text-align: 'start';\n    overflow-y: auto;\n    background-color: #cdefff;\n    transition: all 0.8s;\n}\n\n.slim_top_section {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px 15px 5px 15px;\n    background: url('../../assets/techno.svg')no-repeat center 0 / 50%;\n}\n\n.top_section {\n    display: flex;\n    margin-top: 10%;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px 15px 5px 15px;\n    background: url('../../assets/techno.svg')no-repeat 45% center / 30%;\n}\n\na {\n    text-decoration: none;\n}\n\na.active {\n    background-color: transparent;\n}\n\na.active:hover {\n    color: #d0e8e8;\n}\n\n.SidebarItem:hover,\n.sidebarSubItems:hover {\n    border-radius: 8px;\n    color: #6C757D;\n}\n\n.sidebarSubItems {\n    text-decoration: none;\n    cursor: pointer;\n    display: flex;\n    text-decoration: none;\n    color: black;\n    margin-left: 15px;\n    border: none;\n    outline: none;\n    padding: 10px 14px 10px 14px;\n}\n\n.dropDownIcon {\n    display: inline-flex;\n    padding-left: 8px;\n    vertical-align: middle;\n    transition: all 0.5s;\n    width: 12px;\n}\n\n.bars {\n    display: flex;\n    font-size: 25px;\n}\n\n.dropDownIcon.rotateNintee {\n    transform: rotateNintee(90deg);\n    transform: rotate(90deg) translateX(1px);\n}\n\n.rotate {\n    transform: rotate (180deg)\n}\n\n.link:hover {\n    background: lightskyblue;\n    color: #000;\n    transition: all 0.5s;\n}\n\n.icon,\n.link_text {\n    font-size: 20px;\n}\n\n.footer_section {\n    margin-bottom: 10%;\n    padding: 10px 0px;\n    align-self: center;\n}";
+var css_248z$2 = ".SideBarContainer {\n    display: flex;\n    font-weight: 400;\n    font-size: 16px;\n}\n\n.SideBarContainer.right {\n    position: absolute;\n    top: 0;\n    right: 0;\n}\n\n.slimSidebarItem {\n    text-align: center;\n    display: flex;\n    padding: 4px 0px;\n    place-content: center;\n}\n\n.SidebarItem {\n    display: flex;\n    place-content: start;\n    color: #6C757D;\n    gap: 15px;\n    padding: 8px;\n    cursor: pointer;\n    width: 100%;\n    transition: all 0.5s;\n}\n\n.slimSideBar {\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n    width: 89px;\n    height: 100vh;\n    background-color: #cdefff;\n    overflow-y: auto;\n}\n\n.sidebar {\n    /* position: fixed; */\n    color: black;\n    width: 217px;\n    font-size: 18px;\n    padding: 10px;\n    height: 100vh;\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n    text-align: 'start';\n    overflow-y: auto;\n    background-color: #cdefff;\n    transition: all 0.8s;\n}\n\n.slim_top_section {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px 15px 5px 15px;\n    margin: 25px 0px;\n    background: url('../../assets/techno.svg')no-repeat center 0 / 50%;\n}\n\n.top_section {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 15% 0%;\n    background: url('../../assets/techno.svg')no-repeat 45% center / 30%;\n    margin: 15px 0px;\n}\n\n.linkArea {\n    display: grid;\n    font-family: 'Roboto';\n    font-style: normal;\n    justify-content: center;\n}\n\na {\n    text-decoration: none;\n}\n\na.active {\n    background-color: transparent;\n}\n\na.active:hover {\n    color: #d0e8e8;\n}\n\n.SidebarItem:hover,\n.sidebarSubItems:hover {\n    border-radius: 8px;\n    color: #6C757D;\n}\n\n.sidebarSubItems {\n    text-decoration: none;\n    cursor: pointer;\n    display: flex;\n    text-decoration: none;\n    color: black;\n    margin-left: 15px;\n    border: none;\n    outline: none;\n    padding: 10px 14px 10px 14px;\n}\n\n.dropDownIcon {\n    display: inline-flex;\n    padding-left: 8px;\n    vertical-align: middle;\n    transition: all 0.5s;\n    width: 12px;\n}\n\n.bars {\n    display: grid;\n    font-size: 25px;\n    justify-content: flex-end;\n    padding: 0px 10px;\n    align-self: center;\n}\n\n.dropDownIcon.rotateNintee {\n    transform: rotateNintee(90deg);\n    transform: rotate(90deg) translateX(1px);\n}\n\n.rotate {\n    transform: rotate (180deg)\n}\n\n.link:hover {\n    background: lightskyblue;\n    color: #000;\n    transition: all 0.5s;\n}\n\n.icon,\n.link_text {\n    font-size: 20px;\n}\n\n.footer_section {\n    padding: 10px 0px;\n    display: flex;\n    align-self: center;\n    cursor: pointer;\n}";
 styleInject(css_248z$2);
 
-const Sidebar = ({ sidebarData, align, imageSrc, openSideBar }) => {
+const Sidebar = ({ sidebarData, align, imageSrc, openSideBar, onClick }) => {
     const [btnOpen, setBtnOpen] = React.useState(openSideBar || false);
     const [isOpen, setIsOpen] = React.useState(true);
     const [curr, setCurr] = React.useState();
     const [currSubItem, setCurrSubItem] = React.useState();
-    const toggle = () => {
-        setBtnOpen(!btnOpen);
-        setIsOpen(!isOpen);
-    };
     const handleItemClick = (id) => {
         setIsOpen(!isOpen);
         setCurr(id);
@@ -3214,31 +3210,33 @@ const Sidebar = ({ sidebarData, align, imageSrc, openSideBar }) => {
     };
     return (React.createElement(BrowserRouter, null,
         React.createElement("div", { className: `SideBarContainer ${align}`, "data-testid": "sidebar-container" },
-            React.createElement("div", { className: `${btnOpen ? 'sidebar' : 'slimSideBar'}` },
-                React.createElement("div", { className: `${btnOpen ? 'top_section' : 'slim_top_section'}` }),
-                React.createElement("div", { className: "linkArea" }, sidebarData === null || sidebarData === void 0 ? void 0 : sidebarData.map((item) => {
-                    var _a;
-                    return (React.createElement(NavLink, { to: item.link, key: item.id },
-                        React.createElement("div", { className: ` ${btnOpen ? 'SidebarItem' : 'slimSidebarItem'}` },
-                            React.createElement("div", { className: "icon" }, item.icon),
-                            React.createElement("div", { style: { display: btnOpen ? 'block' : 'none' }, onClick: () => {
-                                    handleItemClick(item.id);
-                                } },
-                                item.name,
-                                item.items && ((_a = item.items) === null || _a === void 0 ? void 0 : _a.length) > 0 && (React.createElement("div", { className: `dropDownIcon ${isOpen && curr === item.id ? 'rotateNintee' : ''}` }, curr === item.id && React.createElement(RightArrow, null))))),
-                        curr === item.id &&
-                            item.items &&
-                            isOpen &&
-                            (item === null || item === void 0 ? void 0 : item.items.map((itemval) => {
-                                return (React.createElement("div", { key: itemval.id },
-                                    React.createElement("a", { style: { display: btnOpen ? 'block' : 'none' }, href: itemval.link, onClick: () => {
-                                            handleSubItemClick(itemval.id);
-                                        }, className: `sidebarSubItems ${currSubItem === itemval.id ? 'active' : ''}` }, itemval.name)));
-                            }))));
-                })),
-                React.createElement("div", { className: "footer_section" },
-                    React.createElement("div", { className: `bars ${btnOpen ? 'rotate' : ''}`, onClick: toggle },
-                        React.createElement(Logout, null)))))));
+            React.createElement("div", { className: `${btnOpen ? 'sidebar' : 'slimSideBar'}`, "data-testid": "Sidebar" },
+                React.createElement("div", null,
+                    React.createElement("div", { className: `${btnOpen ? 'top_section' : 'slim_top_section'}` }),
+                    React.createElement("div", { className: "linkArea" }, sidebarData === null || sidebarData === void 0 ? void 0 : sidebarData.map((item) => {
+                        var _a;
+                        return (React.createElement(NavLink, { to: item.link, key: item.id },
+                            React.createElement("div", { className: ` ${btnOpen ? 'SidebarItem' : 'slimSidebarItem'}` },
+                                React.createElement("div", { className: "icon" }, item.icon),
+                                React.createElement("div", { style: { display: btnOpen ? 'block' : 'none' }, onClick: () => {
+                                        handleItemClick(item.id);
+                                    }, "data-testid": "SidebarItem" },
+                                    item.name,
+                                    item.items && ((_a = item.items) === null || _a === void 0 ? void 0 : _a.length) > 0 && React.createElement("div", { className: `dropDownIcon ${isOpen && curr === item.id ? 'rotateNintee' : ''}` }, React.createElement(RightArrow, null)))),
+                            curr === item.id &&
+                                item.items &&
+                                isOpen &&
+                                (item === null || item === void 0 ? void 0 : item.items.map((itemval) => {
+                                    return (React.createElement("div", { key: itemval.id },
+                                        React.createElement("a", { style: { display: btnOpen ? 'block' : 'none' }, href: itemval.link, onClick: () => {
+                                                handleSubItemClick(itemval.id);
+                                            }, className: `sidebarSubItems ${currSubItem === itemval.id ? 'active' : ''}`, "data-testid": "SidebarSubItem" }, itemval.name)));
+                                }))));
+                    }))),
+                React.createElement("div", { className: "footer_section", onClick: onClick },
+                    React.createElement("div", { className: `bars ${btnOpen ? 'rotate' : ''} ` },
+                        React.createElement(Logout, null)),
+                    React.createElement("p", { style: { display: btnOpen ? 'block' : 'none' } }, "Logout"))))));
 };
 
 var css_248z$1 = ".dropdown {\n  width: 100%;\n}\n\nimg.logoSize {\n  width: 40px;\n}\n\n.navbar {\n  background: #eeeeee;\n  color: black;\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n}\n\n.navbarItem {\n  cursor: pointer;\n  padding: 10px 5px;\n  display: inline-flex;\n}\n\n.active {\n  background-color: #1ea7fd;\n  color: #eeeeee;\n}\n\n.navbarItem:hover,\n.navbarSubItems:hover {\n  color: #6cc4fc;\n}\n\n.dropdown-content {\n  position: absolute;\n  background-color: #f1f1f1;\n  min-width: 160px;\n  z-index: 1;\n  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);\n}\n\n.navbarItem:hover .dropdown-content {\n  display: block;\n}\n\n.dropdown-content a {\n  color: black;\n  padding: 12px 16px;\n  display: block;\n  text-decoration: none;\n}\n\n.navbarSubItems {\n  cursor: pointer;\n  text-decoration: none;\n  color: black;\n}\n\ninput[type=checkbox] {\n  display: none;\n}\n\n.hamburger {\n  display: none;\n  font-size: 24px;\n  user-select: none;\n}\n\n.dropdown {\n  position: relative;\n  display: inline-block;\n}\n\n.btnContainer {\n  display: flex;\n  flex-direction: row;\n  position: absolute;\n  right: 0;\n}\n\n.btnItems {\n  padding: 10px;\n}\n\n.btnItems:hover {\n  color: #6cc4fc;\n}\n\nbutton {\n  padding: 5px 10px;\n  cursor: pointer;\n  border-radius: 8px;\n  border: 0;\n  background-color: #1ea7fd;\n}\n\n.allLinks {\n  display: flex;\n  flex-direction: row;\n  place-self: center;\n}\n\n.navTitle {\n  display: flex;\n  flex-direction: row;\n  padding: 10px 15px;\n}\n\n.title {\n  place-self: center;\n  padding: 10px;\n  cursor: pointer;\n}\n\n.title:hover {\n  color: #1ea7fd;\n}\n\n@media screen and (min-width: 300px) and (max-width: 640px) {\n  .navbar {\n    background-color: transparent;\n  }\n\n  .repNavLink {\n    display: none;\n  }\n\n  .allLinks {\n    position: fixed;\n    background-color: #f1f1f1;\n    min-width: 50%;\n    right: 50px;\n    z-index: 1;\n    top: 30px;\n    display: block;\n    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);\n  }\n\n  .resNavBar {\n    display: flex;\n    flex-direction: column;\n  }\n\n  .dropdown-content {\n    position: inherit;\n    z-index: 1;\n  }\n\n  .navbarSubItems {\n    display: none;\n  }\n\n  .hamburger {\n    display: block;\n    font-size: 25px;\n    cursor: pointer;\n    position: absolute;\n  }\n\n  label.hamburger {\n    right: 5px;\n    top: 10px;\n  }\n\n  .hamburger:hover {\n    color: #6cc4fc;\n  }\n\n  #checkbox_toggle:checked~.dropdown-content {\n    display: block;\n  }\n}";
