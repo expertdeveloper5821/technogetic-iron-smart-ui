@@ -3,7 +3,6 @@ import { Sidebar, sidebarArray } from './Sidebar';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { MemoryRouter } from 'react-router-dom';
-
 import '@testing-library/jest-dom';
 
 describe('Sidebar', () => {

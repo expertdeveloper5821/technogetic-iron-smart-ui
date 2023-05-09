@@ -1,0 +1,249 @@
+.navContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* padding: 0px 15px; */
+}
+
+.navLeftSide {
+  align-self: center;
+  padding-left: 10px;
+}
+
+.navRightSide {
+  display: flex;
+  flex-direction: row;
+}
+
+.settinIcon {
+  align-self: center;
+  padding: 0px 10px;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .settinIcon {
+    animation: settinIcon-spin infinite 8s linear;
+  }
+}
+
+@keyframes settinIcon-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#time-3-icon {
+  fill: #858585;
+}
+
+.bellIcon {
+  align-self: center;
+  padding: 0px 10px;
+  cursor: pointer;
+  display: flex;
+}
+
+.counter {
+  background: #0788dd;
+  color: #ffff;
+  border-radius: 45px;
+  padding: 4px;
+  font-size: 8px;
+  width: 10px;
+  align-self: start;
+  top: 25px;
+  right: 230px;
+  text-align: center;
+  position: absolute;
+}
+
+.notificationDropDown {
+  background-image: linear-gradient(to bottom right, #d9f4ff, #f2fcff);
+  text-align: left;
+  cursor: initial;
+  margin-top: 50px;
+  max-width: 370px;
+  position: absolute;
+  color: #003554;
+  overflow: auto;
+  border-radius: 8px;
+  right: 250px;
+  box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.notificationHeader {
+  display: flex;
+  position: sticky;
+  top: 0;
+  background: inherit;
+  padding: 15px;
+  align-items: center;
+  min-width: 310px;
+  font-weight: 600;
+  justify-content: space-between;
+  font-size: 16px;
+  padding-bottom: 10px;
+}
+
+.notificationBody {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: 220px;
+}
+
+.notificationBody::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.notificationBody::-webkit-scrollbar-thumb {
+  background-color: #003554;
+  border-radius: 10px;
+}
+
+.notificationBody::-webkit-scrollbar-track {
+  background-color: white;
+  border-radius: 10px;
+}
+
+.notificationListRow {
+  display: flex;
+  align-items: flex-start;
+  padding: 8px 10px;
+}
+
+.notificationListRow:hover {
+  background-color: #f2fcff;
+}
+
+.notificationData {
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.notificationFooter {
+  padding: 10px;
+  position: sticky;
+  bottom: 0;
+  background: inherit;
+  text-align: center;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.circle {
+  background: white;
+  border-radius: 50%;
+  width: 25px;
+  text-align-last: center;
+  padding: 0px;
+  margin: 0;
+}
+
+.avatarIcon {
+  align-self: center;
+  padding: 0px 10px;
+  border-radius: 45px;
+}
+
+.navDownArrow {
+  align-self: center;
+  padding: 0px 10px;
+  cursor: pointer;
+}
+
+.userDropDown {
+  text-align: left;
+  margin-top: 20px;
+  right: 10px;
+  padding: 15px;
+  position: absolute;
+  color: #003554;
+  min-width: 160px;
+  overflow: auto;
+  border-radius: 8px;
+  box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.desc {
+  padding-top: 10px;
+  font-size: 15px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+p.logoutClass {
+  padding: 5px;
+  margin: 0;
+}
+
+.userDetail {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 10px;
+  justify-content: center;
+}
+
+.avatarBorder {
+  align-self: center;
+  padding: 0px 10px;
+  border-radius: 50%;
+  border-top-width: thin;
+  border: 1px solid gray;
+  border-bottom: 0;
+  border-right: 0;
+}
+
+.dropdownUserDetailsRow {
+  display: flex;
+  font-size: 10px;
+  align-items: center;
+  padding-bottom: 12px;
+}
+
+.userDetailsRow {
+  display: flex;
+  font-size: 10px;
+  align-items: center;
+}
+
+#small-bell {
+  color: #2c2c2c
+}
+
+.uerDetailsRowcounter {
+  right: 15px;
+  margin-left: 15px;
+  background: #2476e0;
+  color: white;
+  padding: 2px;
+}
+
+p.userInfo {
+  padding-left: 12px;
+}
+
+p.userName {
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 19px;
+  color: #003554;
+}
+
+p.userDesig {
+  margin: 0 auto;
+  font-size: 10px;
+  line-height: 12px;
+  color: #858585;
+}

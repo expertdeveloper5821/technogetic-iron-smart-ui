@@ -1,7 +1,7 @@
+import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { Alert } from './Alert';
 import '@testing-library/jest-dom';
-import React from 'react';
 
 describe('Button', () => {
     test('renders the Alert', () => {

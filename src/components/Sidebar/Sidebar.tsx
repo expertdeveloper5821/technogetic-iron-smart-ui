@@ -50,49 +50,51 @@ export const Sidebar: React.FunctionComponent<SidebarProps> = ({ sidebarData, al
         <BrowserRouter>
             <div className={`SideBarContainer ${align}`} data-testid="sidebar-container">
                 <div className={`${btnOpen ? 'sidebar' : 'slimSideBar'}`} data-testid="Sidebar">
-                    <div>
-                        <div className={`${btnOpen ? 'top_section' : 'slim_top_section'}`}></div>
-                        <div className="linkArea">
-                            {sidebarData?.map((item) => (
-                                <NavLink to={item.link} key={item.id}>
-                                    <div className={` ${btnOpen ? 'SidebarItem' : 'slimSidebarItem'}`}>
-                                        <div className="icon">{item.icon}</div>
-                                        <div
-                                            style={{ display: btnOpen ? 'block' : 'none' }}
-                                            onClick={() => {
-                                                handleItemClick(item.id);
-                                            }}
-                                            data-testid="SidebarItem"
-                                        >
-                                            {item.name}
-                                            {item.items && item.items?.length > 0 && <div className={`dropDownIcon ${isOpen && curr === item.id ? 'rotateNintee' : ''}`}>{<RightArrow />}</div>}
-                                        </div>
-                                    </div>
-
-                                    {curr === item.id &&
-                                        item.items &&
-                                        isOpen &&
-                                        item?.items.map((itemval) => {
-                                            return (
-                                                <div key={itemval.id}>
-                                                    <a
-                                                        style={{ display: btnOpen ? 'block' : 'none' }}
-                                                        href={itemval.link}
-                                                        onClick={() => {
-                                                            handleSubItemClick(itemval.id);
-                                                        }}
-                                                        className={`sidebarSubItems ${currSubItem === itemval.id ? 'active' : ''}`}
-                                                        data-testid="SidebarSubItem"
-                                                    >
-                                                        {itemval.name}
-                                                    </a>
-                                                </div>
-                                            );
-                                        })}
-                                </NavLink>
-                            ))}
-                        </div>
+                    {/* <div className="header_body"> */}
+                    <div className={`${btnOpen ? 'top_section' : 'slim_top_section'}`}>
+                        <img src={'../../assets/logo2.jpg'} alt="Logo" className="logo" />
                     </div>
+                    <div className="linkArea">
+                        {sidebarData?.map((item) => (
+                            <NavLink to={item.link} key={item.id}>
+                                <div className={` ${btnOpen ? 'SidebarItem' : 'slimSidebarItem'}`}>
+                                    <div className="icon">{item.icon}</div>
+                                    <div
+                                        style={{ display: btnOpen ? 'block' : 'none' }}
+                                        onClick={() => {
+                                            handleItemClick(item.id);
+                                        }}
+                                        data-testid="SidebarItem"
+                                    >
+                                        {item.name}
+                                        {item.items && item.items?.length > 0 && <div className={`dropDownIcon ${isOpen && curr === item.id ? 'rotateNintee' : ''}`}>{<RightArrow />}</div>}
+                                    </div>
+                                </div>
+
+                                {curr === item.id &&
+                                    item.items &&
+                                    isOpen &&
+                                    item?.items.map((itemval) => {
+                                        return (
+                                            <div key={itemval.id}>
+                                                <a
+                                                    style={{ display: btnOpen ? 'block' : 'none' }}
+                                                    href={itemval.link}
+                                                    onClick={() => {
+                                                        handleSubItemClick(itemval.id);
+                                                    }}
+                                                    className={`sidebarSubItems ${currSubItem === itemval.id ? 'active' : ''}`}
+                                                    data-testid="SidebarSubItem"
+                                                >
+                                                    {itemval.name}
+                                                </a>
+                                            </div>
+                                        );
+                                    })}
+                            </NavLink>
+                        ))}
+                    </div>
+                    {/* </div> */}
 
                     <div className="footer_section" onClick={onClick}>
                         <div className={`bars ${btnOpen ? 'rotate' : ''} `}>

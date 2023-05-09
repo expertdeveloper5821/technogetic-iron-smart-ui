@@ -1,6 +1,11 @@
 import * as React from 'react';
 import React__default, { useState as useState$1, useRef } from 'react';
 
+const Avatar = ({ src, alt, size = 50, style, onClick }) => {
+    return (React__default.createElement("div", { style: { cursor: onClick ? 'pointer' : 'inherit' }, onClick: onClick },
+        React__default.createElement("img", { src: src, alt: alt, style: Object.assign({ width: size, height: size, borderRadius: '50%', objectFit: 'cover' }, style) })));
+};
+
 function styleInject(css, ref) {
   if ( ref === void 0 ) ref = {};
   var insertAt = ref.insertAt;
@@ -28,8 +33,16 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z$9 = "button.commonButton {\n    color: white;\n    cursor: pointer;\n    border-radius: 6px;\n    padding: 10px;\n    background-color: red;\n    border: 0;\n}\n\n.commonButton:hover {\n    background-color: #9E9E9E;\n}\n\n.commonButton:hover {\n    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\n}\n\n.outLineButton-success {\n    border: 0.8px solid rgba(0, 137, 55, 0.9);\n    color: rgba(0, 137, 55, 0.9);\n    background-color: #FFFFFF;\n}\n\n.outLineButton-success:hover {\n    background-color: rgba(0, 137, 55, 0.9);\n    color: white;\n    outline: none;\n    border: none;\n}\n\n.outLineButton-primary {\n    border: 0.8px solid #0094DA;\n    color: #0094DA;\n    background-color: #FFFFFF;\n}\n\n.outLineButton-primary:hover {\n    background-color: #0094DA;\n    color: white;\n    outline: none;\n    border: none;\n}\n\n\n.outLineButton-danger {\n    border: 0.8px solid #D40909;\n    background-color: #FFFFFF;\n    color: #D40909;\n}\n\n.outLineButton-danger:hover {\n    background-color: #D40909;\n    color: white;\n    outline: none;\n    border: none;\n}\n\n.outLineButton-warning {\n    border: 0.8px solid #F9C304;\n    background-color: #FFFFFF;\n    color: #F9C304\n}\n\n.outLineButton-warning:hover {\n    background-color: #F9C304;\n    color: white;\n    outline: none;\n    border: none;\n}\n\n.outLineButton-light {\n    border: 0.8px solid #858585;\n    background-color: #FFFFFF;\n    color: #858585;\n}\n\n.outLineButton-light:hover {\n    background-color: #858585;\n    color: black;\n    outline: none;\n    border: none;\n}\n\n.outLineButton-dark {\n    border: 0.8px solid #303030;\n    background-color: #FFFFFF;\n    color: #303030;\n}\n\n.outLineButton-dark:hover {\n    background-color: #303030;\n    color: #ffffff;\n    outline: none;\n    border: none;\n}";
-styleInject(css_248z$9);
+var css_248z$b = "span.badge {\n  position: absolute;\n  top: 0;\n  right: 0;\n  padding: 4px;\n}\n\nspan.badge.badge-primary {\n  background-color: #0788dd;\n  color: white;\n}\n\nspan.badge.badge-success {\n  background-color: #78d178;\n  color: white;\n}\n\nspan.badge.badge-danger {\n  background-color: #d17878;\n  color: white;\n}\n\nspan.badge.badge-warning {\n  background-color: #ecdd68;\n  color: white;\n}";
+styleInject(css_248z$b);
+
+const Badge = ({ label, type = 'primary', max, style }) => {
+    const displayLabel = label > max ? `${max}+` : label;
+    return (React__default.createElement("span", { className: `badge badge-${type}`, style: Object.assign({ borderRadius: '10px' }, style), "data-testid": "tooltip" }, displayLabel));
+};
+
+var css_248z$a = "button.commonButton {\n    color: white;\n    cursor: pointer;\n    border-radius: 6px;\n    padding: 10px;\n    background-color: #1ea7fd;\n    border: 0;\n}\n\n.commonButton:hover {\n    background-color: #9E9E9E;\n}\n\n.commonButton:hover {\n    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\n}\n\n.outLineButton-success {\n    border: 0.8px solid rgba(0, 137, 55, 0.9);\n    color: rgba(0, 137, 55, 0.9);\n    background-color: #FFFFFF;\n}\n\n.outLineButton-success:hover {\n    background-color: rgba(0, 137, 55, 0.9);\n    color: white;\n    outline: none;\n    border: none;\n}\n\n.outLineButton-primary {\n    border: 0.8px solid #0094DA;\n    color: #0094DA;\n    background-color: #FFFFFF;\n}\n\n.outLineButton-primary:hover {\n    background-color: #0094DA;\n    color: white;\n    outline: none;\n    border: none;\n}\n\n\n.outLineButton-danger {\n    border: 0.8px solid #D40909;\n    background-color: #FFFFFF;\n    color: #D40909;\n}\n\n.outLineButton-danger:hover {\n    background-color: #D40909;\n    color: white;\n    outline: none;\n    border: none;\n}\n\n.outLineButton-warning {\n    border: 0.8px solid #F9C304;\n    background-color: #FFFFFF;\n    color: #F9C304\n}\n\n.outLineButton-warning:hover {\n    background-color: #F9C304;\n    color: white;\n    outline: none;\n    border: none;\n}\n\n.outLineButton-light {\n    border: 0.8px solid #858585;\n    background-color: #FFFFFF;\n    color: #858585;\n}\n\n.outLineButton-light:hover {\n    background-color: #858585;\n    color: black;\n    outline: none;\n    border: none;\n}\n\n.outLineButton-dark {\n    border: 0.8px solid #303030;\n    background-color: #FFFFFF;\n    color: #303030;\n}\n\n.outLineButton-dark:hover {\n    background-color: #303030;\n    color: #ffffff;\n    outline: none;\n    border: none;\n}";
+styleInject(css_248z$a);
 
 const Button = (props) => {
     const { children, backgroundColor, color, outline, style, onClick, className, type } = props;
@@ -73,8 +86,8 @@ function __rest(s, e) {
     return t;
 }
 
-var css_248z$8 = ".ornamnent-Container,\n.adornment-Container {\n    display: flex;\n    align-items: center;\n}\n\n.inputField {\n    display: flex;\n    align-items: start;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px;\n    padding: 8px;\n}\n\n.adornmentContent {\n    background-color: #f5f5f5;\n    padding: 8px;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px 0px 0px 6px;\n}\n\n.adornInputField {\n    display: flex;\n    align-items: start;\n    width: 100%;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 0px 6px 6px 0px;\n    padding: 8px;\n}\n\n.oranInputField {\n    display: flex;\n    align-items: start;\n    width: 100%;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px 0px 0px 6px;\n    padding: 8px;\n}\n\n.oranmentContent {\n    background-color: #f5f5f5;\n    padding: 8px;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 0px 6px 6px 0px;\n}\n\n.inputField input:focus,\ninput.InputAddOn-field:focus {\n    background: #FFFFFF;\n    border: none;\n    outline: none;\n}\n\n.inputField:focus-within,\n.oranInputField:focus-within,\n.adornInputField:focus-within {\n    border: 0.5px solid #0094DA;\n}\n\ninput[type='text'],\ninput[type='email'],\ninput[type='password'] {\n    border: 0;\n    width: 100%;\n}\n\nspan.InputAddOn-item {\n    padding: 0px 4px;\n}\n\n.InputAddOn-item {\n    color: #666666;\n    font: inherit;\n    font-weight: normal;\n}";
-styleInject(css_248z$8);
+var css_248z$9 = ".ornamnent-Container,\n.adornment-Container {\n    display: flex;\n    align-items: center;\n}\n\n.inputField {\n    display: flex;\n    align-items: start;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px;\n    padding: 8px;\n}\n\n.adornmentContent {\n    background-color: #f5f5f5;\n    padding: 8px;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px 0px 0px 6px;\n}\n\n.adornInputField {\n    display: flex;\n    align-items: start;\n    width: 100%;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 0px 6px 6px 0px;\n    padding: 8px;\n}\n\n.oranInputField {\n    display: flex;\n    align-items: start;\n    width: 100%;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px 0px 0px 6px;\n    padding: 8px;\n}\n\n.oranmentContent {\n    background-color: #f5f5f5;\n    padding: 8px;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 0px 6px 6px 0px;\n}\n\n.inputField input:focus,\ninput.InputAddOn-field:focus {\n    background: #FFFFFF;\n    border: none;\n    outline: none;\n}\n\n.inputField:focus-within,\n.oranInputField:focus-within,\n.adornInputField:focus-within {\n    border: 0.5px solid #0094DA;\n}\n\ninput[type='text'],\ninput[type='email'],\ninput[type='password'] {\n    border: 0;\n    width: 100%;\n}\n\nspan.InputAddOn-item {\n    padding: 0px 4px;\n}\n\n.InputAddOn-item {\n    color: #666666;\n    font: inherit;\n    font-weight: normal;\n}";
+styleInject(css_248z$9);
 
 const ShowPassword = () => {
     return (React__default.createElement("div", null,
@@ -133,9 +146,9 @@ const Switch = (props) => {
     return React__default.createElement("input", Object.assign({ name: name, checked: checked, onChange: onChange, disabled: disabled, type: "checkbox" }, props));
 };
 
-var css_248z$7 = ".Card-module_card__Cb1o4 {\n    background-color: #ffffff;\n    border-radius: 8px;\n    line-height: 1.5;\n    word-break: break-all;\n    border: 1px solid #e8e8e8;\n}\n\n.Card-module_cardHead__X5ZxV {\n    padding: 0 1.6rem;\n    text-align: center;\n}\n\n.Card-module_cardFooter__-sXuF {\n    padding: 0 1.6rem;\n    font-size: 1.1rem;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding: 0.4em;\n    border-radius: 2px 2px 0 0;\n}\n\n.Card-module_cardHeadTitle__hkszw {\n    font-weight: 500;\n    margin: 0;\n    font-size: 16px;\n    line-height: 22px;\n    font-weight: 500;\n}\n\n.Card-module_cardBody__-I34R {\n    padding: 1.2rem 1.8rem;\n    border-radius: 2px 2px 0 0;\n    text-align: center;\n}\n\n.Card-module_noBorderCard__ej-zo {\n    border: none;\n}\n\n.Card-module_topRightBtn__EwYaO {\n    display: flex;\n    align-items: center;\n}";
+var css_248z$8 = ".Card-module_card__Cb1o4 {\n    background-color: #ffffff;\n    border-radius: 8px;\n    line-height: 1.5;\n    word-break: break-all;\n    border: 1px solid #e8e8e8;\n}\n\n.Card-module_cardHead__X5ZxV {\n    padding: 0 1.6rem;\n    text-align: center;\n}\n\n.Card-module_cardFooter__-sXuF {\n    padding: 0 1.6rem;\n    font-size: 1.1rem;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding: 0.4em;\n    border-radius: 2px 2px 0 0;\n}\n\n.Card-module_cardHeadTitle__hkszw {\n    font-weight: 500;\n    margin: 0;\n    font-size: 16px;\n    line-height: 22px;\n    font-weight: 500;\n}\n\n.Card-module_cardBody__-I34R {\n    padding: 1.2rem 1.8rem;\n    border-radius: 2px 2px 0 0;\n    text-align: center;\n}\n\n.Card-module_noBorderCard__ej-zo {\n    border: none;\n}\n\n.Card-module_topRightBtn__EwYaO {\n    display: flex;\n    align-items: center;\n}";
 var styles = {"card":"Card-module_card__Cb1o4","cardHead":"Card-module_cardHead__X5ZxV","cardFooter":"Card-module_cardFooter__-sXuF","cardHeadTitle":"Card-module_cardHeadTitle__hkszw","cardBody":"Card-module_cardBody__-I34R","noBorderCard":"Card-module_noBorderCard__ej-zo","topRightBtn":"Card-module_topRightBtn__EwYaO"};
-styleInject(css_248z$7);
+styleInject(css_248z$8);
 
 const Card = (props) => {
     const { className, padding, title = 'Card Title', border, footer = 'Card Footer', headerImage } = props;
@@ -1499,8 +1512,8 @@ const TableRow = ({ data, columns, buttons, onClick }) => {
     }
 };
 
-var css_248z$6 = ".mainTable {\n    border-collapse: collapse;\n    border: none;\n    font-family: sans-serif;\n    overflow-x: auto;\n    display: block;\n}\n\n.tableHeader {\n    background-color: #f1f1f1;\n    padding: 12px;\n    margin: 10px 0 10px 0;\n    font-weight: 600;\n    text-align: left;\n    font-size: 15px;\n    color: #2c3e50;\n}\n\n.tableHeader:first-child {\n    border-top-left-radius: 12px;\n}\n\n.tableHeader:last-child {\n    border-top-right-radius: 12px;\n}\n\n.tableRowItem:nth-child(odd) {\n    background-color: #f9f9f9;\n}\n\n.tableRowItem:last-child {\n    border-top-left-radius: 12px;\n    border-top-right-radius: 12px;\n}\n\n.tableRowCell {\n    padding: 12px;\n    font-size: 14px;\n    color: grey;\n    text-align: left;\n}\n\n.tableBtn {\n    cursor: pointer;\n    border: 0;\n    background-color: transparent;\n}";
-styleInject(css_248z$6);
+var css_248z$7 = ".mainTable {\n    border-collapse: collapse;\n    border: none;\n    font-family: sans-serif;\n    overflow-x: auto;\n    display: block;\n}\n\n.tableHeader {\n    background-color: #f1f1f1;\n    padding: 12px;\n    margin: 10px 0 10px 0;\n    font-weight: 600;\n    text-align: left;\n    font-size: 15px;\n    color: #2c3e50;\n}\n\n.tableHeader:first-child {\n    border-top-left-radius: 12px;\n}\n\n.tableHeader:last-child {\n    border-top-right-radius: 12px;\n}\n\n.tableRowItem:nth-child(odd) {\n    background-color: #f9f9f9;\n}\n\n.tableRowItem:last-child {\n    border-top-left-radius: 12px;\n    border-top-right-radius: 12px;\n}\n\n.tableRowCell {\n    padding: 12px;\n    font-size: 14px;\n    color: grey;\n    text-align: left;\n}\n\n.tableBtn {\n    cursor: pointer;\n    border: 0;\n    background-color: transparent;\n}";
+styleInject(css_248z$7);
 
 const Table = ({ data, columns, buttons, onClick }) => {
     return (React__default.createElement("table", { className: "mainTable" },
@@ -3065,8 +3078,8 @@ function useFormAction(action, _temp2) {
   return createPath(path);
 }
 
-var css_248z$5 = ".selectContainer {\n    display: flex;\n    flex-direction: row;\n    border-radius: 4px;\n    border: 0.5px solid #858585;\n    background-color: #F0F0F0;\n    background: url(../../assets/ClosePassword) right / 90% no-repeat;\n}\n\nselect.selectInput {\n    width: 100%;\n    border: none;\n    background-color: none;\n    appearance: none;\n    -webkit-appearance: none;\n    padding: 6px;\n}\n\nselect:focus {\n    border: none;\n    outline: none;\n}\n\nselect option {\n    border: 5px solid;\n    border-radius: 14px;\n    color: red;\n}\n\n.selectIcon {\n    -moz-transition: all .3s linear;\n    -webkit-transition: all .3s linear;\n    transition: all .3s linear;\n}\n\n.rotate {\n    -moz-transform: rotate(180deg);\n    -webkit-transform: rotate(180deg);\n    transform: rotate(180deg);\n}";
-styleInject(css_248z$5);
+var css_248z$6 = ".selectContainer {\n    display: flex;\n    flex-direction: row;\n    border-radius: 4px;\n    border: 0.5px solid #858585;\n    background-color: #F0F0F0;\n    background: url(../../assets/ClosePassword) right / 90% no-repeat;\n}\n\nselect.selectInput {\n    width: 100%;\n    border: none;\n    background-color: none;\n    appearance: none;\n    -webkit-appearance: none;\n    padding: 6px;\n}\n\nselect:focus {\n    border: none;\n    outline: none;\n}\n\nselect option {\n    border: 5px solid;\n    border-radius: 14px;\n    color: red;\n}\n\n.selectIcon {\n    -moz-transition: all .3s linear;\n    -webkit-transition: all .3s linear;\n    transition: all .3s linear;\n}\n\n.rotate {\n    -moz-transform: rotate(180deg);\n    -webkit-transform: rotate(180deg);\n    transform: rotate(180deg);\n}";
+styleInject(css_248z$6);
 
 const Select = ({ options, placeholder, disabled, name, onChange }) => {
     const selectIconRef = useRef(null);
@@ -3093,74 +3106,43 @@ const CloseIcon = () => {
         React__default.createElement("path", { d: "M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z" })));
 };
 
-var css_248z$4 = ".alert {\n    padding: 10px;\n    border-radius: 5px;\n    display: flex;\n    justify-content: space-between;\n}\n\n.alert-success {\n    border: 2px solid #78d178;\n    background-color: #d1ffcd;\n}\n\n.alert-failure {\n    border: 2px solid #d17878;\n    background-color: rgb(255, 205, 205);\n}\n\n.alert-warning {\n    border: 2px solid #ecdd68;\n    background-color: #faf4c7;\n}\n\n.closeIcon {\n    cursor: pointer;\n}\n";
+var css_248z$5 = ".alert {\n    padding: 10px;\n    border-radius: 5px;\n    display: flex;\n    justify-content: space-between;\n}\n\n.alert-success {\n    border: 2px solid #78d178;\n    background-color: #d1ffcd;\n}\n\n.alert-failure {\n    border: 2px solid #d17878;\n    background-color: rgb(255, 205, 205);\n}\n\n.alert-warning {\n    border: 2px solid #ecdd68;\n    background-color: #faf4c7;\n}\n\n.closeIcon {\n    cursor: pointer;\n}\n";
+styleInject(css_248z$5);
+
+const Alert = ({ message = 'This is a success message', type = 'success', timeout, isClosable = true }) => {
+    const [isOpen, setIsOpen] = useState$1(true);
+    const handleClose = () => {
+        setIsOpen(false);
+    };
+    if (timeout) {
+        setTimeout(() => {
+            handleClose();
+        }, timeout);
+    }
+    if (!isOpen) {
+        return null;
+    }
+    return (React__default.createElement("div", { className: `alert alert-${type}` },
+        React__default.createElement("div", null, message),
+        isClosable && (React__default.createElement("div", { className: "closeIcon", "data-testid": "close-button", onClick: handleClose },
+            React__default.createElement(CloseIcon, null)))));
+};
+
+var css_248z$4 = ".tooltipMainDiv {\n    position: relative;\n    display: inline-block;\n}\n\n.textContainer {\n    visibility: visible;\n    min-width: 30px;\n    background-color: rgb(49, 49, 49);\n    color: #fff;\n    text-align: center;\n    border-radius: 4px;\n    padding: 5px 5px 5px 5px;\n    position: absolute;\n    z-index: 1;\n    top: 100%;\n    left: 50%;\n    margin-left: -60px;\n    opacity: 0.8;\n    font-size: 14px;\n}\n";
 styleInject(css_248z$4);
 
-class Alert extends React__default.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isOpen: true
-        };
-        this.handleClose = this.handleClose.bind(this);
-    }
-    componentDidMount() {
-        const { timeout } = this.props;
-        if (timeout) {
-            const timerId = setTimeout(() => {
-                this.handleClose();
-            }, timeout);
-            this.setState({ timerId });
-        }
-    }
-    componentWillUnmount() {
-        const { timerId } = this.state;
-        if (timerId) {
-            clearTimeout(timerId);
-        }
-    }
-    handleClose() {
-        this.setState({ isOpen: false });
-    }
-    render() {
-        const { isOpen } = this.state;
-        const { message, type = 'success', isClosable = true } = this.props;
-        if (!isOpen) {
-            return null;
-        }
-        return (React__default.createElement("div", { className: `alert alert-${type}` },
-            React__default.createElement("div", null, message ? message : 'This is a success message'),
-            isClosable && (React__default.createElement("div", { className: "closeIcon", "data-testid": "close-button", onClick: this.handleClose },
-                React__default.createElement(CloseIcon, null)))));
-    }
-}
-
-var css_248z$3 = ".tooltipMainDiv {\n    position: relative;\n    display: inline-block;\n}\n\n.textContainer {\n    visibility: visible;\n    min-width: 30px;\n    background-color: rgb(49, 49, 49);\n    color: #fff;\n    text-align: center;\n    border-radius: 4px;\n    padding: 5px 5px 5px 5px;\n    position: absolute;\n    z-index: 1;\n    top: 100%;\n    left: 50%;\n    margin-left: -60px;\n    opacity: 0.8;\n    font-size: 14px;\n}\n";
-styleInject(css_248z$3);
-
-class Tooltip extends React__default.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            showTooltip: false
-        };
-        this.handleMouseEnter = this.handleMouseEnter.bind(this);
-        this.handleMouseLeave = this.handleMouseLeave.bind(this);
-    }
-    handleMouseEnter() {
-        this.setState({ showTooltip: true });
-    }
-    handleMouseLeave() {
-        this.setState({ showTooltip: false });
-    }
-    render() {
-        const { text, children } = this.props;
-        const { showTooltip } = this.state;
-        return (React__default.createElement("div", { className: "tooltipMainDiv", "data-testid": "tooltipHover", onMouseEnter: this.handleMouseEnter, onMouseLeave: this.handleMouseLeave },
-            children ? children : 'Hello I am a Tooltip',
-            showTooltip && React__default.createElement("span", { className: "textContainer " }, text ? text : 'This is the Text Area of Tooltip')));
-    }
-}
+const Tooltip = ({ text, children }) => {
+    const [showTooltip, setShowTooltip] = useState$1(false);
+    const handleMouseEnter = () => {
+        setShowTooltip(true);
+    };
+    const handleMouseLeave = () => {
+        setShowTooltip(false);
+    };
+    return (React__default.createElement("div", { className: "tooltipMainDiv", "data-testid": "tooltipHover", onMouseEnter: handleMouseEnter, onMouseLeave: handleMouseLeave },
+        children,
+        showTooltip && React__default.createElement("span", { className: "textContainer " }, text)));
+};
 
 const Logout = () => {
     return (React__default.createElement("svg", { width: "24", height: "24", xmlns: "http://www.w3.org/2000/svg", fillRule: "evenodd", clipRule: "evenodd" },
@@ -3168,12 +3150,12 @@ const Logout = () => {
 };
 
 const RightArrow = () => {
-    return (React__default.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24" },
+    return (React__default.createElement("svg", { className: "greyColor", xmlns: "http://www.w3.org/2000/svg", width: "24", height: "24", viewBox: "0 0 24 24" },
         React__default.createElement("path", { d: "M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z" })));
 };
 
-var css_248z$2 = ".SideBarContainer {\n    display: flex;\n    font-weight: 400;\n    font-size: 16px;\n}\n\n.SideBarContainer.right {\n    position: absolute;\n    top: 0;\n    right: 0;\n}\n\n.slimSidebarItem {\n    text-align: center;\n    display: flex;\n    padding: 4px 0px;\n    place-content: center;\n}\n\n.SidebarItem {\n    display: flex;\n    place-content: start;\n    color: #6C757D;\n    gap: 15px;\n    padding: 8px;\n    cursor: pointer;\n    width: 100%;\n    transition: all 0.5s;\n}\n\n.slimSideBar {\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n    width: 89px;\n    height: 100vh;\n    background-color: #cdefff;\n    overflow-y: auto;\n}\n\n.sidebar {\n    /* position: fixed; */\n    color: black;\n    width: 217px;\n    font-size: 18px;\n    padding: 10px;\n    height: 100vh;\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n    text-align: 'start';\n    overflow-y: auto;\n    background-color: #cdefff;\n    transition: all 0.8s;\n}\n\n.slim_top_section {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 35px 10px 15px 15px;\n    margin: 25px 0px;\n    background: url('../../assets/techno.svg')no-repeat center 20px / 50%;\n}\n\n.top_section {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 15% 0%;\n    background: url('../../assets/techno.svg')no-repeat 45% center / 30%;\n    margin: 15px 0px;\n}\n\n.linkArea {\n    display: grid;\n    font-family: 'Roboto';\n    font-style: normal;\n    justify-content: center;\n}\n\na {\n    text-decoration: none;\n}\n\na.active {\n    background-color: transparent;\n}\n\na.active:hover {\n    color: #d0e8e8;\n}\n\n.SidebarItem:hover,\n.sidebarSubItems:hover {\n    border-radius: 8px;\n    color: #6C757D;\n}\n\n.sidebarSubItems {\n    text-decoration: none;\n    cursor: pointer;\n    display: flex;\n    text-decoration: none;\n    color: black;\n    margin-left: 15px;\n    border: none;\n    outline: none;\n    padding: 10px 14px 10px 14px;\n}\n\n.dropDownIcon {\n    display: inline-flex;\n    padding-left: 8px;\n    vertical-align: middle;\n    transition: all 0.5s;\n    width: 12px;\n}\n\n.bars {\n    display: grid;\n    font-size: 25px;\n    justify-content: flex-end;\n    padding: 0px 10px;\n    align-self: center;\n}\n\n.dropDownIcon.rotateNintee {\n    transform: rotateNintee(90deg);\n    transform: rotate(90deg) translateX(1px);\n}\n\n.rotate {\n    transform: rotate (180deg)\n}\n\n.link:hover {\n    background: lightskyblue;\n    color: #000;\n    transition: all 0.5s;\n}\n\n.icon,\n.link_text {\n    font-size: 20px;\n}\n\n.footer_section {\n    padding-bottom: 50px;\n    display: flex;\n    align-self: center;\n    cursor: pointer;\n}";
-styleInject(css_248z$2);
+var css_248z$3 = ".SideBarContainer {\n    display: flex;\n    font-weight: 400;\n    font-size: 16px;\n}\n\n.SideBarContainer.right {\n    position: absolute;\n    top: 0;\n    right: 0;\n}\n\n.slimSidebarItem {\n    text-align: center;\n    display: flex;\n    padding: 4px 0px;\n    place-content: center;\n}\n\n.SidebarItem {\n    display: flex;\n    place-content: start;\n    color: #6C757D;\n    gap: 15px;\n    padding: 8px;\n    cursor: pointer;\n    width: 100%;\n    transition: all 0.5s;\n}\n\n.slimSideBar {\n    display: flex;\n    flex-direction: column;\n    width: 89px;\n    height: 100vh;\n    background-color: #cdefff;\n    place-content: space-between;\n}\n\n.sidebar {\n    color: black;\n    height: 100vh;\n    max-width: 217px;\n    width: 100%;\n    font-size: 18px;\n    height: 100vh;\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n    text-align: 'start';\n    background-color: #cdefff;\n    transition: all 0.8s;\n}\n\n.slim_top_section {\n    position: sticky;\n    top: 0;\n    background: inherit;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 35px 10px 15px 15px;\n    margin: 25px 0px;\n    background: url('../../assets/techno.svg')no-repeat center 20px / 50%;\n}\n\n.top_section {\n    position: sticky;\n    top: 0;\n    background: inherit;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    /* background: url(../../assets/techno.svg)no-repeat 45% center / 30%; */\n    margin: 15px 0px;\n}\n\n.linkArea {\n    padding: 10px;\n    display: grid;\n    overflow-y: auto;\n    overflow-x: hidden;\n    font-family: 'Roboto';\n    font-style: normal;\n    justify-content: center;\n}\n\n.linkArea::-webkit-scrollbar {\n    width: 4px;\n    height: 4px;\n}\n\n.linkArea::-webkit-scrollbar-thumb {\n    background-color: #003554;\n    border-radius: 10px;\n}\n\n.linkArea::-webkit-scrollbar-track {\n    background-color: white;\n    border-radius: 10px;\n}\n\na {\n    text-decoration: none;\n}\n\na.active {\n    background-color: transparent;\n}\n\na.active:hover {\n    color: #d0e8e8;\n}\n\n.SidebarItem:hover,\n.sidebarSubItems:hover {\n    border-radius: 8px;\n    color: #003554;\n\n}\n\n.SidebarItem:hover .svg-icon path,\n.SidebarItem:hover .greyColor path {\n    fill: #003554;\n}\n\nsvg.greyColor path {\n    fill: #6c747d;\n}\n\n.sidebarSubItems {\n    text-decoration: none;\n    cursor: pointer;\n    display: flex;\n    text-decoration: none;\n    color: #6c747d;\n    margin-left: 30px;\n    border: none;\n    outline: none;\n    padding: 10px 14px 10px 14px;\n}\n\n.dropDownIcon {\n    display: inline-flex;\n    padding-left: 8px;\n    vertical-align: middle;\n    transition: all 0.5s;\n    width: 12px;\n}\n\n.bars {\n    display: grid;\n    font-size: 25px;\n    justify-content: flex-end;\n    padding: 0px 10px;\n    align-self: center;\n}\n\n\n.dropDownIcon.rotateNintee {\n    transform: rotateNintee(90deg);\n    transform: rotate(90deg) translateX(1px);\n}\n\n.rotate {\n    transform: rotate (180deg)\n}\n\n.link:hover {\n    background: lightskyblue;\n    color: #000;\n    transition: all 0.5s;\n}\n\n.icon,\n.link_text {\n    font-size: 20px;\n}\n\n.footer_section {\n    position: sticky;\n    bottom: 0;\n    width: 100%;\n    background: inherit;\n    display: flex;\n    justify-content: center;\n    cursor: pointer;\n}";
+styleInject(css_248z$3);
 
 const Sidebar = ({ sidebarData, align, imageSrc, openSideBar, onClick }) => {
     const [btnOpen, setBtnOpen] = useState$1(openSideBar || false);
@@ -3191,32 +3173,85 @@ const Sidebar = ({ sidebarData, align, imageSrc, openSideBar, onClick }) => {
     return (React__default.createElement(BrowserRouter, null,
         React__default.createElement("div", { className: `SideBarContainer ${align}`, "data-testid": "sidebar-container" },
             React__default.createElement("div", { className: `${btnOpen ? 'sidebar' : 'slimSideBar'}`, "data-testid": "Sidebar" },
-                React__default.createElement("div", null,
-                    React__default.createElement("div", { className: `${btnOpen ? 'top_section' : 'slim_top_section'}` }),
-                    React__default.createElement("div", { className: "linkArea" }, sidebarData === null || sidebarData === void 0 ? void 0 : sidebarData.map((item) => {
-                        var _a;
-                        return (React__default.createElement(NavLink, { to: item.link, key: item.id },
-                            React__default.createElement("div", { className: ` ${btnOpen ? 'SidebarItem' : 'slimSidebarItem'}` },
-                                React__default.createElement("div", { className: "icon" }, item.icon),
-                                React__default.createElement("div", { style: { display: btnOpen ? 'block' : 'none' }, onClick: () => {
-                                        handleItemClick(item.id);
-                                    }, "data-testid": "SidebarItem" },
-                                    item.name,
-                                    item.items && ((_a = item.items) === null || _a === void 0 ? void 0 : _a.length) > 0 && React__default.createElement("div", { className: `dropDownIcon ${isOpen && curr === item.id ? 'rotateNintee' : ''}` }, React__default.createElement(RightArrow, null)))),
-                            curr === item.id &&
-                                item.items &&
-                                isOpen &&
-                                (item === null || item === void 0 ? void 0 : item.items.map((itemval) => {
-                                    return (React__default.createElement("div", { key: itemval.id },
-                                        React__default.createElement("a", { style: { display: btnOpen ? 'block' : 'none' }, href: itemval.link, onClick: () => {
-                                                handleSubItemClick(itemval.id);
-                                            }, className: `sidebarSubItems ${currSubItem === itemval.id ? 'active' : ''}`, "data-testid": "SidebarSubItem" }, itemval.name)));
-                                }))));
-                    }))),
+                React__default.createElement("div", { className: `${btnOpen ? 'top_section' : 'slim_top_section'}` },
+                    React__default.createElement("img", { src: '../../assets/logo2.jpg', alt: "Logo", className: "logo" })),
+                React__default.createElement("div", { className: "linkArea" }, sidebarData === null || sidebarData === void 0 ? void 0 : sidebarData.map((item) => {
+                    var _a;
+                    return (React__default.createElement(NavLink, { to: item.link, key: item.id },
+                        React__default.createElement("div", { className: ` ${btnOpen ? 'SidebarItem' : 'slimSidebarItem'}` },
+                            React__default.createElement("div", { className: "icon" }, item.icon),
+                            React__default.createElement("div", { style: { display: btnOpen ? 'block' : 'none' }, onClick: () => {
+                                    handleItemClick(item.id);
+                                }, "data-testid": "SidebarItem" },
+                                item.name,
+                                item.items && ((_a = item.items) === null || _a === void 0 ? void 0 : _a.length) > 0 && React__default.createElement("div", { className: `dropDownIcon ${isOpen && curr === item.id ? 'rotateNintee' : ''}` }, React__default.createElement(RightArrow, null)))),
+                        curr === item.id &&
+                            item.items &&
+                            isOpen &&
+                            (item === null || item === void 0 ? void 0 : item.items.map((itemval) => {
+                                return (React__default.createElement("div", { key: itemval.id },
+                                    React__default.createElement("a", { style: { display: btnOpen ? 'block' : 'none' }, href: itemval.link, onClick: () => {
+                                            handleSubItemClick(itemval.id);
+                                        }, className: `sidebarSubItems ${currSubItem === itemval.id ? 'active' : ''}`, "data-testid": "SidebarSubItem" }, itemval.name)));
+                            }))));
+                })),
                 React__default.createElement("div", { className: "footer_section", onClick: onClick },
                     React__default.createElement("div", { className: `bars ${btnOpen ? 'rotate' : ''} ` },
                         React__default.createElement(Logout, null)),
                     React__default.createElement("p", { style: { display: btnOpen ? 'block' : 'none' } }, "Logout"))))));
+};
+
+var css_248z$2 = ".navContainer {\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  /* padding: 0px 15px; */\n}\n\n.navLeftSide {\n  align-self: center;\n  padding-left: 10px;\n}\n\n.navRightSide {\n  display: flex;\n  flex-direction: row;\n}\n\n.settinIcon {\n  align-self: center;\n  padding: 0px 10px;\n  cursor: pointer;\n}\n\n@media (prefers-reduced-motion: no-preference) {\n  .settinIcon {\n    animation: settinIcon-spin infinite 8s linear;\n  }\n}\n\n@keyframes settinIcon-spin {\n  from {\n    transform: rotate(0deg);\n  }\n\n  to {\n    transform: rotate(360deg);\n  }\n}\n\n#time-3-icon {\n  fill: #858585;\n}\n\n.bellIcon {\n  align-self: center;\n  padding: 0px 10px;\n  cursor: pointer;\n  display: flex;\n}\n\n.counter {\n  background: #0788dd;\n  color: #ffff;\n  border-radius: 45px;\n  padding: 4px;\n  font-size: 8px;\n  width: 10px;\n  align-self: start;\n  top: 25px;\n  right: 230px;\n  text-align: center;\n  position: absolute;\n}\n\n.notificationDropDown {\n  background-image: linear-gradient(to bottom right, #d9f4ff, #f2fcff);\n  text-align: left;\n  cursor: initial;\n  margin-top: 50px;\n  max-width: 370px;\n  position: absolute;\n  color: #003554;\n  overflow: auto;\n  border-radius: 8px;\n  right: 250px;\n  box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.2);\n  z-index: 1;\n}\n\n.notificationHeader {\n  display: flex;\n  position: sticky;\n  top: 0;\n  background: inherit;\n  padding: 15px;\n  align-items: center;\n  min-width: 310px;\n  font-weight: 600;\n  justify-content: space-between;\n  font-size: 16px;\n  padding-bottom: 10px;\n}\n\n.notificationBody {\n  display: flex;\n  flex-direction: column;\n  overflow-y: auto;\n  max-height: 220px;\n}\n\n.notificationBody::-webkit-scrollbar {\n  width: 10px;\n  height: 10px;\n}\n\n.notificationBody::-webkit-scrollbar-thumb {\n  background-color: #003554;\n  border-radius: 10px;\n}\n\n.notificationBody::-webkit-scrollbar-track {\n  background-color: white;\n  border-radius: 10px;\n}\n\n.notificationListRow {\n  display: flex;\n  align-items: flex-start;\n  padding: 8px 10px;\n}\n\n.notificationListRow:hover {\n  background-color: #f2fcff;\n}\n\n.notificationData {\n  padding-left: 10px;\n  cursor: pointer;\n}\n\n.notificationFooter {\n  padding: 10px;\n  position: sticky;\n  bottom: 0;\n  background: inherit;\n  text-align: center;\n  font-weight: 600;\n  cursor: pointer;\n}\n\n.circle {\n  background: white;\n  border-radius: 50%;\n  width: 25px;\n  text-align-last: center;\n  padding: 0px;\n  margin: 0;\n}\n\n.avatarIcon {\n  align-self: center;\n  padding: 0px 10px;\n  border-radius: 45px;\n}\n\n.navDownArrow {\n  align-self: center;\n  padding: 0px 10px;\n  cursor: pointer;\n}\n\n.userDropDown {\n  text-align: left;\n  margin-top: 20px;\n  right: 10px;\n  padding: 15px;\n  position: absolute;\n  color: #003554;\n  min-width: 160px;\n  overflow: auto;\n  border-radius: 8px;\n  box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.2);\n  z-index: 1;\n}\n\n.desc {\n  padding-top: 10px;\n  font-size: 15px;\n  display: flex;\n  text-align: center;\n  justify-content: center;\n  cursor: pointer;\n}\n\np.logoutClass {\n  padding: 5px;\n  margin: 0;\n}\n\n.userDetail {\n  display: flex;\n  flex-direction: column;\n  padding: 0px 10px;\n  justify-content: center;\n}\n\n.avatarBorder {\n  align-self: center;\n  padding: 0px 10px;\n  border-radius: 50%;\n  border-top-width: thin;\n  border: 1px solid gray;\n  border-bottom: 0;\n  border-right: 0;\n}\n\n.dropdownUserDetailsRow {\n  display: flex;\n  font-size: 10px;\n  align-items: center;\n  padding-bottom: 12px;\n}\n\n.userDetailsRow {\n  display: flex;\n  font-size: 10px;\n  align-items: center;\n}\n\n#small-bell {\n  color: #2c2c2c\n}\n\n.uerDetailsRowcounter {\n  right: 15px;\n  margin-left: 15px;\n  background: #2476e0;\n  color: white;\n  padding: 2px;\n}\n\np.userInfo {\n  padding-left: 12px;\n}\n\np.userName {\n  margin: 0 auto;\n  font-size: 16px;\n  line-height: 19px;\n  color: #003554;\n}\n\np.userDesig {\n  margin: 0 auto;\n  font-size: 10px;\n  line-height: 12px;\n  color: #858585;\n}";
+styleInject(css_248z$2);
+
+const HorizontalLine = () => {
+    return (React__default.createElement("svg", { width: "29", height: "20", viewBox: "0 0 29 20", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+        React__default.createElement("path", { d: "M0.0244141 19.8049H28.561V16.6342H0.0244141V19.8049ZM0.0244141 11.8781H28.561V8.70735H0.0244141V11.8781ZM0.0244141 0.780518V3.95125H28.561V0.780518H0.0244141Z", fill: "#858585" })));
+};
+
+const Setting = () => {
+    return (React__default.createElement("svg", { width: "24", height: "24", xmlns: "http://www.w3.org/2000/svg", fillRule: "evenodd", clipRule: "evenodd" },
+        React__default.createElement("path", { id: "time-3-icon", d: "M12 8.666c-1.838 0-3.333 1.496-3.333 3.334s1.495 3.333 3.333 3.333 3.333-1.495 3.333-3.333-1.495-3.334-3.333-3.334m0 7.667c-2.39 0-4.333-1.943-4.333-4.333s1.943-4.334 4.333-4.334 4.333 1.944 4.333 4.334c0 2.39-1.943 4.333-4.333 4.333m-1.193 6.667h2.386c.379-1.104.668-2.451 2.107-3.05 1.496-.617 2.666.196 3.635.672l1.686-1.688c-.508-1.047-1.266-2.199-.669-3.641.567-1.369 1.739-1.663 3.048-2.099v-2.388c-1.235-.421-2.471-.708-3.047-2.098-.572-1.38.057-2.395.669-3.643l-1.687-1.686c-1.117.547-2.221 1.257-3.642.668-1.374-.571-1.656-1.734-2.1-3.047h-2.386c-.424 1.231-.704 2.468-2.099 3.046-.365.153-.718.226-1.077.226-.843 0-1.539-.392-2.566-.893l-1.687 1.686c.574 1.175 1.251 2.237.669 3.643-.571 1.375-1.734 1.654-3.047 2.098v2.388c1.226.418 2.468.705 3.047 2.098.581 1.403-.075 2.432-.669 3.643l1.687 1.687c1.45-.725 2.355-1.204 3.642-.669 1.378.572 1.655 1.738 2.1 3.047m3.094 1h-3.803c-.681-1.918-.785-2.713-1.773-3.123-1.005-.419-1.731.132-3.466.952l-2.689-2.689c.873-1.837 1.367-2.465.953-3.465-.412-.991-1.192-1.087-3.123-1.773v-3.804c1.906-.678 2.712-.782 3.123-1.773.411-.991-.071-1.613-.953-3.466l2.689-2.688c1.741.828 2.466 1.365 3.465.953.992-.412 1.082-1.185 1.775-3.124h3.802c.682 1.918.788 2.714 1.774 3.123 1.001.416 1.709-.119 3.467-.952l2.687 2.688c-.878 1.847-1.361 2.477-.952 3.465.411.992 1.192 1.087 3.123 1.774v3.805c-1.906.677-2.713.782-3.124 1.773-.403.975.044 1.561.954 3.464l-2.688 2.689c-1.728-.82-2.467-1.37-3.456-.955-.988.41-1.08 1.146-1.785 3.126" })));
+};
+
+const Bell = () => {
+    return (React__default.createElement("svg", { width: "22", height: "24", viewBox: "0 0 22 24", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+        React__default.createElement("path", { d: "M21.3572 19.6178C18.8067 18.466 18.7097 13.5221 18.7078 13.3974V10.0806C18.7078 6.88833 16.7572 4.14334 13.9852 2.97455C13.9792 1.33334 12.6425 0 11.0001 0C9.35762 0 8.02095 1.33341 8.01495 2.97448C5.2431 4.14326 3.29239 6.88825 3.29239 10.0805V13.3973C3.29059 13.522 3.19349 18.466 0.642934 19.6178C0.352385 19.749 0.192698 20.0653 0.259875 20.377C0.326973 20.6887 0.602621 20.9113 0.921484 20.9113H7.38738C7.51993 21.6405 7.86471 22.3189 8.39204 22.8683C9.09244 23.598 10.0187 23.9999 11 23.9999C11.9813 23.9999 12.9076 23.598 13.6079 22.8683C14.1353 22.3188 14.4801 21.6404 14.6126 20.9113H21.0785C21.3973 20.9113 21.6729 20.6887 21.7401 20.377C21.8074 20.0653 21.6478 19.7491 21.3572 19.6178ZM17.9975 17.2494C18.2656 18.0623 18.6452 18.8786 19.1836 19.5579H2.81651C3.35478 18.8787 3.73443 18.0624 4.00255 17.2494H17.9975ZM11.0001 1.35353C11.743 1.35353 12.3712 1.85275 12.5677 2.53322C12.0614 2.4282 11.5371 2.37283 11.0001 2.37283C10.4631 2.37283 9.93879 2.42816 9.43244 2.53322C9.62903 1.85279 10.2572 1.35353 11.0001 1.35353ZM4.64592 13.4014V10.0804C4.64592 6.5768 7.49636 3.72636 11.0001 3.72636C14.5038 3.72636 17.3543 6.5768 17.3543 10.0804V13.407C17.3552 13.5088 17.371 14.5787 17.6406 15.8958H4.35937C4.62918 14.5774 4.6451 13.5056 4.64592 13.4014ZM11.0001 22.6465C9.96711 22.6465 9.06558 21.9017 8.7762 20.9114H13.2239C12.9345 21.9017 12.0331 22.6465 11.0001 22.6465Z", fill: "#858585" })));
+};
+
+const NavDown = () => {
+    return (React__default.createElement("svg", { width: "9", height: "5", viewBox: "0 0 9 5", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+        React__default.createElement("path", { d: "M0.0278459 -4.10239e-05L8.93396 0.0556641L4.45305 4.48087L0.0278459 -4.10239e-05Z", fill: "#6C757D" })));
+};
+
+const Nav = ({ userData, onClick }) => {
+    useState$1(false);
+    useState$1(false);
+    return (React__default.createElement("nav", { className: "navContainer" },
+        React__default.createElement("div", { className: "navLeftSide", onClick: (event) => {
+                onClick(event, 'Toggle_Button');
+            } },
+            React__default.createElement(HorizontalLine, null)),
+        React__default.createElement("div", { className: "navRightSide" },
+            React__default.createElement("div", { className: "settinIcon", onClick: (event) => {
+                    onClick(event, 'Setting');
+                } },
+                React__default.createElement(Setting, null)),
+            React__default.createElement("div", { className: "bellIcon", onClick: (event) => {
+                    onClick(event, 'notification');
+                } },
+                React__default.createElement(Bell, null),
+                (userData === null || userData === void 0 ? void 0 : userData.notificationCount) && React__default.createElement("div", { className: "counter" }, userData === null || userData === void 0 ? void 0 : userData.notificationCount)),
+            (userData === null || userData === void 0 ? void 0 : userData.avatar) && (React__default.createElement(React__default.Fragment, null,
+                React__default.createElement("div", { className: "avatarIcon" },
+                    React__default.createElement("img", { src: userData === null || userData === void 0 ? void 0 : userData.avatar, alt: `Avatar of ${userData === null || userData === void 0 ? void 0 : userData.userName}`, width: "57px" })),
+                React__default.createElement("div", { className: "navDownArrow", onClick: (event) => {
+                        onClick(event, 'User_Details');
+                    } },
+                    React__default.createElement(NavDown, null)))),
+            (userData === null || userData === void 0 ? void 0 : userData.userName) && (userData === null || userData === void 0 ? void 0 : userData.designation) && (React__default.createElement("div", { className: "userDetail" },
+                React__default.createElement("p", { className: "userName" }, userData.userName),
+                React__default.createElement("p", { className: "userDesig" }, userData.designation))))));
 };
 
 var css_248z$1 = ".dropdown {\n  width: 100%;\n}\n\nimg.logoSize {\n  width: 40px;\n}\n\n.navbar {\n  background: #eeeeee;\n  color: black;\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n}\n\n.navbarItem {\n  cursor: pointer;\n  padding: 10px 5px;\n  display: inline-flex;\n}\n\n.active {\n  background-color: #1ea7fd;\n  color: #eeeeee;\n}\n\n.navbarItem:hover,\n.navbarSubItems:hover {\n  color: #6cc4fc;\n}\n\n.dropdown-content {\n  position: absolute;\n  background-color: #f1f1f1;\n  min-width: 160px;\n  z-index: 1;\n  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);\n}\n\n.navbarItem:hover .dropdown-content {\n  display: block;\n}\n\n.dropdown-content a {\n  color: black;\n  padding: 12px 16px;\n  display: block;\n  text-decoration: none;\n}\n\n.navbarSubItems {\n  cursor: pointer;\n  text-decoration: none;\n  color: black;\n}\n\ninput[type=checkbox] {\n  display: none;\n}\n\n.hamburger {\n  display: none;\n  font-size: 24px;\n  user-select: none;\n}\n\n.dropdown {\n  position: relative;\n  display: inline-block;\n}\n\n.btnContainer {\n  display: flex;\n  flex-direction: row;\n  position: absolute;\n  right: 0;\n}\n\n.btnItems {\n  padding: 10px;\n}\n\n.btnItems:hover {\n  color: #6cc4fc;\n}\n\nbutton {\n  padding: 5px 10px;\n  cursor: pointer;\n  border-radius: 8px;\n  border: 0;\n  background-color: #1ea7fd;\n}\n\n.allLinks {\n  display: flex;\n  flex-direction: row;\n  place-self: center;\n}\n\n.navTitle {\n  display: flex;\n  flex-direction: row;\n  padding: 10px 15px;\n}\n\n.title {\n  place-self: center;\n  padding: 10px;\n  cursor: pointer;\n}\n\n.title:hover {\n  color: #1ea7fd;\n}\n\n@media screen and (min-width: 300px) and (max-width: 640px) {\n  .navbar {\n    background-color: transparent;\n  }\n\n  .repNavLink {\n    display: none;\n  }\n\n  .allLinks {\n    position: fixed;\n    background-color: #f1f1f1;\n    min-width: 50%;\n    right: 50px;\n    z-index: 1;\n    top: 30px;\n    display: block;\n    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);\n  }\n\n  .resNavBar {\n    display: flex;\n    flex-direction: column;\n  }\n\n  .dropdown-content {\n    position: inherit;\n    z-index: 1;\n  }\n\n  .navbarSubItems {\n    display: none;\n  }\n\n  .hamburger {\n    display: block;\n    font-size: 25px;\n    cursor: pointer;\n    position: absolute;\n  }\n\n  label.hamburger {\n    right: 5px;\n    top: 10px;\n  }\n\n  .hamburger:hover {\n    color: #6cc4fc;\n  }\n\n  #checkbox_toggle:checked~.dropdown-content {\n    display: block;\n  }\n}";
@@ -3289,5 +3324,5 @@ const TextArea = (props) => {
             React__default.createElement("textarea", { className: className ? className : 'textAreaInput', rows: rows ? rows : 10, cols: cols ? cols : 50, form: props.form, placeholder: placeholder ? placeholder : 'Text Area...', onChange: onChange }))));
 };
 
-export { Alert, Button, Card, Input, NavBar, Select, Sidebar, Switch, Table, TextArea, Tooltip };
+export { Alert, Avatar, Badge, Button, Card, Input, Nav, NavBar, Select, Sidebar, Switch, Table, TextArea, Tooltip };
 //# sourceMappingURL=index.esm.js.map

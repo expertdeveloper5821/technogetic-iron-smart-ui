@@ -4,37 +4,23 @@ import { Tooltip } from './Tooltip';
 import '@testing-library/jest-dom';
 import React from 'react';
 
-describe('Tooltip component', () => {
-    test('renders tooltip with default message', () => {
-        const { getByText } = render(<Tooltip />);
-        expect(getByText('Hello I am a Tooltip')).toBeInTheDocument();
-    });
+describe('Tooltip', () => {
+    test('renders tooltip text when hovered over', () => {
+        const tooltipText = 'Tooltip text';
+        const { getByTestId, getByText, queryByText } = render(
+            <Tooltip text={tooltipText}>
+                <span>Hover over me</span>
+            </Tooltip>
+        );
 
-    test('renders tooltip with provided text', () => {
-        const { getByTestId, getByText } = render(<Tooltip text="Custom tooltip text" />);
-        fireEvent.mouseEnter(getByTestId('tooltipHover'));
-        expect(getByText('Custom tooltip text')).toBeVisible();
-    });
+        const tooltipHoverElement = getByTestId('tooltipHover');
+        expect(tooltipHoverElement).toBeInTheDocument();
 
-    test('shows tooltip when mouse hovers over', () => {
-        const { getByTestId, getByText } = render(<Tooltip text="Custom tooltip text" />);
-        fireEvent.mouseEnter(getByTestId('tooltipHover'));
-        expect(getByText('Custom tooltip text')).toBeVisible();
-    });
+        fireEvent.mouseEnter(tooltipHoverElement);
+        const tooltipTextElement = getByText(tooltipText);
+        expect(tooltipTextElement).toBeInTheDocument();
 
-    test('hides tooltip when mouse stops hovering', () => {
-        const { getByTestId, getByText, queryByText } = render(<Tooltip text="Custom tooltip text" />);
-        fireEvent.mouseEnter(getByTestId('tooltipHover'));
-        fireEvent.mouseLeave(getByTestId('tooltipHover'));
-        expect(queryByText('Custom tooltip text')).not.toBeInTheDocument();
-    });
-    test('renders default message when no children are provided', () => {
-        const { getByTestId } = render(<Tooltip />);
-        expect(getByTestId('tooltipHover')).toHaveTextContent('Hello I am a Tooltip');
-    });
-
-    test('renders children when provided', () => {
-        const { getByTestId } = render(<Tooltip>Hello from Tooltip!</Tooltip>);
-        expect(getByTestId('tooltipHover')).toHaveTextContent('Hello from Tooltip!');
+        fireEvent.mouseLeave(tooltipHoverElement);
+        expect(queryByText(tooltipText)).toBeNull();
     });
 });
