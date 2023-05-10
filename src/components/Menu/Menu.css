@@ -1,0 +1,82 @@
+.menuContainer {
+  background: #caefff;
+  color: black;
+  max-width: 256px;
+  width: 100%;
+  height: 100vh;
+}
+
+.menuLinkContainer {
+  display: flex;
+  place-content: start;
+  color: #6C757D;
+  gap: 15px;
+  padding: 8px 8px 8px 16px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.menuLinkContainer:hover {
+  border-radius: 8px;
+  color: #003554;
+  background: #d0e8e8;
+}
+
+.menuLinkContainer:hover .svg-icon path,
+.menuLinkContainer:hover .greyColor path {
+  fill: #003554;
+}
+
+a.menuLink.active {
+  color: black;
+}
+
+.MenuType {
+  margin: 4px 4px 8px 4px;
+  transition: all 0.5s;
+}
+
+.menuItem_group_title {
+  padding: 8px 16px;
+  color: rgba(0, 0, 0, .45);
+}
+
+.menuChild {
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  text-decoration: none;
+  color: #6c747d;
+  margin-left: 30px;
+  border: none;
+  outline: none;
+  padding: 10px 14px 10px 14px;
+}
+
+.menuChild:hover {
+  border-radius: 8px;
+  color: #003554;
+  background: #d0e8e8;
+}
+
+.menuDropDownIcon {
+  display: inline-flex;
+  padding-left: 2px;
+  margin-left: 5px;
+  vertical-align: middle;
+  transition: all 0.5s;
+  width: 12px;
+}
+
+.menuItem_group_divider {
+  overflow: hidden;
+  line-height: 0;
+  border-color: rgba(5, 5, 5, .06);
+  border-style: solid;
+  border-width: 0;
+  border-top-width: 2px;
+  margin-block: 2px;
+  margin-block-start: 2px;
+  margin-block-end: 2px;
+  padding: 0;
+}
