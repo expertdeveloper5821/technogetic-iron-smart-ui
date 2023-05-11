@@ -1,32 +1,36 @@
 import { type } from 'os';
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import './Button.css';
 
 export interface ButtonProps extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-    backgroundColor?: string;
+    bg?: string;
     color?: string;
     outline?: string;
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
     className?: string;
     type?: 'submit' | 'reset' | 'button';
     children?: string | number;
+    style?: CSSProperties;
 }
 
 export const Button: React.FunctionComponent<ButtonProps> = (props) => {
-    const { children, backgroundColor, color, outline, style, onClick, className, type } = props;
-    let _style: React.CSSProperties = style || {};
+    const { children, bg, color, outline, style, onClick, className, type } = props;
 
-    if (color) _style.color = color;
-    if (backgroundColor) _style.backgroundColor = backgroundColor;
+    const buttonStyles: CSSProperties = {
+        backgroundColor: bg,
+        color,
+        ...style
+    };
+
     if (outline) {
         return (
-            <button className={`outLineButton-${outline}`} {...props} onClick={onClick} type={type ? type : 'submit'}>
+            <button className={`outLineButton outLineButton-${outline}`} style={buttonStyles} {...props} onClick={onClick} type={type ? type : 'submit'}>
                 {children ? children : 'Button'}
             </button>
         );
     } else {
         return (
-            <button className={className ? className : 'commonButton'} style={_style} {...props} onClick={onClick} type={type ? type : 'submit'}>
+            <button className={className ? className : 'commonButton'} style={buttonStyles} {...props} onClick={onClick} type={type ? type : 'submit'}>
                 {children ? children : 'Button'}
             </button>
         );

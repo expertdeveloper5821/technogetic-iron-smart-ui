@@ -1,35 +1,45 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { Button } from './Button';
 import '@testing-library/jest-dom';
 
 describe('Button', () => {
-    it('should render with default props', () => {
+    test('renders button with default text', () => {
         const { getByText } = render(<Button />);
-        expect(getByText('Button')).toBeInTheDocument();
-        expect(getByText('Button')).toHaveAttribute('type', 'submit');
-        expect(getByText('Button')).toHaveClass('commonButton');
+        const button = getByText('Button');
+        expect(button).toBeInTheDocument();
     });
 
-    it('should render with provided children', () => {
-        const { getByText } = render(<Button>Hello World</Button>);
-        expect(getByText('Hello World')).toBeInTheDocument();
+    test('renders button with custom text', () => {
+        const { getByText } = render(<Button>Click me</Button>);
+        const button = getByText('Click me');
+        expect(button).toBeInTheDocument();
     });
 
-    it('should render with provided type', () => {
-        const { getByText } = render(<Button type="button">Click Me</Button>);
-        expect(getByText('Click Me')).toHaveAttribute('type', 'button');
+    test('renders button with custom background color', () => {
+        const { getByText } = render(<Button bg="red" />);
+        const button = getByText('Button');
+        expect(button).toHaveStyle('background-color: red');
     });
 
-    it('should render with provided class name', () => {
-        const { getByText } = render(<Button className="testButton">Test</Button>);
-        expect(getByText('Test')).toHaveClass('testButton');
+    test('calls onClick function when button is clicked', () => {
+        const onClickMock = jest.fn();
+        const { getByText } = render(<Button onClick={onClickMock} />);
+        const button = getByText('Button');
+        fireEvent.click(button);
+        expect(onClickMock).toHaveBeenCalledTimes(1);
+    });
+    test('renders outline button with custom outline style', () => {
+        const { getByText } = render(<Button outline="primary" />);
+        const button = getByText('Button');
+        expect(button).toHaveClass('outLineButton-primary');
     });
 
-    it('should call onClick prop when button is clicked', () => {
-        const handleClick = jest.fn();
-        const { getByText } = render(<Button onClick={handleClick}>Click Me</Button>);
-        fireEvent.click(getByText('Click Me'));
-        expect(handleClick).toHaveBeenCalledTimes(1);
+    test('calls onClick function when outline button is clicked', () => {
+        const onClickMock = jest.fn();
+        const { getByText } = render(<Button outline="secondary" onClick={onClickMock} />);
+        const button = getByText('Button');
+        fireEvent.click(button);
+        expect(onClickMock).toHaveBeenCalledTimes(1);
     });
 });

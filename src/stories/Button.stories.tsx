@@ -16,11 +16,12 @@ export const Primary = Template.bind({});
 
 Primary.args = {
     children: 'Hello world!',
-    disabled: false
+    disabled: false,
+    bg: 'red'
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-    outline: 'dark',
+export const outline = Template.bind({});
+outline.args = {
+    outline: 'primary',
     children: 'outline Button'
 };
