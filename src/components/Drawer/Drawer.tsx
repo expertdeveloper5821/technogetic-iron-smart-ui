@@ -18,18 +18,18 @@ export interface DrawerProps {
     drawerData?: drawerArray[];
     openDrawer?: boolean;
 }
-export const Drawer: React.FunctionComponent<SidebarProps> = ({ drawerData, openDrawer = false }) => {
+export const Drawer: React.FunctionComponent<DrawerProps> = ({ drawerData, openDrawer = false }) => {
     const [drawerOpen, setDrawerOpen] = useState<boolean>(openDrawer || false);
     const [isOpen, setIsOpen] = useState(false);
-    const [curr, setCurr] = useState();
-    const [currSubItem, setCurrSubItem] = useState();
+    const [curr, setCurr] = useState<string | number>();
+    const [currSubItem, setCurrSubItem] = useState<string | number>();
 
-    const handleItemClick = (id: any) => {
+    const handleItemClick = (id: string | number) => {
         setIsOpen(!isOpen);
         setCurr(id);
         setCurrSubItem(null);
     };
-    const handleSubItemClick = (id: any) => {
+    const handleSubItemClick = (id: string | number) => {
         setCurrSubItem(id === currSubItem ? null : id);
     };
     return (
@@ -37,7 +37,7 @@ export const Drawer: React.FunctionComponent<SidebarProps> = ({ drawerData, open
             {openDrawer && (
                 <BrowserRouter>
                     <div className="drawer">
-                        {drawerData.map((data, index: any) => {
+                        {drawerData.map((data) => {
                             return (
                                 <NavLink to={data.link} key={data.id}>
                                     <div
@@ -51,7 +51,7 @@ export const Drawer: React.FunctionComponent<SidebarProps> = ({ drawerData, open
                                     {curr === data.id &&
                                         data.items &&
                                         isOpen &&
-                                        data?.items.map((subItem: any) => {
+                                        data?.items.map((subItem) => {
                                             return (
                                                 <NavLink to={subItem.link} key={subItem.id}>
                                                     <a

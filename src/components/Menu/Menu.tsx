@@ -27,7 +27,7 @@ export const Menu: React.FunctionComponent<MenuItemProps> = ({ menuData, onClick
     const [subItem, setSubItem] = useState<boolean>(false);
     const [currmenu, setCurrMenu] = useState<string | number>();
     const [currSubMenu, setCurrSubMenu] = useState<string | number>();
-    const [subMenu, setSubMenu] = useState<boolean>(false);
+    const [subMenu, setSubMenu] = useState<string | number>();
 
     const handleSubItem = (key: number | string) => {
         setSubItem(!subItem);
