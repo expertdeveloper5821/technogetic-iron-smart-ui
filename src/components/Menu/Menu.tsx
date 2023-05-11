@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { BrowserRouter, NavLink, NavLinkProps } from 'react-router-dom';
+import React, { CSSProperties, useState } from 'react';
+import { BrowserRouter, NavLink } from 'react-router-dom';
 import { RightArrow } from '../../assets/RightArrow';
 import './Menu.css';
 
@@ -24,27 +24,32 @@ export interface MenuItemProps {
     onClick?: React.MouseEventHandler<HTMLDivElement>;
     bg?: string;
     color?: string;
+    style?: CSSProperties;
 }
-export const Menu: React.FunctionComponent<MenuItemProps> = ({ menuData, bg, color, onClick }) => {
+export const Menu: React.FunctionComponent<MenuItemProps> = ({ style, menuData, bg, color, onClick }) => {
     const [subItem, setSubItem] = useState<boolean>(false);
     const [currmenu, setCurrMenu] = useState<string | number>();
     const [currSubMenu, setCurrSubMenu] = useState<string | number>();
     const [subMenu, setSubMenu] = useState<string | number>();
+
+    const menuStyles: CSSProperties = {
+        color: color,
+        backgroundColor: bg,
+        ...style
+    };
 
     const handleSubItem = (key: number | string) => {
         setSubItem(!subItem);
         setCurrMenu(key);
         setCurrSubMenu('');
     };
-    const handleSubItemClick = (key: number | string) => {
-        setSubMenu(key === subMenu ? '' : key);
-    };
+
     return (
         <BrowserRouter>
-            <div className="menuContainer" style={{ backgroundColor: `${bg}` }}>
+            <div className="menuContainer" style={menuStyles} key="menuContainer">
                 {menuData.map((menuItem, index) => (
-                    <>
-                        <NavLink to={menuItem.href} key={menuItem.key} className="menuLink">
+                    <React.Fragment key={index}>
+                        <NavLink to={menuItem.href} className="menuLink">
                             <div className="MenuType">
                                 {menuItem?.type !== 'divider' && <div className="menuItem_group_title">{menuItem.type}</div>}
                                 <div
@@ -52,7 +57,7 @@ export const Menu: React.FunctionComponent<MenuItemProps> = ({ menuData, bg, col
                                     onClick={() => {
                                         handleSubItem(menuItem.key);
                                     }}
-                                    style={{ color: `${color}` }}
+                                    style={menuStyles}
                                 >
                                     <div className="menuImage">{menuItem.icon}</div>
                                     <div className="menuTitle">
@@ -67,11 +72,12 @@ export const Menu: React.FunctionComponent<MenuItemProps> = ({ menuData, bg, col
                         {currmenu === menuItem.key &&
                             menuItem.children &&
                             currmenu &&
+                            subItem &&
                             menuItem?.children.map((mapChild) => {
                                 return (
                                     <>
                                         <NavLink to={mapChild.href} key={mapChild.key} className="menuLink">
-                                            <div className="menuChild" key={mapChild.key} style={{ display: subItem ? 'block' : 'none' }}>
+                                            <div className="menuChild" key={mapChild.key} style={{ display: subItem ? 'block' : 'none', color: `${color}` }}>
                                                 {mapChild.label}
                                             </div>
                                         </NavLink>
@@ -79,7 +85,7 @@ export const Menu: React.FunctionComponent<MenuItemProps> = ({ menuData, bg, col
                                 );
                             })}
                         {menuItem?.type === 'divider' && <div className="menuItem_group_divider"></div>}
-                    </>
+                    </React.Fragment>
                 ))}
             </div>
         </BrowserRouter>

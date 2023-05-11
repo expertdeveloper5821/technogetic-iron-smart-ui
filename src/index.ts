@@ -7,7 +7,6 @@ export * from './components/Box';
 export * from './components/Card';
 export * from './components/Drawer';
 export * from './components/Input';
-export * from './components/Nav';
 export * from './components/NavBar';
 export * from './components/Menu';
 export * from './components/Select';

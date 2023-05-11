@@ -17,6 +17,7 @@ Primary.args = {
             label: 'Android Devloper',
             key: 'AD',
             type: 'Group1',
+            href: '/',
             icon: (
                 <svg className="svg-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                     <path
@@ -30,6 +31,7 @@ Primary.args = {
             label: 'Binary Data System',
             key: 'BD',
             type: 'divider',
+            href: '/',
             icon: (
                 <svg className="svg-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                     <path
@@ -39,15 +41,16 @@ Primary.args = {
                 </svg>
             ),
             children: [
-                { label: 'DLang', key: 'DL' },
-                { label: 'ECMA Script', key: 'Es' },
-                { label: 'F Script', key: 'Fs' }
+                { label: 'DLang', href: '/', key: 'DL' },
+                { label: 'ECMA Script', href: '/', key: 'Es' },
+                { label: 'F Script', href: '/', key: 'Fs' }
             ]
         },
         {
             label: 'C Language',
             key: 'CL',
             type: 'Group3',
+            href: '/',
             icon: (
                 <svg className="svg-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                     <path
@@ -58,6 +61,6 @@ Primary.args = {
             )
         }
     ],
-    bg: '#caefff',
+    // bg: '#caefff',
     color: '#6C757D'
 };

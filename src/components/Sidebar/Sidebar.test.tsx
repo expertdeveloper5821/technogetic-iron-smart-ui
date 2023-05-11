@@ -1,62 +1,33 @@
 import React from 'react';
-import { Sidebar, sidebarArray } from './Sidebar';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
-import { MemoryRouter } from 'react-router-dom';
+import { Sidebar } from './Sidebar';
+import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-describe('Sidebar', () => {
-    const sidebarData: sidebarArray[] = [
-        {
-            id: '1',
-            name: 'Home',
-            icon: '<svg>mock-icon</svg>',
-            link: '/'
-        },
-        {
-            id: '2',
-            name: 'Profile',
-            icon: '<svg>mock-icon</svg>',
-            link: '/profile',
-            items: [
-                {
-                    id: 3,
-                    name: 'Settings',
-                    link: '/profile/settings'
-                },
-                {
-                    id: 4,
-                    name: 'Logout',
-                    link: '/logout'
-                }
-            ]
-        }
-    ];
+describe('SideBar', () => {
+    it('renders with default props', () => {
+        const { getByTestId } = render(<Sidebar />);
+        const sidebarComoponent = getByTestId('sidebarComoponent');
 
-    it('renders the Sidebar component', () => {
-        render(<Sidebar sidebarData={sidebarData} />);
-        const sidebar = screen.getByTestId('Sidebar');
-        expect(sidebar).toBeInTheDocument();
-        expect(screen.getByTestId('sidebar-container')).toBeInTheDocument();
-        expect(screen.getByText('Home')).toBeInTheDocument();
-        expect(screen.getByText('Profile')).toBeInTheDocument();
+        expect(sidebarComoponent).toBeInTheDocument();
+        expect(sidebarComoponent).toHaveStyle({
+            width: undefined,
+            backgroundColor: undefined,
+            color: undefined
+        });
+        expect(sidebarComoponent.classList).toContain('SideBarContainer-left');
     });
-    it('displays the sidebarData items', () => {
-        render(<Sidebar sidebarData={sidebarData} />);
-        const items = screen.getAllByTestId('SidebarItem');
-        expect(items).toHaveLength(2);
-        expect(items[0]).toHaveTextContent('Home');
-        expect(items[1]).toHaveTextContent('Profile');
+
+    it('renders with custom props', () => {
+        const { getByTestId } = render(<Sidebar align="bottom" width="100%" bg="blue" color="white" style={{ padding: '10px' }} />);
+        const sidebarComoponent = getByTestId('sidebarComoponent');
+
+        expect(sidebarComoponent).toBeInTheDocument();
+        expect(sidebarComoponent).toHaveStyle({
+            width: '100%',
+            backgroundColor: 'blue',
+            color: 'white',
+            padding: '10px'
+        });
+        expect(sidebarComoponent.classList).toContain('SideBarContainer-bottom');
     });
-    // it('expands/collapses the subitems when an item is clicked', () => {
-    //     render(<Sidebar openSideBar={true} sidebarData={sidebarData} />);
-    //     const item = screen.getByText('Profile');
-    //     fireEvent.click(item);
-    //     const subItems = screen.getAllByTestId('SidebarSubItem');
-    //     expect(subItems).toHaveLength(2);
-    //     expect(subItems[0]).toHaveTextContent('Settings');
-    //     expect(subItems[1]).toHaveTextContent('Logout');
-    //     fireEvent.click(item);
-    //     expect(subItems[0]).not.toBeVisible();
-    // });
 });

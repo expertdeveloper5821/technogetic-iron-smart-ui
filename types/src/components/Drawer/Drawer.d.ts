@@ -1,18 +1,11 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import './Drawer.css';
-export interface drawerItemsInterface {
-    id: number;
-    title: string;
-    link: string;
-}
-export interface drawerArray {
-    id: number;
-    title: string;
-    link: string;
-    items: drawerItemsInterface[];
-}
 export interface DrawerProps {
-    drawerData?: drawerArray[];
-    openDrawer?: boolean;
+    align?: string;
+    width?: string;
+    bg?: string;
+    color?: string;
+    style?: CSSProperties;
+    drawerOpen?: boolean;
 }
-export declare const Drawer: React.FunctionComponent<DrawerProps>;
+export declare const Drawer: React.FC<DrawerProps>;

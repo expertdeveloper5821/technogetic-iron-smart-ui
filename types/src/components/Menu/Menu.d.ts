@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import './Menu.css';
 export interface subMenuInterface {
     label?: string;
@@ -18,5 +18,8 @@ export interface MenuProps {
 export interface MenuItemProps {
     menuData?: MenuProps[];
     onClick?: React.MouseEventHandler<HTMLDivElement>;
+    bg?: string;
+    color?: string;
+    style?: CSSProperties;
 }
 export declare const Menu: React.FunctionComponent<MenuItemProps>;
