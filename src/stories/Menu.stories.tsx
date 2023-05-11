@@ -57,5 +57,7 @@ Primary.args = {
                 </svg>
             )
         }
-    ]
+    ],
+    bg: '#caefff',
+    color: '#6C757D'
 };

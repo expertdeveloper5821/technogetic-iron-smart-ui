@@ -22,8 +22,10 @@ export interface MenuProps {
 export interface MenuItemProps {
     menuData?: MenuProps[];
     onClick?: React.MouseEventHandler<HTMLDivElement>;
+    bg?: string;
+    color?: string;
 }
-export const Menu: React.FunctionComponent<MenuItemProps> = ({ menuData, onClick }) => {
+export const Menu: React.FunctionComponent<MenuItemProps> = ({ menuData, bg, color, onClick }) => {
     const [subItem, setSubItem] = useState<boolean>(false);
     const [currmenu, setCurrMenu] = useState<string | number>();
     const [currSubMenu, setCurrSubMenu] = useState<string | number>();
@@ -39,7 +41,7 @@ export const Menu: React.FunctionComponent<MenuItemProps> = ({ menuData, onClick
     };
     return (
         <BrowserRouter>
-            <div className="menuContainer">
+            <div className="menuContainer" style={{ backgroundColor: `${bg}` }}>
                 {menuData.map((menuItem, index) => (
                     <>
                         <NavLink to={menuItem.href} key={menuItem.key} className="menuLink">
@@ -50,6 +52,7 @@ export const Menu: React.FunctionComponent<MenuItemProps> = ({ menuData, onClick
                                     onClick={() => {
                                         handleSubItem(menuItem.key);
                                     }}
+                                    style={{ color: `${color}` }}
                                 >
                                     <div className="menuImage">{menuItem.icon}</div>
                                     <div className="menuTitle">
