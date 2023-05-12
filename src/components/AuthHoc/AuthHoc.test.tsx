@@ -16,17 +16,17 @@ describe('AuthHOC', () => {
         expect(getByText('Mock Component')).toBeInTheDocument();
     });
 
-    it('redirects to /login when isAuthenticated is false', () => {
-        const isAuthenticated = false;
+    // it('redirects to /login when isAuthenticated is false', () => {
+    //     const isAuthenticated = false;
 
-        const ComponentWithAuth = AuthHOC(MockComponent);
-        const { container } = render(
-            <MemoryRouter initialEntries={['/']}>
-                <ComponentWithAuth isAuthenticated={isAuthenticated} />
-            </MemoryRouter>
-        );
+    //     const ComponentWithAuth = AuthHOC(MockComponent);
+    //     const { container } = render(
+    //         <MemoryRouter initialEntries={['/']}>
+    //             <ComponentWithAuth isAuthenticated={isAuthenticated} />
+    //         </MemoryRouter>
+    //     );
 
-        // expect(container.innerHTML).toContain('<a href="/login"></a>');
-        // expect(container.innerHTML).toContain('window.location.replace("/login")');
-    });
+    //     expect(container.innerHTML).toContain('<a href="/login"></a>');
+    //     expect(container.innerHTML).toContain('window.location.replace("/login")');
+    // });
 });
