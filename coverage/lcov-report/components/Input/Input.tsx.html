@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>15/18</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">84.61% </span>
+                <span class="strong">92.3% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>22/26</span>
+                <span class='fraction'>24/26</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.85% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>13/14</span>
+                <span class='fraction'>14/14</span>
             </div>
         
             
@@ -149,8 +149,7 @@
 <a name='L84'></a><a href='#L84'>84</a>
 <a name='L85'></a><a href='#L85'>85</a>
 <a name='L86'></a><a href='#L86'>86</a>
-<a name='L87'></a><a href='#L87'>87</a>
-<a name='L88'></a><a href='#L88'>88</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L87'></a><a href='#L87'>87</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -171,27 +170,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -259,33 +257,28 @@ export interface InputProps extends React.DetailedHTMLProps&lt;React.InputHTMLAt
 &nbsp;
 export const Input: React.FunctionComponent&lt;InputProps&gt; = (props) =&gt; {
     const { className, placeholder, type, adornment, required, onChange, ornament, ...rest } = props;
-&nbsp;
     const [showPassword, setShowPassword] = useState(false);
-&nbsp;
-    const togglePasswordVisibility = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >        setShowPassword(<span class="fstat-no" title="function not covered" >(p</span>revState) =&gt; <span class="cstat-no" title="statement not covered" >!prevState)</span>;</span>
+    const togglePasswordVisibility = () =&gt; {
+        setShowPassword((prevState) =&gt; !prevState);
     };
-&nbsp;
-    const inputType = type === 'password' ? (showPassword ? <span class="branch-0 cbranch-no" title="branch not covered" >'text' </span>: 'password') : type;
-&nbsp;
+    const inputType = type === 'password' ? (showPassword ? 'text' : 'password') : type;
     const inputClassName = `inputField ${className} ${type === 'password' ? 'password' : ''}`;
-    // Set Defalut Values
+&nbsp;
     let _placeholder: string = 'Input Field';
     let _type: string = 'text';
     let _required: boolean = false;
-    // OverWrite the Default Values
     <span class="missing-if-branch" title="else path not taken" >E</span>if (placeholder) _placeholder = placeholder;
-    if (type) _type = type;
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (required) <span class="cstat-no" title="statement not covered" >_required = required;</span>
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (type) _type = type;
+    if (required) _required = required;
 &nbsp;
     return (
         &lt;&gt;
             {type === 'password' &amp;&amp; (
                 &lt;&gt;
                     &lt;div className={`inputField ${className}`}&gt;
-                        &lt;input {...rest} type={inputType} placeholder={_placeholder} required={_required} onChange={onChange} data-testid="password-visibility-toggle" /&gt;
-                        &lt;span className="togglePasswordVisibility" onClick={togglePasswordVisibility}&gt;
-                            {showPassword ? <span class="branch-0 cbranch-no" title="branch not covered" >&lt;ClosePassword /&gt; </span>: &lt;ShowPassword /&gt;}
+                        &lt;input {...rest} type={inputType} placeholder={_placeholder} required={_required} onChange={onChange} data-testid="passwordInput" /&gt;
+                        &lt;span className="togglePasswordVisibility" onClick={togglePasswordVisibility} data-testid="passwordVisibility"&gt;
+                            {showPassword ? &lt;ClosePassword /&gt; : &lt;ShowPassword /&gt;}
                         &lt;/span&gt;
                     &lt;/div&gt;
                 &lt;/&gt;
@@ -293,7 +286,7 @@ export const Input: React.FunctionComponent&lt;InputProps&gt; = (props) =&gt; {
             {type !== 'password' &amp;&amp; !adornment &amp;&amp; !ornament &amp;&amp; (
                 &lt;&gt;
                     &lt;div className={`inputField ${className}`}&gt;
-                        &lt;input type={_type} placeholder={_placeholder} required={_required} {...rest} onChange={onChange} /&gt;
+                        &lt;input type={_type} placeholder={_placeholder} required={_required} {...rest} onChange={onChange} data-testid="generalInput" /&gt;
                     &lt;/div&gt;
                 &lt;/&gt;
             )}
@@ -301,10 +294,12 @@ export const Input: React.FunctionComponent&lt;InputProps&gt; = (props) =&gt; {
                 &lt;&gt;
                     &lt;div className="adornment-Container"&gt;
                         &lt;div className="adornmentContent"&gt;
-                            &lt;span className="InputAddOn-item InputAddOn-field"&gt;{adornment}&lt;/span&gt;
+                            &lt;span className="InputAddOn-item InputAddOn-field" data-testid="adornment"&gt;
+                                {adornment}
+                            &lt;/span&gt;
                         &lt;/div&gt;
                         &lt;div className={`adornInputField ${className}`}&gt;
-                            &lt;input className="InputAddOn-field" placeholder={_placeholder} {...rest} type={_type} required={_required} onChange={onChange} /&gt;
+                            &lt;input className="InputAddOn-field" placeholder={_placeholder} {...rest} type={_type} required={_required} onChange={onChange} data-testid="adornmentInput" /&gt;
                         &lt;/div&gt;
                     &lt;/div&gt;
                 &lt;/&gt;
@@ -313,10 +308,12 @@ export const Input: React.FunctionComponent&lt;InputProps&gt; = (props) =&gt; {
                 &lt;&gt;
                     &lt;div className="ornamnent-Container"&gt;
                         &lt;div className={`oranInputField ${className}`}&gt;
-                            &lt;input className="InputAddOn-field" placeholder={_placeholder} {...rest} type={_type} required={_required} onChange={onChange} /&gt;
+                            &lt;input className="InputAddOn-field" placeholder={_placeholder} {...rest} type={_type} required={_required} onChange={onChange} data-testid="oranmentInput" /&gt;
                         &lt;/div&gt;
                         &lt;div className="oranmentContent"&gt;
-                            &lt;span className="InputAddOn-item"&gt;{ornament}&lt;/span&gt;
+                            &lt;span className="InputAddOn-item" data-testid="oranment"&gt;
+                                {ornament}
+                            &lt;/span&gt;
                         &lt;/div&gt;
                     &lt;/div&gt;
                 &lt;/&gt;
@@ -331,7 +328,7 @@ export const Input: React.FunctionComponent&lt;InputProps&gt; = (props) =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-11T13:11:58.246Z
+                at 2023-05-12T10:01:54.378Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

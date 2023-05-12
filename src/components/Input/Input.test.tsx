@@ -1,50 +1,53 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react';
 import { Input } from './Input';
 import '@testing-library/jest-dom';
-import React from 'react';
 
-describe('Input', () => {
-    test('renders a plain input field when type is not "password" and adornment/ornament props are not present', () => {
-        const { getByPlaceholderText } = render(<Input placeholder="Enter your name" />);
-        const inputElement = getByPlaceholderText('Enter your name');
+describe('Input Component', () => {
+    it('should render an input field with the provided props', () => {
+        const onChangeMock = jest.fn();
+        const { getByTestId } = render(<Input type="text" placeholder="Enter your name" required onChange={onChangeMock} data-testid="input" />);
+
+        const inputElement = getByTestId('generalInput');
         expect(inputElement).toBeInTheDocument();
-        expect((inputElement as HTMLInputElement).type).toBe('text');
+        expect(inputElement).toHaveAttribute('type', 'text');
+        expect(inputElement).toHaveAttribute('placeholder', 'Enter your name');
+        expect(inputElement).toBeRequired();
+        fireEvent.change(inputElement, { target: { value: 'John Doe' } });
+        expect(onChangeMock).toHaveBeenCalledTimes(1);
     });
 
-    test('renders a password input field with a visibility button', () => {
-        const { getByPlaceholderText, getByTestId } = render(<Input type="password" placeholder="Enter your password" />);
-        const inputElement = getByPlaceholderText('Enter your password');
-        const visibilityButton = getByTestId('password-visibility-toggle');
+    it('should toggle password visibility when clicking the password visibility button', () => {
+        const { getByTestId } = render(<Input type="password" placeholder="Enter your password" data-testid="passwordInput" />);
 
-        expect(inputElement).toBeInTheDocument();
-        expect((inputElement as HTMLInputElement).type).toBe('password');
+        const passwordInput = getByTestId('passwordInput');
+        expect(passwordInput).toHaveAttribute('type', 'password');
 
-        expect(visibilityButton).toBeInTheDocument();
+        const passwordVisibilityButton = getByTestId('passwordVisibility');
+        fireEvent.click(passwordVisibilityButton);
+        expect(passwordInput).toHaveAttribute('type', 'text');
 
-        fireEvent.click(visibilityButton);
-        expect((inputElement as HTMLInputElement).type).toBe('password');
-
-        fireEvent.click(visibilityButton);
-        expect((inputElement as HTMLInputElement).type).toBe('password');
+        fireEvent.click(passwordVisibilityButton);
+        expect(passwordInput).toHaveAttribute('type', 'password');
     });
 
-    it('renders an input field with an adornment to the left when adornment prop is present', () => {
-        const { getByText, getByPlaceholderText } = render(<Input adornment="$" placeholder="Enter the amount" />);
-        const adornmentElement = getByText('$');
-        const inputElement = getByPlaceholderText('Enter the amount');
+    it('should render an input field with adornment', () => {
+        const { getByTestId } = render(<Input type="text" placeholder="Enter your email" adornment="@domain.com" data-testid="adornmentInput" />);
+
+        const inputElement = getByTestId('adornmentInput');
+        const adornmentElement = getByTestId('adornment');
+        expect(inputElement).toBeInTheDocument();
         expect(adornmentElement).toBeInTheDocument();
-        expect(inputElement).toBeInTheDocument();
-        expect(adornmentElement.parentNode).toHaveClass('adornmentContent');
-        expect(inputElement.parentNode).toHaveClass('adornInputField');
+        expect(adornmentElement.textContent).toBe('@domain.com');
     });
 
-    it('renders an input field with an ornament to the right when ornament prop is present', () => {
-        const { getByText, getByPlaceholderText } = render(<Input ornament="kg" placeholder="Enter the weight" />);
-        const ornamentElement = getByText('kg');
-        const inputElement = getByPlaceholderText('Enter the weight');
-        expect(ornamentElement).toBeInTheDocument();
+    it('should render an input field with ornament', () => {
+        const { getByTestId } = render(<Input type="text" placeholder="Enter your name" ornament="*" data-testid="oranmentInput" />);
+
+        const inputElement = getByTestId('oranmentInput');
+        const ornamentElement = getByTestId('oranment');
         expect(inputElement).toBeInTheDocument();
-        expect(ornamentElement.parentNode).toHaveClass('oranmentContent');
-        expect(inputElement.parentNode).toHaveClass('oranInputField');
+        expect(ornamentElement).toBeInTheDocument();
+        expect(ornamentElement.textContent).toBe('*');
     });
 });

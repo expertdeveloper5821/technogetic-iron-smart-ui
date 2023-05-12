@@ -1,13 +1,8 @@
 import React from 'react';
 import { Menu } from './Menu';
-import { BrowserRouter as MockBrowserRouter, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-
-// jest.mock('react-router-dom', () => ({
-//     ...jest.requireActual('react-router-dom'),
-//     useLocation: jest.fn()
-// }));
 
 describe('Menu', () => {
     const mockMenuData = [
@@ -46,14 +41,11 @@ describe('Menu', () => {
     });
 
     test('displays submenu on click', () => {
-        // useLocation.mockReturnValue({ pathname: '/' });
-
         const { getByText } = render(<Menu menuData={mockMenuData} />);
 
         const productsMenuItem = screen.getByText('Products');
         fireEvent.click(productsMenuItem);
 
-        // Check if the submenu items are displayed
         const product1SubMenu = screen.getByText('Product 1');
         expect(product1SubMenu).toBeInTheDocument();
 

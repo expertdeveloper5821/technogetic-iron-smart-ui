@@ -1,7 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Card } from '../components/Card/Card';
-import { Secondary } from './Button.stories';
 
 export default {
     title: 'ReactComponentLibrary/Card',

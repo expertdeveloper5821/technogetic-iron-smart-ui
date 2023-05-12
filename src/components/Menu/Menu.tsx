@@ -7,7 +7,6 @@ export interface subMenuInterface {
     label?: string;
     key?: string | number;
     icon?: string;
-    // children?: subMenuInterface[];
     type?: string;
     href?: string;
 }
@@ -30,7 +29,6 @@ export const Menu: React.FunctionComponent<MenuItemProps> = ({ style, menuData, 
     const [subItem, setSubItem] = useState<boolean>(false);
     const [currmenu, setCurrMenu] = useState<string | number>();
     const [currSubMenu, setCurrSubMenu] = useState<string | number>();
-    const [subMenu, setSubMenu] = useState<string | number>();
 
     const menuStyles: CSSProperties = {
         color: color,
@@ -46,7 +44,7 @@ export const Menu: React.FunctionComponent<MenuItemProps> = ({ style, menuData, 
 
     return (
         <BrowserRouter>
-            <div className="menuContainer" style={menuStyles} key="menuContainer">
+            <div className="menuContainer" style={menuStyles}>
                 {menuData.map((menuItem, index) => (
                     <React.Fragment key={index}>
                         <NavLink to={menuItem.href} className="menuLink">
@@ -69,22 +67,19 @@ export const Menu: React.FunctionComponent<MenuItemProps> = ({ style, menuData, 
                                 </div>
                             </div>
                         </NavLink>
-                        {currmenu === menuItem.key &&
-                            menuItem.children &&
-                            currmenu &&
-                            subItem &&
-                            menuItem?.children.map((mapChild) => {
-                                return (
-                                    <>
-                                        <NavLink to={mapChild.href} key={mapChild.key} className="menuLink">
-                                            <div className="menuChild" key={mapChild.key} style={{ display: subItem ? 'block' : 'none', color: `${color}` }}>
-                                                {mapChild.label}
-                                            </div>
-                                        </NavLink>
-                                    </>
-                                );
-                            })}
-                        {menuItem?.type === 'divider' && <div className="menuItem_group_divider"></div>}
+                        {currmenu === menuItem.key && menuItem.children && currmenu && subItem && (
+                            <>
+                                {menuItem.children.map((mapChild) => (
+                                    <NavLink to={mapChild.href} key={mapChild.key} className="menuLink">
+                                        <div className="menuChild" key={mapChild.key} style={{ display: subItem ? 'block' : 'none', color: `${color}` }}>
+                                            {mapChild.label}
+                                        </div>
+                                    </NavLink>
+                                ))}
+                            </>
+                        )}
+
+                        {menuItem?.type === 'divider' && <div className="menuItem_group_divider" key={index}></div>}
                     </React.Fragment>
                 ))}
             </div>

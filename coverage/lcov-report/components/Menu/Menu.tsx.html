@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>14/14</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>14/14</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
@@ -151,13 +151,7 @@
 <a name='L86'></a><a href='#L86'>86</a>
 <a name='L87'></a><a href='#L87'>87</a>
 <a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a>
-<a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L89'></a><a href='#L89'>89</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -185,7 +179,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -230,10 +223,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -258,7 +248,6 @@ export interface subMenuInterface {
     label?: string;
     key?: string | number;
     icon?: string;
-    // children?: subMenuInterface[];
     type?: string;
     href?: string;
 }
@@ -281,7 +270,6 @@ export const Menu: React.FunctionComponent&lt;MenuItemProps&gt; = ({ style, menu
     const [subItem, setSubItem] = useState&lt;boolean&gt;(false);
     const [currmenu, setCurrMenu] = useState&lt;string | number&gt;();
     const [currSubMenu, setCurrSubMenu] = useState&lt;string | number&gt;();
-    const [subMenu, setSubMenu] = useState&lt;string | number&gt;();
 &nbsp;
     const menuStyles: CSSProperties = {
         color: color,
@@ -297,7 +285,7 @@ export const Menu: React.FunctionComponent&lt;MenuItemProps&gt; = ({ style, menu
 &nbsp;
     return (
         &lt;BrowserRouter&gt;
-            &lt;div className="menuContainer" style={menuStyles} key="menuContainer"&gt;
+            &lt;div className="menuContainer" style={menuStyles}&gt;
                 {menuData.map((menuItem, index) =&gt; (
                     &lt;React.Fragment key={index}&gt;
                         &lt;NavLink to={menuItem.href} className="menuLink"&gt;
@@ -320,22 +308,19 @@ export const Menu: React.FunctionComponent&lt;MenuItemProps&gt; = ({ style, menu
                                 &lt;/div&gt;
                             &lt;/div&gt;
                         &lt;/NavLink&gt;
-                        {currmenu === menuItem.key &amp;&amp;
-                            menuItem.children &amp;&amp;
-                            currmenu &amp;&amp;
-                            subItem &amp;&amp;
-                            menuItem?.children.map((mapChild) =&gt; {
-                                return (
-                                    &lt;&gt;
-                                        &lt;NavLink to={mapChild.href} key={mapChild.key} className="menuLink"&gt;
-                                            &lt;div className="menuChild" key={mapChild.key} style={{ display: subItem ? 'block' : <span class="branch-1 cbranch-no" title="branch not covered" >'none',</span> color: `${color}` }}&gt;
-                                                {mapChild.label}
-                                            &lt;/div&gt;
-                                        &lt;/NavLink&gt;
-                                    &lt;/&gt;
-                                );
-                            })}
-                        {menuItem?.type === 'divider' &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;div className="menuItem_group_divider"&gt;&lt;/div&gt;}</span>
+                        {currmenu === menuItem.key &amp;&amp; menuItem.children &amp;&amp; currmenu &amp;&amp; subItem &amp;&amp; (
+                            &lt;&gt;
+                                {menuItem.children.map((mapChild) =&gt; (
+                                    &lt;NavLink to={mapChild.href} key={mapChild.key} className="menuLink"&gt;
+                                        &lt;div className="menuChild" key={mapChild.key} style={{ display: subItem ? 'block' : <span class="branch-1 cbranch-no" title="branch not covered" >'none',</span> color: `${color}` }}&gt;
+                                            {mapChild.label}
+                                        &lt;/div&gt;
+                                    &lt;/NavLink&gt;
+                                ))}
+                            &lt;/&gt;
+                        )}
+&nbsp;
+                        {menuItem?.type === 'divider' &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;div className="menuItem_group_divider" key={index}&gt;&lt;/div&gt;}</span>
                     &lt;/React.Fragment&gt;
                 ))}
             &lt;/div&gt;
@@ -349,7 +334,7 @@ export const Menu: React.FunctionComponent&lt;MenuItemProps&gt; = ({ style, menu
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-11T13:11:58.246Z
+                at 2023-05-12T10:01:54.378Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

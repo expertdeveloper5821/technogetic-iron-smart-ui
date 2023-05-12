@@ -8,7 +8,6 @@ describe('Badge component', () => {
         const { getByTestId } = render(<Badge />);
         const badgeElement = getByTestId('tooltip');
         expect(badgeElement).toBeInTheDocument();
-        // expect(badgeElement).toHaveTextContent('undefined');
         expect(badgeElement).toHaveClass('badge-primary');
     });
 

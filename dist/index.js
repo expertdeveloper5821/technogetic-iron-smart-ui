@@ -951,6 +951,45 @@ var DataRouterStateHook$1;
 })(DataRouterStateHook$1 || (DataRouterStateHook$1 = {}));
 
 /**
+ * Changes the current location.
+ *
+ * Note: This API is mostly useful in React.Component subclasses that are not
+ * able to use hooks. In functional components, we recommend you use the
+ * `useNavigate` hook instead.
+ *
+ * @see https://reactrouter.com/components/navigate
+ */
+function Navigate(_ref3) {
+  let {
+    to,
+    replace,
+    state,
+    relative
+  } = _ref3;
+  !useInRouterContext() ? process.env.NODE_ENV !== "production" ? invariant(false, // TODO: This error is probably because they somehow have 2 versions of
+  // the router loaded. We can help them understand how to avoid that.
+  "<Navigate> may be used only in the context of a <Router> component.") : invariant(false) : void 0;
+  process.env.NODE_ENV !== "production" ? warning(!React__namespace.useContext(NavigationContext).static, "<Navigate> must not be used on the initial render in a <StaticRouter>. " + "This is a no-op, but you should modify your code so the <Navigate> is " + "only ever rendered in response to some user interaction or state change.") : void 0;
+  let dataRouterState = React__namespace.useContext(DataRouterStateContext);
+  let navigate = useNavigate();
+  React__namespace.useEffect(() => {
+    // Avoid kicking off multiple navigations if we're in the middle of a
+    // data-router navigation, since components get re-rendered when we enter
+    // a submitting/loading state
+    if (dataRouterState && dataRouterState.navigation.state !== "idle") {
+      return;
+    }
+
+    navigate(to, {
+      replace,
+      state,
+      relative
+    });
+  });
+  return null;
+}
+
+/**
  * Provides location context for the rest of the app.
  *
  * Note: You usually won't render a <Router> directly. Instead, you'll render a
@@ -1581,6 +1620,16 @@ function useFormAction(action, _temp2) {
   return createPath(path);
 }
 
+const AuthHOC = (WrappedComponent) => {
+    const ComponentWithAuth = (props) => {
+        if (!props.isAuthenticated) {
+            return React.createElement(Navigate, { to: "/login" });
+        }
+        return React.createElement(WrappedComponent, Object.assign({}, props));
+    };
+    return ComponentWithAuth;
+};
+
 const CloseIcon = () => {
     return (React.createElement("svg", { height: "20", width: "20", viewBox: "0 0 20 20" },
         React.createElement("path", { d: "M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z" })));
@@ -1732,11 +1781,9 @@ const Input = (props) => {
         setShowPassword((prevState) => !prevState);
     };
     const inputType = type === 'password' ? (showPassword ? 'text' : 'password') : type;
-    // Set Defalut Values
     let _placeholder = 'Input Field';
     let _type = 'text';
     let _required = false;
-    // OverWrite the Default Values
     if (placeholder)
         _placeholder = placeholder;
     if (type)
@@ -1746,23 +1793,23 @@ const Input = (props) => {
     return (React.createElement(React.Fragment, null,
         type === 'password' && (React.createElement(React.Fragment, null,
             React.createElement("div", { className: `inputField ${className}` },
-                React.createElement("input", Object.assign({}, rest, { type: inputType, placeholder: _placeholder, required: _required, onChange: onChange, "data-testid": "password-visibility-toggle" })),
-                React.createElement("span", { className: "togglePasswordVisibility", onClick: togglePasswordVisibility }, showPassword ? React.createElement(ClosePassword, null) : React.createElement(ShowPassword, null))))),
+                React.createElement("input", Object.assign({}, rest, { type: inputType, placeholder: _placeholder, required: _required, onChange: onChange, "data-testid": "passwordInput" })),
+                React.createElement("span", { className: "togglePasswordVisibility", onClick: togglePasswordVisibility, "data-testid": "passwordVisibility" }, showPassword ? React.createElement(ClosePassword, null) : React.createElement(ShowPassword, null))))),
         type !== 'password' && !adornment && !ornament && (React.createElement(React.Fragment, null,
             React.createElement("div", { className: `inputField ${className}` },
-                React.createElement("input", Object.assign({ type: _type, placeholder: _placeholder, required: _required }, rest, { onChange: onChange }))))),
+                React.createElement("input", Object.assign({ type: _type, placeholder: _placeholder, required: _required }, rest, { onChange: onChange, "data-testid": "generalInput" }))))),
         type !== 'password' && adornment && (React.createElement(React.Fragment, null,
             React.createElement("div", { className: "adornment-Container" },
                 React.createElement("div", { className: "adornmentContent" },
-                    React.createElement("span", { className: "InputAddOn-item InputAddOn-field" }, adornment)),
+                    React.createElement("span", { className: "InputAddOn-item InputAddOn-field", "data-testid": "adornment" }, adornment)),
                 React.createElement("div", { className: `adornInputField ${className}` },
-                    React.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: _placeholder }, rest, { type: _type, required: _required, onChange: onChange })))))),
+                    React.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: _placeholder }, rest, { type: _type, required: _required, onChange: onChange, "data-testid": "adornmentInput" })))))),
         type !== 'password' && ornament && (React.createElement(React.Fragment, null,
             React.createElement("div", { className: "ornamnent-Container" },
                 React.createElement("div", { className: `oranInputField ${className}` },
-                    React.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: _placeholder }, rest, { type: _type, required: _required, onChange: onChange }))),
+                    React.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: _placeholder }, rest, { type: _type, required: _required, onChange: onChange, "data-testid": "oranmentInput" }))),
                 React.createElement("div", { className: "oranmentContent" },
-                    React.createElement("span", { className: "InputAddOn-item" }, ornament)))))));
+                    React.createElement("span", { className: "InputAddOn-item", "data-testid": "oranment" }, ornament)))))));
 };
 
 var css_248z$6 = ".NavBarContainer-top {\n  position: absolute;\n  padding: 8px;\n  top: 0;\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  background: #022f55;\n  color: #f1f1f1;\n}\n\n.NavBarContainer-bottom {\n  position: absolute;\n  padding: 8px;\n  bottom: 0;\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  background: #022f55;\n  color: #f1f1f1;\n}";
@@ -1785,7 +1832,6 @@ const Menu = ({ style, menuData, bg, color, onClick }) => {
     const [subItem, setSubItem] = React.useState(false);
     const [currmenu, setCurrMenu] = React.useState();
     const [currSubMenu, setCurrSubMenu] = React.useState();
-    React.useState();
     const menuStyles = Object.assign({ color: color, backgroundColor: bg }, style);
     const handleSubItem = (key) => {
         setSubItem(!subItem);
@@ -1793,7 +1839,7 @@ const Menu = ({ style, menuData, bg, color, onClick }) => {
         setCurrSubMenu('');
     };
     return (React.createElement(BrowserRouter, null,
-        React.createElement("div", { className: "menuContainer", style: menuStyles, key: "menuContainer" }, menuData.map((menuItem, index) => {
+        React.createElement("div", { className: "menuContainer", style: menuStyles }, menuData.map((menuItem, index) => {
             var _a;
             return (React.createElement(React.Fragment, { key: index },
                 React.createElement(NavLink, { to: menuItem.href, className: "menuLink" },
@@ -1806,16 +1852,9 @@ const Menu = ({ style, menuData, bg, color, onClick }) => {
                             React.createElement("div", { className: "menuTitle" },
                                 React.createElement("span", { className: "menusText" }, menuItem.label),
                                 menuItem.children && ((_a = menuItem.children) === null || _a === void 0 ? void 0 : _a.length) > 0 && (React.createElement("div", { className: `menuDropDownIcon ${subItem && currmenu === menuItem.key ? 'rotateNintee' : ''}` }, React.createElement(RightArrow, null))))))),
-                currmenu === menuItem.key &&
-                    menuItem.children &&
-                    currmenu &&
-                    subItem &&
-                    (menuItem === null || menuItem === void 0 ? void 0 : menuItem.children.map((mapChild) => {
-                        return (React.createElement(React.Fragment, null,
-                            React.createElement(NavLink, { to: mapChild.href, key: mapChild.key, className: "menuLink" },
-                                React.createElement("div", { className: "menuChild", key: mapChild.key, style: { display: subItem ? 'block' : 'none', color: `${color}` } }, mapChild.label))));
-                    })),
-                (menuItem === null || menuItem === void 0 ? void 0 : menuItem.type) === 'divider' && React.createElement("div", { className: "menuItem_group_divider" })));
+                currmenu === menuItem.key && menuItem.children && currmenu && subItem && (React.createElement(React.Fragment, null, menuItem.children.map((mapChild) => (React.createElement(NavLink, { to: mapChild.href, key: mapChild.key, className: "menuLink" },
+                    React.createElement("div", { className: "menuChild", key: mapChild.key, style: { display: subItem ? 'block' : 'none', color: `${color}` } }, mapChild.label)))))),
+                (menuItem === null || menuItem === void 0 ? void 0 : menuItem.type) === 'divider' && React.createElement("div", { className: "menuItem_group_divider", key: index })));
         }))));
 };
 
@@ -1840,6 +1879,11 @@ const Select = ({ options, placeholder, disabled, name, onChange }) => {
                 return (React.createElement("option", { className: "selectOption", key: selectIndex, value: selectdata }, selectdata));
             })),
         React.createElement("div", { className: "selectIcon", ref: selectIconRef })));
+};
+
+const Stack = ({ align = 'start', direction = 'column', isInline = false, justify = 'start', shouldWrapChildren = false, spacing = 0, wrap = false, style }) => {
+    const stackStyles = Object.assign({ display: isInline ? 'inline-flex' : 'flex', flexDirection: direction, alignItems: align, justifyContent: justify, flexWrap: wrap ? 'wrap' : 'nowrap', gap: spacing ? `${spacing}px` : '0px' }, style);
+    return React.createElement("div", { style: stackStyles });
 };
 
 const Switch = (props) => {
@@ -3241,6 +3285,7 @@ const TextArea = (props) => {
 };
 
 exports.Alert = Alert;
+exports.AuthHOC = AuthHOC;
 exports.Avatar = Avatar;
 exports.Badge = Badge;
 exports.Button = Button;
@@ -3251,6 +3296,7 @@ exports.Menu = Menu;
 exports.NavBar = NavBar;
 exports.Select = Select;
 exports.Sidebar = Sidebar;
+exports.Stack = Stack;
 exports.Switch = Switch;
 exports.Table = Table;
 exports.TextArea = TextArea;
