@@ -4,32 +4,43 @@
   width: 100%;
 }
 
-.menuLinkContainer {
-  display: flex;
-  place-content: start;
-  color: #6C757D;
-  gap: 15px;
-  padding: 8px 8px 8px 16px;
-  cursor: pointer;
+.menuLinkContainer,
+.menuDropDownIcon,
+.MenuType {
   transition: all 0.5s;
 }
 
-.menuLinkContainer:hover {
+.menuLinkContainer {
+  place-content: start;
+  gap: 15px;
+  padding: 8px 8px 8px 16px;
+  align-items: center;
+}
+
+.menuLinkContainer,
+.menuChild {
+  cursor: pointer;
+  display: flex;
+  color: #6c747d;
+}
+
+.menuLinkContainer:hover,
+span.menusText:hover {
   border-radius: 8px;
-  color: #003554;
-  background: #d0e8e8;
+  color: #0094DA;
+  background: transparent;
+}
+
+svg.greyColor {
+  fill: #6C757D;
 }
 
 .menuLinkContainer:hover .svg-icon path,
 .menuLinkContainer:hover .greyColor path {
-  fill: #003554;
+  fill: #0094DA;
 }
 
-a.menuLink {
-  color: black;
-  text-decoration: none;
-}
-
+a.menuLink,
 a.menuLink.active {
   color: black;
   text-decoration: none;
@@ -37,7 +48,6 @@ a.menuLink.active {
 
 .MenuType {
   margin: 4px 4px 8px 4px;
-  transition: all 0.5s;
 }
 
 .menuItem_group_title {
@@ -47,10 +57,7 @@ a.menuLink.active {
 
 .menuChild {
   text-decoration: none;
-  cursor: pointer;
-  display: flex;
   text-decoration: none;
-  color: #6c747d;
   margin-left: 30px;
   border: none;
   outline: none;
@@ -59,8 +66,8 @@ a.menuLink.active {
 
 .menuChild:hover {
   border-radius: 8px;
-  color: #003554;
-  background: #d0e8e8;
+  color: #0094DA;
+  background: transparent;
 }
 
 .menuDropDownIcon {
@@ -68,7 +75,6 @@ a.menuLink.active {
   padding-left: 2px;
   margin-left: 5px;
   vertical-align: middle;
-  transition: all 0.5s;
   width: 12px;
 }
 

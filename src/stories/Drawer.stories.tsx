@@ -12,14 +12,12 @@ const Template: ComponentStory<typeof Drawer> = (args) => <Drawer {...args} />;
 export const Primary = Template.bind({});
 Primary.args = {
     align: 'left',
-    // width: '1200px',
-    // color: 'blue',
-    // bg: 'yellow',
-    drawerOpen: true
+    bg: '#0094DA',
+    isOpen: true
 };
 
 export const right = Template.bind({});
 right.args = {
     align: 'right',
-    drawerOpen: true
+    isOpen: true
 };

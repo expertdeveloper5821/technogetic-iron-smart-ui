@@ -8,7 +8,6 @@ export interface InputProps extends React.DetailedHTMLProps<React.InputHTMLAttri
     placeholder?: string;
     autoFocus?: boolean;
     disabled?: boolean;
-    name?: string;
     type?: 'email' | 'password' | 'text';
     className?: string;
     adornment?: string;

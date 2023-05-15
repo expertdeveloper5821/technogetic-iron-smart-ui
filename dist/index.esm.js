@@ -1,11 +1,6 @@
 import * as React from 'react';
 import React__default, { useState as useState$1, useRef } from 'react';
 
-const AvatarIcon = () => {
-    return (React__default.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "57", height: "57", viewBox: "0 0 24 24" },
-        React__default.createElement("path", { d: "M16.5 12.5c0 .828-.56 1.5-1.25 1.5s-1.25-.672-1.25-1.5.56-1.5 1.25-1.5 1.25.672 1.25 1.5zm-7.75-1.5c-.69 0-1.25.672-1.25 1.5s.56 1.5 1.25 1.5 1.25-.672 1.25-1.5-.56-1.5-1.25-1.5zm3.25 5.357c-2.375-1.454-1.689 2.095-5 .639.5 2.012 3.506 2.353 5 1.141 1.494 1.212 4.5.871 5-1.141-3.311 1.457-2.625-2.092-5-.639zm12-3.044c0 1.765-.985 3.991-3.139 4.906-2.05 3.274-4.975 5.781-8.861 5.781-3.749 0-6.858-2.582-8.862-5.781-2.153-.916-3.138-3.142-3.138-4.906 0-1.995.811-3.774 2.683-3.959l.03-.028.003-.02c-.25-1.945-.338-4.92.719-6.047.568-.605 1.217-.839 2.047-.565 1.294-1.765 3.454-2.694 6.372-2.694 4.646 0 6.552 2.417 8.177 4.46.893 1.123 1.969 2.248 3.969 2.186-.809.758-1.779 1.354-2.832 1.795.051.301.093.604.122.907 1.85.165 2.71 1.905 2.71 3.965zm-2.58-1.866c-.235-.153-.53-.116-.671-.053-.66.293-1.406-.192-1.406-.914 0-.479-.035-.957-.1-1.43-4.099.928-8.743-.231-10.368-3.467-2.375.375-3.85 2.356-4.229 5.021h-.004c-.087.683-.785 1.059-1.39.79-.141-.062-.436-.1-.672.053-1 .651-.893 4.184 1.554 5.012.224.076.413.228.535.43 1.708 2.829 4.015 5.111 7.331 5.111 3.318 0 5.624-2.284 7.331-5.111.123-.202.313-.354.536-.43 2.448-.829 2.553-4.364 1.553-5.012z" })));
-};
-
 function styleInject(css, ref) {
   if ( ref === void 0 ) ref = {};
   var insertAt = ref.insertAt;
@@ -33,11 +28,18 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z$d = ".avatarContainer,\nimg.avatarImage {\n  cursor: pointer;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  object-fit: cover;\n}";
+var css_248z$d = ".avatarContainer,\nimg.avatarImage {\n  cursor: pointer;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  object-fit: cover;\n}\n\nspan.avatarInitials {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  background-color: #0094DA;\n  color: #f1f1f1;\n}";
 styleInject(css_248z$d);
 
-const Avatar = ({ src, alt, size = 50, className, onClick }) => {
-    return (React__default.createElement("div", { className: className ? className : `avatarContainer `, onClick: onClick }, src ? React__default.createElement("img", { className: "avatarImage", src: src, alt: alt }) : React__default.createElement(AvatarIcon, null)));
+const Avatar = ({ name = 'K', src, alt = 'avatar', size = 50, className, onClick }) => {
+    const getInitials = (name) => {
+        const initials = name
+            .split(' ')
+            .map((word) => word.charAt(0).toUpperCase())
+            .join('');
+        return initials;
+    };
+    return (React__default.createElement("div", { className: className ? className : `avatarContainer `, onClick: onClick, "data-testid": "avatar-container" }, src ? React__default.createElement("img", { className: "avatarImage", src: src, alt: alt }) : React__default.createElement("span", { className: "avatarInitials" }, getInitials(name))));
 };
 
 /**
@@ -1666,22 +1668,16 @@ const Alert = ({ message, type = 'success', timeout = 5000, isClosable = true, c
         return null;
     }
     const alertBody = (React__default.createElement("div", null,
-        type === 'success' && React__default.createElement("span", null,
-            "This is the Success Alert ",
-            message),
-        type === 'failure' && React__default.createElement("span", null,
-            "This is the Failure Alert ",
-            message),
-        type === 'warning' && React__default.createElement("span", null,
-            "This is the Warning Alert ",
-            message)));
+        type === 'success' && 'This is the Success Alert',
+        type === 'failure' && 'This is the Failure Alert',
+        type === 'warning' && 'This is the Warning Alert'));
     return (React__default.createElement("div", { className: className ? className : `alert alert-${type}` },
-        alertBody,
+        React__default.createElement("span", null, message ? message : alertBody),
         isClosable && (React__default.createElement("div", { className: "closeIcon", "data-testid": "close-button", onClick: handleClose },
             React__default.createElement(CloseIcon, null)))));
 };
 
-var css_248z$b = "span.badge {\n  position: absolute;\n  top: 0;\n  right: 0;\n  padding: 4px;\n  border-radius: '10px';\n}\n\nspan.badge.badge-primary {\n  background-color: #0788dd;\n  color: white;\n}\n\nspan.badge.badge-success {\n  background-color: #78d178;\n  color: white;\n}\n\nspan.badge.badge-danger {\n  background-color: #d17878;\n  color: white;\n}\n\nspan.badge.badge-warning {\n  background-color: #ecdd68;\n  color: white;\n}";
+var css_248z$b = "span.badge {\n  position: absolute;\n  top: 0;\n  right: 0;\n  padding: 4px;\n  border-radius: 50%;\n}\n\nspan.badge.badge-primary {\n  background-color: #0788dd;\n  color: white;\n}\n\nspan.badge.badge-success {\n  background-color: #78d178;\n  color: white;\n}\n\nspan.badge.badge-danger {\n  background-color: #d17878;\n  color: white;\n}\n\nspan.badge.badge-warning {\n  background-color: #ecdd68;\n  color: white;\n}";
 styleInject(css_248z$b);
 
 const Badge = ({ label, type = 'primary', className, max }) => {
@@ -1689,44 +1685,36 @@ const Badge = ({ label, type = 'primary', className, max }) => {
     return (React__default.createElement("span", { className: className ? className : `badge badge-${type}`, "data-testid": "tooltip" }, displayLabel));
 };
 
-var css_248z$a = "button.commonButton {\n    color: white;\n    cursor: pointer;\n    border-radius: 6px;\n    padding: 10px;\n    background-color: #1ea7fd;\n    border: 0;\n}\n\n.commonButton:hover {\n    background-color: #9E9E9E;\n}\n\n.commonButton:hover {\n    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\n}\n\n.outLineButton {\n    color: white;\n    cursor: pointer;\n    border-radius: 6px;\n    padding: 10px;\n    border: 0.4px;\n}\n\n.outLineButton-success {\n    border: 0.8px solid rgba(0, 137, 55, 0.9);\n    color: rgba(0, 137, 55, 0.9);\n    background-color: #FFFFFF;\n}\n\n.outLineButton-success:hover {\n    background-color: rgba(0, 137, 55, 0.9);\n    color: white;\n    outline: none;\n    border: none;\n}\n\n.outLineButton-primary {\n    border: 0.8px solid #0094DA;\n    color: #0094DA;\n    background-color: #FFFFFF;\n}\n\n.outLineButton-primary:hover {\n    background-color: #0094DA;\n    color: white;\n    outline: none;\n    border: none;\n}\n\n\n.outLineButton-danger {\n    border: 0.8px solid #D40909;\n    background-color: #FFFFFF;\n    color: #D40909;\n}\n\n.outLineButton-danger:hover {\n    background-color: #D40909;\n    color: white;\n    outline: none;\n    border: none;\n}\n\n.outLineButton-warning {\n    border: 0.8px solid #F9C304;\n    background-color: #FFFFFF;\n    color: #F9C304\n}\n\n.outLineButton-warning:hover {\n    background-color: #F9C304;\n    color: white;\n    outline: none;\n    border: none;\n}\n\n.outLineButton-light {\n    border: 0.8px solid #858585;\n    background-color: #FFFFFF;\n    color: #858585;\n}\n\n.outLineButton-light:hover {\n    background-color: #858585;\n    color: black;\n    outline: none;\n    border: none;\n}\n\n.outLineButton-dark {\n    border: 0.8px solid #303030;\n    background-color: #FFFFFF;\n    color: #303030;\n}\n\n.outLineButton-dark:hover {\n    background-color: #303030;\n    color: #ffffff;\n    outline: none;\n    border: none;\n}";
+var css_248z$a = "button {\n    cursor: pointer;\n    border-radius: 6px;\n    padding: 10px;\n    font-weight: 600;\n}\n\n.button-borderLess {\n    border: 0;\n    background: transparent;\n    color: #1ea7fd;\n}\n\n.button-borderLess:hover {\n    color: #303030\n}\n\n.button-contained {\n    background-color: #1ea7fd;\n    color: white;\n    border: 0;\n}\n\n.button-contained:hover {\n    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\n    background-color: #9E9E9E;\n}\n\n.button-outline {\n    border: 0.4px solid #1ea7fd;\n    background-color: transparent;\n    color: #1ea7fd\n}\n\n.button-outline:hover {\n    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\n    background-color: #1ea7fd;\n    color: white;\n    border: 0;\n}";
 styleInject(css_248z$a);
 
 const Button = (props) => {
-    const { children, bg, color, outline, style, onClick, className, type } = props;
-    const buttonStyles = Object.assign({ backgroundColor: bg, color }, style);
-    if (outline) {
-        return (React__default.createElement("button", Object.assign({ className: className ? className : `outLineButton outLineButton-${outline}`, style: buttonStyles }, props, { onClick: onClick, type: type ? type : 'submit' }), children ? children : 'Button'));
-    }
-    else {
-        return (React__default.createElement("button", Object.assign({ className: className ? className : 'commonButton', style: buttonStyles }, props, { onClick: onClick, type: type ? type : 'submit' }), children ? children : 'Button'));
-    }
+    const { children, bg, color, varient = 'borderLess', onClick, disabled, className } = props;
+    return (React__default.createElement("button", Object.assign({}, props, { className: className ? className : `button button-${varient}` }, props, { onClick: onClick, disabled: disabled }), children ? children : 'Button'));
 };
 
-var css_248z$9 = ".Card-module_card__Cb1o4 {\n    background-color: #ffffff;\n    border-radius: 8px;\n    line-height: 1.5;\n    word-break: break-all;\n    border: 1px solid #e8e8e8;\n}\n\n.Card-module_cardHead__X5ZxV {\n    padding: 0 1.6rem;\n    text-align: center;\n}\n\n.Card-module_cardFooter__-sXuF {\n    padding: 0 1.6rem;\n    font-size: 1.1rem;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding: 0.4em;\n    border-radius: 2px 2px 0 0;\n}\n\n.Card-module_cardHeadTitle__hkszw {\n    font-weight: 500;\n    margin: 0;\n    font-size: 16px;\n    line-height: 22px;\n    font-weight: 500;\n}\n\n.Card-module_cardBody__-I34R {\n    padding: 1.2rem 1.8rem;\n    border-radius: 2px 2px 0 0;\n    text-align: center;\n}\n\n.Card-module_noBorderCard__ej-zo {\n    border: none;\n}\n\n.Card-module_topRightBtn__EwYaO {\n    display: flex;\n    align-items: center;\n}";
-var styles = {"card":"Card-module_card__Cb1o4","cardHead":"Card-module_cardHead__X5ZxV","cardFooter":"Card-module_cardFooter__-sXuF","cardHeadTitle":"Card-module_cardHeadTitle__hkszw","cardBody":"Card-module_cardBody__-I34R","noBorderCard":"Card-module_noBorderCard__ej-zo","topRightBtn":"Card-module_topRightBtn__EwYaO"};
+var css_248z$9 = ".card {\n    background-color: transparent;\n    border-radius: 8px;\n    line-height: 1.5;\n    word-break: break-all;\n    border: 1px solid #e8e8e8;\n}\n\n.noBorderCard {\n    border: none;\n}\n\n.cardHead {\n    padding: 0 1.6rem;\n}\n\n.cardHead,\n.cardBody,\n.cardFooter {\n    text-align: center;\n    align-items: center;\n    justify-content: center;\n}\n\n.cardHeadTitle {\n    margin: 0;\n    font-weight: 500;\n}\n\n.cardBody {\n    padding: 1.2rem 1.8rem;\n    border-radius: 2px 2px 0 0;\n}\n\n.cardFooter {\n    padding: 0 1.6rem;\n    display: flex;\n    padding: 0.4em;\n    border-radius: 2px 2px 0 0;\n}";
 styleInject(css_248z$9);
 
 const Card = (props) => {
     const { className, padding, title = 'Card Title', border, footer = 'Card Footer', headerImage } = props;
-    const borderStyle = border === 'none' ? styles.noBorderCard : '';
     const cardHeader = (React__default.createElement("div", { className: "cardHead" },
         React__default.createElement("div", { className: "cardHeadTitle" }, headerImage ? headerImage && React__default.createElement("img", { src: headerImage, alt: "Card Header Image" }) : React__default.createElement("span", null, title))));
     const cardFooter = (React__default.createElement("div", { className: "cardFooter" },
-        React__default.createElement("div", { className: `${styles.cardFooter}` },
+        React__default.createElement("div", { className: "cardFooter" },
             React__default.createElement("span", null, footer))));
-    return (React__default.createElement("div", Object.assign({}, props, { className: `card ${styles.card} ${borderStyle} ${className}` }),
+    return (React__default.createElement("div", Object.assign({}, props, { className: className ? className : `card noBorderCard ` }),
         cardHeader,
-        React__default.createElement("div", { style: { padding }, className: `cardBody ${styles.cardBody}` }, props.children),
+        React__default.createElement("div", { style: { padding }, className: "cardBody" }, props.children),
         cardFooter));
 };
 
-var css_248z$8 = ".DrawerContainer-left {\n  position: absolute;\n  left: 0;\n  top: 0;\n  display: flex;\n  flex-direction: column;\n  padding: 8px;\n  background: #022f55;\n  color: #f1f1f1;\n  width: 257px;\n  height: 100vh;\n}\n\n.DrawerContainer-right {\n  position: absolute;\n  right: 0;\n  top: 0;\n  display: flex;\n  flex-direction: column;\n  padding: 8px;\n  background: #022f55;\n  color: #f1f1f1;\n  width: 257px;\n  height: 100vh;\n}";
+var css_248z$8 = ".DrawerContainer {\n  position: absolute;\n  display: flex;\n  flex-direction: column;\n  padding: 8px;\n  background: #0094DA;\n  color: #f1f1f1;\n  width: 257px;\n  height: 100vh;\n}\n\n.DrawerContainer-left {\n  left: 0;\n  top: 0;\n}\n\n.DrawerContainer-right {\n  right: 0;\n  top: 0;\n}";
 styleInject(css_248z$8);
 
-const Drawer = ({ align = 'left', width, bg, color, style, drawerOpen = true }) => {
+const Drawer = ({ align = 'left', width, bg, color, className, style, isOpen = true }) => {
     const DrawerStyles = Object.assign({ width, backgroundColor: bg, color }, style);
-    return React__default.createElement(React__default.Fragment, null, drawerOpen && React__default.createElement("div", { className: `DrawerContainer-${align}`, style: DrawerStyles, "data-testid": "drawerComoponent" }));
+    return React__default.createElement(React__default.Fragment, null, isOpen && React__default.createElement("div", { className: className ? className : `DrawerContainer DrawerContainer-${align}`, style: DrawerStyles, "data-testid": "drawerComoponent" }));
 };
 
 /******************************************************************************
@@ -1756,23 +1744,23 @@ function __rest(s, e) {
     return t;
 }
 
-var css_248z$7 = ".ornamnent-Container,\n.adornment-Container {\n    display: flex;\n    align-items: center;\n}\n\n.inputField {\n    display: flex;\n    align-items: start;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px;\n    padding: 8px;\n}\n\n.adornmentContent {\n    background-color: #f5f5f5;\n    padding: 7.5px;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px 0px 0px 6px;\n}\n\n.adornInputField {\n    display: flex;\n    align-items: start;\n    width: 100%;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 0px 6px 6px 0px;\n    padding: 8px;\n}\n\n.oranInputField {\n    display: flex;\n    align-items: start;\n    width: 100%;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px 0px 0px 6px;\n    padding: 8px;\n}\n\n.oranmentContent {\n    background-color: #f5f5f5;\n    padding: 7.5px;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 0px 6px 6px 0px;\n}\n\n.inputField input:focus,\ninput.InputAddOn-field:focus {\n    background: #FFFFFF;\n    border: none;\n    outline: none;\n}\n\n.inputField:focus-within,\n.oranInputField:focus-within,\n.adornInputField:focus-within {\n    border: 0.5px solid #0094DA;\n}\n\ninput[type='text'],\ninput[type='email'],\ninput[type='password'] {\n    border: 0;\n    width: 100%;\n}\n\nspan.InputAddOn-item {\n    padding: 0px 4px;\n}\n\n.InputAddOn-item {\n    color: #666666;\n    font: inherit;\n    font-weight: normal;\n}";
+var css_248z$7 = ".commonInputDiv {\n    background: transparent;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px;\n    padding: 8px;\n    user-select: none;\n}\n\n.combinedInputField {\n    display: flex;\n}\n\n.adornmentContent,\n.oranmentContent {\n    background-color: transparent;\n    padding: 7.5px;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n}\n\n.adornmentContent {\n    border-radius: 6px 0px 0px 6px;\n    border-right: 0;\n}\n\n.adornInputField,\n.oranInputField {\n    display: flex;\n    align-items: start;\n    width: 100%;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: transparent;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    padding: 8px;\n}\n\n.adornInputField,\n.oranmentContent {\n    border-radius: 0px 6px 6px 0px;\n}\n\n.oranInputField {\n\n    border-radius: 6px 0px 0px 6px;\n}\n\n.oranmentContent {\n    border-left: 0;\n}\n\n.oranmentContent:focus,\n.oranInputField:focus {\n    border: 0;\n}\n\n.commonInputDiv input:focus,\ninput.InputAddOn-field:focus {\n    background: transparent;\n    border: none;\n    outline: none;\n}\n\n.commonInputDiv:focus-within,\n.combinedInputField:focus-within {\n    border: 0.4px solid #0094DA;\n    border-radius: 6px;\n    background: transparent;\n}\n\ninput[type='text'],\ninput[type='email'],\ninput[type='password'] {\n    border: 0;\n    width: 100%;\n}\n\nspan.InputAddOn-item {\n    padding: 0px 4px;\n}\n\n.InputAddOn-item {\n    color: #666666;\n    font: inherit;\n    font-weight: normal;\n}";
 styleInject(css_248z$7);
 
 const ShowPassword = () => {
     return (React__default.createElement("div", null,
-        React__default.createElement("svg", { width: "24", height: "20", xmlns: "http://www.w3.org/2000/svg", fillRule: "evenodd", clipRule: "evenodd" },
+        React__default.createElement("svg", { width: "18", height: "14", viewBox: "0 0 26 24", xmlns: "http://www.w3.org/2000/svg", fillRule: "evenodd", clipRule: "evenodd" },
             React__default.createElement("path", { d: "M12.01 20c-5.065 0-9.586-4.211-12.01-8.424 2.418-4.103 6.943-7.576 12.01-7.576 5.135 0 9.635 3.453 11.999 7.564-2.241 4.43-6.726 8.436-11.999 8.436zm-10.842-8.416c.843 1.331 5.018 7.416 10.842 7.416 6.305 0 10.112-6.103 10.851-7.405-.772-1.198-4.606-6.595-10.851-6.595-6.116 0-10.025 5.355-10.842 6.584zm10.832-4.584c2.76 0 5 2.24 5 5s-2.24 5-5 5-5-2.24-5-5 2.24-5 5-5zm0 1c2.208 0 4 1.792 4 4s-1.792 4-4 4-4-1.792-4-4 1.792-4 4-4z" }))));
 };
 
 const ClosePassword = () => {
     return (React__default.createElement("div", null,
-        React__default.createElement("svg", { width: "24", height: "20", xmlns: "http://www.w3.org/2000/svg", fillRule: "evenodd", clipRule: "evenodd" },
+        React__default.createElement("svg", { width: "18", height: "14", viewBox: "0 0 26 24", xmlns: "http://www.w3.org/2000/svg", fillRule: "evenodd", clipRule: "evenodd" },
             React__default.createElement("path", { d: "M8.137 15.147c-.71-.857-1.146-1.947-1.146-3.147 0-2.76 2.241-5 5-5 1.201 0 2.291.435 3.148 1.145l1.897-1.897c-1.441-.738-3.122-1.248-5.035-1.248-6.115 0-10.025 5.355-10.842 6.584.529.834 2.379 3.527 5.113 5.428l1.865-1.865zm6.294-6.294c-.673-.53-1.515-.853-2.44-.853-2.207 0-4 1.792-4 4 0 .923.324 1.765.854 2.439l5.586-5.586zm7.56-6.146l-19.292 19.293-.708-.707 3.548-3.548c-2.298-1.612-4.234-3.885-5.548-6.169 2.418-4.103 6.943-7.576 12.01-7.576 2.065 0 4.021.566 5.782 1.501l3.501-3.501.707.707zm-2.465 3.879l-.734.734c2.236 1.619 3.628 3.604 4.061 4.274-.739 1.303-4.546 7.406-10.852 7.406-1.425 0-2.749-.368-3.951-.938l-.748.748c1.475.742 3.057 1.19 4.699 1.19 5.274 0 9.758-4.006 11.999-8.436-1.087-1.891-2.63-3.637-4.474-4.978zm-3.535 5.414c0-.554-.113-1.082-.317-1.562l.734-.734c.361.69.583 1.464.583 2.296 0 2.759-2.24 5-5 5-.832 0-1.604-.223-2.295-.583l.734-.735c.48.204 1.007.318 1.561.318 2.208 0 4-1.792 4-4z" }))));
 };
 
 const Input = (props) => {
-    const { className, placeholder, type, adornment, required, onChange, ornament } = props, rest = __rest(props, ["className", "placeholder", "type", "adornment", "required", "onChange", "ornament"]);
+    const { className = 'inputArea', placeholder, autoFocus = false, disabled = false, type, adornment, required, onChange, ornament } = props, rest = __rest(props, ["className", "placeholder", "autoFocus", "disabled", "type", "adornment", "required", "onChange", "ornament"]);
     const [showPassword, setShowPassword] = useState$1(false);
     const togglePasswordVisibility = () => {
         setShowPassword((prevState) => !prevState);
@@ -1789,27 +1777,27 @@ const Input = (props) => {
         _required = required;
     return (React__default.createElement(React__default.Fragment, null,
         type === 'password' && (React__default.createElement(React__default.Fragment, null,
-            React__default.createElement("div", { className: `inputField ${className}` },
-                React__default.createElement("input", Object.assign({}, rest, { type: inputType, placeholder: _placeholder, required: _required, onChange: onChange, "data-testid": "passwordInput" })),
-                React__default.createElement("span", { className: "togglePasswordVisibility", onClick: togglePasswordVisibility, "data-testid": "passwordVisibility" }, showPassword ? React__default.createElement(ClosePassword, null) : React__default.createElement(ShowPassword, null))))),
+            React__default.createElement("div", { className: `commonInputDiv combinedInputField ${className}` },
+                React__default.createElement("input", Object.assign({}, rest, { type: inputType, placeholder: _placeholder, autoFocus: autoFocus, disabled: disabled, required: _required, onChange: onChange, "data-testid": "passwordInput" })),
+                React__default.createElement("span", { className: "passwordIcon", onClick: togglePasswordVisibility, "data-testid": "passwordVisibility" }, showPassword ? React__default.createElement(ClosePassword, null) : React__default.createElement(ShowPassword, null))))),
         type !== 'password' && !adornment && !ornament && (React__default.createElement(React__default.Fragment, null,
-            React__default.createElement("div", { className: `inputField ${className}` },
-                React__default.createElement("input", Object.assign({ type: _type, placeholder: _placeholder, required: _required }, rest, { onChange: onChange, "data-testid": "generalInput" }))))),
+            React__default.createElement("div", { className: `commonInputDiv  ${className}` },
+                React__default.createElement("input", Object.assign({ type: _type, placeholder: _placeholder, autoFocus: autoFocus, disabled: disabled, required: _required }, rest, { onChange: onChange, "data-testid": "generalInput" }))))),
         type !== 'password' && adornment && (React__default.createElement(React__default.Fragment, null,
-            React__default.createElement("div", { className: "adornment-Container" },
+            React__default.createElement("div", { className: "combinedInputField" },
                 React__default.createElement("div", { className: "adornmentContent" },
                     React__default.createElement("span", { className: "InputAddOn-item InputAddOn-field", "data-testid": "adornment" }, adornment)),
                 React__default.createElement("div", { className: `adornInputField ${className}` },
-                    React__default.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: _placeholder }, rest, { type: _type, required: _required, onChange: onChange, "data-testid": "adornmentInput" })))))),
+                    React__default.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: _placeholder }, rest, { type: _type, autoFocus: autoFocus, disabled: disabled, required: _required, onChange: onChange, "data-testid": "adornmentInput" })))))),
         type !== 'password' && ornament && (React__default.createElement(React__default.Fragment, null,
-            React__default.createElement("div", { className: "ornamnent-Container" },
+            React__default.createElement("div", { className: "combinedInputField" },
                 React__default.createElement("div", { className: `oranInputField ${className}` },
-                    React__default.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: _placeholder }, rest, { type: _type, required: _required, onChange: onChange, "data-testid": "oranmentInput" }))),
+                    React__default.createElement("input", Object.assign({ className: "InputAddOn-field", placeholder: _placeholder }, rest, { type: _type, autoFocus: autoFocus, disabled: disabled, required: _required, onChange: onChange, "data-testid": "oranmentInput" }))),
                 React__default.createElement("div", { className: "oranmentContent" },
                     React__default.createElement("span", { className: "InputAddOn-item", "data-testid": "oranment" }, ornament)))))));
 };
 
-var css_248z$6 = ".NavBarContainer-top {\n  position: absolute;\n  padding: 8px;\n  top: 0;\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  background: #022f55;\n  color: #f1f1f1;\n}\n\n.NavBarContainer-bottom {\n  position: absolute;\n  padding: 8px;\n  bottom: 0;\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  background: #022f55;\n  color: #f1f1f1;\n}";
+var css_248z$6 = ".NavBarContainer-top,\n.NavBarContainer-bottom {\n  position: absolute;\n  padding: 8px;\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  background: #022f55;\n  color: #f1f1f1;\n}\n\n.NavBarContainer-top {\n  top: 0\n}\n\n.NavBarContainer-bottom {\n  bottom: 0;\n}";
 styleInject(css_248z$6);
 
 const NavBar = ({ align = 'top', width, bg, color, style }) => {
@@ -1822,7 +1810,7 @@ const RightArrow = () => {
         React__default.createElement("path", { d: "M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z" })));
 };
 
-var css_248z$5 = ".menuContainer {\n  background: transparent;\n  color: black;\n  width: 100%;\n}\n\n.menuLinkContainer {\n  display: flex;\n  place-content: start;\n  color: #6C757D;\n  gap: 15px;\n  padding: 8px 8px 8px 16px;\n  cursor: pointer;\n  transition: all 0.5s;\n}\n\n.menuLinkContainer:hover {\n  border-radius: 8px;\n  color: #003554;\n  background: #d0e8e8;\n}\n\n.menuLinkContainer:hover .svg-icon path,\n.menuLinkContainer:hover .greyColor path {\n  fill: #003554;\n}\n\na.menuLink {\n  color: black;\n  text-decoration: none;\n}\n\na.menuLink.active {\n  color: black;\n  text-decoration: none;\n}\n\n.MenuType {\n  margin: 4px 4px 8px 4px;\n  transition: all 0.5s;\n}\n\n.menuItem_group_title {\n  padding: 8px 16px;\n  color: rgba(0, 0, 0, .45);\n}\n\n.menuChild {\n  text-decoration: none;\n  cursor: pointer;\n  display: flex;\n  text-decoration: none;\n  color: #6c747d;\n  margin-left: 30px;\n  border: none;\n  outline: none;\n  padding: 10px 14px 10px 14px;\n}\n\n.menuChild:hover {\n  border-radius: 8px;\n  color: #003554;\n  background: #d0e8e8;\n}\n\n.menuDropDownIcon {\n  display: inline-flex;\n  padding-left: 2px;\n  margin-left: 5px;\n  vertical-align: middle;\n  transition: all 0.5s;\n  width: 12px;\n}\n\n.menuDropDownIcon.rotateNintee {\n  transform: rotateNintee(90deg);\n  transform: rotate(90deg) translateX(1px);\n}\n\n.menuItem_group_divider {\n  overflow: hidden;\n  line-height: 0;\n  border-color: rgba(5, 5, 5, .06);\n  border-style: solid;\n  border-width: 0;\n  border-top-width: 2px;\n  margin-block: 2px;\n  margin-block-start: 2px;\n  margin-block-end: 2px;\n  padding: 0;\n}";
+var css_248z$5 = ".menuContainer {\n  background: transparent;\n  color: black;\n  width: 100%;\n}\n\n.menuLinkContainer,\n.menuDropDownIcon,\n.MenuType {\n  transition: all 0.5s;\n}\n\n.menuLinkContainer {\n  place-content: start;\n  gap: 15px;\n  padding: 8px 8px 8px 16px;\n  align-items: center;\n}\n\n.menuLinkContainer,\n.menuChild {\n  cursor: pointer;\n  display: flex;\n  color: #6c747d;\n}\n\n.menuLinkContainer:hover,\nspan.menusText:hover {\n  border-radius: 8px;\n  color: #0094DA;\n  background: transparent;\n}\n\nsvg.greyColor {\n  fill: #6C757D;\n}\n\n.menuLinkContainer:hover .svg-icon path,\n.menuLinkContainer:hover .greyColor path {\n  fill: #0094DA;\n}\n\na.menuLink,\na.menuLink.active {\n  color: black;\n  text-decoration: none;\n}\n\n.MenuType {\n  margin: 4px 4px 8px 4px;\n}\n\n.menuItem_group_title {\n  padding: 8px 16px;\n  color: rgba(0, 0, 0, .45);\n}\n\n.menuChild {\n  text-decoration: none;\n  text-decoration: none;\n  margin-left: 30px;\n  border: none;\n  outline: none;\n  padding: 10px 14px 10px 14px;\n}\n\n.menuChild:hover {\n  border-radius: 8px;\n  color: #0094DA;\n  background: transparent;\n}\n\n.menuDropDownIcon {\n  display: inline-flex;\n  padding-left: 2px;\n  margin-left: 5px;\n  vertical-align: middle;\n  width: 12px;\n}\n\n.menuDropDownIcon.rotateNintee {\n  transform: rotateNintee(90deg);\n  transform: rotate(90deg) translateX(1px);\n}\n\n.menuItem_group_divider {\n  overflow: hidden;\n  line-height: 0;\n  border-color: rgba(5, 5, 5, .06);\n  border-style: solid;\n  border-width: 0;\n  border-top-width: 2px;\n  margin-block: 2px;\n  margin-block-start: 2px;\n  margin-block-end: 2px;\n  padding: 0;\n}";
 styleInject(css_248z$5);
 
 const Menu = ({ style, menuData, bg, color, onClick }) => {
@@ -1878,9 +1866,11 @@ const Select = ({ options, placeholder, disabled, name, onChange }) => {
         React__default.createElement("div", { className: "selectIcon", ref: selectIconRef })));
 };
 
-const Stack = ({ align = 'start', direction = 'column', isInline = false, justify = 'start', shouldWrapChildren = false, spacing = 0, wrap = false, style }) => {
+const Stack = ({ align = 'start', direction = 'column', isInline = false, justify = 'start', spacing = 0, wrap = false, style }) => {
     const stackStyles = Object.assign({ display: isInline ? 'inline-flex' : 'flex', flexDirection: direction, alignItems: align, justifyContent: justify, flexWrap: wrap ? 'wrap' : 'nowrap', gap: spacing ? `${spacing}px` : '0px' }, style);
-    return React__default.createElement("div", { style: stackStyles });
+    return (React__default.createElement("div", { style: stackStyles },
+        React__default.createElement("h2", null, "hello"),
+        React__default.createElement("h2", null, "Hi")));
 };
 
 const Switch = (props) => {
@@ -1888,7 +1878,7 @@ const Switch = (props) => {
     return React__default.createElement("input", Object.assign({ name: name, checked: checked, onChange: onChange, disabled: disabled, type: "checkbox" }, props));
 };
 
-var css_248z$3 = ".SideBarContainer-left {\n    position: absolute;\n    left: 0;\n    top: 0;\n    display: flex;\n    flex-direction: column;\n    padding: 8px;\n    background: #022f55;\n    color: #f1f1f1;\n    width: 257px;\n    height: 100vh;\n}\n\n.SideBarContainer-right {\n    position: absolute;\n    right: 0;\n    top: 0;\n    display: flex;\n    flex-direction: column;\n    padding: 8px;\n    background: #022f55;\n    color: #f1f1f1;\n    width: 257px;\n    height: 100vh;\n}";
+var css_248z$3 = ".SideBarContainer-left,\n.SideBarContainer-right {\n    position: absolute;\n    left: 0;\n    top: 0;\n    display: flex;\n    flex-direction: column;\n    padding: 8px;\n    background: #0094DA;\n    color: #f1f1f1;\n    width: 257px;\n    height: 100vh;\n}\n\n.SideBarContainer-left {\n    left: 0;\n    top: 0;\n}\n\n.SideBarContainer-right {\n    right: 0;\n    top: 0;\n}";
 styleInject(css_248z$3);
 
 const Sidebar = ({ align = 'left', width, bg, color, style }) => {
@@ -3271,14 +3261,13 @@ const Tooltip = ({ text, children }) => {
         showTooltip && React__default.createElement("span", { className: "textContainer " }, text)));
 };
 
-var css_248z = ".textAreaField {\n  display: flex;\n  align-items: start;\n  justify-content: space-between;\n  align-items: center;\n  user-select: none;\n  background: #FFFFFF;\n  border: 1px solid rgba(147, 128, 108, 0.25);\n  border-radius: 6px;\n  padding: 8px;\n}\n\n.textAreaField:focus-within {\n  border: 0.5px solid #0094DA;\n  outline: none;\n}\n\n.textAreaInput,\n.textAreaInput:focus {\n  background: #FFFFFF;\n  border: none;\n  width: 100%;\n  outline: none;\n}";
+var css_248z = "textarea.textAreaInput {\n  background: transparent;\n  border: 1px solid rgba(147, 128, 108, 0.25);\n  border-radius: 6px;\n  padding: 8px;\n  width: 100%;\n  outline: none;\n}\n\ntextarea.textAreaInput:focus {\n  border: 0.5px solid #0094DA;\n  outline: none;\n}";
 styleInject(css_248z);
 
 const TextArea = (props) => {
     const { cols, rows, placeholder, onChange, className } = props; __rest(props, ["cols", "rows", "placeholder", "onChange", "className"]);
     return (React__default.createElement(React__default.Fragment, null,
-        React__default.createElement("div", { className: `textAreaField ${className}` },
-            React__default.createElement("textarea", { className: className ? className : 'textAreaInput', rows: rows ? rows : 10, cols: cols ? cols : 50, form: props.form, placeholder: placeholder ? placeholder : 'Text Area...', onChange: onChange }))));
+        React__default.createElement("textarea", { className: className ? className : 'textAreaInput', rows: rows ? rows : 10, cols: cols ? cols : 50, form: props.form, placeholder: placeholder ? placeholder : 'Text Area...', onChange: onChange })));
 };
 
 export { Alert, AuthHOC, Avatar, Badge, Button, Card, Drawer, Input, Menu, NavBar, Select, Sidebar, Stack, Switch, Table, TextArea, Tooltip };

@@ -1,5 +1,5 @@
-import React, { PropsWithChildren } from 'react';
-import styles from './Card.module.css';
+import React from 'react';
+import './Card.css';
 
 export interface CardProps {
     className?: string;
@@ -10,9 +10,8 @@ export interface CardProps {
     headerImage?: string;
 }
 
-export const Card = (props: PropsWithChildren<CardProps>) => {
+export const Card = (props: React.PropsWithChildren<CardProps>) => {
     const { className, padding, title = 'Card Title', border, footer = 'Card Footer', headerImage } = props;
-    const borderStyle = border === 'none' ? styles.noBorderCard : '';
 
     const cardHeader = (
         <div className="cardHead">
@@ -21,16 +20,16 @@ export const Card = (props: PropsWithChildren<CardProps>) => {
     );
     const cardFooter = (
         <div className="cardFooter">
-            <div className={`${styles.cardFooter}`}>
+            <div className="cardFooter">
                 <span>{footer}</span>
             </div>
         </div>
     );
 
     return (
-        <div {...props} className={`card ${styles.card} ${borderStyle} ${className}`}>
+        <div {...props} className={className ? className : `card noBorderCard `}>
             {cardHeader}
-            <div style={{ padding }} className={`cardBody ${styles.cardBody}`}>
+            <div style={{ padding }} className="cardBody">
                 {props.children}
             </div>
             {cardFooter}

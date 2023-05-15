@@ -1,24 +1,13 @@
-.textAreaField {
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-  align-items: center;
-  user-select: none;
-  background: #FFFFFF;
+textarea.textAreaInput {
+  background: transparent;
   border: 1px solid rgba(147, 128, 108, 0.25);
   border-radius: 6px;
   padding: 8px;
-}
-
-.textAreaField:focus-within {
-  border: 0.5px solid #0094DA;
+  width: 100%;
   outline: none;
 }
 
-.textAreaInput,
-.textAreaInput:focus {
-  background: #FFFFFF;
-  border: none;
-  width: 100%;
+textarea.textAreaInput:focus {
+  border: 0.5px solid #0094DA;
   outline: none;
 }

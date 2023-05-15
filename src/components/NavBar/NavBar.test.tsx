@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 describe('NavBar', () => {
-    it('renders with default props', () => {
+    test('renders with default props', () => {
         const { getByTestId } = render(<NavBar />);
         const navbarComponent = getByTestId('navbarComponent');
 
@@ -17,7 +17,7 @@ describe('NavBar', () => {
         expect(navbarComponent.classList).toContain('NavBarContainer-top');
     });
 
-    it('renders with custom props', () => {
+    test('renders with custom props', () => {
         const { getByTestId } = render(<NavBar align="bottom" width="100%" bg="blue" color="white" style={{ padding: '10px' }} />);
         const navbarComponent = getByTestId('navbarComponent');
 

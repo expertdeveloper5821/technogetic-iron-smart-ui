@@ -4,24 +4,37 @@ import { render, fireEvent } from '@testing-library/react';
 import { Avatar, AvatarProps } from './Avatar';
 
 describe('Avatar component', () => {
-    const defaultProps: AvatarProps = {
-        src: 'https://example.com/avatar.png',
-        alt: 'Avatar'
+    const mockOnClick = jest.fn();
+
+    const renderAvatar = (props?: AvatarProps) => {
+        const utils = render(<Avatar name="John Doe" {...props} />);
+        const avatarContainer = utils.getByTestId('avatar-container');
+        return { avatarContainer, ...utils };
     };
 
-    it('renders without crashing', () => {
-        render(<Avatar {...defaultProps} />);
+    afterEach(() => {
+        jest.clearAllMocks();
     });
 
-    it('renders with the correct image URL', () => {
-        const { getByAltText } = render(<Avatar {...defaultProps} />);
-        expect(getByAltText(defaultProps.alt)).toHaveAttribute('src', defaultProps.src);
+    test('renders avatar with initials when src is not provided', () => {
+        const { avatarContainer } = renderAvatar();
+        expect(avatarContainer).toBeInTheDocument();
+        expect(avatarContainer).toHaveTextContent('JD');
+        expect(avatarContainer).not.toHaveClass('avatarImage');
+        expect(avatarContainer).toHaveClass('avatarContainer');
     });
 
-    it('calls onClick when clicked', () => {
-        const handleClick = jest.fn();
-        const { getByAltText } = render(<Avatar {...defaultProps} onClick={handleClick} />);
-        fireEvent.click(getByAltText(defaultProps.alt));
-        expect(handleClick).toHaveBeenCalledTimes(1);
+    test('renders avatar with image when src is provided', () => {
+        const { avatarContainer } = renderAvatar({ src: 'path/to/avatar.jpg', alt: 'Avatar' });
+        expect(avatarContainer).toBeInTheDocument();
+        expect(avatarContainer.querySelector('img')).toHaveAttribute('src', 'path/to/avatar.jpg');
+        expect(avatarContainer.querySelector('img')).toHaveAttribute('alt', 'Avatar');
+        expect(avatarContainer).toHaveClass('avatarContainer');
+    });
+
+    test('calls onClick event when avatar is clicked', () => {
+        const { avatarContainer } = renderAvatar({ onClick: mockOnClick });
+        fireEvent.click(avatarContainer);
+        expect(mockOnClick).toHaveBeenCalledTimes(1);
     });
 });

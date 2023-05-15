@@ -1,13 +1,12 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import './Button.css';
 export interface ButtonProps extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
     bg?: string;
     color?: string;
-    outline?: string;
+    varient?: 'borderLess' | 'contained' | 'outline';
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
+    disabled?: boolean;
     className?: string;
-    type?: 'submit' | 'reset' | 'button';
     children?: string | number;
-    style?: CSSProperties;
 }
-export declare const Button: React.FC<ButtonProps>;
+export declare const Button: (props: React.PropsWithChildren<ButtonProps>) => JSX.Element;

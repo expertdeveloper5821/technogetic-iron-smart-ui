@@ -4,7 +4,6 @@ export interface StackProps {
     direction?: 'row' | 'column';
     justify?: 'start' | 'center' | 'end' | 'space-between' | 'space-around' | 'space-evenly';
     isInline?: boolean;
-    shouldWrapChildren?: boolean;
     spacing?: number;
     wrap?: boolean;
     style?: CSSProperties;

@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 describe('SideBar', () => {
-    it('renders with default props', () => {
+    test('renders with default props', () => {
         const { getByTestId } = render(<Sidebar />);
         const sidebarComoponent = getByTestId('sidebarComoponent');
 
@@ -17,7 +17,7 @@ describe('SideBar', () => {
         expect(sidebarComoponent.classList).toContain('SideBarContainer-left');
     });
 
-    it('renders with custom props', () => {
+    test('renders with custom props', () => {
         const { getByTestId } = render(<Sidebar align="bottom" width="100%" bg="blue" color="white" style={{ padding: '10px' }} />);
         const sidebarComoponent = getByTestId('sidebarComoponent');
 

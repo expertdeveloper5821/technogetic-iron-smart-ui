@@ -3,7 +3,7 @@ span.badge {
   top: 0;
   right: 0;
   padding: 4px;
-  border-radius: '10px';
+  border-radius: 50%;
 }
 
 span.badge.badge-primary {

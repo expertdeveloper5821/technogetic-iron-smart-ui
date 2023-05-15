@@ -15,16 +15,16 @@ export const TextArea: React.FunctionComponent<TextAreaInputProps> = (props) => 
 
     return (
         <>
-            <div className={`textAreaField ${className}`}>
-                <textarea
-                    className={className ? className : 'textAreaInput'}
-                    rows={rows ? rows : 10}
-                    cols={cols ? cols : 50}
-                    form={props.form}
-                    placeholder={placeholder ? placeholder : 'Text Area...'}
-                    onChange={onChange}
-                />
-            </div>
+            {/* <div className={`textAreaField ${className}`}> */}
+            <textarea
+                className={className ? className : 'textAreaInput'}
+                rows={rows ? rows : 10}
+                cols={cols ? cols : 50}
+                form={props.form}
+                placeholder={placeholder ? placeholder : 'Text Area...'}
+                onChange={onChange}
+            />
+            {/* </div> */}
         </>
     );
 };

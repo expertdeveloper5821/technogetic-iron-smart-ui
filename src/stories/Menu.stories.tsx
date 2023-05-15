@@ -61,6 +61,6 @@ Primary.args = {
             )
         }
     ],
-    // bg: '#caefff',
+    // bg: '#0094DA',
     color: '#6C757D'
 };

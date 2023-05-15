@@ -1,25 +1,23 @@
-.SideBarContainer-left {
+.SideBarContainer-left,
+.SideBarContainer-right {
     position: absolute;
     left: 0;
     top: 0;
     display: flex;
     flex-direction: column;
     padding: 8px;
-    background: #022f55;
+    background: #0094DA;
     color: #f1f1f1;
     width: 257px;
     height: 100vh;
 }
 
+.SideBarContainer-left {
+    left: 0;
+    top: 0;
+}
+
 .SideBarContainer-right {
-    position: absolute;
     right: 0;
     top: 0;
-    display: flex;
-    flex-direction: column;
-    padding: 8px;
-    background: #022f55;
-    color: #f1f1f1;
-    width: 257px;
-    height: 100vh;
 }

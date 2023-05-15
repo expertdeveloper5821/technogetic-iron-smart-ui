@@ -26,14 +26,14 @@ export const Alert: React.FC<AlertProps> = ({ message, type = 'success', timeout
     }
     const alertBody = (
         <div>
-            {type === 'success' && <span>This is the Success Alert {message}</span>}
-            {type === 'failure' && <span>This is the Failure Alert {message}</span>}
-            {type === 'warning' && <span>This is the Warning Alert {message}</span>}
+            {type === 'success' && 'This is the Success Alert'}
+            {type === 'failure' && 'This is the Failure Alert'}
+            {type === 'warning' && 'This is the Warning Alert'}
         </div>
     );
     return (
         <div className={className ? className : `alert alert-${type}`}>
-            {alertBody}
+            <span>{message ? message : alertBody}</span>
             {isClosable && (
                 <div className="closeIcon" data-testid="close-button" onClick={handleClose}>
                     <CloseIcon />

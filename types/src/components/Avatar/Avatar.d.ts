@@ -1,8 +1,9 @@
 import React from 'react';
 import './Avatar.css';
 export interface AvatarProps {
-    src: string;
-    alt: string;
+    name?: string;
+    src?: string;
+    alt?: string;
     size?: number;
     className?: string;
     onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;

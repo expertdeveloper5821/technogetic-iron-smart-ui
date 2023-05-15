@@ -5,13 +5,12 @@ export interface StackProps {
     direction?: 'row' | 'column';
     justify?: 'start' | 'center' | 'end' | 'space-between' | 'space-around' | 'space-evenly';
     isInline?: boolean;
-    shouldWrapChildren?: boolean;
     spacing?: number;
     wrap?: boolean;
     style?: CSSProperties;
 }
 
-export const Stack: React.FC<StackProps> = ({ align = 'start', direction = 'column', isInline = false, justify = 'start', shouldWrapChildren = false, spacing = 0, wrap = false, style }) => {
+export const Stack: React.FC<StackProps> = ({ align = 'start', direction = 'column', isInline = false, justify = 'start', spacing = 0, wrap = false, style }) => {
     const stackStyles: CSSProperties = {
         display: isInline ? 'inline-flex' : 'flex',
         flexDirection: direction,
@@ -22,5 +21,10 @@ export const Stack: React.FC<StackProps> = ({ align = 'start', direction = 'colu
         ...style
     };
 
-    return <div style={stackStyles}></div>;
+    return (
+        <div style={stackStyles}>
+            <h2>hello</h2>
+            <h2>Hi</h2>
+        </div>
+    );
 };

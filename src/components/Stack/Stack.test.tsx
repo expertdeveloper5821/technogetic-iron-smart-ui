@@ -4,7 +4,7 @@ import { Stack } from './Stack';
 import '@testing-library/jest-dom/extend-expect';
 
 describe('Stack', () => {
-    it('should render a stack with default props', () => {
+    test('should render a stack with default props', () => {
         const { container } = render(<Stack />);
         const stackElement = container.firstChild;
 
@@ -17,10 +17,8 @@ describe('Stack', () => {
         expect(stackElement).toHaveStyle('gap: 0px');
     });
 
-    it('should render a stack with custom props', () => {
-        const { container } = render(
-            <Stack align="center" direction="row" justify="space-between" isInline={true} shouldWrapChildren={true} spacing={10} wrap={true} style={{ backgroundColor: 'red' }} />
-        );
+    test('should render a stack with custom props', () => {
+        const { container } = render(<Stack align="center" direction="row" justify="space-between" isInline={true} spacing={10} wrap={true} style={{ backgroundColor: 'red' }} />);
         const stackElement = container.firstChild;
 
         expect(stackElement).toBeInTheDocument();

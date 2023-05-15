@@ -1,4 +1,5 @@
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
+import './Card.css';
 export interface CardProps {
     className?: string;
     padding?: string;
@@ -7,4 +8,4 @@ export interface CardProps {
     footer?: React.ReactNode;
     headerImage?: string;
 }
-export declare const Card: (props: PropsWithChildren<CardProps>) => JSX.Element;
+export declare const Card: (props: React.PropsWithChildren<CardProps>) => JSX.Element;

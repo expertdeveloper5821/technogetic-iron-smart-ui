@@ -1,11 +1,12 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import './Drawer.css';
 export interface DrawerProps {
     align?: string;
     width?: string;
     bg?: string;
     color?: string;
-    style?: CSSProperties;
-    drawerOpen?: boolean;
+    className?: string;
+    style?: React.CSSProperties;
+    isOpen?: boolean;
 }
 export declare const Drawer: React.FC<DrawerProps>;

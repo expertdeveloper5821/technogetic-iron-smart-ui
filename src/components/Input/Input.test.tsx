@@ -4,7 +4,7 @@ import { Input } from './Input';
 import '@testing-library/jest-dom';
 
 describe('Input Component', () => {
-    it('should render an input field with the provided props', () => {
+    test('should render an input field with the provided props', () => {
         const onChangeMock = jest.fn();
         const { getByTestId } = render(<Input type="text" placeholder="Enter your name" required onChange={onChangeMock} data-testid="input" />);
 
@@ -17,7 +17,7 @@ describe('Input Component', () => {
         expect(onChangeMock).toHaveBeenCalledTimes(1);
     });
 
-    it('should toggle password visibility when clicking the password visibility button', () => {
+    test('should toggle password visibility when clicking the password visibility button', () => {
         const { getByTestId } = render(<Input type="password" placeholder="Enter your password" data-testid="passwordInput" />);
 
         const passwordInput = getByTestId('passwordInput');
@@ -31,7 +31,7 @@ describe('Input Component', () => {
         expect(passwordInput).toHaveAttribute('type', 'password');
     });
 
-    it('should render an input field with adornment', () => {
+    test('should render an input field with adornment', () => {
         const { getByTestId } = render(<Input type="text" placeholder="Enter your email" adornment="@domain.com" data-testid="adornmentInput" />);
 
         const inputElement = getByTestId('adornmentInput');
@@ -41,7 +41,7 @@ describe('Input Component', () => {
         expect(adornmentElement.textContent).toBe('@domain.com');
     });
 
-    it('should render an input field with ornament', () => {
+    test('should render an input field with ornament', () => {
         const { getByTestId } = render(<Input type="text" placeholder="Enter your name" ornament="*" data-testid="oranmentInput" />);
 
         const inputElement = getByTestId('oranmentInput');

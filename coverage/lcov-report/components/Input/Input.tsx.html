@@ -30,9 +30,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.3% </span>
+                <span class="strong">93.1% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>24/26</span>
+                <span class='fraction'>27/29</span>
             </div>
         
             
@@ -149,8 +149,26 @@
 <a name='L84'></a><a href='#L84'>84</a>
 <a name='L85'></a><a href='#L85'>85</a>
 <a name='L86'></a><a href='#L86'>86</a>
-<a name='L87'></a><a href='#L87'>87</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -235,6 +253,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from 'react';
 import './Input.css';
 import { ShowPassword } from '../../assets/ShowPassword';
@@ -248,7 +286,6 @@ export interface InputProps extends React.DetailedHTMLProps&lt;React.InputHTMLAt
     placeholder?: string;
     autoFocus?: boolean;
     disabled?: boolean;
-    name?: string;
     type?: 'email' | 'password' | 'text';
     className?: string;
     adornment?: string;
@@ -256,7 +293,7 @@ export interface InputProps extends React.DetailedHTMLProps&lt;React.InputHTMLAt
 }
 &nbsp;
 export const Input: React.FunctionComponent&lt;InputProps&gt; = (props) =&gt; {
-    const { className, placeholder, type, adornment, required, onChange, ornament, ...rest } = props;
+    const { className = 'inputArea', placeholder, autoFocus = false, disabled = false, type, adornment, required, onChange, ornament, ...rest } = props;
     const [showPassword, setShowPassword] = useState(false);
     const togglePasswordVisibility = () =&gt; {
         setShowPassword((prevState) =&gt; !prevState);
@@ -275,9 +312,9 @@ export const Input: React.FunctionComponent&lt;InputProps&gt; = (props) =&gt; {
         &lt;&gt;
             {type === 'password' &amp;&amp; (
                 &lt;&gt;
-                    &lt;div className={`inputField ${className}`}&gt;
-                        &lt;input {...rest} type={inputType} placeholder={_placeholder} required={_required} onChange={onChange} data-testid="passwordInput" /&gt;
-                        &lt;span className="togglePasswordVisibility" onClick={togglePasswordVisibility} data-testid="passwordVisibility"&gt;
+                    &lt;div className={`commonInputDiv combinedInputField ${className}`}&gt;
+                        &lt;input {...rest} type={inputType} placeholder={_placeholder} autoFocus={autoFocus} disabled={disabled} required={_required} onChange={onChange} data-testid="passwordInput" /&gt;
+                        &lt;span className="passwordIcon" onClick={togglePasswordVisibility} data-testid="passwordVisibility"&gt;
                             {showPassword ? &lt;ClosePassword /&gt; : &lt;ShowPassword /&gt;}
                         &lt;/span&gt;
                     &lt;/div&gt;
@@ -285,30 +322,50 @@ export const Input: React.FunctionComponent&lt;InputProps&gt; = (props) =&gt; {
             )}
             {type !== 'password' &amp;&amp; !adornment &amp;&amp; !ornament &amp;&amp; (
                 &lt;&gt;
-                    &lt;div className={`inputField ${className}`}&gt;
-                        &lt;input type={_type} placeholder={_placeholder} required={_required} {...rest} onChange={onChange} data-testid="generalInput" /&gt;
+                    &lt;div className={`commonInputDiv  ${className}`}&gt;
+                        &lt;input type={_type} placeholder={_placeholder} autoFocus={autoFocus} disabled={disabled} required={_required} {...rest} onChange={onChange} data-testid="generalInput" /&gt;
                     &lt;/div&gt;
                 &lt;/&gt;
             )}
             {type !== 'password' &amp;&amp; adornment &amp;&amp; (
                 &lt;&gt;
-                    &lt;div className="adornment-Container"&gt;
+                    &lt;div className="combinedInputField"&gt;
                         &lt;div className="adornmentContent"&gt;
                             &lt;span className="InputAddOn-item InputAddOn-field" data-testid="adornment"&gt;
                                 {adornment}
                             &lt;/span&gt;
                         &lt;/div&gt;
                         &lt;div className={`adornInputField ${className}`}&gt;
-                            &lt;input className="InputAddOn-field" placeholder={_placeholder} {...rest} type={_type} required={_required} onChange={onChange} data-testid="adornmentInput" /&gt;
+                            &lt;input
+                                className="InputAddOn-field"
+                                placeholder={_placeholder}
+                                {...rest}
+                                type={_type}
+                                autoFocus={autoFocus}
+                                disabled={disabled}
+                                required={_required}
+                                onChange={onChange}
+                                data-testid="adornmentInput"
+                            /&gt;
                         &lt;/div&gt;
                     &lt;/div&gt;
                 &lt;/&gt;
             )}
             {type !== 'password' &amp;&amp; ornament &amp;&amp; (
                 &lt;&gt;
-                    &lt;div className="ornamnent-Container"&gt;
+                    &lt;div className="combinedInputField"&gt;
                         &lt;div className={`oranInputField ${className}`}&gt;
-                            &lt;input className="InputAddOn-field" placeholder={_placeholder} {...rest} type={_type} required={_required} onChange={onChange} data-testid="oranmentInput" /&gt;
+                            &lt;input
+                                className="InputAddOn-field"
+                                placeholder={_placeholder}
+                                {...rest}
+                                type={_type}
+                                autoFocus={autoFocus}
+                                disabled={disabled}
+                                required={_required}
+                                onChange={onChange}
+                                data-testid="oranmentInput"
+                            /&gt;
                         &lt;/div&gt;
                         &lt;div className="oranmentContent"&gt;
                             &lt;span className="InputAddOn-item" data-testid="oranment"&gt;
@@ -328,7 +385,7 @@ export const Input: React.FunctionComponent&lt;InputProps&gt; = (props) =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-15T05:09:16.914Z
+                at 2023-05-15T13:09:46.162Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

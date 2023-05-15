@@ -19,7 +19,6 @@ Primary.args = {};
 export const Contained = Template.bind({});
 Contained.args = {
     varient: 'contained'
-    // bg: 'yellowgreen'
 };
 
 export const Outline = Template.bind({});

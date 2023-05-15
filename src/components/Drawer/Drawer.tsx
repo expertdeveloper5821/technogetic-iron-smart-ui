@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
 import './Drawer.css';
 
 export interface DrawerProps {
@@ -6,17 +6,18 @@ export interface DrawerProps {
     width?: string;
     bg?: string;
     color?: string;
-    style?: CSSProperties;
-    drawerOpen?: boolean;
+    className?: string;
+    style?: React.CSSProperties;
+    isOpen?: boolean;
 }
 
-export const Drawer: React.FC<DrawerProps> = ({ align = 'left', width, bg, color, style, drawerOpen = true }) => {
-    const DrawerStyles: CSSProperties = {
+export const Drawer: React.FC<DrawerProps> = ({ align = 'left', width, bg, color, className, style, isOpen = true }) => {
+    const DrawerStyles: React.CSSProperties = {
         width,
         backgroundColor: bg,
         color,
         ...style
     };
 
-    return <>{drawerOpen && <div className={`DrawerContainer-${align}`} style={DrawerStyles} data-testid="drawerComoponent"></div>}</>;
+    return <>{isOpen && <div className={className ? className : `DrawerContainer DrawerContainer-${align}`} style={DrawerStyles} data-testid="drawerComoponent"></div>}</>;
 };
