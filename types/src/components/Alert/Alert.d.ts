@@ -1,10 +1,10 @@
 import React from 'react';
 import './Alert.css';
-type AlertProps = {
+export interface AlertProps {
     message: string;
-    type?: string;
+    type?: 'failure' | 'warning' | 'success';
     timeout?: number;
     isClosable?: boolean;
-};
-export declare const Alert: React.FunctionComponent<AlertProps>;
-export {};
+    className?: string;
+}
+export declare const Alert: React.FC<AlertProps>;

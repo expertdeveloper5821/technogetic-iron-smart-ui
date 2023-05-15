@@ -1,17 +1,19 @@
-import React, { FC, CSSProperties, MouseEvent } from 'react';
+import React from 'react';
+import { AvatarIcon } from '../../assets/AvatarIcon';
+import './Avatar.css';
 
 export interface AvatarProps {
     src: string;
     alt: string;
     size?: number;
-    style?: CSSProperties;
-    onClick?: (event: MouseEvent<HTMLDivElement>) => void;
+    className?: string;
+    onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-export const Avatar: FC<AvatarProps> = ({ src, alt, size = 50, style, onClick }) => {
+export const Avatar: React.FC<AvatarProps> = ({ src, alt, size = 50, className, onClick }) => {
     return (
-        <div style={{ cursor: onClick ? 'pointer' : 'inherit' }} onClick={onClick}>
-            <img src={src} alt={alt} style={{ width: size, height: size, borderRadius: '50%', objectFit: 'cover', ...style }} />
+        <div className={className ? className : `avatarContainer `} onClick={onClick}>
+            {src ? <img className="avatarImage" src={src} alt={alt} /> : <AvatarIcon />}
         </div>
     );
 };

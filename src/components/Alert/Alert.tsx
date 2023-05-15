@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { CloseIcon } from '../../assets/CloseIcon';
 import './Alert.css';
 
-type AlertProps = {
+export interface AlertProps {
     message: string;
-    type?: string;
+    type?: 'failure' | 'warning' | 'success';
     timeout?: number;
     isClosable?: boolean;
-};
+    className?: string;
+}
 
-export const Alert: React.FunctionComponent<AlertProps> = ({ message = 'This is a success message', type = 'success', timeout, isClosable = true }) => {
+export const Alert: React.FC<AlertProps> = ({ message, type = 'success', timeout = 5000, isClosable = true, className }) => {
     const [isOpen, setIsOpen] = useState(true);
     const handleClose = () => {
         setIsOpen(false);
@@ -23,9 +24,16 @@ export const Alert: React.FunctionComponent<AlertProps> = ({ message = 'This is 
     if (!isOpen) {
         return null;
     }
+    const alertBody = (
+        <div>
+            {type === 'success' && <span>This is the Success Alert {message}</span>}
+            {type === 'failure' && <span>This is the Failure Alert {message}</span>}
+            {type === 'warning' && <span>This is the Warning Alert {message}</span>}
+        </div>
+    );
     return (
-        <div className={`alert alert-${type}`}>
-            <div>{message}</div>
+        <div className={className ? className : `alert alert-${type}`}>
+            {alertBody}
             {isClosable && (
                 <div className="closeIcon" data-testid="close-button" onClick={handleClose}>
                     <CloseIcon />

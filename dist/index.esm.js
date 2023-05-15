@@ -1,9 +1,43 @@
 import * as React from 'react';
 import React__default, { useState as useState$1, useRef } from 'react';
 
-const Avatar = ({ src, alt, size = 50, style, onClick }) => {
-    return (React__default.createElement("div", { style: { cursor: onClick ? 'pointer' : 'inherit' }, onClick: onClick },
-        React__default.createElement("img", { src: src, alt: alt, style: Object.assign({ width: size, height: size, borderRadius: '50%', objectFit: 'cover' }, style) })));
+const AvatarIcon = () => {
+    return (React__default.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", width: "57", height: "57", viewBox: "0 0 24 24" },
+        React__default.createElement("path", { d: "M16.5 12.5c0 .828-.56 1.5-1.25 1.5s-1.25-.672-1.25-1.5.56-1.5 1.25-1.5 1.25.672 1.25 1.5zm-7.75-1.5c-.69 0-1.25.672-1.25 1.5s.56 1.5 1.25 1.5 1.25-.672 1.25-1.5-.56-1.5-1.25-1.5zm3.25 5.357c-2.375-1.454-1.689 2.095-5 .639.5 2.012 3.506 2.353 5 1.141 1.494 1.212 4.5.871 5-1.141-3.311 1.457-2.625-2.092-5-.639zm12-3.044c0 1.765-.985 3.991-3.139 4.906-2.05 3.274-4.975 5.781-8.861 5.781-3.749 0-6.858-2.582-8.862-5.781-2.153-.916-3.138-3.142-3.138-4.906 0-1.995.811-3.774 2.683-3.959l.03-.028.003-.02c-.25-1.945-.338-4.92.719-6.047.568-.605 1.217-.839 2.047-.565 1.294-1.765 3.454-2.694 6.372-2.694 4.646 0 6.552 2.417 8.177 4.46.893 1.123 1.969 2.248 3.969 2.186-.809.758-1.779 1.354-2.832 1.795.051.301.093.604.122.907 1.85.165 2.71 1.905 2.71 3.965zm-2.58-1.866c-.235-.153-.53-.116-.671-.053-.66.293-1.406-.192-1.406-.914 0-.479-.035-.957-.1-1.43-4.099.928-8.743-.231-10.368-3.467-2.375.375-3.85 2.356-4.229 5.021h-.004c-.087.683-.785 1.059-1.39.79-.141-.062-.436-.1-.672.053-1 .651-.893 4.184 1.554 5.012.224.076.413.228.535.43 1.708 2.829 4.015 5.111 7.331 5.111 3.318 0 5.624-2.284 7.331-5.111.123-.202.313-.354.536-.43 2.448-.829 2.553-4.364 1.553-5.012z" })));
+};
+
+function styleInject(css, ref) {
+  if ( ref === void 0 ) ref = {};
+  var insertAt = ref.insertAt;
+
+  if (!css || typeof document === 'undefined') { return; }
+
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
+  style.type = 'text/css';
+
+  if (insertAt === 'top') {
+    if (head.firstChild) {
+      head.insertBefore(style, head.firstChild);
+    } else {
+      head.appendChild(style);
+    }
+  } else {
+    head.appendChild(style);
+  }
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var css_248z$d = ".avatarContainer,\nimg.avatarImage {\n  cursor: pointer;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  object-fit: cover;\n}";
+styleInject(css_248z$d);
+
+const Avatar = ({ src, alt, size = 50, className, onClick }) => {
+    return (React__default.createElement("div", { className: className ? className : `avatarContainer `, onClick: onClick }, src ? React__default.createElement("img", { className: "avatarImage", src: src, alt: alt }) : React__default.createElement(AvatarIcon, null)));
 };
 
 /**
@@ -1615,37 +1649,10 @@ const CloseIcon = () => {
         React__default.createElement("path", { d: "M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z" })));
 };
 
-function styleInject(css, ref) {
-  if ( ref === void 0 ) ref = {};
-  var insertAt = ref.insertAt;
-
-  if (!css || typeof document === 'undefined') { return; }
-
-  var head = document.head || document.getElementsByTagName('head')[0];
-  var style = document.createElement('style');
-  style.type = 'text/css';
-
-  if (insertAt === 'top') {
-    if (head.firstChild) {
-      head.insertBefore(style, head.firstChild);
-    } else {
-      head.appendChild(style);
-    }
-  } else {
-    head.appendChild(style);
-  }
-
-  if (style.styleSheet) {
-    style.styleSheet.cssText = css;
-  } else {
-    style.appendChild(document.createTextNode(css));
-  }
-}
-
 var css_248z$c = ".alert {\n    padding: 10px;\n    border-radius: 5px;\n    display: flex;\n    justify-content: space-between;\n}\n\n.alert-success {\n    border: 2px solid #78d178;\n    background-color: #d1ffcd;\n}\n\n.alert-failure {\n    border: 2px solid #d17878;\n    background-color: rgb(255, 205, 205);\n}\n\n.alert-warning {\n    border: 2px solid #ecdd68;\n    background-color: #faf4c7;\n}\n\n.closeIcon {\n    cursor: pointer;\n}\n";
 styleInject(css_248z$c);
 
-const Alert = ({ message = 'This is a success message', type = 'success', timeout, isClosable = true }) => {
+const Alert = ({ message, type = 'success', timeout = 5000, isClosable = true, className }) => {
     const [isOpen, setIsOpen] = useState$1(true);
     const handleClose = () => {
         setIsOpen(false);
@@ -1658,18 +1665,28 @@ const Alert = ({ message = 'This is a success message', type = 'success', timeou
     if (!isOpen) {
         return null;
     }
-    return (React__default.createElement("div", { className: `alert alert-${type}` },
-        React__default.createElement("div", null, message),
+    const alertBody = (React__default.createElement("div", null,
+        type === 'success' && React__default.createElement("span", null,
+            "This is the Success Alert ",
+            message),
+        type === 'failure' && React__default.createElement("span", null,
+            "This is the Failure Alert ",
+            message),
+        type === 'warning' && React__default.createElement("span", null,
+            "This is the Warning Alert ",
+            message)));
+    return (React__default.createElement("div", { className: className ? className : `alert alert-${type}` },
+        alertBody,
         isClosable && (React__default.createElement("div", { className: "closeIcon", "data-testid": "close-button", onClick: handleClose },
             React__default.createElement(CloseIcon, null)))));
 };
 
-var css_248z$b = "span.badge {\n  position: absolute;\n  top: 0;\n  right: 0;\n  padding: 4px;\n}\n\nspan.badge.badge-primary {\n  background-color: #0788dd;\n  color: white;\n}\n\nspan.badge.badge-success {\n  background-color: #78d178;\n  color: white;\n}\n\nspan.badge.badge-danger {\n  background-color: #d17878;\n  color: white;\n}\n\nspan.badge.badge-warning {\n  background-color: #ecdd68;\n  color: white;\n}";
+var css_248z$b = "span.badge {\n  position: absolute;\n  top: 0;\n  right: 0;\n  padding: 4px;\n  border-radius: '10px';\n}\n\nspan.badge.badge-primary {\n  background-color: #0788dd;\n  color: white;\n}\n\nspan.badge.badge-success {\n  background-color: #78d178;\n  color: white;\n}\n\nspan.badge.badge-danger {\n  background-color: #d17878;\n  color: white;\n}\n\nspan.badge.badge-warning {\n  background-color: #ecdd68;\n  color: white;\n}";
 styleInject(css_248z$b);
 
-const Badge = ({ label, type = 'primary', max, style }) => {
+const Badge = ({ label, type = 'primary', className, max }) => {
     const displayLabel = label > max ? `${max}+` : label;
-    return (React__default.createElement("span", { className: `badge badge-${type}`, style: Object.assign({ borderRadius: '10px' }, style), "data-testid": "tooltip" }, displayLabel));
+    return (React__default.createElement("span", { className: className ? className : `badge badge-${type}`, "data-testid": "tooltip" }, displayLabel));
 };
 
 var css_248z$a = "button.commonButton {\n    color: white;\n    cursor: pointer;\n    border-radius: 6px;\n    padding: 10px;\n    background-color: #1ea7fd;\n    border: 0;\n}\n\n.commonButton:hover {\n    background-color: #9E9E9E;\n}\n\n.commonButton:hover {\n    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\n}\n\n.outLineButton {\n    color: white;\n    cursor: pointer;\n    border-radius: 6px;\n    padding: 10px;\n    border: 0.4px;\n}\n\n.outLineButton-success {\n    border: 0.8px solid rgba(0, 137, 55, 0.9);\n    color: rgba(0, 137, 55, 0.9);\n    background-color: #FFFFFF;\n}\n\n.outLineButton-success:hover {\n    background-color: rgba(0, 137, 55, 0.9);\n    color: white;\n    outline: none;\n    border: none;\n}\n\n.outLineButton-primary {\n    border: 0.8px solid #0094DA;\n    color: #0094DA;\n    background-color: #FFFFFF;\n}\n\n.outLineButton-primary:hover {\n    background-color: #0094DA;\n    color: white;\n    outline: none;\n    border: none;\n}\n\n\n.outLineButton-danger {\n    border: 0.8px solid #D40909;\n    background-color: #FFFFFF;\n    color: #D40909;\n}\n\n.outLineButton-danger:hover {\n    background-color: #D40909;\n    color: white;\n    outline: none;\n    border: none;\n}\n\n.outLineButton-warning {\n    border: 0.8px solid #F9C304;\n    background-color: #FFFFFF;\n    color: #F9C304\n}\n\n.outLineButton-warning:hover {\n    background-color: #F9C304;\n    color: white;\n    outline: none;\n    border: none;\n}\n\n.outLineButton-light {\n    border: 0.8px solid #858585;\n    background-color: #FFFFFF;\n    color: #858585;\n}\n\n.outLineButton-light:hover {\n    background-color: #858585;\n    color: black;\n    outline: none;\n    border: none;\n}\n\n.outLineButton-dark {\n    border: 0.8px solid #303030;\n    background-color: #FFFFFF;\n    color: #303030;\n}\n\n.outLineButton-dark:hover {\n    background-color: #303030;\n    color: #ffffff;\n    outline: none;\n    border: none;\n}";
@@ -1679,7 +1696,7 @@ const Button = (props) => {
     const { children, bg, color, outline, style, onClick, className, type } = props;
     const buttonStyles = Object.assign({ backgroundColor: bg, color }, style);
     if (outline) {
-        return (React__default.createElement("button", Object.assign({ className: `outLineButton outLineButton-${outline}`, style: buttonStyles }, props, { onClick: onClick, type: type ? type : 'submit' }), children ? children : 'Button'));
+        return (React__default.createElement("button", Object.assign({ className: className ? className : `outLineButton outLineButton-${outline}`, style: buttonStyles }, props, { onClick: onClick, type: type ? type : 'submit' }), children ? children : 'Button'));
     }
     else {
         return (React__default.createElement("button", Object.assign({ className: className ? className : 'commonButton', style: buttonStyles }, props, { onClick: onClick, type: type ? type : 'submit' }), children ? children : 'Button'));
@@ -1739,7 +1756,7 @@ function __rest(s, e) {
     return t;
 }
 
-var css_248z$7 = ".ornamnent-Container,\n.adornment-Container {\n    display: flex;\n    align-items: center;\n}\n\n.inputField {\n    display: flex;\n    align-items: start;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px;\n    padding: 8px;\n}\n\n.adornmentContent {\n    background-color: #f5f5f5;\n    padding: 8px;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px 0px 0px 6px;\n}\n\n.adornInputField {\n    display: flex;\n    align-items: start;\n    width: 100%;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 0px 6px 6px 0px;\n    padding: 8px;\n}\n\n.oranInputField {\n    display: flex;\n    align-items: start;\n    width: 100%;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px 0px 0px 6px;\n    padding: 8px;\n}\n\n.oranmentContent {\n    background-color: #f5f5f5;\n    padding: 8px;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 0px 6px 6px 0px;\n}\n\n.inputField input:focus,\ninput.InputAddOn-field:focus {\n    background: #FFFFFF;\n    border: none;\n    outline: none;\n}\n\n.inputField:focus-within,\n.oranInputField:focus-within,\n.adornInputField:focus-within {\n    border: 0.5px solid #0094DA;\n}\n\ninput[type='text'],\ninput[type='email'],\ninput[type='password'] {\n    border: 0;\n    width: 100%;\n}\n\nspan.InputAddOn-item {\n    padding: 0px 4px;\n}\n\n.InputAddOn-item {\n    color: #666666;\n    font: inherit;\n    font-weight: normal;\n}";
+var css_248z$7 = ".ornamnent-Container,\n.adornment-Container {\n    display: flex;\n    align-items: center;\n}\n\n.inputField {\n    display: flex;\n    align-items: start;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px;\n    padding: 8px;\n}\n\n.adornmentContent {\n    background-color: #f5f5f5;\n    padding: 7.5px;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px 0px 0px 6px;\n}\n\n.adornInputField {\n    display: flex;\n    align-items: start;\n    width: 100%;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 0px 6px 6px 0px;\n    padding: 8px;\n}\n\n.oranInputField {\n    display: flex;\n    align-items: start;\n    width: 100%;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: #FFFFFF;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px 0px 0px 6px;\n    padding: 8px;\n}\n\n.oranmentContent {\n    background-color: #f5f5f5;\n    padding: 7.5px;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 0px 6px 6px 0px;\n}\n\n.inputField input:focus,\ninput.InputAddOn-field:focus {\n    background: #FFFFFF;\n    border: none;\n    outline: none;\n}\n\n.inputField:focus-within,\n.oranInputField:focus-within,\n.adornInputField:focus-within {\n    border: 0.5px solid #0094DA;\n}\n\ninput[type='text'],\ninput[type='email'],\ninput[type='password'] {\n    border: 0;\n    width: 100%;\n}\n\nspan.InputAddOn-item {\n    padding: 0px 4px;\n}\n\n.InputAddOn-item {\n    color: #666666;\n    font: inherit;\n    font-weight: normal;\n}";
 styleInject(css_248z$7);
 
 const ShowPassword = () => {

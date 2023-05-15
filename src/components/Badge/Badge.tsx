@@ -2,17 +2,17 @@ import React from 'react';
 import './Badge.css';
 
 export interface BadgeProps {
-    style?: React.CSSProperties;
-    label?: string | number;
+    label?: number;
     type?: 'primary' | 'success' | 'warning' | 'danger';
     max?: number;
+    className?: string;
 }
 
-export const Badge: React.FC<BadgeProps> = ({ label, type = 'primary', max, style }) => {
+export const Badge: React.FC<BadgeProps> = ({ label, type = 'primary', className, max }) => {
     const displayLabel = label > max ? `${max}+` : label;
 
     return (
-        <span className={`badge badge-${type}`} style={{ borderRadius: '10px', ...style }} data-testid="tooltip">
+        <span className={className ? className : `badge badge-${type}`} data-testid="tooltip">
             {displayLabel}
         </span>
     );

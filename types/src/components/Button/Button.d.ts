@@ -10,4 +10,4 @@ export interface ButtonProps extends React.DetailedHTMLProps<React.ButtonHTMLAtt
     children?: string | number;
     style?: CSSProperties;
 }
-export declare const Button: React.FunctionComponent<ButtonProps>;
+export declare const Button: React.FC<ButtonProps>;

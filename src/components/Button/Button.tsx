@@ -13,7 +13,7 @@ export interface ButtonProps extends React.DetailedHTMLProps<React.ButtonHTMLAtt
     style?: CSSProperties;
 }
 
-export const Button: React.FunctionComponent<ButtonProps> = (props) => {
+export const Button: React.FC<ButtonProps> = (props) => {
     const { children, bg, color, outline, style, onClick, className, type } = props;
 
     const buttonStyles: CSSProperties = {
@@ -24,7 +24,7 @@ export const Button: React.FunctionComponent<ButtonProps> = (props) => {
 
     if (outline) {
         return (
-            <button className={`outLineButton outLineButton-${outline}`} style={buttonStyles} {...props} onClick={onClick} type={type ? type : 'submit'}>
+            <button className={className ? className : `outLineButton outLineButton-${outline}`} style={buttonStyles} {...props} onClick={onClick} type={type ? type : 'submit'}>
                 {children ? children : 'Button'}
             </button>
         );

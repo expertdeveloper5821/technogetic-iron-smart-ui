@@ -15,15 +15,13 @@ describe('Badge component', () => {
         const props: BadgeProps = {
             label: 5,
             type: 'success',
-            max: 10,
-            style: { backgroundColor: 'blue' }
+            max: 10
         };
         const { getByTestId } = render(<Badge {...props} />);
         const badgeElement = getByTestId('tooltip');
         expect(badgeElement).toBeInTheDocument();
         expect(badgeElement).toHaveTextContent('5');
         expect(badgeElement).toHaveClass('badge-success');
-        expect(badgeElement).toHaveStyle({ backgroundColor: 'blue' });
     });
 
     test('truncates label if greater than max', () => {
