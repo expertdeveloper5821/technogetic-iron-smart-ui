@@ -1,103 +1,40 @@
-button.commonButton {
-    color: white;
+button {
     cursor: pointer;
     border-radius: 6px;
     padding: 10px;
+    font-weight: 600;
+}
+
+.button-borderLess {
+    border: 0;
+    background: transparent;
+    color: #1ea7fd;
+}
+
+.button-borderLess:hover {
+    color: #303030
+}
+
+.button-contained {
     background-color: #1ea7fd;
+    color: white;
     border: 0;
 }
 
-.commonButton:hover {
+.button-contained:hover {
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
     background-color: #9E9E9E;
 }
 
-.commonButton:hover {
+.button-outline {
+    border: 0.4px solid #1ea7fd;
+    background-color: transparent;
+    color: #1ea7fd
+}
+
+.button-outline:hover {
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
-}
-
-.outLineButton {
+    background-color: #1ea7fd;
     color: white;
-    cursor: pointer;
-    border-radius: 6px;
-    padding: 10px;
-    border: 0.4px;
-}
-
-.outLineButton-success {
-    border: 0.8px solid rgba(0, 137, 55, 0.9);
-    color: rgba(0, 137, 55, 0.9);
-    background-color: #FFFFFF;
-}
-
-.outLineButton-success:hover {
-    background-color: rgba(0, 137, 55, 0.9);
-    color: white;
-    outline: none;
-    border: none;
-}
-
-.outLineButton-primary {
-    border: 0.8px solid #0094DA;
-    color: #0094DA;
-    background-color: #FFFFFF;
-}
-
-.outLineButton-primary:hover {
-    background-color: #0094DA;
-    color: white;
-    outline: none;
-    border: none;
-}
-
-
-.outLineButton-danger {
-    border: 0.8px solid #D40909;
-    background-color: #FFFFFF;
-    color: #D40909;
-}
-
-.outLineButton-danger:hover {
-    background-color: #D40909;
-    color: white;
-    outline: none;
-    border: none;
-}
-
-.outLineButton-warning {
-    border: 0.8px solid #F9C304;
-    background-color: #FFFFFF;
-    color: #F9C304
-}
-
-.outLineButton-warning:hover {
-    background-color: #F9C304;
-    color: white;
-    outline: none;
-    border: none;
-}
-
-.outLineButton-light {
-    border: 0.8px solid #858585;
-    background-color: #FFFFFF;
-    color: #858585;
-}
-
-.outLineButton-light:hover {
-    background-color: #858585;
-    color: black;
-    outline: none;
-    border: none;
-}
-
-.outLineButton-dark {
-    border: 0.8px solid #303030;
-    background-color: #FFFFFF;
-    color: #303030;
-}
-
-.outLineButton-dark:hover {
-    background-color: #303030;
-    color: #ffffff;
-    outline: none;
-    border: none;
+    border: 0;
 }
