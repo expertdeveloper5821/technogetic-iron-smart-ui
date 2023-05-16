@@ -1,7 +1,7 @@
 import React from 'react';
 import { AuthHOC } from './AuthHoc';
 import { render } from '@testing-library/react';
-import { MemoryRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 
 const MockComponent = () => <div>Mock Component</div>;

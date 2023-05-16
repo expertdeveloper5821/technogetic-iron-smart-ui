@@ -1,8 +1,7 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { Tooltip } from './Tooltip';
-import '@testing-library/jest-dom';
 import React from 'react';
+import { Tooltip } from './Tooltip';
+import { fireEvent, render } from '@testing-library/react';
+import '@testing-library/jest-dom';
 
 describe('Tooltip', () => {
     test('renders tooltip text when hovered over', () => {

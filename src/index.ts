@@ -5,6 +5,7 @@ export * from './components/Badge';
 export * from './components/Button';
 export * from './components/Card';
 export * from './components/Drawer';
+export * from './components/IconButton';
 export * from './components/Input';
 export * from './components/NavBar';
 export * from './components/Menu';

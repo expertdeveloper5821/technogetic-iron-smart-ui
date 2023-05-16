@@ -1,8 +1,8 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { TextArea } from './TextArea';
 import '@testing-library/jest-dom';
-import React from 'react';
 
 describe('TextArea', () => {
     test('renders with default props', () => {

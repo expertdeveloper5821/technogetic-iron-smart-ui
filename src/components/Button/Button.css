@@ -3,8 +3,11 @@ button {
     cursor: pointer;
     border-radius: 6px;
     padding: 10px;
+    text-align: center;
+    font-family: 'Roboto';
     font-weight: 600;
 }
+
 
 label.button {
     font-size: 15px;
@@ -20,7 +23,7 @@ label.borderLess,
 
 label.button-borderLess:hover,
 .button-borderLess:hover {
-    background: #ddd6d6
+    background: #E9EAEC
 }
 
 label.button-contained,
@@ -47,4 +50,33 @@ label.button-outline:hover,
 .button-outline:hover {
     background-color: #1ea7fd;
     color: white;
+}
+
+button.button.button-contained.Icon {
+    display: inline-flex;
+    align-items: center;
+}
+
+span.start-button-icon {
+    display: inherit;
+    margin-right: 8px;
+    margin-left: -4px;
+}
+
+span.end-button-icon {
+    display: inherit;
+    margin-right: -4px;
+    margin-left: 8px;
+}
+
+svg.button-icon-svg {
+    font-size: 19px;
+}
+
+.button-icon-svg {
+    user-select: none;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    fill: currentColor;
 }

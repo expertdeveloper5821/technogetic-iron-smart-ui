@@ -1,6 +1,8 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Button } from '../components/Button/Button';
+import { DeleteIcon } from '../assets/DeleteIcon';
+import { EnterIcon } from '../assets/EnterIcon';
 
 export default {
     onClick: function (e: any): void {
@@ -31,4 +33,18 @@ export const Upload = Template.bind({});
 Upload.args = {
     varient: 'contained',
     type: 'file'
+};
+
+export const startIcon = Template.bind({});
+startIcon.args = {
+    varient: 'contained',
+    children: 'Start Icon',
+    startIcon: <DeleteIcon />
+};
+
+export const endIcon = Template.bind({});
+endIcon.args = {
+    varient: 'contained',
+    children: 'End Icon',
+    endIcon: <EnterIcon />
 };

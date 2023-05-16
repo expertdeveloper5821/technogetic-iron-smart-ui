@@ -1,6 +1,5 @@
 import React from 'react';
 import { Menu } from './Menu';
-import { useLocation } from 'react-router-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 

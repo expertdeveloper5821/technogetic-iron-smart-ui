@@ -1,5 +1,4 @@
 import React from 'react';
-import { AvatarIcon } from '../../assets/AvatarIcon';
 import './Avatar.css';
 
 export interface AvatarProps {

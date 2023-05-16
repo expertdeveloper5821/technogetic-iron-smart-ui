@@ -1,5 +1,5 @@
 import React from 'react';
-import { Drawer, DrawerProps } from './Drawer';
+import { Drawer } from './Drawer';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 

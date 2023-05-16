@@ -10,5 +10,7 @@ export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonE
     children?: string | number;
     type?: string;
     multiple?: boolean;
+    startIcon?: string;
+    endIcon?: string;
 }
 export declare const Button: (props: React.PropsWithChildren<ButtonProps>) => JSX.Element;

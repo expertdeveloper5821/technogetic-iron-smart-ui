@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavBar, NavBarProps } from './NavBar';
+import { NavBar } from './NavBar';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 

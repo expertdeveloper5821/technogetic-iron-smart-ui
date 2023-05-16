@@ -3,6 +3,7 @@
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
+    font-family: 'Roboto';
 }
 
 .alert-success {
