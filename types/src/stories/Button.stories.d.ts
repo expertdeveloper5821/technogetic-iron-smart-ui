@@ -5,3 +5,4 @@ export default _default;
 export declare const Primary: any;
 export declare const Contained: any;
 export declare const Outline: any;
+export declare const Upload: any;

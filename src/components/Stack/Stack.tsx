@@ -8,9 +8,10 @@ export interface StackProps {
     spacing?: number;
     wrap?: boolean;
     style?: CSSProperties;
+    children?: string;
 }
 
-export const Stack: React.FC<StackProps> = ({ align = 'start', direction = 'column', isInline = false, justify = 'start', spacing = 0, wrap = false, style }) => {
+export const Stack: React.FC<StackProps> = ({ align = 'start', direction = 'column', isInline = false, justify = 'start', spacing = 0, wrap = false, style, children }) => {
     const stackStyles: CSSProperties = {
         display: isInline ? 'inline-flex' : 'flex',
         flexDirection: direction,
@@ -22,9 +23,8 @@ export const Stack: React.FC<StackProps> = ({ align = 'start', direction = 'colu
     };
 
     return (
-        <div style={stackStyles}>
-            <h2>hello</h2>
-            <h2>Hi</h2>
+        <div className="StackContainer" style={stackStyles}>
+            {children}
         </div>
     );
 };

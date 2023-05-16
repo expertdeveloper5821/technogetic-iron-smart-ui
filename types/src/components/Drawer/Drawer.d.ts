@@ -8,5 +8,6 @@ export interface DrawerProps {
     className?: string;
     style?: React.CSSProperties;
     isOpen?: boolean;
+    children?: string;
 }
 export declare const Drawer: React.FC<DrawerProps>;

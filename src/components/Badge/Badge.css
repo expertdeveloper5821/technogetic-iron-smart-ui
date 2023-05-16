@@ -4,6 +4,7 @@ span.badge {
   right: 0;
   padding: 4px;
   border-radius: 50%;
+  text-align: center;
 }
 
 span.badge.badge-primary {

@@ -1677,7 +1677,7 @@ const Alert = ({ message, type = 'success', timeout = 5000, isClosable = true, c
             React__default.createElement(CloseIcon, null)))));
 };
 
-var css_248z$b = "span.badge {\n  position: absolute;\n  top: 0;\n  right: 0;\n  padding: 4px;\n  border-radius: 50%;\n}\n\nspan.badge.badge-primary {\n  background-color: #0788dd;\n  color: white;\n}\n\nspan.badge.badge-success {\n  background-color: #78d178;\n  color: white;\n}\n\nspan.badge.badge-danger {\n  background-color: #d17878;\n  color: white;\n}\n\nspan.badge.badge-warning {\n  background-color: #ecdd68;\n  color: white;\n}";
+var css_248z$b = "span.badge {\n  position: absolute;\n  top: 0;\n  right: 0;\n  padding: 4px;\n  border-radius: 50%;\n  text-align: center;\n}\n\nspan.badge.badge-primary {\n  background-color: #0788dd;\n  color: white;\n}\n\nspan.badge.badge-success {\n  background-color: #78d178;\n  color: white;\n}\n\nspan.badge.badge-danger {\n  background-color: #d17878;\n  color: white;\n}\n\nspan.badge.badge-warning {\n  background-color: #ecdd68;\n  color: white;\n}";
 styleInject(css_248z$b);
 
 const Badge = ({ label, type = 'primary', className, max }) => {
@@ -1685,12 +1685,14 @@ const Badge = ({ label, type = 'primary', className, max }) => {
     return (React__default.createElement("span", { className: className ? className : `badge badge-${type}`, "data-testid": "tooltip" }, displayLabel));
 };
 
-var css_248z$a = "button {\n    cursor: pointer;\n    border-radius: 6px;\n    padding: 10px;\n    font-weight: 600;\n}\n\n.button-borderLess {\n    border: 0;\n    background: transparent;\n    color: #1ea7fd;\n}\n\n.button-borderLess:hover {\n    color: #303030\n}\n\n.button-contained {\n    background-color: #1ea7fd;\n    color: white;\n    border: 0;\n}\n\n.button-contained:hover {\n    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\n    background-color: #9E9E9E;\n}\n\n.button-outline {\n    border: 0.4px solid #1ea7fd;\n    background-color: transparent;\n    color: #1ea7fd\n}\n\n.button-outline:hover {\n    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\n    background-color: #1ea7fd;\n    color: white;\n    border: 0;\n}";
+var css_248z$a = "button {\n    font-weight: 600;\n}\n\nlabel.button {\n    font-size: 12px;\n    font-weight: 500;\n}\n\nlabel.button,\nbutton {\n    cursor: pointer;\n    border-radius: 6px;\n    padding: 10px;\n}\n\nlabel.borderLess,\n.button-borderLess {\n    border: 0;\n    outline: 0;\n    background: transparent;\n    color: #1ea7fd;\n}\n\nlabel.button-borderLess:hover,\n.button-borderLess:hover {\n    background: #ddd6d6\n}\n\nlabel.button-contained,\n.button-contained {\n    background-color: #1ea7fd;\n    color: white;\n    border: 0;\n}\n\nlabel.button-contained:hover,\n.button-contained:hover {\n    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\n    background-color: #9E9E9E;\n}\n\nlabel.button-outline,\n.button-outline {\n    border: 0.4px solid #1ea7fd;\n    background-color: transparent;\n    color: #1ea7fd\n}\n\nlabel.button-outline:hover,\n.button-outline:hover {\n    background-color: #1ea7fd;\n    color: white;\n}";
 styleInject(css_248z$a);
 
 const Button = (props) => {
-    const { children, bg, color, varient = 'borderLess', onClick, disabled, className } = props;
-    return (React__default.createElement("button", Object.assign({}, props, { className: className ? className : `button button-${varient}` }, props, { onClick: onClick, disabled: disabled }), children ? children : 'Button'));
+    const { children, bg, color, varient = 'borderLess', onClick, disabled = false, className, type = 'button', multiple = false } = props;
+    return (React__default.createElement(React__default.Fragment, null, type === 'button' ? (React__default.createElement("button", Object.assign({}, props, { type: "button", className: `${className ? className : `button button-${varient}`}${disabled ? `button_disabled` : ''}`, onClick: onClick, disabled: disabled }), children ? children : 'Button')) : (React__default.createElement(React__default.Fragment, null,
+        React__default.createElement("input", { className: "uploadFile", type: "file", hidden: true, multiple: true, id: "upload-btn" }),
+        React__default.createElement("label", { className: `${className ? className : `button button-${varient}`}${disabled ? `button_disabled` : ''}`, htmlFor: "upload-btn" }, children ? children : 'Upload Button')))));
 };
 
 var css_248z$9 = ".card {\n    background-color: transparent;\n    border-radius: 8px;\n    line-height: 1.5;\n    word-break: break-all;\n    border: 1px solid #e8e8e8;\n}\n\n.noBorderCard {\n    border: none;\n}\n\n.cardHead {\n    padding: 0 1.6rem;\n}\n\n.cardHead,\n.cardBody,\n.cardFooter {\n    text-align: center;\n    align-items: center;\n    justify-content: center;\n}\n\n.cardHeadTitle {\n    margin: 0;\n    font-weight: 500;\n}\n\n.cardBody {\n    padding: 1.2rem 1.8rem;\n    border-radius: 2px 2px 0 0;\n}\n\n.cardFooter {\n    padding: 0 1.6rem;\n    display: flex;\n    padding: 0.4em;\n    border-radius: 2px 2px 0 0;\n}";
@@ -1709,12 +1711,12 @@ const Card = (props) => {
         cardFooter));
 };
 
-var css_248z$8 = ".DrawerContainer {\n  position: absolute;\n  display: flex;\n  flex-direction: column;\n  padding: 8px;\n  background: #0094DA;\n  color: #f1f1f1;\n  width: 257px;\n  height: 100vh;\n}\n\n.DrawerContainer-left {\n  left: 0;\n  top: 0;\n}\n\n.DrawerContainer-right {\n  right: 0;\n  top: 0;\n}";
+var css_248z$8 = ".DrawerContainer {\n  position: absolute;\n  display: flex;\n  flex-direction: column;\n  padding: 8px;\n  background: #d8d5d5;\n  color: #f1f1f1;\n  width: 257px;\n  height: 100vh;\n}\n\n.DrawerContainer-left {\n  left: 0;\n  top: 0;\n}\n\n.DrawerContainer-right {\n  right: 0;\n  top: 0;\n}";
 styleInject(css_248z$8);
 
-const Drawer = ({ align = 'left', width, bg, color, className, style, isOpen = true }) => {
+const Drawer = ({ align = 'left', width, bg, color, className, style, isOpen = true, children }) => {
     const DrawerStyles = Object.assign({ width, backgroundColor: bg, color }, style);
-    return React__default.createElement(React__default.Fragment, null, isOpen && React__default.createElement("div", { className: className ? className : `DrawerContainer DrawerContainer-${align}`, style: DrawerStyles, "data-testid": "drawerComoponent" }));
+    return (React__default.createElement(React__default.Fragment, null, isOpen && (React__default.createElement("div", { className: className ? className : `DrawerContainer DrawerContainer-${align}`, style: DrawerStyles, "data-testid": "drawerComoponent" }, children))));
 };
 
 /******************************************************************************
@@ -1797,12 +1799,12 @@ const Input = (props) => {
                     React__default.createElement("span", { className: "InputAddOn-item", "data-testid": "oranment" }, ornament)))))));
 };
 
-var css_248z$6 = ".NavBarContainer-top,\n.NavBarContainer-bottom {\n  position: absolute;\n  padding: 8px;\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  background: #022f55;\n  color: #f1f1f1;\n}\n\n.NavBarContainer-top {\n  top: 0\n}\n\n.NavBarContainer-bottom {\n  bottom: 0;\n}";
+var css_248z$6 = ".NavBarContainer-top,\n.NavBarContainer-bottom {\n  position: absolute;\n  padding: 8px;\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  background: #d8d5d5;\n  color: #f1f1f1;\n}\n\n.NavBarContainer-top {\n  top: 0\n}\n\n.NavBarContainer-bottom {\n  bottom: 0;\n}";
 styleInject(css_248z$6);
 
-const NavBar = ({ align = 'top', width, bg, color, style }) => {
+const NavBar = ({ align = 'top', width, bg, color, style, children }) => {
     const navBarStyles = Object.assign({ width, backgroundColor: bg, color }, style);
-    return React__default.createElement("div", { className: `NavBarContainer-${align}`, style: navBarStyles, "data-testid": "navbarComponent" });
+    return (React__default.createElement("div", { className: `NavBarContainer-${align}`, style: navBarStyles, "data-testid": "navbarComponent" }, children));
 };
 
 const RightArrow = () => {
@@ -1866,11 +1868,9 @@ const Select = ({ options, placeholder, disabled, name, onChange }) => {
         React__default.createElement("div", { className: "selectIcon", ref: selectIconRef })));
 };
 
-const Stack = ({ align = 'start', direction = 'column', isInline = false, justify = 'start', spacing = 0, wrap = false, style }) => {
+const Stack = ({ align = 'start', direction = 'column', isInline = false, justify = 'start', spacing = 0, wrap = false, style, children }) => {
     const stackStyles = Object.assign({ display: isInline ? 'inline-flex' : 'flex', flexDirection: direction, alignItems: align, justifyContent: justify, flexWrap: wrap ? 'wrap' : 'nowrap', gap: spacing ? `${spacing}px` : '0px' }, style);
-    return (React__default.createElement("div", { style: stackStyles },
-        React__default.createElement("h2", null, "hello"),
-        React__default.createElement("h2", null, "Hi")));
+    return (React__default.createElement("div", { className: "StackContainer", style: stackStyles }, children));
 };
 
 const Switch = (props) => {

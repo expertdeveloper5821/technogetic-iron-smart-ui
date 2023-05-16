@@ -7,5 +7,6 @@ export interface StackProps {
     spacing?: number;
     wrap?: boolean;
     style?: CSSProperties;
+    children?: string;
 }
 export declare const Stack: React.FC<StackProps>;

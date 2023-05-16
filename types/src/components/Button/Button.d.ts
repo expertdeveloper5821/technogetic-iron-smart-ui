@@ -1,6 +1,6 @@
 import React from 'react';
 import './Button.css';
-export interface ButtonProps extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
+export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
     bg?: string;
     color?: string;
     varient?: 'borderLess' | 'contained' | 'outline';
@@ -8,5 +8,7 @@ export interface ButtonProps extends React.DetailedHTMLProps<React.ButtonHTMLAtt
     disabled?: boolean;
     className?: string;
     children?: string | number;
+    type?: string;
+    multiple?: boolean;
 }
 export declare const Button: (props: React.PropsWithChildren<ButtonProps>) => JSX.Element;

@@ -18,10 +18,17 @@ Primary.args = {};
 
 export const Contained = Template.bind({});
 Contained.args = {
-    varient: 'contained'
+    varient: 'contained',
+    disabled: false
 };
 
 export const Outline = Template.bind({});
 Outline.args = {
     varient: 'outline'
+};
+
+export const Upload = Template.bind({});
+Upload.args = {
+    varient: 'contained',
+    type: 'file'
 };

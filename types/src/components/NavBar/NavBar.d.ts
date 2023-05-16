@@ -6,5 +6,6 @@ export interface NavBarProps {
     bg?: string;
     color?: string;
     style?: CSSProperties;
+    children?: string;
 }
 export declare const NavBar: React.FC<NavBarProps>;

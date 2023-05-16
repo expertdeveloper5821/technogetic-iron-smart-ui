@@ -31,6 +31,6 @@ Warning.args = {
 export const Danger = Template.bind({});
 
 Danger.args = {
-    label: 'Hot',
+    label: 5,
     type: 'danger'
 };
