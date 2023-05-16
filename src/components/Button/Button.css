@@ -1,3 +1,4 @@
+label.button,
 button {
     cursor: pointer;
     border-radius: 6px;
@@ -8,9 +9,6 @@ button {
 label.button {
     font-size: 15px;
 }
-
-label.button,
-
 
 label.borderLess,
 .button-borderLess {
