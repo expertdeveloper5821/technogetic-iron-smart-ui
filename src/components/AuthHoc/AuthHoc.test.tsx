@@ -7,7 +7,7 @@ import '@testing-library/jest-dom';
 const MockComponent = () => <div>Mock Component</div>;
 
 describe('AuthHOC', () => {
-    it('renders the wrapped component when isAuthenticated is true', () => {
+    test('renders the wrapped component when isAuthenticated is true', () => {
         const isAuthenticated = true;
 
         const ComponentWithAuth = AuthHOC(MockComponent);
@@ -16,17 +16,17 @@ describe('AuthHOC', () => {
         expect(getByText('Mock Component')).toBeInTheDocument();
     });
 
-    // it('redirects to /login when isAuthenticated is false', () => {
-    //     const isAuthenticated = false;
+    test('redirects to /login when isAuthenticated is false', () => {
+        const isAuthenticated = false;
 
-    //     const ComponentWithAuth = AuthHOC(MockComponent);
-    //     const { container } = render(
-    //         <MemoryRouter initialEntries={['/']}>
-    //             <ComponentWithAuth isAuthenticated={isAuthenticated} />
-    //         </MemoryRouter>
-    //     );
+        const ComponentWithAuth = AuthHOC(MockComponent);
+        const { container } = render(
+            <MemoryRouter initialEntries={['/']}>
+                <ComponentWithAuth isAuthenticated={isAuthenticated} />
+            </MemoryRouter>
+        );
 
-    //     expect(container.innerHTML).toContain('<a href="/login"></a>');
-    //     expect(container.innerHTML).toContain('window.location.replace("/login")');
-    // });
+        expect(container.innerHTML).toContain('<a href="/login"></a>');
+        expect(container.innerHTML).toContain('window.location.replace("/login")');
+    });
 });
