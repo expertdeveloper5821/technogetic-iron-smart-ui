@@ -1,12 +1,3 @@
-import React, { CSSProperties } from 'react';
-export interface StackProps {
-    align?: 'start' | 'center' | 'end';
-    direction?: 'row' | 'column';
-    justify?: 'start' | 'center' | 'end' | 'space-between' | 'space-around' | 'space-evenly';
-    isInline?: boolean;
-    spacing?: number;
-    wrap?: boolean;
-    style?: CSSProperties;
-    children?: string;
-}
+import React from 'react';
+import { StackProps } from '../../interfaces/CommonInterface';
 export declare const Stack: React.FC<StackProps>;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { Badge, BadgeProps } from './Badge';
+import { Badge } from './Badge';
+import { BadgeProps } from '../../interfaces/CommonInterface';
 import '@testing-library/jest-dom';
 
 describe('Badge component', () => {

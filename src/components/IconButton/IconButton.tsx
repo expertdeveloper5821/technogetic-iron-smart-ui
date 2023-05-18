@@ -1,25 +1,30 @@
 import React from 'react';
 import { Upload } from '../../assets/Upload';
+import { DeleteIcon } from '../../assets/DeleteIcon';
+import { IconButtonProps } from '../../interfaces/CommonInterface';
 import './IconButton.css';
 
-export interface IconButtonProps {
-    src?: string;
-    alt?: string;
-    bg?: string;
-    color?: string;
-    className?: string;
-    multiple?: boolean;
-}
-
 export const IconButton = (props: React.PropsWithChildren<IconButtonProps>) => {
-    const { src, alt = 'Upload Image', children, bg, color, className, multiple = false } = props;
+    const { children, className, multiple = false, onClick, type = 'button' } = props;
 
     return (
         <>
-            <input className="IconButton-Input" type="file" hidden multiple={multiple} id="IconButton-btn" />
-            <label className={className ? className : 'IconButton-Label'} htmlFor="IconButton-btn" data-testid="upload-component">
-                {src ? <img src={src} className="image-icon" alt={alt} /> : <Upload />}
-            </label>
+            {type === 'file' && (
+                <>
+                    <input className="IconButton-Input" type="file" hidden multiple={multiple} id="IconButton-btn" />
+                    <label className={className ? className : 'IconButton-Label'} htmlFor="IconButton-btn" data-testid="upload-component">
+                        {children ? <span className="image-icon">{children}</span> : <Upload />}
+                    </label>
+                </>
+            )}
+            {type === 'button' && (
+                <>
+                    <input className="IconButton-Input" type="button" hidden multiple={multiple} id="IconButton-btn" />
+                    <label className={className ? className : 'IconButton-Label'} htmlFor="IconButton-btn" data-testid="upload-component" onClick={onClick}>
+                        {children ? <span className="image-icon">{children}</span> : <DeleteIcon />}
+                    </label>
+                </>
+            )}
         </>
     );
 };

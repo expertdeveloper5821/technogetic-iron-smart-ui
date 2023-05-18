@@ -8,17 +8,12 @@ button {
     font-weight: 600;
 }
 
-
-label.button {
-    font-size: 15px;
-}
-
 label.borderLess,
 .button-borderLess {
     border: 0;
     outline: 0;
     background: transparent;
-    color: #1ea7fd;
+    color: #4ab3e9;
 }
 
 label.button-borderLess:hover,
@@ -28,7 +23,7 @@ label.button-borderLess:hover,
 
 label.button-contained,
 .button-contained {
-    background-color: #1ea7fd;
+    background: #4ab3e9;
     color: white;
     border: 0;
 }
@@ -36,19 +31,19 @@ label.button-contained,
 label.button-contained:hover,
 .button-contained:hover {
     box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
-    background-color: #9E9E9E;
+    background: #0c8ce9;
 }
 
 label.button-outline,
 .button-outline {
-    border: 0.4px solid #1ea7fd;
+    border: 0.4px solid #4ab3e9;
     background-color: transparent;
-    color: #1ea7fd
+    color: #4ab3e9
 }
 
 label.button-outline:hover,
 .button-outline:hover {
-    background-color: #1ea7fd;
+    background: #0c8ce9;
     color: white;
 }
 

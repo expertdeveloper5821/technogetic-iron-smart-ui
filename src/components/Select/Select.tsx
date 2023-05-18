@@ -1,53 +1,58 @@
-import React, { useRef } from 'react';
-import { CloseIcon } from '../../assets/CloseIcon';
+import React, { useState, useEffect, useRef } from 'react';
+import { SelectProps } from '../../interfaces/CommonInterface';
+import { DownIcon } from '../../assets/DownIcon';
 import './Select.css';
+import { MenuItem } from '../MenuItem';
 
-export interface SelectProps extends React.DetailedHTMLProps<React.SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement> {
-    placeholder?: string;
-    disabled?: boolean;
-    position?: string;
-    name?: string;
-    options: (string | number)[];
-    onChange?: (event: React.ChangeEvent<HTMLSelectElement> & { selectedValue: string }) => void;
-}
-
-export const Select: React.FC<SelectProps> = ({ options, placeholder, disabled, name, onChange }) => {
-    const selectIconRef = useRef<HTMLDivElement>(null);
-
-    const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const selectedValue = event.target.value;
-        onChange?.({ ...event, selectedValue });
+export const Select: React.FC<SelectProps> = ({ placeholder = 'select...', onChange, padding, width, option, ...props }) => {
+    const [openSelect, setOpenSelect] = useState<boolean>(false);
+    const [selectedValue, setSelectedValue] = useState<string | number>('');
+    const selectRef = useRef<HTMLDivElement>(null);
+    const handleSelectOpen = () => {
+        setOpenSelect(!openSelect);
     };
-
-    const handleToggleOptions = () => {
-        if (selectIconRef.current) {
-            selectIconRef.current.classList.toggle('rotate');
+    const handleClickOutside = (event: MouseEvent) => {
+        if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
+            setOpenSelect(false);
         }
     };
-    const handleBlur = () => {
-        if (selectIconRef.current) {
-            selectIconRef.current.style.transform = 'rotate(0deg)';
-            selectIconRef.current.classList.remove('rotate');
+    useEffect(() => {
+        window.addEventListener('click', handleClickOutside);
+        return () => {
+            window.removeEventListener('click', handleClickOutside);
+        };
+    }, []);
+    const handleSelectClick = (value: string | number) => {
+        setSelectedValue(value);
+        setOpenSelect(false);
+        if (onChange) {
+            onChange(value);
         }
+    };
+    const containerStyle = {
+        padding: padding || '',
+        width: placeholder.length > 0 ? `${placeholder.length * 10}px` : ''
     };
 
     return (
-        <div className="selectContainer">
-            <select className="selectInput" onChange={handleChange} onClick={handleToggleOptions}>
-                {placeholder && (
-                    <option className="selectOption" value="" disabled selected hidden>
-                        {placeholder}
-                    </option>
-                )}
-                {options?.map((selectdata, selectIndex) => {
-                    return (
-                        <option className="selectOption" key={selectIndex} value={selectdata}>
-                            {selectdata}
-                        </option>
-                    );
-                })}
-            </select>
-            <div className="selectIcon" ref={selectIconRef}></div>
-        </div>
+        <>
+            <div {...props} className="selectContainer select" style={containerStyle} onClick={handleSelectOpen} ref={selectRef}>
+                {selectedValue ? selectedValue : placeholder}
+                <span className={`selctDownIcon ${openSelect ? 'rotateOneEighty' : ''}`}>
+                    <DownIcon />
+                </span>
+            </div>
+            {openSelect && option && (
+                <div className="selectItems select" style={containerStyle}>
+                    {option.map((selectData) => {
+                        return (
+                            <MenuItem onClick={() => handleSelectClick(selectData)} key={selectData}>
+                                {selectData}
+                            </MenuItem>
+                        );
+                    })}
+                </div>
+            )}
+        </>
     );
 };

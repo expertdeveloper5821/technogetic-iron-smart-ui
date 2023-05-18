@@ -1,7 +1,8 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, fireEvent } from '@testing-library/react';
-import { Avatar, AvatarProps } from './Avatar';
+import { Avatar } from './Avatar';
+import { AvatarProps } from '../../interfaces/CommonInterface';
 
 describe('Avatar component', () => {
     const mockOnClick = jest.fn();

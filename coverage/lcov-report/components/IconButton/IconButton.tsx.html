@@ -30,9 +30,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">71.42% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/6</span>
+                <span class='fraction'>10/14</span>
             </div>
         
             
@@ -88,23 +88,33 @@
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -115,26 +125,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
 import { Upload } from '../../assets/Upload';
+import { DeleteIcon } from '../../assets/DeleteIcon';
+import { IconButtonProps } from '../../interfaces/CommonInterface';
 import './IconButton.css';
 &nbsp;
-export interface IconButtonProps {
-    src?: string;
-    alt?: string;
-    bg?: string;
-    color?: string;
-    className?: string;
-    multiple?: boolean;
-}
-&nbsp;
 export const IconButton = (props: React.PropsWithChildren&lt;IconButtonProps&gt;) =&gt; {
-    const { src, alt = 'Upload Image', children, bg, color, className, multiple = false } = props;
+    const { children, className, multiple = false, onClick, type = 'button' } = props;
 &nbsp;
     return (
         &lt;&gt;
-            &lt;input className="IconButton-Input" type="file" hidden multiple={multiple} id="IconButton-btn" /&gt;
-            &lt;label className={className ? <span class="branch-0 cbranch-no" title="branch not covered" >className </span>: 'IconButton-Label'} htmlFor="IconButton-btn" data-testid="upload-component"&gt;
-                {src ? &lt;img src={src} className="image-icon" alt={alt} /&gt; : &lt;Upload /&gt;}
-            &lt;/label&gt;
+            {type === 'file' &amp;&amp; (
+                &lt;&gt;
+                    &lt;input className="IconButton-Input" type="file" hidden multiple={multiple} id="IconButton-btn" /&gt;
+                    &lt;label className={className ? <span class="branch-0 cbranch-no" title="branch not covered" >className </span>: 'IconButton-Label'} htmlFor="IconButton-btn" data-testid="upload-component"&gt;
+                        {children ? <span class="branch-0 cbranch-no" title="branch not covered" >&lt;span className="image-icon"&gt;{children}&lt;/span&gt; </span>: &lt;Upload /&gt;}
+                    &lt;/label&gt;
+                &lt;/&gt;
+            )}
+            {type === 'button' &amp;&amp; (
+                &lt;&gt;
+                    &lt;input className="IconButton-Input" type="button" hidden multiple={multiple} id="IconButton-btn" /&gt;
+                    &lt;label className={className ? <span class="branch-0 cbranch-no" title="branch not covered" >className </span>: 'IconButton-Label'} htmlFor="IconButton-btn" data-testid="upload-component" onClick={onClick}&gt;
+                        {children ? <span class="branch-0 cbranch-no" title="branch not covered" >&lt;span className="image-icon"&gt;{children}&lt;/span&gt; </span>: &lt;DeleteIcon /&gt;}
+                    &lt;/label&gt;
+                &lt;/&gt;
+            )}
         &lt;/&gt;
     );
 };
@@ -145,7 +160,7 @@ export const IconButton = (props: React.PropsWithChildren&lt;IconButtonProps&gt;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-16T13:04:20.016Z
+                at 2023-05-18T11:14:55.395Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

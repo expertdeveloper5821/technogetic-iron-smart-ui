@@ -1,14 +1,8 @@
 import React from 'react';
 import './Badge.css';
+import { BadgeProps } from '../../interfaces/CommonInterface';
 
-export interface BadgeProps {
-    label?: number;
-    type?: 'primary' | 'success' | 'warning' | 'danger';
-    max?: number;
-    className?: string;
-}
-
-export const Badge: React.FC<BadgeProps> = ({ label, type = 'primary', className, max }) => {
+export const Badge: React.FC<BadgeProps> = ({ label, type = 'primary', className, max = 11 }) => {
     const displayLabel = label > max ? `${max}+` : label;
 
     return (

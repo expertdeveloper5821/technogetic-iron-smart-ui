@@ -1,9 +1,6 @@
 import React, { ComponentType } from 'react';
 import { Navigate } from 'react-router-dom';
-
-export interface AuthProps {
-    isAuthenticated: boolean;
-}
+import { AuthProps } from '../../interfaces/CommonInterface';
 
 export const AuthHOC = (WrappedComponent: ComponentType<AuthProps>) => {
     const ComponentWithAuth = (props: AuthProps) => {

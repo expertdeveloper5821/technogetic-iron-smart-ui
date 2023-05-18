@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconButton } from './IconButton';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 describe('IconButton', () => {
@@ -8,18 +8,22 @@ describe('IconButton', () => {
         render(<IconButton />);
     });
 
-    test('renders with provided src prop', () => {
-        const src = 'path/to/image.png';
-        const alt = 'Image Alt Text';
-        const { getByAltText } = render(<IconButton src={src} alt={alt} />);
-        const imageElement = getByAltText(alt);
-        expect(imageElement).toBeInTheDocument();
-        expect(imageElement.getAttribute('src')).toBe(src);
+    test('renders upload icon when type is "file"', () => {
+        const { getByTestId } = render(<IconButton type="file" />);
+        expect(getByTestId('upload-component')).toBeInTheDocument();
     });
 
-    test('renders with Upload component when src prop is not provided', () => {
-        const { getByTestId } = render(<IconButton />);
-        const uploadComponent = getByTestId('upload-component');
-        expect(uploadComponent).toBeInTheDocument();
+    test('renders delete icon when type is "button"', () => {
+        const { getByTestId } = render(<IconButton type="button" />);
+        const deleteIcon = getByTestId('upload-component');
+        expect(deleteIcon).toBeInTheDocument();
+    });
+
+    test('calls onClick when button is clicked', () => {
+        const onClickMock = jest.fn();
+        const { getByTestId } = render(<IconButton type="button" onClick={onClickMock} />);
+        const button = getByTestId('upload-component');
+        fireEvent.click(button);
+        expect(onClickMock).toHaveBeenCalled();
     });
 });

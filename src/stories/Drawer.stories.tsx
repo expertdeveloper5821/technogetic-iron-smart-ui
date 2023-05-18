@@ -12,7 +12,6 @@ const Template: ComponentStory<typeof Drawer> = (args) => <Drawer {...args} />;
 export const Primary = Template.bind({});
 Primary.args = {
     align: 'left',
-    bg: '#0094DA',
     isOpen: true
 };
 

@@ -1,5 +1,3 @@
 import { ComponentType } from 'react';
-export interface AuthProps {
-    isAuthenticated: boolean;
-}
+import { AuthProps } from '../../interfaces/CommonInterface';
 export declare const AuthHOC: (WrappedComponent: ComponentType<AuthProps>) => (props: AuthProps) => JSX.Element;

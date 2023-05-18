@@ -1,14 +1,6 @@
 import React from 'react';
 import './Avatar.css';
-
-export interface AvatarProps {
-    name?: string;
-    src?: string;
-    alt?: string;
-    size?: number;
-    className?: string;
-    onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
-}
+import { AvatarProps } from '../../interfaces/CommonInterface';
 
 export const Avatar: React.FC<AvatarProps> = ({ name = 'K', src, alt = 'avatar', size = 50, className, onClick }) => {
     const getInitials = (name: string) => {

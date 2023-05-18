@@ -1,19 +1,6 @@
 import React from 'react';
 import './Button.css';
-
-export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
-    bg?: string;
-    color?: string;
-    varient?: 'borderLess' | 'contained' | 'outline';
-    onClick?: React.MouseEventHandler<HTMLButtonElement>;
-    disabled?: boolean;
-    className?: string;
-    children?: string | number;
-    type?: string;
-    multiple?: boolean;
-    startIcon?: string;
-    endIcon?: string;
-}
+import { ButtonProps } from '../../interfaces/CommonInterface';
 
 export const Button = (props: React.PropsWithChildren<ButtonProps>) => {
     const { children, bg, color, varient = 'borderLess', onClick, disabled = false, className, type = 'button', multiple = false, startIcon, endIcon } = props;

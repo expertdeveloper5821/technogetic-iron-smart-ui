@@ -1,6 +1,4 @@
 .commonInputDiv {
-    background: transparent;
-    border: 1px solid rgba(147, 128, 108, 0.25);
     border-radius: 6px;
     padding: 8px;
     user-select: none;
@@ -9,13 +7,21 @@
 
 .combinedInputField {
     display: flex;
+    font-family: 'Roboto';
 }
 
 .adornmentContent,
 .oranmentContent {
-    background-color: transparent;
     padding: 7.5px;
-    border: 1px solid rgba(147, 128, 108, 0.25);
+}
+
+.commonInputDiv,
+.adornmentContent,
+.oranmentContent,
+.adornInputField,
+.oranInputField {
+    background: transparent;
+    border: 0.4px solid rgba(147, 128, 108, 0.25);
 }
 
 .adornmentContent {
@@ -31,8 +37,6 @@
     justify-content: space-between;
     align-items: center;
     user-select: none;
-    background: transparent;
-    border: 1px solid rgba(147, 128, 108, 0.25);
     padding: 8px;
 }
 
@@ -42,17 +46,11 @@
 }
 
 .oranInputField {
-
     border-radius: 6px 0px 0px 6px;
 }
 
 .oranmentContent {
     border-left: 0;
-}
-
-.oranmentContent:focus,
-.oranInputField:focus {
-    border: 0;
 }
 
 .commonInputDiv input:focus,

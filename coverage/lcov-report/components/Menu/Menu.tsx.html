@@ -30,9 +30,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">88.88% </span>
+                <span class="strong">90.47% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>16/18</span>
+                <span class='fraction'>19/21</span>
             </div>
         
             
@@ -132,47 +132,7 @@
 <a name='L67'></a><a href='#L67'>67</a>
 <a name='L68'></a><a href='#L68'>68</a>
 <a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a>
-<a name='L87'></a><a href='#L87'>87</a>
-<a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L70'></a><a href='#L70'>70</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -206,7 +166,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -242,31 +204,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { CSSProperties, useState } from 'react';
 import { BrowserRouter, NavLink } from 'react-router-dom';
 import { RightArrow } from '../../assets/RightArrow';
+import { MenuItem } from '../../interfaces/CommonInterface';
 import './Menu.css';
 &nbsp;
-export interface subMenuInterface {
-    label?: string;
-    key?: string | number;
-    icon?: string;
-    type?: string;
-    href?: string;
-}
-export interface MenuProps {
-    label?: string;
-    key?: string | number;
-    icon?: string;
-    children?: subMenuInterface[];
-    type?: string;
-    href?: string;
-}
-export interface MenuItemProps {
-    menuData?: MenuProps[];
-    onClick?: React.MouseEventHandler&lt;HTMLDivElement&gt;;
-    bg?: string;
-    color?: string;
-    style?: CSSProperties;
-}
-export const Menu: React.FunctionComponent&lt;MenuItemProps&gt; = ({ style, menuData, bg, color, onClick }) =&gt; {
+export const Menu: React.FC&lt;MenuItem&gt; = ({ style, menuData, bg, color, onClick }) =&gt; {
     const [subItem, setSubItem] = useState&lt;boolean&gt;(false);
     const [currmenu, setCurrMenu] = useState&lt;string | number&gt;();
     const [currSubMenu, setCurrSubMenu] = useState&lt;string | number&gt;();
@@ -288,26 +229,28 @@ export const Menu: React.FunctionComponent&lt;MenuItemProps&gt; = ({ style, menu
             &lt;div className="menuContainer" style={menuStyles}&gt;
                 {menuData.map((menuItem, index) =&gt; (
                     &lt;React.Fragment key={index}&gt;
-                        &lt;NavLink to={menuItem.href} className="menuLink"&gt;
-                            &lt;div className="MenuType"&gt;
-                                {menuItem?.type !== 'divider' &amp;&amp; &lt;div className="menuItem_group_title"&gt;{menuItem.type}&lt;/div&gt;}
-                                &lt;div
-                                    className="menuLinkContainer"
-                                    onClick={() =&gt; {
-                                        handleSubItem(menuItem.key);
-                                    }}
-                                    style={menuStyles}
-                                &gt;
-                                    &lt;div className="menuImage"&gt;{menuItem.icon}&lt;/div&gt;
-                                    &lt;div className="menuTitle"&gt;
-                                        &lt;span className="menusText"&gt;{menuItem.label}&lt;/span&gt;
-                                        {menuItem.children &amp;&amp; menuItem.children?.length &gt; 0 &amp;&amp; (
-                                            &lt;div className={`menuDropDownIcon ${subItem &amp;&amp; currmenu === menuItem.key ? 'rotateNintee' : ''}`}&gt;{&lt;RightArrow /&gt;}&lt;/div&gt;
-                                        )}
+                        {menuItem?.icon &amp;&amp; menuItem?.label &amp;&amp; (
+                            &lt;NavLink to={menuItem.href} className="menuLink"&gt;
+                                &lt;div className="MenuType"&gt;
+                                    {menuItem?.type !== 'divider' &amp;&amp; &lt;div className="menuItem_group_title"&gt;{menuItem.type}&lt;/div&gt;}
+                                    &lt;div
+                                        className="menuLinkContainer"
+                                        onClick={() =&gt; {
+                                            handleSubItem(menuItem.key);
+                                        }}
+                                        style={menuStyles}
+                                    &gt;
+                                        &lt;div className="menuImage"&gt;{menuItem.icon}&lt;/div&gt;
+                                        &lt;div className="menuTitle"&gt;
+                                            &lt;span className="menusText"&gt;{menuItem.label}&lt;/span&gt;
+                                            {menuItem.children &amp;&amp; menuItem.children?.length &gt; 0 &amp;&amp; (
+                                                &lt;div className={`menuDropDownIcon ${subItem &amp;&amp; currmenu === menuItem.key ? 'rotateNintee' : ''}`}&gt;{&lt;RightArrow /&gt;}&lt;/div&gt;
+                                            )}
+                                        &lt;/div&gt;
                                     &lt;/div&gt;
                                 &lt;/div&gt;
-                            &lt;/div&gt;
-                        &lt;/NavLink&gt;
+                            &lt;/NavLink&gt;
+                        )}
                         {currmenu === menuItem.key &amp;&amp; menuItem.children &amp;&amp; currmenu &amp;&amp; subItem &amp;&amp; (
                             &lt;&gt;
                                 {menuItem.children.map((mapChild) =&gt; (
@@ -334,7 +277,7 @@ export const Menu: React.FunctionComponent&lt;MenuItemProps&gt; = ({ style, menu
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-16T13:04:20.016Z
+                at 2023-05-18T11:14:55.395Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

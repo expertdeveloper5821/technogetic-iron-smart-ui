@@ -1671,10 +1671,10 @@ const CloseIcon = () => {
         React.createElement("path", { d: "M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z" })));
 };
 
-var css_248z$d = ".alert {\n    padding: 10px;\n    border-radius: 5px;\n    display: flex;\n    justify-content: space-between;\n    font-family: 'Roboto';\n}\n\n.alert-success {\n    border: 2px solid #78d178;\n    background-color: #d1ffcd;\n}\n\n.alert-failure {\n    border: 2px solid #d17878;\n    background-color: rgb(255, 205, 205);\n}\n\n.alert-warning {\n    border: 2px solid #ecdd68;\n    background-color: #faf4c7;\n}\n\n.closeIcon {\n    cursor: pointer;\n}";
+var css_248z$d = ".alert {\n    padding: 10px;\n    border-radius: 5px;\n    display: flex;\n    justify-content: space-between;\n    font-family: 'Roboto';\n}\n\nspan.AlertSpan {\n    align-self: center;\n}\n\n.alert-success {\n    border: 2px solid #78d178;\n    background-color: #d1ffcd;\n}\n\n.alert-failure {\n    border: 2px solid #d17878;\n    background-color: rgb(255, 205, 205);\n}\n\n.alert-warning {\n    border: 2px solid #ecdd68;\n    background-color: #faf4c7;\n}\n\n.closeIcon {\n    cursor: pointer;\n}";
 styleInject(css_248z$d);
 
-const Alert = ({ message, type = 'success', timeout = 5000, isClosable = true, className }) => {
+const Alert = ({ message, type = 'success', timeout, isClosable = true, className }) => {
     const [isOpen, setIsOpen] = React.useState(true);
     const handleClose = () => {
         setIsOpen(false);
@@ -1692,20 +1692,20 @@ const Alert = ({ message, type = 'success', timeout = 5000, isClosable = true, c
         type === 'failure' && 'This is the Failure Alert',
         type === 'warning' && 'This is the Warning Alert'));
     return (React.createElement("div", { className: className ? className : `alert alert-${type}` },
-        React.createElement("span", null, message ? message : alertBody),
+        React.createElement("span", { className: "AlertSpan" }, message ? message : alertBody),
         isClosable && (React.createElement("div", { className: "closeIcon", "data-testid": "close-button", onClick: handleClose },
             React.createElement(CloseIcon, null)))));
 };
 
-var css_248z$c = "span.badge {\n  position: absolute;\n  top: 0;\n  right: 0;\n  padding: 4px;\n  border-radius: 50%;\n  text-align: center;\n}\n\nspan.badge.badge-primary {\n  background-color: #0788dd;\n  color: white;\n}\n\nspan.badge.badge-success {\n  background-color: #78d178;\n  color: white;\n}\n\nspan.badge.badge-danger {\n  background-color: #d17878;\n  color: white;\n}\n\nspan.badge.badge-warning {\n  background-color: #ecdd68;\n  color: white;\n}";
+var css_248z$c = "span.badge {\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 20px;\n  height: 20px;\n  padding: 4px;\n  border-radius: 50%;\n  text-align: center;\n}\n\nspan.badge.badge-primary {\n  background-color: #0788dd;\n  color: white;\n}\n\nspan.badge.badge-success {\n  background-color: #78d178;\n  color: white;\n}\n\nspan.badge.badge-danger {\n  background-color: #d17878;\n  color: white;\n}\n\nspan.badge.badge-warning {\n  background-color: #ecdd68;\n  color: white;\n}";
 styleInject(css_248z$c);
 
-const Badge = ({ label, type = 'primary', className, max }) => {
+const Badge = ({ label, type = 'primary', className, max = 11 }) => {
     const displayLabel = label > max ? `${max}+` : label;
     return (React.createElement("span", { className: className ? className : `badge badge-${type}`, "data-testid": "tooltip" }, displayLabel));
 };
 
-var css_248z$b = "label.button,\nbutton {\n    cursor: pointer;\n    border-radius: 6px;\n    padding: 10px;\n    text-align: center;\n    font-family: 'Roboto';\n    font-weight: 600;\n}\n\n\nlabel.button {\n    font-size: 15px;\n}\n\nlabel.borderLess,\n.button-borderLess {\n    border: 0;\n    outline: 0;\n    background: transparent;\n    color: #1ea7fd;\n}\n\nlabel.button-borderLess:hover,\n.button-borderLess:hover {\n    background: #E9EAEC\n}\n\nlabel.button-contained,\n.button-contained {\n    background-color: #1ea7fd;\n    color: white;\n    border: 0;\n}\n\nlabel.button-contained:hover,\n.button-contained:hover {\n    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\n    background-color: #9E9E9E;\n}\n\nlabel.button-outline,\n.button-outline {\n    border: 0.4px solid #1ea7fd;\n    background-color: transparent;\n    color: #1ea7fd\n}\n\nlabel.button-outline:hover,\n.button-outline:hover {\n    background-color: #1ea7fd;\n    color: white;\n}\n\nbutton.button.button-contained.Icon {\n    display: inline-flex;\n    align-items: center;\n}\n\nspan.start-button-icon {\n    display: inherit;\n    margin-right: 8px;\n    margin-left: -4px;\n}\n\nspan.end-button-icon {\n    display: inherit;\n    margin-right: -4px;\n    margin-left: 8px;\n}\n\nsvg.button-icon-svg {\n    font-size: 19px;\n}\n\n.button-icon-svg {\n    user-select: none;\n    width: 1em;\n    height: 1em;\n    display: inline-block;\n    fill: currentColor;\n}";
+var css_248z$b = "label.button,\nbutton {\n    cursor: pointer;\n    border-radius: 6px;\n    padding: 10px;\n    text-align: center;\n    font-family: 'Roboto';\n    font-weight: 600;\n}\n\nlabel.borderLess,\n.button-borderLess {\n    border: 0;\n    outline: 0;\n    background: transparent;\n    color: #4ab3e9;\n}\n\nlabel.button-borderLess:hover,\n.button-borderLess:hover {\n    background: #E9EAEC\n}\n\nlabel.button-contained,\n.button-contained {\n    background: #4ab3e9;\n    color: white;\n    border: 0;\n}\n\nlabel.button-contained:hover,\n.button-contained:hover {\n    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\n    background: #0c8ce9;\n}\n\nlabel.button-outline,\n.button-outline {\n    border: 0.4px solid #4ab3e9;\n    background-color: transparent;\n    color: #4ab3e9\n}\n\nlabel.button-outline:hover,\n.button-outline:hover {\n    background: #0c8ce9;\n    color: white;\n}\n\nbutton.button.button-contained.Icon {\n    display: inline-flex;\n    align-items: center;\n}\n\nspan.start-button-icon {\n    display: inherit;\n    margin-right: 8px;\n    margin-left: -4px;\n}\n\nspan.end-button-icon {\n    display: inherit;\n    margin-right: -4px;\n    margin-left: 8px;\n}\n\nsvg.button-icon-svg {\n    font-size: 19px;\n}\n\n.button-icon-svg {\n    user-select: none;\n    width: 1em;\n    height: 1em;\n    display: inline-block;\n    fill: currentColor;\n}";
 styleInject(css_248z$b);
 
 const Button = (props) => {
@@ -1722,9 +1722,9 @@ var css_248z$a = ".card {\n    background-color: transparent;\n    border-radius
 styleInject(css_248z$a);
 
 const Card = (props) => {
-    const { className, padding, title = 'Card Title', border, footer = 'Card Footer', headerImage } = props;
+    const { className, padding, title = 'Card Title', border, footer = 'Card Footer', cardheaderimg } = props;
     const cardHeader = (React.createElement("div", { className: "cardHead" },
-        React.createElement("div", { className: "cardHeadTitle" }, headerImage ? headerImage && React.createElement("img", { src: headerImage, alt: "Card Header Image" }) : React.createElement("span", null, title))));
+        React.createElement("div", { className: "cardHeadTitle" }, cardheaderimg ? React.createElement("img", { src: cardheaderimg, alt: "Card Header Image" }) : React.createElement("span", null, title))));
     const cardFooter = (React.createElement("div", { className: "cardFooter" },
         React.createElement("div", { className: "cardFooter" },
             React.createElement("span", null, footer))));
@@ -1734,12 +1734,12 @@ const Card = (props) => {
         cardFooter));
 };
 
-var css_248z$9 = ".DrawerContainer {\n  position: absolute;\n  display: flex;\n  flex-direction: column;\n  padding: 8px;\n  background: #E9EAEC;\n  width: 257px;\n  height: 100vh;\n  font-family: 'Roboto';\n}\n\n.DrawerContainer-left {\n  left: 0;\n  top: 0;\n}\n\n.DrawerContainer-right {\n  right: 0;\n  top: 0;\n}";
+var css_248z$9 = ".DrawerContainer {\n  position: absolute;\n  display: flex;\n  flex-direction: column;\n  padding: 8px;\n  background: #e0f5ff;\n  color: #6c747e;\n  width: 257px;\n  height: 100vh;\n  font-family: 'Roboto';\n}\n\n.DrawerContainer-left {\n  left: 0;\n  top: 0;\n  transition: left .5s cubic-bezier(0.820, 0.085, 0.395, 0.895);\n}\n\n.DrawerContainer-right {\n  right: 0;\n  top: 0;\n}";
 styleInject(css_248z$9);
 
 const Drawer = ({ align = 'left', width, bg, color, className, style, isOpen = true, children }) => {
     const DrawerStyles = Object.assign({ width, backgroundColor: bg, color }, style);
-    return (React.createElement(React.Fragment, null, isOpen && (React.createElement("div", { className: className ? className : `DrawerContainer DrawerContainer-${align}`, style: DrawerStyles, "data-testid": "drawerComoponent" }, children))));
+    return (React.createElement(React.Fragment, null, isOpen && (React.createElement("div", { className: className ? className : `DrawerContainer DrawerContainer-${align}`, "data-testid": "drawerComoponent", style: Object.assign(Object.assign({}, DrawerStyles), { transition: 'left 0.9s cubic-bezier(0.820, 0.085, 0.395, 0.895)' }) }, children))));
 };
 
 const Upload = () => {
@@ -1747,14 +1747,23 @@ const Upload = () => {
         React.createElement("path", { d: "M11.492 10.172l-2.5 3.064-.737-.677 3.737-4.559 3.753 4.585-.753.665-2.5-3.076v7.826h-1v-7.828zm7.008 9.828h-13c-2.481 0-4.5-2.018-4.5-4.5 0-2.178 1.555-4.038 3.698-4.424l.779-.14.043-.789c.185-3.448 3.031-6.147 6.48-6.147 3.449 0 6.295 2.699 6.478 6.147l.044.789.78.14c2.142.386 3.698 2.246 3.698 4.424 0 2.482-2.019 4.5-4.5 4.5m.978-9.908c-.212-3.951-3.472-7.092-7.478-7.092s-7.267 3.141-7.479 7.092c-2.57.463-4.521 2.706-4.521 5.408 0 3.037 2.463 5.5 5.5 5.5h13c3.037 0 5.5-2.463 5.5-5.5 0-2.702-1.951-4.945-4.522-5.408" })));
 };
 
-var css_248z$8 = ".IconButton-Label {\n  border-radius: 50%;\n}\n\n.IconButton-Label:hover {\n  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\n}\n\n.IconButton-Label:hover svg.uploadIcon {\n  fill: #0094DA;\n}";
+const DeleteIcon = () => {
+    return (React.createElement("svg", { className: "button-icon-svg", viewBox: "0 0 24 24", "data-testid": "DeleteIcon" },
+        React.createElement("path", { d: "M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" })));
+};
+
+var css_248z$8 = ".IconButton-Label {\n  border-radius: 50%;\n  cursor: pointer;\n}\n\n.IconButton-Label:hover {\n  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\n}\n\n.IconButton-Label:hover svg.uploadIcon {\n  fill: #0094DA;\n}\n\nsvg.uploadIcon {\n  fill: rgb(45, 56, 67);\n}\n\nsvg.button-icon-svg {\n  fill: rgb(45, 56, 67);\n}\n\n.IconButton-Label:hover svg.button-icon-svg {\n  fill: #0094DA;\n}";
 styleInject(css_248z$8);
 
 const IconButton = (props) => {
-    const { src, alt = 'Upload Image', children, bg, color, className, multiple = false } = props;
+    const { children, className, multiple = false, onClick, type = 'button' } = props;
     return (React.createElement(React.Fragment, null,
-        React.createElement("input", { className: "IconButton-Input", type: "file", hidden: true, multiple: multiple, id: "IconButton-btn" }),
-        React.createElement("label", { className: className ? className : 'IconButton-Label', htmlFor: "IconButton-btn", "data-testid": "upload-component" }, src ? React.createElement("img", { src: src, className: "image-icon", alt: alt }) : React.createElement(Upload, null))));
+        type === 'file' && (React.createElement(React.Fragment, null,
+            React.createElement("input", { className: "IconButton-Input", type: "file", hidden: true, multiple: multiple, id: "IconButton-btn" }),
+            React.createElement("label", { className: className ? className : 'IconButton-Label', htmlFor: "IconButton-btn", "data-testid": "upload-component" }, children ? React.createElement("span", { className: "image-icon" }, children) : React.createElement(Upload, null)))),
+        type === 'button' && (React.createElement(React.Fragment, null,
+            React.createElement("input", { className: "IconButton-Input", type: "button", hidden: true, multiple: multiple, id: "IconButton-btn" }),
+            React.createElement("label", { className: className ? className : 'IconButton-Label', htmlFor: "IconButton-btn", "data-testid": "upload-component", onClick: onClick }, children ? React.createElement("span", { className: "image-icon" }, children) : React.createElement(DeleteIcon, null))))));
 };
 
 /******************************************************************************
@@ -1784,7 +1793,7 @@ function __rest(s, e) {
     return t;
 }
 
-var css_248z$7 = ".commonInputDiv {\n    background: transparent;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    border-radius: 6px;\n    padding: 8px;\n    user-select: none;\n    font-family: 'Roboto';\n}\n\n.combinedInputField {\n    display: flex;\n}\n\n.adornmentContent,\n.oranmentContent {\n    background-color: transparent;\n    padding: 7.5px;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n}\n\n.adornmentContent {\n    border-radius: 6px 0px 0px 6px;\n    border-right: 0;\n}\n\n.adornInputField,\n.oranInputField {\n    display: flex;\n    align-items: start;\n    width: 100%;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    background: transparent;\n    border: 1px solid rgba(147, 128, 108, 0.25);\n    padding: 8px;\n}\n\n.adornInputField,\n.oranmentContent {\n    border-radius: 0px 6px 6px 0px;\n}\n\n.oranInputField {\n\n    border-radius: 6px 0px 0px 6px;\n}\n\n.oranmentContent {\n    border-left: 0;\n}\n\n.oranmentContent:focus,\n.oranInputField:focus {\n    border: 0;\n}\n\n.commonInputDiv input:focus,\ninput.InputAddOn-field:focus {\n    background: transparent;\n    border: none;\n    outline: none;\n}\n\n.commonInputDiv:focus-within,\n.combinedInputField:focus-within {\n    border: 0.4px solid #0094DA;\n    border-radius: 6px;\n    background: transparent;\n}\n\ninput[type='text'],\ninput[type='email'],\ninput[type='password'] {\n    border: 0;\n    width: 100%;\n}\n\nspan.InputAddOn-item {\n    padding: 0px 4px;\n}\n\n.InputAddOn-item {\n    color: #666666;\n    font: inherit;\n    font-weight: normal;\n}";
+var css_248z$7 = ".commonInputDiv {\n    border-radius: 6px;\n    padding: 8px;\n    user-select: none;\n    font-family: 'Roboto';\n}\n\n.combinedInputField {\n    display: flex;\n    font-family: 'Roboto';\n}\n\n.adornmentContent,\n.oranmentContent {\n    padding: 7.5px;\n}\n\n.commonInputDiv,\n.adornmentContent,\n.oranmentContent,\n.adornInputField,\n.oranInputField {\n    background: transparent;\n    border: 0.4px solid rgba(147, 128, 108, 0.25);\n}\n\n.adornmentContent {\n    border-radius: 6px 0px 0px 6px;\n    border-right: 0;\n}\n\n.adornInputField,\n.oranInputField {\n    display: flex;\n    align-items: start;\n    width: 100%;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    padding: 8px;\n}\n\n.adornInputField,\n.oranmentContent {\n    border-radius: 0px 6px 6px 0px;\n}\n\n.oranInputField {\n    border-radius: 6px 0px 0px 6px;\n}\n\n.oranmentContent {\n    border-left: 0;\n}\n\n.commonInputDiv input:focus,\ninput.InputAddOn-field:focus {\n    background: transparent;\n    border: none;\n    outline: none;\n}\n\n.commonInputDiv:focus-within,\n.combinedInputField:focus-within {\n    border: 0.4px solid #0094DA;\n    border-radius: 6px;\n    background: transparent;\n}\n\ninput[type='text'],\ninput[type='email'],\ninput[type='password'] {\n    border: 0;\n    width: 100%;\n}\n\nspan.InputAddOn-item {\n    padding: 0px 4px;\n}\n\n.InputAddOn-item {\n    color: #666666;\n    font: inherit;\n    font-weight: normal;\n}";
 styleInject(css_248z$7);
 
 const ShowPassword = () => {
@@ -1837,7 +1846,7 @@ const Input = (props) => {
                     React.createElement("span", { className: "InputAddOn-item", "data-testid": "oranment" }, ornament)))))));
 };
 
-var css_248z$6 = ".NavBarContainer-top,\n.NavBarContainer-bottom {\n  position: absolute;\n  padding: 8px;\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  background: #E9EAEC;\n  font-family: 'Roboto';\n}\n\n.NavBarContainer-top {\n  top: 0\n}\n\n.NavBarContainer-bottom {\n  bottom: 0;\n}";
+var css_248z$6 = ".NavBarContainer-top,\n.NavBarContainer-bottom {\n  position: absolute;\n  padding: 8px;\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  background: #e0f5ff;\n  color: #6c747e;\n  font-family: 'Roboto';\n  transition: all 0.5s;\n}\n\n.NavBarContainer-top {\n  top: 0\n}\n\n.NavBarContainer-bottom {\n  bottom: 0;\n}";
 styleInject(css_248z$6);
 
 const NavBar = ({ align = 'top', width, bg, color, style, children }) => {
@@ -1867,7 +1876,7 @@ const Menu = ({ style, menuData, bg, color, onClick }) => {
         React.createElement("div", { className: "menuContainer", style: menuStyles }, menuData.map((menuItem, index) => {
             var _a;
             return (React.createElement(React.Fragment, { key: index },
-                React.createElement(NavLink, { to: menuItem.href, className: "menuLink" },
+                (menuItem === null || menuItem === void 0 ? void 0 : menuItem.icon) && (menuItem === null || menuItem === void 0 ? void 0 : menuItem.label) && (React.createElement(NavLink, { to: menuItem.href, className: "menuLink" },
                     React.createElement("div", { className: "MenuType" },
                         (menuItem === null || menuItem === void 0 ? void 0 : menuItem.type) !== 'divider' && React.createElement("div", { className: "menuItem_group_title" }, menuItem.type),
                         React.createElement("div", { className: "menuLinkContainer", onClick: () => {
@@ -1876,34 +1885,69 @@ const Menu = ({ style, menuData, bg, color, onClick }) => {
                             React.createElement("div", { className: "menuImage" }, menuItem.icon),
                             React.createElement("div", { className: "menuTitle" },
                                 React.createElement("span", { className: "menusText" }, menuItem.label),
-                                menuItem.children && ((_a = menuItem.children) === null || _a === void 0 ? void 0 : _a.length) > 0 && (React.createElement("div", { className: `menuDropDownIcon ${subItem && currmenu === menuItem.key ? 'rotateNintee' : ''}` }, React.createElement(RightArrow, null))))))),
+                                menuItem.children && ((_a = menuItem.children) === null || _a === void 0 ? void 0 : _a.length) > 0 && (React.createElement("div", { className: `menuDropDownIcon ${subItem && currmenu === menuItem.key ? 'rotateNintee' : ''}` }, React.createElement(RightArrow, null)))))))),
                 currmenu === menuItem.key && menuItem.children && currmenu && subItem && (React.createElement(React.Fragment, null, menuItem.children.map((mapChild) => (React.createElement(NavLink, { to: mapChild.href, key: mapChild.key, className: "menuLink" },
                     React.createElement("div", { className: "menuChild", key: mapChild.key, style: { display: subItem ? 'block' : 'none', color: `${color}` } }, mapChild.label)))))),
                 (menuItem === null || menuItem === void 0 ? void 0 : menuItem.type) === 'divider' && React.createElement("div", { className: "menuItem_group_divider", key: index })));
         }))));
 };
 
-var css_248z$4 = ".selectContainer {\n    display: flex;\n    flex-direction: row;\n    border-radius: 4px;\n    border: 0.5px solid #858585;\n    background-color: #F0F0F0;\n    background: url(../../assets/ClosePassword) right / 90% no-repeat;\n}\n\nselect.selectInput {\n    width: 100%;\n    border: none;\n    background-color: none;\n    appearance: none;\n    -webkit-appearance: none;\n    padding: 6px;\n}\n\nselect:focus {\n    border: none;\n    outline: none;\n}\n\nselect option {\n    border: 5px solid;\n    border-radius: 14px;\n    color: red;\n}\n\n.selectIcon {\n    -moz-transition: all .3s linear;\n    -webkit-transition: all .3s linear;\n    transition: all .3s linear;\n}\n\n.rotate {\n    -moz-transform: rotate(180deg);\n    -webkit-transform: rotate(180deg);\n    transform: rotate(180deg);\n}";
+var css_248z$4 = "span.menuItem-label {\n  min-height: auto;\n  outline: 0px;\n  border: 0px;\n  margin: 0px;\n  border-radius: 0px;\n  cursor: pointer;\n  user-select: none;\n  vertical-align: middle;\n  appearance: none;\n  color: inherit;\n  line-height: 1.5;\n  letter-spacing: 0.00938em;\n  display: flex;\n  -webkit-box-pack: start;\n  justify-content: flex-start;\n  -webkit-box-align: center;\n  align-items: center;\n  text-decoration: none;\n  box-sizing: border-box;\n}\n\nspan.menuItem-label:hover {\n  color: #1e9de3;\n}\n\n.selected {\n  background: #EFF2FC;\n}\n\n.notSelected {\n  background: transparent;\n}\n\n.removeGutters {\n  padding: 6px 0px;\n}\n\n.addGutters {\n  padding: 6px 16px;\n}";
 styleInject(css_248z$4);
 
-const Select = ({ options, placeholder, disabled, name, onChange }) => {
-    const selectIconRef = React.useRef(null);
-    const handleChange = (event) => {
-        const selectedValue = event.target.value;
-        onChange === null || onChange === void 0 ? void 0 : onChange(Object.assign(Object.assign({}, event), { selectedValue }));
+const MenuItem = ({ autofocus = false, children = 'Menu Item', className, disableGutters = false, onClick, value = children }) => {
+    const handleClick = () => {
+        onClick(value);
     };
-    const handleToggleOptions = () => {
-        if (selectIconRef.current) {
-            selectIconRef.current.classList.toggle('rotate');
+    return (React.createElement("span", { className: `${className ? className : 'menuItem-label'} ${autofocus ? 'selected' : 'notSelected'} ${disableGutters ? 'removeGutters' : 'addGutters'}`, onClick: handleClick, key: value }, children));
+};
+
+const DownIcon = () => {
+    return (React.createElement("svg", { className: "downIcon", viewBox: "0 0 24 24" },
+        React.createElement("path", { d: "M7 10l5 5 5-5z" })));
+};
+
+var css_248z$3 = ".selectContainer {\n    display: inline-flex;\n    border: 0.4px solid #C4C4C4;\n    justify-content: space-between;\n    align-items: center;\n}\n\n.selectItems {\n    margin-top: 4px;\n    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n    box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 5px -3px, rgba(0, 0, 0, 0.14) 0px 8px 10px 1px, rgba(0, 0, 0, 0.12) 0px 0px 1px 0px;\n    position: absolute;\n    overflow: hidden auto;\n    outline: 0px;\n    transition: all 300ms ease-in-out;\n}\n\n.selectItems,\n.selectContainer {\n    padding: 4px 8px;\n    color: #6c747e;\n    font-family: \"Roboto\";\n    border-radius: 4px;\n    background: transparent;\n}\n\nsvg.downIcon {\n    display: flex;\n    width: 1em;\n    height: 1em;\n    font-size: 1.5rem;\n    fill: rgba(0, 0, 0, 0.54);\n}\n\n.selctDownIcon,\n.selectItems {\n    transition: all 0.5s;\n}\n\n.selctDownIcon.rotateOneEighty {\n    transform: rotate(180deg) translateX(0px);\n    transition: all 0.5s;\n}\n\n\n\n.select {\n    min-width: 80px;\n}";
+styleInject(css_248z$3);
+
+const Select = (_a) => {
+    var { placeholder = 'select...', onChange, padding, width, option } = _a, props = __rest(_a, ["placeholder", "onChange", "padding", "width", "option"]);
+    const [openSelect, setOpenSelect] = React.useState(false);
+    const [selectedValue, setSelectedValue] = React.useState('');
+    const selectRef = React.useRef(null);
+    const handleSelectOpen = () => {
+        setOpenSelect(!openSelect);
+    };
+    const handleClickOutside = (event) => {
+        if (selectRef.current && !selectRef.current.contains(event.target)) {
+            setOpenSelect(false);
         }
     };
-    return (React.createElement("div", { className: "selectContainer" },
-        React.createElement("select", { className: "selectInput", onChange: handleChange, onClick: handleToggleOptions },
-            placeholder && (React.createElement("option", { className: "selectOption", value: "", disabled: true, selected: true, hidden: true }, placeholder)), options === null || options === void 0 ? void 0 :
-            options.map((selectdata, selectIndex) => {
-                return (React.createElement("option", { className: "selectOption", key: selectIndex, value: selectdata }, selectdata));
-            })),
-        React.createElement("div", { className: "selectIcon", ref: selectIconRef })));
+    React.useEffect(() => {
+        window.addEventListener('click', handleClickOutside);
+        return () => {
+            window.removeEventListener('click', handleClickOutside);
+        };
+    }, []);
+    const handleSelectClick = (value) => {
+        setSelectedValue(value);
+        setOpenSelect(false);
+        if (onChange) {
+            onChange(value);
+        }
+    };
+    const containerStyle = {
+        padding: padding || '',
+        width: placeholder.length > 0 ? `${placeholder.length * 10}px` : ''
+    };
+    return (React.createElement(React.Fragment, null,
+        React.createElement("div", Object.assign({}, props, { className: "selectContainer select", style: containerStyle, onClick: handleSelectOpen, ref: selectRef }),
+            selectedValue ? selectedValue : placeholder,
+            React.createElement("span", { className: `selctDownIcon ${openSelect ? 'rotateOneEighty' : ''}` },
+                React.createElement(DownIcon, null))),
+        openSelect && option && (React.createElement("div", { className: "selectItems select", style: containerStyle }, option.map((selectData) => {
+            return (React.createElement(MenuItem, { onClick: () => handleSelectClick(selectData), key: selectData }, selectData));
+        })))));
 };
 
 const Stack = ({ align = 'start', direction = 'column', isInline = false, justify = 'start', spacing = 0, wrap = false, style, children }) => {
@@ -1914,14 +1958,6 @@ const Stack = ({ align = 'start', direction = 'column', isInline = false, justif
 const Switch = (props) => {
     const { name, disabled, checked, onChange } = props;
     return React.createElement("input", Object.assign({ name: name, checked: checked, onChange: onChange, disabled: disabled, type: "checkbox" }, props));
-};
-
-var css_248z$3 = ".SideBarContainer-left,\n.SideBarContainer-right {\n    position: absolute;\n    left: 0;\n    top: 0;\n    display: flex;\n    flex-direction: column;\n    padding: 8px;\n    background: #E9EAEC;\n    width: 257px;\n    height: 100vh;\n    font-family: 'Roboto';\n}\n\n.SideBarContainer-left {\n    left: 0;\n    top: 0;\n}\n\n.SideBarContainer-right {\n    right: 0;\n    top: 0;\n}";
-styleInject(css_248z$3);
-
-const Sidebar = ({ align = 'left', width, bg, color, style }) => {
-    const sideBarStyles = Object.assign({ width, backgroundColor: bg, color }, style);
-    return React.createElement("div", { className: `SideBarContainer-${align}`, style: sideBarStyles, "data-testid": "sidebarComoponent" });
 };
 
 const TableHeader = ({ columns, buttons }) => {
@@ -3304,8 +3340,7 @@ styleInject(css_248z);
 
 const TextArea = (props) => {
     const { cols, rows, placeholder, onChange, className } = props; __rest(props, ["cols", "rows", "placeholder", "onChange", "className"]);
-    return (React.createElement(React.Fragment, null,
-        React.createElement("textarea", { className: className ? className : 'textAreaInput', rows: rows ? rows : 10, cols: cols ? cols : 50, form: props.form, placeholder: placeholder ? placeholder : 'Text Area...', onChange: onChange })));
+    return (React.createElement("textarea", { className: className ? className : 'textAreaInput', rows: rows ? rows : 10, cols: cols ? cols : 50, form: props.form, placeholder: placeholder ? placeholder : 'Text Area...', onChange: onChange }));
 };
 
 exports.Alert = Alert;
@@ -3318,9 +3353,9 @@ exports.Drawer = Drawer;
 exports.IconButton = IconButton;
 exports.Input = Input;
 exports.Menu = Menu;
+exports.MenuItem = MenuItem;
 exports.NavBar = NavBar;
 exports.Select = Select;
-exports.Sidebar = Sidebar;
 exports.Stack = Stack;
 exports.Switch = Switch;
 exports.Table = Table;

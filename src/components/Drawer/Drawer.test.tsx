@@ -30,4 +30,26 @@ describe('Drawer', () => {
         });
         expect(drawerComoponent.classList).toContain('DrawerContainer-right');
     });
+
+    test('renders children when isOpen is true', () => {
+        const childrenText = 'Test Children';
+        const { getByText } = render(
+            <Drawer isOpen={true} align="left" width="200px">
+                {childrenText}
+            </Drawer>
+        );
+        const childrenElement = getByText(childrenText);
+        expect(childrenElement).toBeInTheDocument();
+    });
+
+    test('does not render children when isOpen is false', () => {
+        const childrenText = 'Test Children';
+        const { queryByText } = render(
+            <Drawer isOpen={false} align="left" width="200px">
+                {childrenText}
+            </Drawer>
+        );
+        const childrenElement = queryByText(childrenText);
+        expect(childrenElement).toBeNull();
+    });
 });

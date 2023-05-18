@@ -2,6 +2,8 @@ span.badge {
   position: absolute;
   top: 0;
   right: 0;
+  width: 20px;
+  height: 20px;
   padding: 4px;
   border-radius: 50%;
   text-align: center;

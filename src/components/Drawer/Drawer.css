@@ -3,7 +3,8 @@
   display: flex;
   flex-direction: column;
   padding: 8px;
-  background: #E9EAEC;
+  background: #e0f5ff;
+  color: #6c747e;
   width: 257px;
   height: 100vh;
   font-family: 'Roboto';
@@ -12,6 +13,7 @@
 .DrawerContainer-left {
   left: 0;
   top: 0;
+  transition: left .5s cubic-bezier(0.820, 0.085, 0.395, 0.895);
 }
 
 .DrawerContainer-right {

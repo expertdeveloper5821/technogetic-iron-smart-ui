@@ -10,11 +10,11 @@ export default {
 const Template: ComponentStory<typeof Select> = (args) => <Select {...args} />;
 
 export const Primary = Template.bind({});
-
-Primary.args = {
-    options: ['Green', 'Red', 'Yellow', 'Blue', 'Pink', 'Black', 'Orange'],
-    placeholder: 'Select...',
-    onChange: function (val: any): void {
-        console.log(val);
-    }
-};
+{
+    Primary.args = {
+        option: ['orange', 'apple', 'mango'],
+        onChange: function (value: string | number) {
+            console.log(value);
+        }
+    };
+}

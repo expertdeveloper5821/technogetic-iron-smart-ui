@@ -1,16 +1,6 @@
 import React from 'react';
 import './Drawer.css';
-
-export interface DrawerProps {
-    align?: string;
-    width?: string;
-    bg?: string;
-    color?: string;
-    className?: string;
-    style?: React.CSSProperties;
-    isOpen?: boolean;
-    children?: string;
-}
+import { DrawerProps } from '../../interfaces/CommonInterface';
 
 export const Drawer: React.FC<DrawerProps> = ({ align = 'left', width, bg, color, className, style, isOpen = true, children }) => {
     const DrawerStyles: React.CSSProperties = {
@@ -23,7 +13,11 @@ export const Drawer: React.FC<DrawerProps> = ({ align = 'left', width, bg, color
     return (
         <>
             {isOpen && (
-                <div className={className ? className : `DrawerContainer DrawerContainer-${align}`} style={DrawerStyles} data-testid="drawerComoponent">
+                <div
+                    className={className ? className : `DrawerContainer DrawerContainer-${align}`}
+                    data-testid="drawerComoponent"
+                    style={{ ...DrawerStyles, transition: 'left 0.9s cubic-bezier(0.820, 0.085, 0.395, 0.895)' }}
+                >
                     {children}
                 </div>
             )}

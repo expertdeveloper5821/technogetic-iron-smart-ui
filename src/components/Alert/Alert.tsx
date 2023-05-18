@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
 import { CloseIcon } from '../../assets/CloseIcon';
 import './Alert.css';
+import { AlertProps } from '../../interfaces/CommonInterface';
 
-export interface AlertProps {
-    message: string;
-    type?: 'failure' | 'warning' | 'success';
-    timeout?: number;
-    isClosable?: boolean;
-    className?: string;
-}
-
-export const Alert: React.FC<AlertProps> = ({ message, type = 'success', timeout = 5000, isClosable = true, className }) => {
+export const Alert: React.FC<AlertProps> = ({ message, type = 'success', timeout, isClosable = true, className }) => {
     const [isOpen, setIsOpen] = useState(true);
     const handleClose = () => {
         setIsOpen(false);
@@ -33,7 +26,7 @@ export const Alert: React.FC<AlertProps> = ({ message, type = 'success', timeout
     );
     return (
         <div className={className ? className : `alert alert-${type}`}>
-            <span>{message ? message : alertBody}</span>
+            <span className="AlertSpan">{message ? message : alertBody}</span>
             {isClosable && (
                 <div className="closeIcon" data-testid="close-button" onClick={handleClose}>
                     <CloseIcon />
