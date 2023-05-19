@@ -3,7 +3,7 @@ import { CloseIcon } from '../../assets/CloseIcon';
 import './Alert.css';
 import { AlertProps } from '../../interfaces/CommonInterface';
 
-export const Alert: React.FC<AlertProps> = ({ message, type = 'success', timeout, isClosable = true, className }) => {
+export const Alert: React.FC<AlertProps> = ({ message, type = 'success', timeout = 3000, isClosable = true, className }) => {
     const [isOpen, setIsOpen] = useState(true);
     const handleClose = () => {
         setIsOpen(false);
