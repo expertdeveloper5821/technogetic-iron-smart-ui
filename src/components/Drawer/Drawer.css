@@ -10,13 +10,34 @@
   font-family: 'Roboto';
 }
 
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
 .DrawerContainer-left {
   left: 0;
   top: 0;
-  transition: left .5s cubic-bezier(0.820, 0.085, 0.395, 0.895);
+  animation: slide-in-left 0.5s ease-in-out forwards;
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
 }
 
 .DrawerContainer-right {
   right: 0;
   top: 0;
+  animation: slide-in-right 0.5s ease-in-out forwards;
 }

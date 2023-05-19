@@ -13,11 +13,7 @@ export const Drawer: React.FC<DrawerProps> = ({ align = 'left', width, bg, color
     return (
         <>
             {isOpen && (
-                <div
-                    className={className ? className : `DrawerContainer DrawerContainer-${align}`}
-                    data-testid="drawerComoponent"
-                    style={{ ...DrawerStyles, transition: 'left 0.9s cubic-bezier(0.820, 0.085, 0.395, 0.895)' }}
-                >
+                <div className={className ? className : `DrawerContainer DrawerContainer-${align}`} data-testid="drawerComoponent" style={DrawerStyles}>
                     {children}
                 </div>
             )}

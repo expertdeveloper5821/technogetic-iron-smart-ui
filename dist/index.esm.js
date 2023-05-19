@@ -1714,12 +1714,12 @@ const Card = (props) => {
         cardFooter));
 };
 
-var css_248z$9 = ".DrawerContainer {\n  position: absolute;\n  display: flex;\n  flex-direction: column;\n  padding: 8px;\n  background: #e0f5ff;\n  color: #6c747e;\n  width: 257px;\n  height: 100vh;\n  font-family: 'Roboto';\n}\n\n.DrawerContainer-left {\n  left: 0;\n  top: 0;\n  transition: left .5s cubic-bezier(0.820, 0.085, 0.395, 0.895);\n}\n\n.DrawerContainer-right {\n  right: 0;\n  top: 0;\n}";
+var css_248z$9 = ".DrawerContainer {\n  position: absolute;\n  display: flex;\n  flex-direction: column;\n  padding: 8px;\n  background: #e0f5ff;\n  color: #6c747e;\n  width: 257px;\n  height: 100vh;\n  font-family: 'Roboto';\n}\n\n@keyframes slide-in-left {\n  0% {\n    transform: translateX(-100%);\n  }\n\n  100% {\n    transform: translateX(0%);\n  }\n}\n\n.DrawerContainer-left {\n  left: 0;\n  top: 0;\n  animation: slide-in-left 0.5s ease-in-out forwards;\n}\n\n@keyframes slide-in-right {\n  0% {\n    transform: translateX(100%);\n  }\n\n  100% {\n    transform: translateX(0%);\n  }\n}\n\n.DrawerContainer-right {\n  right: 0;\n  top: 0;\n  animation: slide-in-right 0.5s ease-in-out forwards;\n}";
 styleInject(css_248z$9);
 
 const Drawer = ({ align = 'left', width, bg, color, className, style, isOpen = true, children }) => {
     const DrawerStyles = Object.assign({ width, backgroundColor: bg, color }, style);
-    return (React__default.createElement(React__default.Fragment, null, isOpen && (React__default.createElement("div", { className: className ? className : `DrawerContainer DrawerContainer-${align}`, "data-testid": "drawerComoponent", style: Object.assign(Object.assign({}, DrawerStyles), { transition: 'left 0.9s cubic-bezier(0.820, 0.085, 0.395, 0.895)' }) }, children))));
+    return (React__default.createElement(React__default.Fragment, null, isOpen && (React__default.createElement("div", { className: className ? className : `DrawerContainer DrawerContainer-${align}`, "data-testid": "drawerComoponent", style: DrawerStyles }, children))));
 };
 
 const Upload = () => {
