@@ -15,10 +15,6 @@ svg.uploadIcon {
   fill: rgb(45, 56, 67);
 }
 
-svg.button-icon-svg {
-  fill: rgb(45, 56, 67);
-}
-
 .IconButton-Label:hover svg.button-icon-svg {
   fill: #0094DA;
 }
