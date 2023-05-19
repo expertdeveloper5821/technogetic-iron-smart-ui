@@ -10,25 +10,11 @@ export default {
 const Template: ComponentStory<typeof Select> = (args) => <Select {...args} />;
 
 export const Primary = Template.bind({});
-
-Primary.args = {
-    options: ['Green', 'Red', 'Yellow', 'Blue', 'Pink', 'Black', 'Orange'],
-    placeholder: 'Select...',
-    isMulti: true,
-    isSearchable: true,
-    onChange: function (val: any): void {
-        console.log(val);
-    }
-};
-
-export const Single = Template.bind({});
-
-Single.args = {
-    options: ['Green', 'Red', 'Yellow', 'Blue', 'Pink', 'Black', 'Orange'],
-    placeholder: 'Select...',
-    // isMulti: false,
-    isSearchable: true,
-    onChange: function (val: any): void {
-        console.log(val);
-    }
-};
+{
+    Primary.args = {
+        option: ['orange', 'apple', 'mango'],
+        onChange: function (value: string | number) {
+            console.log(value);
+        }
+    };
+}

@@ -1,21 +1,25 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { Tooltip } from './Tooltip';
-import '@testing-library/jest-dom';
 import React from 'react';
+import { Tooltip } from './Tooltip';
+import { fireEvent, render } from '@testing-library/react';
+import '@testing-library/jest-dom';
 
-describe('Tooltip test case', () => {
-    test('should render tooltip', () => {
-        render(
-            <Tooltip text="I am tooltip">
-                <button>Hover me!</button>
+describe('Tooltip', () => {
+    test('renders tooltip text when hovered over', () => {
+        const tooltipText = 'Tooltip text';
+        const { getByTestId, getByText, queryByText } = render(
+            <Tooltip text={tooltipText}>
+                <span>Hover over me</span>
             </Tooltip>
         );
-        const button = screen.getByTestId('tooltipHover');
-        expect(screen.queryByText('I am tooltip')).not.toBeInTheDocument();
-        userEvent.hover(button);
-        expect(screen.queryByText('Hover me!')).toBeInTheDocument();
-        // userEvent.unhover(button);
-        // expect(screen.queryByText('I am tooltip')).not.toBeInTheDocument();
+
+        const tooltipHoverElement = getByTestId('tooltipHover');
+        expect(tooltipHoverElement).toBeInTheDocument();
+
+        fireEvent.mouseEnter(tooltipHoverElement);
+        const tooltipTextElement = getByText(tooltipText);
+        expect(tooltipTextElement).toBeInTheDocument();
+
+        fireEvent.mouseLeave(tooltipHoverElement);
+        expect(queryByText(tooltipText)).toBeNull();
     });
 });

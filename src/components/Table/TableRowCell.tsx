@@ -1,17 +1,36 @@
 import React from 'react';
 import get from 'lodash/get';
-import { IColumnType } from './Table';
+import { IColumnType, IButtonType } from './Table';
 
 interface Props<T> {
-    item: T;
-    column: IColumnType<T>;
-    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    item?: T;
+    column?: IColumnType<T>;
+    buttons?: IButtonType<T>;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>, rowData: T, buttonTitle: string) => void;
 }
 
-const TableRowCell = <T extends Props<T>>({ item, column, onClick }: any): JSX.Element => {
-    const value = get(item, column.key);
+const TableRowCell = <T extends Props<T>>({ item, column, buttons, onClick }: Props<T>): JSX.Element => {
+    const value = get(item, column?.id);
 
-    return <td className="tableRowCell">{column.type === 'button' ? <a onClick={onClick}>{value}</a> : value}</td>;
+    if (!buttons) {
+        return <td className="tableRowCell">{value}</td>;
+    }
+
+    if (buttons) {
+        return (
+            <td className="tableRowCell">
+                <button
+                    className="tableBtn"
+                    onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+                        onClick(event, item, buttons?.title || '');
+                    }}
+                >
+                    {buttons?.value}
+                </button>
+            </td>
+        );
+    }
+    return <></>;
 };
 
 export default TableRowCell;

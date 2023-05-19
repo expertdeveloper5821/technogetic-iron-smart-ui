@@ -1,0 +1,30 @@
+span.badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  padding: 4px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+span.badge.badge-primary {
+  background-color: #0788dd;
+  color: white;
+}
+
+span.badge.badge-success {
+  background-color: #78d178;
+  color: white;
+}
+
+span.badge.badge-danger {
+  background-color: #d17878;
+  color: white;
+}
+
+span.badge.badge-warning {
+  background-color: #ecdd68;
+  color: white;
+}

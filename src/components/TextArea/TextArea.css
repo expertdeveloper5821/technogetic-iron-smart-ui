@@ -1,12 +1,13 @@
-.textField {
-  padding: 15px;
-  box-sizing: border-box;
-  background: #FFFFFF;
-  border: 1.8px solid #6b6b6b;
-  border-radius: 8px;
+textarea.textAreaInput {
+  background: transparent;
+  border: 1px solid rgba(147, 128, 108, 0.25);
+  border-radius: 6px;
+  padding: 8px;
+  outline: none;
+  font-family: 'Roboto';
 }
 
-.textField:focus {
+textarea.textAreaInput:focus {
   border: 0.5px solid #0094DA;
   outline: none;
 }

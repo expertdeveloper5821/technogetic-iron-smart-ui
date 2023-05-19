@@ -1,0 +1,19 @@
+.avatarContainer,
+img.avatarImage {
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+span.avatarInitials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #0094DA;
+  color: #f1f1f1;
+}

@@ -1,29 +1,32 @@
-import { type } from 'os';
 import React from 'react';
 import './Button.css';
+import { ButtonProps } from '../../interfaces/CommonInterface';
 
-export interface ButtonProps extends React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-    backgroundColor?: string;
-    color?: string;
-    onClick?: React.MouseEventHandler<HTMLButtonElement>;
-    className?: string;
-    type?: 'submit' | 'reset' | 'button';
-}
-
-export const Button: React.FunctionComponent<ButtonProps> = (props) => {
-    const { children, backgroundColor, color, style, onClick, className, type } = props;
-    let _style: React.CSSProperties = style || {};
-    let _className: string = 'commonButton';
-    let _type: string = 'submit';
-    /* Override defaults */
-    if (color) _style.color = color;
-    if (type) _type = type;
-    if (className) _className = className;
-    if (backgroundColor) _style.backgroundColor = backgroundColor;
+export const Button = (props: React.PropsWithChildren<ButtonProps>) => {
+    const { children, bg, color, varient = 'borderLess', onClick, disabled = false, className, type = 'button', multiple = false, startIcon, endIcon } = props;
 
     return (
-        <button className={_className} style={_style} {...props} onClick={onClick} type={type}>
-            {children}
-        </button>
+        <>
+            {type === 'button' ? (
+                <button
+                    {...props}
+                    type="button"
+                    className={`${className ? className : `button button-${varient}`}${disabled ? `button_disabled` : ''} ${startIcon ? 'Icon' : ''} ${endIcon ? 'Icon' : ''}`}
+                    onClick={onClick}
+                    disabled={disabled}
+                >
+                    {startIcon && <span className="start-button-icon">{startIcon}</span>}
+                    {children ? children : 'Button'}
+                    {endIcon && <span className="end-button-icon">{endIcon}</span>}
+                </button>
+            ) : (
+                <>
+                    <input className="uploadFile" type="file" hidden multiple={multiple} id="upload-btn" />
+                    <label className={`${className ? className : `button button-${varient}`}${disabled ? `button_disabled` : ''}`} htmlFor="upload-btn">
+                        {children ? children : 'Upload Button'}
+                    </label>
+                </>
+            )}
+        </>
     );
 };

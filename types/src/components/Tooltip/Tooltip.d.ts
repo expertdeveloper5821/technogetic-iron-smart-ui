@@ -1,7 +1,4 @@
 import React, { PropsWithChildren } from 'react';
 import './Tooltip.css';
-type TooltipProps = {
-    text?: string;
-};
+import { TooltipProps } from '../../interfaces/CommonInterface';
 export declare const Tooltip: React.FunctionComponent<PropsWithChildren<TooltipProps>>;
-export {};

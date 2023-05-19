@@ -1,0 +1,24 @@
+.IconButton-Label {
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.IconButton-Label:hover {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+
+.IconButton-Label:hover svg.uploadIcon {
+  fill: #0094DA;
+}
+
+svg.uploadIcon {
+  fill: rgb(45, 56, 67);
+}
+
+svg.button-icon-svg {
+  fill: rgb(45, 56, 67);
+}
+
+.IconButton-Label:hover svg.button-icon-svg {
+  fill: #0094DA;
+}

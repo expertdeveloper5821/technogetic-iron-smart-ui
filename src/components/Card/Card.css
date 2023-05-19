@@ -1,0 +1,41 @@
+.card {
+    background-color: transparent;
+    border-radius: 8px;
+    line-height: 1.5;
+    word-break: break-all;
+    border: 1px solid #e8e8e8;
+    font-family: 'Roboto';
+}
+
+.noBorderCard {
+    border: none;
+}
+
+.cardHead {
+    padding: 0 1.6rem;
+}
+
+.cardHead,
+.cardBody,
+.cardFooter {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardHeadTitle {
+    margin: 0;
+    font-weight: 500;
+}
+
+.cardBody {
+    padding: 1.2rem 1.8rem;
+    border-radius: 2px 2px 0 0;
+}
+
+.cardFooter {
+    padding: 0 1.6rem;
+    display: flex;
+    padding: 0.4em;
+    border-radius: 2px 2px 0 0;
+}

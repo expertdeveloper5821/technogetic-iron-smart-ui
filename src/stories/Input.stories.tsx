@@ -15,9 +15,6 @@ Primary.args = {
         console.log('onChange', e.target.value);
     },
     placeholder: 'I am a placeholder',
-    // defaultValue: 'Hello, world'
-    // name: 'kamal'
-    className: 'abc',
     type: 'password'
 };
 
@@ -28,7 +25,6 @@ TextField.args = {
     },
     placeholder: 'I am a placeholder',
     label: 'Hello, world',
-    className: 'abc',
     type: 'text'
 };
 

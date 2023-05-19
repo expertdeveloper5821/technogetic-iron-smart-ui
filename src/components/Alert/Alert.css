@@ -3,6 +3,11 @@
     border-radius: 5px;
     display: flex;
     justify-content: space-between;
+    font-family: 'Roboto';
+}
+
+span.AlertSpan {
+    align-self: center;
 }
 
 .alert-success {

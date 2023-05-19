@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">71.42% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/14</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60% </span>
+                <span class="strong">73.07% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>6/10</span>
+                <span class='fraction'>19/26</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/10</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -91,60 +91,72 @@
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { type } from 'os';
-import React from 'react';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
 import './Button.css';
-export interface ButtonProps extends React.DetailedHTMLProps&lt;React.ButtonHTMLAttributes&lt;HTMLButtonElement&gt;, HTMLButtonElement&gt; {
-    backgroundColor?: string;
-    color?: string;
-    onClick?: React.MouseEventHandler&lt;HTMLButtonElement&gt;;
-    className?: string;
-    type?: 'submit' | 'reset' | 'button';
-}
+import { ButtonProps } from '../../interfaces/CommonInterface';
 &nbsp;
-export const Button: React.FunctionComponent&lt;ButtonProps&gt; = (props) =&gt; {
-    const { children, backgroundColor, color, style, onClick, className, type } = props;
-    let _style: React.CSSProperties = style || {};
-    let _className: string = 'commonButton';
-    let _type: string = 'submit';
-    /**Override defaults */
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (color) <span class="cstat-no" title="statement not covered" >_style.color = color;</span>
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (type) <span class="cstat-no" title="statement not covered" >_type = type;</span>
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (className) <span class="cstat-no" title="statement not covered" >_className = className;</span>
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (backgroundColor) <span class="cstat-no" title="statement not covered" >_style.backgroundColor = backgroundColor;</span>
+export const Button = (props: React.PropsWithChildren&lt;ButtonProps&gt;) =&gt; {
+    const { children, bg, color, varient = 'borderLess', onClick, disabled = false, className, type = 'button', multiple = false, startIcon, endIcon } = props;
 &nbsp;
     return (
-        &lt;button className={_className} style={_style} {...props} onClick={onClick} type={type}&gt;
-            {children}
-        &lt;/button&gt;
+        &lt;&gt;
+            {type === 'button' ? (
+                &lt;button
+                    {...props}
+                    type="button"
+                    className={`${className ? className : `button button-${varient}`}${disabled ? `button_disabled` : ''} ${startIcon ? <span class="branch-0 cbranch-no" title="branch not covered" >'Icon' </span>: ''} ${endIcon ? <span class="branch-0 cbranch-no" title="branch not covered" >'Icon' </span>: ''}`}
+                    onClick={onClick}
+                    disabled={disabled}
+                &gt;
+                    {startIcon &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;span className="start-button-icon"&gt;{startIcon}&lt;/span&gt;}</span>
+                    {children ? children : 'Button'}
+                    {endIcon &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;span className="end-button-icon"&gt;{endIcon}&lt;/span&gt;}</span>
+                &lt;/button&gt;
+            ) : (
+                &lt;&gt;
+                    &lt;input className="uploadFile" type="file" hidden multiple={multiple} id="upload-btn" /&gt;
+                    &lt;label className={`${className ? <span class="branch-0 cbranch-no" title="branch not covered" >className </span>: `button button-${varient}`}${disabled ? <span class="branch-0 cbranch-no" title="branch not covered" >`button_disabled` </span>: ''}`} htmlFor="upload-btn"&gt;
+                        {children ? children : <span class="branch-1 cbranch-no" title="branch not covered" >'Upload Button'}</span>
+                    &lt;/label&gt;
+                &lt;/&gt;
+            )}
+        &lt;/&gt;
     );
 };
 &nbsp;</pre></td></tr></table></pre>
@@ -154,7 +166,7 @@ export const Button: React.FunctionComponent&lt;ButtonProps&gt; = (props) =&gt; 
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-23T07:07:01.629Z
+                at 2023-05-18T11:14:55.395Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

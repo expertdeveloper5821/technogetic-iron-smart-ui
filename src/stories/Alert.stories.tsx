@@ -10,8 +10,18 @@ export default {
 const Template: ComponentStory<typeof Alert> = (args) => <Alert {...args} />;
 
 export const Primary = Template.bind({});
-
 Primary.args = {
-    message: 'I am a Alert',
+    message: 'I am a Success Alert',
     type: 'success'
+};
+
+export const failure = Template.bind({});
+failure.args = {
+    type: 'failure'
+};
+
+export const warning = Template.bind({});
+warning.args = {
+    message: 'I am a Warning Alert',
+    type: 'warning'
 };

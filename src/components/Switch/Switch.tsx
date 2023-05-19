@@ -1,11 +1,5 @@
 import React from 'react';
-
-export interface SwitchProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    disabled?: boolean;
-    name?: string;
-    checked?: boolean;
-}
+import { SwitchProps } from '../../interfaces/CommonInterface';
 
 export const Switch: React.FunctionComponent<SwitchProps> = (props) => {
     const { name, disabled, checked, onChange } = props;

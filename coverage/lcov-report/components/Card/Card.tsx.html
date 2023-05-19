@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.5% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/8</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/8</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.5% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/8</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
@@ -93,69 +93,63 @@
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { PropsWithChildren } from 'react';
-import styles from './Card.module.css';
-interface CardProps {
-    className: string;
-    padding: string;
-    title: string;
-    border: string;
-}
-export const Card: any = (props: PropsWithChildren&lt;CardProps&gt;) =&gt; {
-    let { className, padding, title, children, border } = props;
-    let borderStyle = '';
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (border === 'none') {
-<span class="cstat-no" title="statement not covered" >        borderStyle = styles.noBorderCard;</span>
-    }
-    const cardHeader = title ? (
-<span class="branch-0 cbranch-no" title="branch not covered" >        &lt;div className="cardHead"&gt;</span>
-            &lt;div className="cardHeadTitle"&gt;
-                &lt;span&gt;{title}&lt;/span&gt;
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import './Card.css';
+import { CardProps } from '../../interfaces/CommonInterface';
+&nbsp;
+export const Card = (props: React.PropsWithChildren&lt;CardProps&gt;) =&gt; {
+    const { className, padding, title = 'Card Title', border, footer = 'Card Footer', cardheaderimg } = props;
+&nbsp;
+    const cardHeader = (
+        &lt;div className="cardHead"&gt;
+            &lt;div className="cardHeadTitle"&gt;{cardheaderimg ? &lt;img src={cardheaderimg} alt="Card Header Image" /&gt; : &lt;span&gt;{title}&lt;/span&gt;}&lt;/div&gt;
+        &lt;/div&gt;
+    );
+    const cardFooter = (
+        &lt;div className="cardFooter"&gt;
+            &lt;div className="cardFooter"&gt;
+                &lt;span&gt;{footer}&lt;/span&gt;
             &lt;/div&gt;
         &lt;/div&gt;
-    ) : null;
-    // Add the className if necessary
-    className = className ? <span class="branch-0 cbranch-no" title="branch not covered" >className </span>: '';
+    );
+&nbsp;
     return (
-        &lt;div {...props} className={`${styles.card} ${borderStyle} ${className}`}&gt;
+        &lt;div {...props} className={className ? className : `card noBorderCard `}&gt;
             {cardHeader}
-            &lt;div style={padding &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >{ padding }}</span> className={`${styles.cardBody}`}&gt;
-                {children}
+            &lt;div style={{ padding }} className="cardBody"&gt;
+                {props.children}
             &lt;/div&gt;
+            {cardFooter}
         &lt;/div&gt;
     );
 };
@@ -166,7 +160,7 @@ export const Card: any = (props: PropsWithChildren&lt;CardProps&gt;) =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-03-23T07:07:01.629Z
+                at 2023-05-18T11:14:55.395Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

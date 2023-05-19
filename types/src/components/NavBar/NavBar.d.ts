@@ -1,24 +1,4 @@
 import React from 'react';
+import { NavBarProps } from '../../interfaces/CommonInterface';
 import './NavBar.css';
-export interface itemInterface {
-    id: number;
-    title: string;
-    link: string;
-}
-export interface buttonInterface {
-    id: number;
-    title: string;
-    link: string;
-}
-export interface navbarArray {
-    id: number;
-    title?: string;
-    link?: string;
-    items?: itemInterface[];
-    image?: string;
-    button?: buttonInterface[];
-}
-export interface NavbarProps {
-    navbarData?: navbarArray[];
-}
-export declare const NavBar: React.FunctionComponent<NavbarProps>;
+export declare const NavBar: React.FC<NavBarProps>;

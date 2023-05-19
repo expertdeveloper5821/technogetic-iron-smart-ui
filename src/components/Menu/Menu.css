@@ -1,0 +1,98 @@
+.menuContainer {
+  background: transparent;
+  color: black;
+  width: 100%;
+  font-family: 'Roboto';
+}
+
+.menuLinkContainer,
+.menuDropDownIcon,
+.MenuType {
+  transition: all 0.5s;
+}
+
+.menuLinkContainer {
+  place-content: start;
+  gap: 15px;
+  padding: 8px 8px 8px 16px;
+  align-items: center;
+}
+
+.menuLinkContainer,
+.menuChild {
+  cursor: pointer;
+  display: flex;
+  color: #6c747d;
+}
+
+.menuLinkContainer:hover,
+span.menusText:hover {
+  border-radius: 8px;
+  color: #0094DA;
+  background: transparent;
+}
+
+svg.greyColor {
+  fill: #6C757D;
+}
+
+.menuLinkContainer:hover .svg-icon path,
+.menuLinkContainer:hover .greyColor path {
+  fill: #0094DA;
+}
+
+a.menuLink,
+a.menuLink.active {
+  color: black;
+  text-decoration: none;
+}
+
+.MenuType {
+  margin: 4px 4px 8px 4px;
+}
+
+.menuItem_group_title {
+  padding: 8px 16px;
+  color: rgba(0, 0, 0, .45);
+}
+
+.menuChild {
+  text-decoration: none;
+  text-decoration: none;
+  margin-left: 30px;
+  border: none;
+  outline: none;
+  padding: 10px 14px 10px 14px;
+}
+
+.menuChild:hover {
+  border-radius: 8px;
+  color: #0094DA;
+  background: transparent;
+}
+
+.menuDropDownIcon {
+  display: inline-flex;
+  padding-left: 2px;
+  margin-left: 5px;
+  vertical-align: middle;
+  width: 12px;
+}
+
+.menuDropDownIcon.rotateNintee {
+  transform: rotateNintee(90deg);
+  transform: rotate(90deg) translateX(1px);
+}
+
+.menuItem_group_divider {
+  overflow: hidden;
+  line-height: 0;
+  border-color: rgba(5, 5, 5, .06);
+  border-style: solid;
+  border-width: 0;
+  border-top-width: 2px;
+  margin-block: 2px;
+  margin-block-start: 2px;
+  margin-block-end: 2px;
+  padding: 0;
+}

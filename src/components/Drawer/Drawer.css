@@ -1,0 +1,43 @@
+.DrawerContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  background: #e0f5ff;
+  color: #6c747e;
+  width: 257px;
+  height: 100vh;
+  font-family: 'Roboto';
+}
+
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.DrawerContainer-left {
+  left: 0;
+  top: 0;
+  animation: slide-in-left 0.5s ease-in-out forwards;
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.DrawerContainer-right {
+  right: 0;
+  top: 0;
+  animation: slide-in-right 0.5s ease-in-out forwards;
+}

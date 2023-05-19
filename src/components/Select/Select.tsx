@@ -1,162 +1,58 @@
-import React, { ChangeEvent, InputHTMLAttributes, Ref, useEffect, useRef, useState } from 'react';
-import { Icon } from '../../assets/DropdownIcon';
-import { UpIcon } from '../../assets/DropUpIcon';
-import { CloseIcon } from '../../assets/CloseIcon';
+import React, { useState, useEffect, useRef } from 'react';
+import { SelectProps } from '../../interfaces/CommonInterface';
+import { DownIcon } from '../../assets/DownIcon';
 import './Select.css';
+import { MenuItem } from '../MenuItem';
 
-export interface SelectProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
-    onChange?: any;
-    placeholder?: string;
-    disabled?: boolean;
-    position?: string;
-    name?: string;
-    options?: optionType[];
-    isMulti?: boolean;
-    isSearchable?: boolean;
-}
-
-export interface optionType {
-    value: string;
-    label: string;
-}
-
-export interface eType {
-    target: { value: React.SetStateAction<string> };
-}
-
-export interface itemType {
-    value: string;
-}
-
-export const Select: React.FunctionComponent<SelectProps> = ({ isMulti, options, placeholder, isSearchable, onChange }) => {
-    const [showMenu, setShowMenu] = useState<boolean>(false);
-    const [searchValue, setSearchValue] = useState<string>('');
-    const searchRef = useRef<HTMLInputElement>();
-    const inputRef = useRef<any>();
-    const [selectedValue, setSelectedValue] = useState<any>(isMulti ? [] : null);
-    
+export const Select: React.FC<SelectProps> = ({ placeholder = 'select...', onChange, padding, width, option, ...props }) => {
+    const [openSelect, setOpenSelect] = useState<boolean>(false);
+    const [selectedValue, setSelectedValue] = useState<string | number>('');
+    const selectRef = useRef<HTMLDivElement>(null);
+    const handleSelectOpen = () => {
+        setOpenSelect(!openSelect);
+    };
+    const handleClickOutside = (event: MouseEvent) => {
+        if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
+            setOpenSelect(false);
+        }
+    };
     useEffect(() => {
-        const handler = (e: { target: any }) => {
-            if (inputRef.current && !inputRef.current.contains(e.target)) {
-                setShowMenu(false);
-            }
-        };
-        window.addEventListener('click', handler);
+        window.addEventListener('click', handleClickOutside);
         return () => {
-            window.removeEventListener('click', handler);
+            window.removeEventListener('click', handleClickOutside);
         };
-    });
-
-    useEffect(() => {
-        setSearchValue('');
-        if (showMenu && searchRef.current) {
-            searchRef.current.focus();
+    }, []);
+    const handleSelectClick = (value: string | number) => {
+        setSelectedValue(value);
+        setOpenSelect(false);
+        if (onChange) {
+            onChange(value);
         }
-    }, [showMenu]);
-
-    // Here OnSearch function is used to track the latest value of the search
-    const onSearch = (e: { target: HTMLInputElement }) => {
-        setSearchValue(e.target.value);
     };
-
-    // Here getOptions is used to configure the options passed through props
-    const getOptions = () => {
-        if (!searchValue) {
-            return options;
-        }
-        return options.filter((option: any) => option.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0);
-    };
-
-    const handleInputClick = () => {
-        setShowMenu(!showMenu);
-    };
-
-    // Here getDisplay is used to check if we have to show placeholder or not
-    const getDisplay = () => {
-        if (!selectedValue || selectedValue.length === 0) {
-            console.log('inside if', selectedValue);
-            return placeholder;
-        }
-        if (isMulti) {
-            return (
-                <div className="dropdown-tags">
-                    {selectedValue.map((option: any) => (
-                        <div key={option} className="dropdown-tag-item">
-                            {option}
-                            <span onClick={(e) => onTagRemove(e, option)} className="dropdown-tag-close">
-                                <CloseIcon />
-                            </span>
-                        </div>
-                    ))}
-                </div>
-            );
-        }
-        return selectedValue;
-    };
-
-    const removeOption = (option: optionType) => {
-        return selectedValue.filter((item: itemType) => item !== option);
-    };
-    const onTagRemove = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>, option: optionType) => {
-        e.stopPropagation();
-        const newValue = removeOption(option);
-        setSelectedValue(newValue);
-        onChange(newValue);
-    };
-
-    const onItemClick = (option: optionType) => {
-        let newValue;
-        if (isMulti) {
-            if (selectedValue.findIndex((item: itemType) => item === option) >= 0) {
-                newValue = removeOption(option);
-            } else {
-                newValue = [...selectedValue, option];
-            }
-        } else {
-            newValue = option;
-        }
-        setSelectedValue(newValue);
-        onChange(newValue);
-    };
-
-    const isSelected = (option: optionType) => {
-        if (isMulti) {
-            return selectedValue.filter((item: itemType) => item === option).length > 0;
-        }
-        if (!selectedValue) {
-            return false;
-        }
-        return selectedValue === option;
+    const containerStyle = {
+        padding: padding || '',
+        width: placeholder.length > 0 ? `${placeholder.length * 10}px` : ''
     };
 
     return (
         <>
-            <div className="dropdown-container">
-                <div ref={inputRef} className="dropdown-input" onClick={handleInputClick}>
-                    <div className="dropdown-selected-value">{getDisplay()}</div>
-                    <div className="dropdown-tools">
-                        <div className="dropdown-tool">{showMenu ? <UpIcon /> : <Icon />}</div>
-                    </div>
-                    {showMenu && (
-                        <div className="dropdown-menu">
-                            {/* {isSearchable && (
-                                <div className="search-box">
-                                    <input onChange={onSearch} value={searchValue} ref={searchRef} />
-                                </div>
-                            )} */}
-                            {options ? (
-                                getOptions().map((option: any) => (
-                                    <div onClick={() => onItemClick(option)} key={option} className={`dropdown-item ${isSelected(option) && 'selected'}`}>
-                                        {option}
-                                    </div>
-                                ))
-                            ) : (
-                                <div>Please add options</div>
-                            )}
-                        </div>
-                    )}
-                </div>
+            <div {...props} className="selectContainer select" style={containerStyle} onClick={handleSelectOpen} ref={selectRef}>
+                {selectedValue ? selectedValue : placeholder}
+                <span className={`selctDownIcon ${openSelect ? 'rotateOneEighty' : ''}`}>
+                    <DownIcon />
+                </span>
             </div>
+            {openSelect && option && (
+                <div className="selectItems select" style={containerStyle}>
+                    {option.map((selectData) => {
+                        return (
+                            <MenuItem onClick={() => handleSelectClick(selectData)} key={selectData}>
+                                {selectData}
+                            </MenuItem>
+                        );
+                    })}
+                </div>
+            )}
         </>
     );
 };

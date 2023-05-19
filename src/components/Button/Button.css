@@ -1,16 +1,77 @@
-button.commonButton {
-    color: white;
+label.button,
+button {
     cursor: pointer;
     border-radius: 6px;
     padding: 10px;
-    background-color: #1ea7fd;
+    text-align: center;
+    font-family: 'Roboto';
+    font-weight: 600;
+}
+
+label.borderLess,
+.button-borderLess {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #4ab3e9;
+}
+
+label.button-borderLess:hover,
+.button-borderLess:hover {
+    background: #E9EAEC
+}
+
+label.button-contained,
+.button-contained {
+    background: #4ab3e9;
+    color: white;
     border: 0;
 }
 
-.commonButton:hover {
-    background-color: #9E9E9E;
+label.button-contained:hover,
+.button-contained:hover {
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    background: #0c8ce9;
 }
 
-.commonButton:hover {
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+label.button-outline,
+.button-outline {
+    border: 0.4px solid #4ab3e9;
+    background-color: transparent;
+    color: #4ab3e9
+}
+
+label.button-outline:hover,
+.button-outline:hover {
+    background: #0c8ce9;
+    color: white;
+}
+
+button.button.button-contained.Icon {
+    display: inline-flex;
+    align-items: center;
+}
+
+span.start-button-icon {
+    display: inherit;
+    margin-right: 8px;
+    margin-left: -4px;
+}
+
+span.end-button-icon {
+    display: inherit;
+    margin-right: -4px;
+    margin-left: 8px;
+}
+
+svg.button-icon-svg {
+    font-size: 19px;
+}
+
+.button-icon-svg {
+    user-select: none;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    fill: currentColor;
 }

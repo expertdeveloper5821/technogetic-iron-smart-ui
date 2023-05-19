@@ -1,13 +1,22 @@
+import React from 'react';
 import './Table.css';
 export interface IColumnType<T> {
-    key: string;
+    id: string;
     title: string;
     width?: number;
     render?: (column: IColumnType<T>, item: T) => void;
 }
-type TableProps<T> = {
+export interface IButtonType<T> {
+    id: string;
+    title: string;
+    width?: number;
+    type: string;
+    value: string;
+}
+export type TableProps<T> = {
     data: T[];
     columns: IColumnType<T>[];
+    buttons?: IButtonType<T>[];
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>, rowData: T) => void;
 };
-export declare const Table: <T extends TableProps<T>>({ data, columns }: TableProps<T>) => JSX.Element;
-export {};
+export declare const Table: <T extends TableProps<T>>({ data, columns, buttons, onClick }: TableProps<T>) => JSX.Element;

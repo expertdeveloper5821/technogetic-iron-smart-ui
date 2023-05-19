@@ -2,6 +2,8 @@
     border-collapse: collapse;
     border: none;
     font-family: sans-serif;
+    overflow-x: auto;
+    display: block;
 }
 
 .tableHeader {
@@ -22,10 +24,6 @@
     border-top-right-radius: 12px;
 }
 
-.tableRowItem {
-    cursor: auto;
-}
-
 .tableRowItem:nth-child(odd) {
     background-color: #f9f9f9;
 }
@@ -39,8 +37,11 @@
     padding: 12px;
     font-size: 14px;
     color: grey;
+    text-align: left;
 }
 
-.btn {
+.tableBtn {
     cursor: pointer;
+    border: 0;
+    background-color: transparent;
 }

@@ -1,123 +1,85 @@
-.inputField {
+.commonInputDiv {
+    border-radius: 6px;
+    padding: 8px;
+    user-select: none;
+    font-family: 'Roboto';
+}
+
+.combinedInputField {
+    display: flex;
+    font-family: 'Roboto';
+}
+
+.adornmentContent,
+.oranmentContent {
+    padding: 7.5px;
+}
+
+.commonInputDiv,
+.adornmentContent,
+.oranmentContent,
+.adornInputField,
+.oranInputField {
+    background: transparent;
+    border: 0.4px solid rgba(147, 128, 108, 0.25);
+}
+
+.adornmentContent {
+    border-radius: 6px 0px 0px 6px;
+    border-right: 0;
+}
+
+.adornInputField,
+.oranInputField {
     display: flex;
     align-items: start;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
     user-select: none;
-    background: #FFFFFF;
-    border: 1px solid rgba(147, 128, 108, 0.25);
-    border-radius: 6px;
     padding: 8px;
 }
 
-.defInputField {
-    display: flex;
-    align-items: start;
-    justify-content: space-between;
-    align-items: center;
-    user-select: none;
-    background: #FFFFFF;
-    border: 1px solid rgba(147, 128, 108, 0.25);
-    border-radius: 6px;
-    padding: 8px;
+.adornInputField,
+.oranmentContent {
+    border-radius: 0px 6px 6px 0px;
 }
 
-.defInputField input:focus {
-    background: #FFFFFF;
+.oranInputField {
+    border-radius: 6px 0px 0px 6px;
+}
+
+.oranmentContent {
+    border-left: 0;
+}
+
+.commonInputDiv input:focus,
+input.InputAddOn-field:focus {
+    background: transparent;
     border: none;
     outline: none;
 }
 
-.defInputField:focus-within {
-    border: 0.5px solid #0094DA;
+.commonInputDiv:focus-within,
+.combinedInputField:focus-within {
+    border: 0.4px solid #0094DA;
+    border-radius: 6px;
+    background: transparent;
 }
 
 input[type='text'],
-input[type='email'] {
-    border: 0;
-    width: 100%;
-}
-
+input[type='email'],
 input[type='password'] {
     border: 0;
     width: 100%;
 }
 
-.inputField:focus-within {
-    border: 0.5px solid #0094DA;
-}
-
-.inputField input:focus {
-    background: #FFFFFF;
-    border: none;
-    outline: none;
-}
-
-/* Code for the inline span and input Field */
-.inputBlock {
-    display: inline-flex;
-    /* flex-direction: column; */
-    vertical-align: top;
-    width: 100%;
-    margin: 8px;
-    /* display: flex;
-    align-items: start;
-    justify-content: space-between;
-    align-items: center;
-    user-select: none;
-    background: #FFFFFF; */
-    border: 1px solid rgba(147, 128, 108, 0.25);
-    border-radius: 6px;
-}
-
-.input.InputAddOn-field {
-    padding: 8px;
-}
-
-/* .inputBlock input {
-    border: 1px solid rgba(147, 128, 108, 0.25);
-} */
-
 span.InputAddOn-item {
     padding: 0px 4px;
 }
 
-input.InputAddOn-field:focus {
-    background: #FFFFFF;
-    border: none;
-    outline: none;
-}
-
-.InputAddOn-field:not(:first-child) {
-    border-left: 0;
-}
-
-.InputAddOn-field:not(:last-child) {
-    border-right: 0;
-}
-
 .InputAddOn-item {
-    background-color: rgba(147, 128, 108, 0.1);
     color: #666666;
     font: inherit;
     font-weight: normal;
-}
-
-.inputBlock:focus-within {
-    border: 0.5px solid #0094DA;
-    border-radius: 6px;
-}
-
-.inputBlock .InputAddOn-field input:focus {
-    border: none;
-}
-
-.InputAddOn-field:first-child,
-.InputAddOn-item:first-child {
-    border-radius: 6px 0 0 6px;
-}
-
-.InputAddOn-field:last-child,
-.InputAddOn-item:last-child {
-    border-radius: 0 6px 6px 0;
 }

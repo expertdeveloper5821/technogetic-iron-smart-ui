@@ -1,36 +1,27 @@
-import React, { PropsWithChildren } from 'react';
-import styles from './Card.module.css';
+import React from 'react';
+import './Card.css';
+import { CardProps } from '../../interfaces/CommonInterface';
 
-export interface CardProps {
-    className?: string;
-    padding?: string;
-    title?: string;
-    border?: string;
-    footer?: React.ReactNode;
-    headerImage?: string;
-}
-
-export const Card = (props: PropsWithChildren<CardProps>) => {
-    const { className = '', padding = '', title = 'Card Title', border = '', footer = 'Card Footer', headerImage } = props;
-    const borderStyle = border === 'none' ? styles.noBorderCard : '';
+export const Card = (props: React.PropsWithChildren<CardProps>) => {
+    const { className, padding, title = 'Card Title', border, footer = 'Card Footer', cardheaderimg } = props;
 
     const cardHeader = (
         <div className="cardHead">
-            <div className="cardHeadTitle">{headerImage ? headerImage && <img src={headerImage} alt="Card Header Image" /> : <span>{title}</span>}</div>
+            <div className="cardHeadTitle">{cardheaderimg ? <img src={cardheaderimg} alt="Card Header Image" /> : <span>{title}</span>}</div>
         </div>
     );
     const cardFooter = (
         <div className="cardFooter">
-            <div className={`${styles.cardFooter}`}>
+            <div className="cardFooter">
                 <span>{footer}</span>
             </div>
         </div>
     );
 
     return (
-        <div {...props} className={`card ${styles.card} ${borderStyle} ${className}`}>
+        <div {...props} className={className ? className : `card noBorderCard `}>
             {cardHeader}
-            <div style={{ padding }} className={`cardBody ${styles.cardBody}`}>
+            <div style={{ padding }} className="cardBody">
                 {props.children}
             </div>
             {cardFooter}
