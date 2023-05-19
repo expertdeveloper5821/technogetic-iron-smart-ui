@@ -19,7 +19,6 @@
 .selectContainer {
     padding: 4px 8px;
     color: #6c747e;
-    font-family: "Roboto";
     border-radius: 4px;
     background: transparent;
 }
@@ -28,7 +27,6 @@ svg.downIcon {
     display: flex;
     width: 1em;
     height: 1em;
-    font-size: 1.5rem;
     fill: rgba(0, 0, 0, 0.54);
 }
 

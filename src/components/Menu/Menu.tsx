@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, NavLink } from 'react-router-dom';
 import { RightArrow } from '../../assets/RightArrow';
 import { MenuItem } from '../../interfaces/CommonInterface';
+import '../../commonstyle/commonstyle.css';
 import './Menu.css';
 
 export const Menu: React.FC<MenuItem> = ({ style, menuData, bg, color, onClick }) => {

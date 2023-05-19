@@ -44,9 +44,11 @@ export interface CardProps {
     className?: string;
     padding?: string;
     title?: string;
+    cardbody?: string;
     border?: string;
-    footer?: React.ReactNode;
+    children?: React.ReactNode;
     cardheaderimg?: string;
+    height?: string;
 }
 
 export interface DrawerProps {

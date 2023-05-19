@@ -2,12 +2,10 @@
     border-radius: 6px;
     padding: 8px;
     user-select: none;
-    font-family: 'Roboto';
 }
 
 .combinedInputField {
     display: flex;
-    font-family: 'Roboto';
 }
 
 .adornmentContent,
@@ -80,6 +78,4 @@ span.InputAddOn-item {
 
 .InputAddOn-item {
     color: #666666;
-    font: inherit;
-    font-weight: normal;
 }

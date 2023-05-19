@@ -4,7 +4,6 @@ textarea.textAreaInput {
   border-radius: 6px;
   padding: 8px;
   outline: none;
-  font-family: 'Roboto';
 }
 
 textarea.textAreaInput:focus {

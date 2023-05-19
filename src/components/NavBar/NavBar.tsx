@@ -1,5 +1,6 @@
 import React, { CSSProperties } from 'react';
 import { NavBarProps } from '../../interfaces/CommonInterface';
+import '../../commonstyle/commonstyle.css';
 import './NavBar.css';
 
 export const NavBar: React.FC<NavBarProps> = ({ align = 'top', width, bg, color, style, children }) => {

@@ -1,6 +1,7 @@
 import React from 'react';
-import './Button.css';
 import { ButtonProps } from '../../interfaces/CommonInterface';
+import '../../commonstyle/commonstyle.css';
+import './Button.css';
 
 export const Button = (props: React.PropsWithChildren<ButtonProps>) => {
     const { children, bg, color, varient = 'borderLess', onClick, disabled = false, className, type = 'button', multiple = false, startIcon, endIcon } = props;

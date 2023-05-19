@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { CloseIcon } from '../../assets/CloseIcon';
-import './Alert.css';
 import { AlertProps } from '../../interfaces/CommonInterface';
+import '../../commonstyle/commonstyle.css';
+import './Alert.css';
 
 export const Alert: React.FC<AlertProps> = ({ message, type = 'success', timeout = 3000, isClosable = true, className }) => {
     const [isOpen, setIsOpen] = useState(true);

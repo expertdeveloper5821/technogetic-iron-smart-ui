@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import './Input.css';
 import { InputProps } from '../../interfaces/CommonInterface';
 import { ShowPassword } from '../../assets/ShowPassword';
 import { ClosePassword } from '../../assets/ClosePassword';
+import '../../commonstyle/commonstyle.css';
+import './Input.css';
 
 export const Input: React.FunctionComponent<InputProps> = (props) => {
     const { className = 'inputArea', placeholder, autoFocus = false, disabled = false, type, adornment, required, onChange, ornament, ...rest } = props;

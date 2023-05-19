@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { SelectProps } from '../../interfaces/CommonInterface';
 import { DownIcon } from '../../assets/DownIcon';
-import './Select.css';
 import { MenuItem } from '../MenuItem';
+import '../../commonstyle/commonstyle.css';
+import './Select.css';
 
 export const Select: React.FC<SelectProps> = ({ placeholder = 'select...', onChange, padding, width, option, ...props }) => {
     const [openSelect, setOpenSelect] = useState<boolean>(false);

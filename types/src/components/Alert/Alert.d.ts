@@ -1,4 +1,5 @@
 import React from 'react';
-import './Alert.css';
 import { AlertProps } from '../../interfaces/CommonInterface';
+import '../../commonstyle/commonstyle.css';
+import './Alert.css';
 export declare const Alert: React.FC<AlertProps>;
