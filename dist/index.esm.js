@@ -1829,7 +1829,7 @@ const Input = (props) => {
                     React__default.createElement("span", { className: "InputAddOn-item", "data-testid": "oranment" }, ornament)))))));
 };
 
-var css_248z$6 = ".NavBarContainer-top,\n.NavBarContainer-bottom {\n  position: absolute;\n  padding: 8px;\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  background: #e0f5ff;\n  color: #6c747e;\n  transition: all 0.5s;\n}\n\n.NavBarContainer-top {\n  top: 0\n}\n\n.NavBarContainer-bottom {\n  bottom: 0;\n}";
+var css_248z$6 = ".NavBarContainer-top,\n.NavBarContainer-bottom {\n  position: absolute;\n  padding: 8px 0px;\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  background: #e0f5ff;\n  color: #6c747e;\n  transition: all 0.5s;\n}\n\n.NavBarContainer-top {\n  top: 0\n}\n\n.NavBarContainer-bottom {\n  bottom: 0;\n}";
 styleInject(css_248z$6);
 
 const NavBar = ({ align = 'top', width, bg, color, style, children }) => {
