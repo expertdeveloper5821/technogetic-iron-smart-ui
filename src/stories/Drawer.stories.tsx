@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Drawer } from '../components/Drawer/Drawer';
+import { MenuItem } from '../components/MenuItem/MenuItem';
 
 export default {
     title: 'ReactComponentLibrary/Drawer',
@@ -16,35 +17,35 @@ Primary.args = {
     children: (
         <>
             <MenuItem
-                onClick={(e) => {
+                onClick={(e: string) => {
                     console.log(e);
                 }}
             >
                 Item-1
             </MenuItem>
             <MenuItem
-                onClick={(e) => {
+                onClick={(e: string) => {
                     console.log(e);
                 }}
             >
                 Item-2
             </MenuItem>
             <MenuItem
-                onClick={(e) => {
+                onClick={(e: string) => {
                     console.log(e);
                 }}
             >
                 Item-3
             </MenuItem>
             <MenuItem
-                onClick={(e) => {
+                onClick={(e: string) => {
                     console.log(e);
                 }}
             >
                 Item-4
             </MenuItem>
             <MenuItem
-                onClick={(e) => {
+                onClick={(e: string) => {
                     console.log(e);
                 }}
             >
@@ -61,35 +62,35 @@ right.args = {
     children: (
         <>
             <MenuItem
-                onClick={(e) => {
+                onClick={(e: string) => {
                     console.log(e);
                 }}
             >
                 Item-1
             </MenuItem>
             <MenuItem
-                onClick={(e) => {
+                onClick={(e: string) => {
                     console.log(e);
                 }}
             >
                 Item-2
             </MenuItem>
             <MenuItem
-                onClick={(e) => {
+                onClick={(e: string) => {
                     console.log(e);
                 }}
             >
                 Item-3
             </MenuItem>
             <MenuItem
-                onClick={(e) => {
+                onClick={(e: string) => {
                     console.log(e);
                 }}
             >
                 Item-4
             </MenuItem>
             <MenuItem
-                onClick={(e) => {
+                onClick={(e: string) => {
                     console.log(e);
                 }}
             >
