@@ -1737,7 +1737,7 @@ const Card = (props) => {
         cardFooter));
 };
 
-var css_248z$9 = ".DrawerContainer {\n  position: absolute;\n  display: flex;\n  flex-direction: column;\n  padding: 8px;\n  background: #e0f5ff;\n  color: #6c747e;\n  width: 257px;\n  height: 100vh;\n  overflow-y: auto;\n}\n\n@keyframes slide-in-left {\n  0% {\n    transform: translateX(-100%);\n  }\n\n  100% {\n    transform: translateX(0%);\n    transition: margin 300ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;\n  }\n}\n\n.DrawerContainer-left {\n  left: 0;\n  top: 0;\n  animation: slide-in-left 0.3s ease-in-out forwards;\n}\n\n@keyframes slide-in-right {\n  0% {\n    transform: translateX(100%);\n  }\n\n  100% {\n    transform: translateX(0%);\n    transition: margin 300ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;\n  }\n}\n\n.DrawerContainer-right {\n  right: 0;\n  top: 0;\n  animation: slide-in-right 0.3s ease-in-out forwards;\n}";
+var css_248z$9 = ".DrawerContainer {\n  position: absolute;\n  z-index: 200;\n  display: flex;\n  flex-direction: column;\n  padding: 8px;\n  background: #e0f5ff;\n  color: #6c747e;\n  width: 257px;\n  height: 100vh;\n  overflow-y: auto;\n}\n\n@keyframes slide-in-left {\n  0% {\n    transform: translateX(-100%);\n  }\n\n  100% {\n    transform: translateX(0%);\n    transition: margin 300ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;\n  }\n}\n\n.DrawerContainer-left {\n  left: 0;\n  top: auto;\n  animation: slide-in-left 0.3s ease-in-out forwards;\n}\n\n@keyframes slide-in-right {\n  0% {\n    transform: translateX(100%);\n  }\n\n  100% {\n    transform: translateX(0%);\n    transition: margin 300ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;\n  }\n}\n\n.DrawerContainer-right {\n  right: 0;\n  top: auto;\n  animation: slide-in-right 0.3s ease-in-out forwards;\n}";
 styleInject(css_248z$9);
 
 const Drawer = ({ align = 'left', width, bg, color, className, style, isOpen = true, children }) => {
@@ -1849,12 +1849,12 @@ const Input = (props) => {
                     React.createElement("span", { className: "InputAddOn-item", "data-testid": "oranment" }, ornament)))))));
 };
 
-var css_248z$6 = ".NavBarContainer-top,\n.NavBarContainer-bottom {\n  position: absolute;\n  padding: 8px 0px;\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  background: #e0f5ff;\n  color: #6c747e;\n  transition: all 0.5s;\n}\n\n.NavBarContainer-top {\n  top: 0\n}\n\n.NavBarContainer-bottom {\n  bottom: 0;\n}";
+var css_248z$6 = ".NavBarContainer-top {\n  z-index: 1200;\n  padding: 8px 0px;\n  display: flex;\n  position: relative;\n  width: 100%;\n  flex-direction: row;\n  background: #e0f5ff;\n  color: #6c747e;\n  transition: all 0.5s;\n}";
 styleInject(css_248z$6);
 
-const NavBar = ({ align = 'top', width, bg, color, style, children }) => {
+const NavBar = ({ width, bg, color, style, children }) => {
     const navBarStyles = Object.assign({ width, backgroundColor: bg, color }, style);
-    return (React.createElement("div", { className: `NavBarContainer-${align}`, style: navBarStyles, "data-testid": "navbarComponent" }, children));
+    return (React.createElement("div", { className: `NavBarContainer-top`, style: navBarStyles, "data-testid": "navbarComponent" }, children));
 };
 
 const RightArrow = () => {

@@ -1,5 +1,6 @@
 .DrawerContainer {
   position: absolute;
+  z-index: 200;
   display: flex;
   flex-direction: column;
   padding: 8px;
@@ -23,7 +24,7 @@
 
 .DrawerContainer-left {
   left: 0;
-  top: 0;
+  top: auto;
   animation: slide-in-left 0.3s ease-in-out forwards;
 }
 
@@ -40,6 +41,6 @@
 
 .DrawerContainer-right {
   right: 0;
-  top: 0;
+  top: auto;
   animation: slide-in-right 0.3s ease-in-out forwards;
 }

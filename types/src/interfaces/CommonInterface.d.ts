@@ -106,7 +106,6 @@ export interface MenuItemProps {
     value?: string;
 }
 export interface NavBarProps {
-    align?: string;
     width?: string;
     bg?: string;
     color?: string;
