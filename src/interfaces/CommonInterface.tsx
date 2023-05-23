@@ -59,13 +59,13 @@ export interface DrawerProps {
     className?: string;
     style?: React.CSSProperties;
     isOpen?: boolean;
-    children?: string;
+    children?: React.ReactNode;
 }
 
 export interface IconButtonProps {
     className?: string;
     multiple?: boolean;
-    children?: string;
+    children?: React.ReactNode;
     type?: string;
     onClick?: () => void;
 }
@@ -121,7 +121,7 @@ export interface NavBarProps {
     bg?: string;
     color?: string;
     style?: React.CSSProperties;
-    children?: string;
+    children?: React.ReactNode;
 }
 export interface SelectProps {
     option?: string[];
@@ -139,7 +139,7 @@ export interface StackProps {
     spacing?: number;
     wrap?: boolean;
     style?: React.CSSProperties;
-    children?: string;
+    children?: React.ReactNode;
 }
 
 export interface SwitchProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {

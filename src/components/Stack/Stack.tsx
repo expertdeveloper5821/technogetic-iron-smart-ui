@@ -14,7 +14,7 @@ export const Stack: React.FC<StackProps> = ({ align = 'start', direction = 'colu
     };
 
     return (
-        <div className="StackContainer" style={stackStyles}>
+        <div className={`StackContainer ${direction === 'column' ? 'column' : 'row'}`} style={stackStyles}>
             {children}
         </div>
     );

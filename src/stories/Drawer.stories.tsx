@@ -11,52 +11,52 @@ export default {
 
 const Template: ComponentStory<typeof Drawer> = (args) => {
     const [isOpen, setIsOpen] = useState(false);
-
     const handleClick = () => {
         setIsOpen(!isOpen);
     };
-
     return (
-        <div>
+        <>
             <Button onClick={handleClick}>Toggle Drawer</Button>
             <Drawer {...args} isOpen={isOpen}>
-                <MenuItem
-                    onClick={(e: string) => {
-                        console.log(e);
-                    }}
-                >
-                    Item-1
-                </MenuItem>
-                <MenuItem
-                    onClick={(e: string) => {
-                        console.log(e);
-                    }}
-                >
-                    Item-2
-                </MenuItem>
-                <MenuItem
-                    onClick={(e: string) => {
-                        console.log(e);
-                    }}
-                >
-                    Item-3
-                </MenuItem>
-                <MenuItem
-                    onClick={(e: string) => {
-                        console.log(e);
-                    }}
-                >
-                    Item-4
-                </MenuItem>
-                <MenuItem
-                    onClick={(e: string) => {
-                        console.log(e);
-                    }}
-                >
-                    Item-5
-                </MenuItem>
+                <>
+                    <MenuItem
+                        onClick={(e: string) => {
+                            console.log(e);
+                        }}
+                    >
+                        Item-1
+                    </MenuItem>
+                    <MenuItem
+                        onClick={(e: string) => {
+                            console.log(e);
+                        }}
+                    >
+                        Item-2
+                    </MenuItem>
+                    <MenuItem
+                        onClick={(e: string) => {
+                            console.log(e);
+                        }}
+                    >
+                        Item-3
+                    </MenuItem>
+                    <MenuItem
+                        onClick={(e: string) => {
+                            console.log(e);
+                        }}
+                    >
+                        Item-4
+                    </MenuItem>
+                    <MenuItem
+                        onClick={(e: string) => {
+                            console.log(e);
+                        }}
+                    >
+                        Item-5
+                    </MenuItem>
+                </>
             </Drawer>
-        </div>
+        </>
     );
 };
 

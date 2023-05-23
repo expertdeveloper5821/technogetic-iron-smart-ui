@@ -1657,7 +1657,7 @@ const CloseIcon = () => {
 var css_248z$d = ".alert {\n    padding: 10px;\n    border-radius: 5px;\n    display: flex;\n    justify-content: space-between;\n}\n\nspan.AlertSpan {\n    align-self: center;\n}\n\n.alert-success {\n    border: 2px solid #78d178;\n    background-color: #d1ffcd;\n}\n\n.alert-failure {\n    border: 2px solid #d17878;\n    background-color: rgb(255, 205, 205);\n}\n\n.alert-warning {\n    border: 2px solid #ecdd68;\n    background-color: #faf4c7;\n}\n\n.closeIcon {\n    cursor: pointer;\n}";
 styleInject(css_248z$d);
 
-const Alert = ({ message, type = 'success', timeout = 3000, isClosable = true, className }) => {
+const Alert = ({ message, type = 'success', timeout, isClosable = true, className }) => {
     const [isOpen, setIsOpen] = useState$1(true);
     const handleClose = () => {
         setIsOpen(false);
@@ -1710,7 +1710,7 @@ const Card = (props) => {
         React__default.createElement("img", { className: "cardImg", src: cardheaderimg, alt: "Image Cap", style: { height: height } })));
     const cardFooter = React__default.createElement("div", { className: "cardFooter" }, props.children);
     return (React__default.createElement("div", Object.assign({}, props, { className: className ? className : `card noBorderCard ` }),
-        cardHeader,
+        cardheaderimg ? cardHeader : '',
         React__default.createElement("div", { style: { padding }, className: "cardBody" },
             React__default.createElement("div", { className: "cardTitle" }, title),
             React__default.createElement("p", { className: "cardDesc" }, cardbody)),
@@ -1935,7 +1935,7 @@ const Select = (_a) => {
 
 const Stack = ({ align = 'start', direction = 'column', isInline = false, justify = 'start', spacing = 0, wrap = false, style, children }) => {
     const stackStyles = Object.assign({ display: isInline ? 'inline-flex' : 'flex', flexDirection: direction, alignItems: align, justifyContent: justify, flexWrap: wrap ? 'wrap' : 'nowrap', gap: spacing ? `${spacing}px` : '0px' }, style);
-    return (React__default.createElement("div", { className: "StackContainer", style: stackStyles }, children));
+    return (React__default.createElement("div", { className: `StackContainer ${direction === 'column' ? 'column' : 'row'}`, style: stackStyles }, children));
 };
 
 const Switch = (props) => {

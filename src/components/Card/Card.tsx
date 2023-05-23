@@ -15,7 +15,8 @@ export const Card = (props: React.PropsWithChildren<CardProps>) => {
 
     return (
         <div {...props} className={className ? className : `card noBorderCard `}>
-            {cardHeader}
+            {cardheaderimg ? cardHeader : ''}
+
             <div style={{ padding }} className="cardBody">
                 <div className="cardTitle">{title}</div>
                 <p className="cardDesc">{cardbody}</p>
