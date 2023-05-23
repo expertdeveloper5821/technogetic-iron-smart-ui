@@ -4,7 +4,7 @@ import { AlertProps } from '../../interfaces/CommonInterface';
 import '../../commonstyle/commonstyle.css';
 import './Alert.css';
 
-export const Alert: React.FC<AlertProps> = ({ message, type = 'success', timeout = 3000, isClosable = true, className }) => {
+export const Alert: React.FC<AlertProps> = ({ message, type = 'success', timeout, isClosable = true, className }) => {
     const [isOpen, setIsOpen] = useState(true);
     const handleClose = () => {
         setIsOpen(false);
