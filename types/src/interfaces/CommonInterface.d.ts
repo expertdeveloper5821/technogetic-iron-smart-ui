@@ -74,6 +74,7 @@ export interface InputProps extends React.DetailedHTMLProps<React.InputHTMLAttri
     className?: string;
     adornment?: string;
     ornament?: string;
+    error?: boolean;
 }
 export interface subMenuInterface {
     label?: string;
@@ -135,13 +136,36 @@ export interface SwitchProps extends React.DetailedHTMLProps<React.InputHTMLAttr
     name?: string;
     checked?: boolean;
 }
+export interface TableProps {
+    children?: React.ReactNode;
+    className?: string;
+}
+export interface TableBodyProps {
+    children?: React.ReactNode;
+}
+export interface TableCellProps {
+    align?: 'center' | 'start' | 'end';
+    children?: React.ReactNode;
+    className?: string;
+}
+export interface TableHeadProps {
+    children?: React.ReactNode;
+    className?: string;
+}
+export interface TableHeaderProps {
+    children?: React.ReactNode;
+}
+export interface TableRowProps {
+    children?: React.ReactNode;
+    className?: string;
+}
 export interface TextAreaInputProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement> {
     placeholder?: string;
     onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
     rows?: number;
     cols?: number;
     className?: string;
-    form?: string;
+    error?: boolean;
 }
 export interface TooltipProps {
     text?: string;

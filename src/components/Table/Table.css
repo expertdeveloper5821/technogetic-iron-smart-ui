@@ -1,47 +1,16 @@
-.mainTable {
+.table-container {
+    border: 1px solid #dddddd;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+table.mainTable {
+    border: 0px;
+    outline: 0;
     border-collapse: collapse;
-    border: none;
-    font-family: sans-serif;
-    overflow-x: auto;
-    display: block;
+    width: 100%;
 }
 
-.tableHeader {
-    background-color: #f1f1f1;
-    padding: 12px;
-    margin: 10px 0 10px 0;
-    font-weight: 600;
-    text-align: left;
-    font-size: 15px;
-    color: #2c3e50;
-}
-
-.tableHeader:first-child {
-    border-top-left-radius: 12px;
-}
-
-.tableHeader:last-child {
-    border-top-right-radius: 12px;
-}
-
-.tableRowItem:nth-child(odd) {
-    background-color: #f9f9f9;
-}
-
-.tableRowItem:last-child {
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-}
-
-.tableRowCell {
-    padding: 12px;
-    font-size: 14px;
-    color: grey;
-    text-align: left;
-}
-
-.tableBtn {
-    cursor: pointer;
-    border: 0;
-    background-color: transparent;
+table {
+    border-radius: 15px;
 }
