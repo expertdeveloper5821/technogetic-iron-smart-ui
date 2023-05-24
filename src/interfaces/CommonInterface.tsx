@@ -82,6 +82,7 @@ export interface InputProps extends React.DetailedHTMLProps<React.InputHTMLAttri
     className?: string;
     adornment?: string;
     ornament?: string;
+    error?: boolean;
 }
 
 export interface subMenuInterface {
@@ -155,7 +156,7 @@ export interface TextAreaInputProps extends React.DetailedHTMLProps<React.InputH
     rows?: number;
     cols?: number;
     className?: string;
-    form?: string;
+    error?: boolean;
 }
 
 export interface TooltipProps {

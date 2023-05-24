@@ -59,10 +59,22 @@ input.InputAddOn-field:focus {
 }
 
 .commonInputDiv:focus-within,
-.combinedInputField:focus-within {
-    border: 0.4px solid #0094DA;
+.combinedInputField:focus-within,
+.error.commonInputDiv,
+.error.combinedInputField {
     border-radius: 6px;
     background: transparent;
+}
+
+.commonInputDiv:focus-within,
+.combinedInputField:focus-within {
+    border: 0.4px solid #0094DA;
+}
+
+.error.commonInputDiv,
+.error.combinedInputField {
+    border: 0.4px solid red;
+
 }
 
 input[type='text'],

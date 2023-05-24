@@ -15,7 +15,8 @@ Primary.args = {
         console.log('onChange', e.target.value);
     },
     placeholder: 'I am a placeholder',
-    type: 'password'
+    type: 'password',
+    error: false
 };
 
 export const TextField = Template.bind({});
@@ -25,7 +26,8 @@ TextField.args = {
     },
     placeholder: 'I am a placeholder',
     label: 'Hello, world',
-    type: 'text'
+    type: 'text',
+    error: false
 };
 
 export const Adornment = Template.bind({});
@@ -35,7 +37,8 @@ Adornment.args = {
     },
     placeholder: 'I am a placeholder',
     adornment: '₹',
-    type: 'email'
+    type: 'email',
+    error: false
 };
 
 export const ornament = Template.bind({});
@@ -45,5 +48,6 @@ ornament.args = {
     },
     placeholder: 'I am a placeholder',
     ornament: '@',
-    type: 'text'
+    type: 'text',
+    error: false
 };

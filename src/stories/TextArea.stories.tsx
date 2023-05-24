@@ -13,5 +13,6 @@ export const Primary = Template.bind({});
 Primary.args = {
     onChange: function (e: any): void {
         console.log('onChange', e.target.value);
-    }
+    },
+    error: false
 };
