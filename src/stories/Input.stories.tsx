@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Input } from '../components/Input/Input';
 
@@ -11,7 +11,7 @@ const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-    onChange: function (e: any): void {
+    onChange: function (e: ChangeEvent<HTMLInputElement>): void {
         console.log('onChange', e.target.value);
     },
     placeholder: 'I am a placeholder',
@@ -21,7 +21,7 @@ Primary.args = {
 
 export const TextField = Template.bind({});
 TextField.args = {
-    onChange: function (e: any): void {
+    onChange: function (e: ChangeEvent<HTMLInputElement>): void {
         console.log('onChange', e.target.value);
     },
     placeholder: 'I am a placeholder',
@@ -32,7 +32,7 @@ TextField.args = {
 
 export const Adornment = Template.bind({});
 Adornment.args = {
-    onChange: function (e: any): void {
+    onChange: function (e: ChangeEvent<HTMLInputElement>): void {
         console.log('onChange', e.target.value);
     },
     placeholder: 'I am a placeholder',
@@ -43,7 +43,7 @@ Adornment.args = {
 
 export const ornament = Template.bind({});
 ornament.args = {
-    onChange: function (e: any): void {
+    onChange: function (e: ChangeEvent<HTMLInputElement>): void {
         console.log('onChange', e.target.value);
     },
     placeholder: 'I am a placeholder',
