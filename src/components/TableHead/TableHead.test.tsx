@@ -7,7 +7,11 @@ describe('TableHead', () => {
     test('renders the table header with default class name', () => {
         const { getByText } = render(
             <table>
-                <TableHead>Header Text</TableHead>
+                <thead>
+                    <tr>
+                        <TableHead>Header Text</TableHead>
+                    </tr>
+                </thead>
             </table>
         );
         const tableHeader = getByText('Header Text');
@@ -20,7 +24,11 @@ describe('TableHead', () => {
     test('renders the table header with custom class name', () => {
         const { getByText } = render(
             <table>
-                <TableHead className="customClassName">Header Text</TableHead>
+                <thead>
+                    <tr>
+                        <TableHead className="customClassName">Header Text</TableHead>
+                    </tr>
+                </thead>
             </table>
         );
         const tableHeader = getByText('Header Text');

@@ -8,14 +8,6 @@
     display: flex;
 }
 
-.adornmentContent {
-    border-right: 0px;
-}
-
-.oranmentContent {
-    border-left: 0px;
-}
-
 
 .adornmentContent,
 .oranmentContent {
@@ -58,6 +50,7 @@
 
 .oranmentContent {
     border-left: 0;
+    border-left: 0px;
 }
 
 .commonInputDiv input:focus,

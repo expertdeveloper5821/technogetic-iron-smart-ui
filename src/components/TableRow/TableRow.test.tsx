@@ -5,7 +5,15 @@ import '@testing-library/jest-dom';
 
 describe('TableRow component', () => {
     test('renders table row with default className', () => {
-        const { container } = render(<TableRow>Table row content</TableRow>);
+        const { container } = render(
+            <table>
+                <tbody>
+                    <TableRow>
+                        <td>Table row content</td>
+                    </TableRow>
+                </tbody>
+            </table>
+        );
 
         const tableRowElement = container.querySelector('tr');
         expect(tableRowElement).toBeInTheDocument();
@@ -13,7 +21,15 @@ describe('TableRow component', () => {
     });
 
     test('renders table row with custom className', () => {
-        const { container } = render(<TableRow className="customTableRow">Table row content</TableRow>);
+        const { container } = render(
+            <table>
+                <tbody>
+                    <TableRow className="customTableRow">
+                        <td>Table row content</td>
+                    </TableRow>
+                </tbody>
+            </table>
+        );
 
         const tableRowElement = container.querySelector('tr');
         expect(tableRowElement).toBeInTheDocument();

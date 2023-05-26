@@ -6,11 +6,19 @@ import '@testing-library/jest-dom';
 describe('TableHeader', () => {
     test('renders table header correctly', () => {
         const headerText = 'Table Header';
-        const { getByText } = render(<TableHeader>{headerText}</TableHeader>);
+        const { getByText } = render(
+            <table>
+                <TableHeader>
+                    <tr>
+                        <th>{headerText}</th>
+                    </tr>
+                </TableHeader>
+            </table>
+        );
 
         const headerElement = getByText(headerText);
 
         expect(headerElement).toBeInTheDocument();
-        expect(headerElement.tagName).toBe('THEAD');
+        expect(headerElement.tagName).toBe('TH');
     });
 });

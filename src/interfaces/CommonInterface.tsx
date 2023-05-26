@@ -33,11 +33,11 @@ export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonE
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
     disabled?: boolean;
     className?: string;
-    label?: string | number;
     type?: string;
     multiple?: boolean;
     startIcon?: string;
     endIcon?: string;
+    children?: string | number;
 }
 
 export interface CardProps {

@@ -4,7 +4,7 @@ import '../../commonstyle/commonstyle.css';
 import './Button.css';
 
 export const Button = (props: React.PropsWithChildren<ButtonProps>) => {
-    const { label, bg, color, varient = 'borderLess', onClick, disabled = false, className, type = 'button', multiple = false, startIcon, endIcon } = props;
+    const { bg, color, varient = 'borderLess', onClick, disabled = false, className, type = 'button', multiple = false, startIcon, endIcon, children } = props;
 
     return (
         <>
@@ -17,14 +17,14 @@ export const Button = (props: React.PropsWithChildren<ButtonProps>) => {
                     disabled={disabled}
                 >
                     {startIcon && <span className="start-button-icon">{startIcon}</span>}
-                    {label ? label : 'Button'}
+                    {children ? children : 'Button'}
                     {endIcon && <span className="end-button-icon">{endIcon}</span>}
                 </button>
             ) : (
                 <>
                     <input className="uploadFile" type="file" hidden multiple={multiple} id="upload-btn" />
                     <label className={`${className ? className : `button button-${varient}`}${disabled ? `button_disabled` : ''}`} htmlFor="upload-btn">
-                        {label ? label : 'Upload Button'}
+                        {children ? children : 'Upload Button'}
                     </label>
                 </>
             )}

@@ -48,11 +48,11 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z$i = "* {\n  font-size: 16px;\n  line-height: 22px;\n  font-family: 'Open Sans';\n  font-weight: 400;\n}";
-styleInject(css_248z$i);
+var css_248z$j = "* {\n  font-size: 16px;\n  line-height: 22px;\n  font-family: 'Open Sans';\n  font-weight: 400;\n}";
+styleInject(css_248z$j);
 
-var css_248z$h = ".avatarContainer,\nimg.avatarImage {\n  cursor: pointer;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  object-fit: cover;\n}\n\nspan.avatarInitials {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  background-color: #0094DA;\n  color: #f1f1f1;\n}";
-styleInject(css_248z$h);
+var css_248z$i = ".avatarContainer,\nimg.avatarImage {\n  cursor: pointer;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  object-fit: cover;\n}\n\nspan.avatarInitials {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  background-color: #0094DA;\n  color: #f1f1f1;\n}";
+styleInject(css_248z$i);
 
 const Avatar = ({ name = 'K', src, alt = 'avatar', size = 50, className, onClick }) => {
     const getInitials = (name) => {
@@ -1670,12 +1670,12 @@ const AuthHOC = (WrappedComponent) => {
 };
 
 const CloseIcon = () => {
-    return (React.createElement("svg", { height: "20", width: "20", viewBox: "0 0 20 20" },
+    return (React.createElement("svg", { height: "15", width: "20", viewBox: "0 0 25 15" },
         React.createElement("path", { d: "M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z" })));
 };
 
-var css_248z$g = ".alert {\n    padding: 10px;\n    border-radius: 5px;\n    display: flex;\n    justify-content: space-between;\n}\n\nspan.AlertSpan {\n    align-self: center;\n}\n\n.alert-success {\n    border: 2px solid #78d178;\n    background-color: #d1ffcd;\n}\n\n.alert-failure {\n    border: 2px solid #d17878;\n    background-color: rgb(255, 205, 205);\n}\n\n.alert-warning {\n    border: 2px solid #ecdd68;\n    background-color: #faf4c7;\n}\n\n.closeIcon {\n    cursor: pointer;\n}";
-styleInject(css_248z$g);
+var css_248z$h = ".alert {\n    padding: 10px;\n    border-radius: 5px;\n    display: flex;\n    justify-content: space-between;\n}\n\nspan.AlertSpan {\n    align-self: center;\n}\n\n.alert-success {\n    border: 2px solid #78d178;\n    background-color: #d1ffcd;\n}\n\n.alert-failure {\n    border: 2px solid #d17878;\n    background-color: rgb(255, 205, 205);\n}\n\n.alert-warning {\n    border: 2px solid #ecdd68;\n    background-color: #faf4c7;\n}\n\n.closeIcon {\n    cursor: pointer;\n}";
+styleInject(css_248z$h);
 
 const Alert = ({ message, type = 'success', timeout, isClosable = true, className }) => {
     const [isOpen, setIsOpen] = React.useState(true);
@@ -1700,29 +1700,29 @@ const Alert = ({ message, type = 'success', timeout, isClosable = true, classNam
             React.createElement(CloseIcon, null)))));
 };
 
-var css_248z$f = "span.badge {\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 20px;\n  height: 20px;\n  padding: 4px;\n  border-radius: 50%;\n  text-align: center;\n}\n\nspan.badge.badge-primary {\n  background-color: #0788dd;\n  color: white;\n}\n\nspan.badge.badge-success {\n  background-color: #78d178;\n  color: white;\n}\n\nspan.badge.badge-danger {\n  background-color: #d17878;\n  color: white;\n}\n\nspan.badge.badge-warning {\n  background-color: #ecdd68;\n  color: white;\n}";
-styleInject(css_248z$f);
+var css_248z$g = "span.badge {\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 20px;\n  height: 20px;\n  padding: 4px;\n  border-radius: 50%;\n  text-align: center;\n}\n\nspan.badge.badge-primary {\n  background-color: #0788dd;\n  color: white;\n}\n\nspan.badge.badge-success {\n  background-color: #78d178;\n  color: white;\n}\n\nspan.badge.badge-danger {\n  background-color: #d17878;\n  color: white;\n}\n\nspan.badge.badge-warning {\n  background-color: #ecdd68;\n  color: white;\n}";
+styleInject(css_248z$g);
 
 const Badge = ({ label, type = 'primary', className, max = 11 }) => {
     const displayLabel = label > max ? `${max}+` : label;
     return (React.createElement("span", { className: className ? className : `badge badge-${type}`, "data-testid": "tooltip" }, displayLabel));
 };
 
-var css_248z$e = "label.button,\nbutton {\n    cursor: pointer;\n    border-radius: 6px;\n    padding: 10px;\n    text-align: center;\n}\n\nlabel.borderLess,\n.button-borderLess {\n    border: 0;\n    outline: 0;\n    background: transparent;\n    color: #4ab3e9;\n}\n\nlabel.button-borderLess:hover,\n.button-borderLess:hover {\n    background: #E9EAEC\n}\n\nlabel.button-contained,\n.button-contained {\n    background: #4ab3e9;\n    color: white;\n    border: 0;\n}\n\nlabel.button-contained:hover,\n.button-contained:hover {\n    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\n    background: #0c8ce9;\n}\n\nlabel.button-outline,\n.button-outline {\n    border: 0.4px solid #4ab3e9;\n    background-color: transparent;\n    color: #4ab3e9\n}\n\nlabel.button-outline:hover,\n.button-outline:hover {\n    background: #0c8ce9;\n    color: white;\n}\n\nbutton.button.button-contained.Icon {\n    display: inline-flex;\n    align-items: center;\n}\n\nspan.start-button-icon {\n    display: inherit;\n    margin-right: 8px;\n    margin-left: -4px;\n}\n\nspan.end-button-icon {\n    display: inherit;\n    margin-right: -4px;\n    margin-left: 8px;\n}\n\nsvg.button-icon-svg {\n    font-size: 19px;\n}\n\n.button-icon-svg {\n    user-select: none;\n    width: 1em;\n    height: 1em;\n    display: inline-block;\n    fill: currentColor;\n}";
-styleInject(css_248z$e);
+var css_248z$f = "label.button,\nbutton {\n    cursor: pointer;\n    border-radius: 6px;\n    padding: 10px;\n    text-align: center;\n}\n\nlabel.borderLess,\n.button-borderLess {\n    border: 0;\n    outline: 0;\n    background: transparent;\n    color: #4ab3e9;\n}\n\nlabel.button-borderLess:hover,\n.button-borderLess:hover {\n    background: #E9EAEC\n}\n\nlabel.button-contained,\n.button-contained {\n    background: #4ab3e9;\n    color: white;\n    border: 0;\n}\n\nlabel.button-contained:hover,\n.button-contained:hover {\n    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\n    background: #0c8ce9;\n}\n\nlabel.button-outline,\n.button-outline {\n    border: 0.4px solid #4ab3e9;\n    background-color: transparent;\n    color: #4ab3e9\n}\n\nlabel.button-outline:hover,\n.button-outline:hover {\n    background: #0c8ce9;\n    color: white;\n}\n\nbutton.button.button-contained.Icon {\n    display: inline-flex;\n    align-items: center;\n}\n\nspan.start-button-icon {\n    display: inherit;\n    margin-right: 8px;\n    margin-left: -4px;\n}\n\nspan.end-button-icon {\n    display: inherit;\n    margin-right: -4px;\n    margin-left: 8px;\n}\n\nsvg.button-icon-svg {\n    font-size: 19px;\n}\n\n.button-icon-svg {\n    user-select: none;\n    width: 1em;\n    height: 1em;\n    display: inline-block;\n    fill: currentColor;\n}";
+styleInject(css_248z$f);
 
 const Button = (props) => {
-    const { label, bg, color, varient = 'borderLess', onClick, disabled = false, className, type = 'button', multiple = false, startIcon, endIcon } = props;
+    const { bg, color, varient = 'borderLess', onClick, disabled = false, className, type = 'button', multiple = false, startIcon, endIcon, children } = props;
     return (React.createElement(React.Fragment, null, type === 'button' ? (React.createElement("button", Object.assign({}, props, { type: "button", className: `${className ? className : `button button-${varient}`}${disabled ? `button_disabled` : ''} ${startIcon ? 'Icon' : ''} ${endIcon ? 'Icon' : ''}`, onClick: onClick, disabled: disabled }),
         startIcon && React.createElement("span", { className: "start-button-icon" }, startIcon),
-        label ? label : 'Button',
+        children ? children : 'Button',
         endIcon && React.createElement("span", { className: "end-button-icon" }, endIcon))) : (React.createElement(React.Fragment, null,
         React.createElement("input", { className: "uploadFile", type: "file", hidden: true, multiple: multiple, id: "upload-btn" }),
-        React.createElement("label", { className: `${className ? className : `button button-${varient}`}${disabled ? `button_disabled` : ''}`, htmlFor: "upload-btn" }, label ? label : 'Upload Button')))));
+        React.createElement("label", { className: `${className ? className : `button button-${varient}`}${disabled ? `button_disabled` : ''}`, htmlFor: "upload-btn" }, children ? children : 'Upload Button')))));
 };
 
-var css_248z$d = ".card {\n    background-color: #fff;\n    color: rgba(0, 0, 0, 0.87);\n    border-radius: 4px;\n    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);\n    overflow: hidden;\n    max-width: 345px;\n}\n\n.noBorderCard {\n    border: none;\n}\n\n.cardHead,\n.cardFooter {\n    text-align: center;\n    align-items: center;\n    justify-content: center;\n}\n\n.cardHead {\n    margin: 0;\n    font-weight: 500;\n    background: #D9D9D9;\n}\n\nimg.cardImg {\n    display: block;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center;\n    width: 100%;\n    object-fit: cover;\n}\n\n.cardBody {\n    padding: 16px;\n}\n\n.cardFooter {\n    padding: 8px;\n    justify-content: start;\n    display: flex;\n}\n\n.cardTitle {\n    margin: 0;\n    font-size: 24px;\n    font-weight: 600;\n    line-height: 2.043;\n    margin-bottom: 0.35em;\n}\n\n.cardFooter,\np.cardDesc {\n    margin: 0;\n    color: #858585;\n}\n\np.cardDesc {\n    font-size: 0.875rem;\n    line-height: 1.43;\n    letter-spacing: 0.01071em;\n}";
-styleInject(css_248z$d);
+var css_248z$e = ".card {\n    background-color: #fff;\n    color: rgba(0, 0, 0, 0.87);\n    border-radius: 4px;\n    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);\n    overflow: hidden;\n    max-width: 345px;\n}\n\n.noBorderCard {\n    border: none;\n}\n\n.cardHead,\n.cardFooter {\n    text-align: center;\n    align-items: center;\n    justify-content: center;\n}\n\n.cardHead {\n    margin: 0;\n    font-weight: 500;\n    background: #D9D9D9;\n}\n\nimg.cardImg {\n    display: block;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center;\n    width: 100%;\n    object-fit: cover;\n}\n\n.cardBody {\n    padding: 16px;\n}\n\n.cardFooter {\n    padding: 8px;\n    justify-content: start;\n    display: flex;\n}\n\n.cardTitle {\n    margin: 0;\n    font-size: 24px;\n    font-weight: 600;\n    line-height: 2.043;\n    margin-bottom: 0.35em;\n}\n\n.cardFooter,\np.cardDesc {\n    margin: 0;\n    color: #858585;\n}\n\np.cardDesc {\n    font-size: 0.875rem;\n    line-height: 1.43;\n    letter-spacing: 0.01071em;\n}";
+styleInject(css_248z$e);
 
 const Card = (props) => {
     const { className, padding, title = 'Title of Your Card', cardbody = 'This is the Body Section', border, cardheaderimg, height = '150px' } = props;
@@ -1737,8 +1737,8 @@ const Card = (props) => {
         cardFooter));
 };
 
-var css_248z$c = ".DrawerContainer {\n  position: absolute;\n  z-index: 200;\n  display: flex;\n  flex-direction: column;\n  padding: 8px;\n  background: #e0f5ff;\n  color: #6c747e;\n  width: 257px;\n  height: 100vh;\n  overflow-y: auto;\n}\n\n@keyframes slide-in-left {\n  0% {\n    transform: translateX(-100%);\n  }\n\n  100% {\n    transform: translateX(0%);\n    transition: margin 300ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;\n  }\n}\n\n.DrawerContainer-left {\n  left: 0;\n  top: auto;\n  animation: slide-in-left 0.3s ease-in-out forwards;\n}\n\n@keyframes slide-in-right {\n  0% {\n    transform: translateX(100%);\n  }\n\n  100% {\n    transform: translateX(0%);\n    transition: margin 300ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;\n  }\n}\n\n.DrawerContainer-right {\n  right: 0;\n  top: auto;\n  animation: slide-in-right 0.3s ease-in-out forwards;\n}";
-styleInject(css_248z$c);
+var css_248z$d = ".DrawerContainer {\n  position: absolute;\n  z-index: 200;\n  display: flex;\n  flex-direction: column;\n  padding: 8px;\n  background: #e0f5ff;\n  color: #6c747e;\n  width: 257px;\n  height: 100vh;\n  overflow-y: auto;\n}\n\n@keyframes slide-in-left {\n  0% {\n    transform: translateX(-100%);\n  }\n\n  100% {\n    transform: translateX(0%);\n    transition: margin 300ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;\n  }\n}\n\n.DrawerContainer-left {\n  left: 0;\n  top: auto;\n  animation: slide-in-left 0.3s ease-in-out forwards;\n}\n\n@keyframes slide-in-right {\n  0% {\n    transform: translateX(100%);\n  }\n\n  100% {\n    transform: translateX(0%);\n    transition: margin 300ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;\n  }\n}\n\n.DrawerContainer-right {\n  right: 0;\n  top: auto;\n  animation: slide-in-right 0.3s ease-in-out forwards;\n}";
+styleInject(css_248z$d);
 
 const Drawer = ({ align = 'left', width, bg, color, className, style, isOpen = true, children }) => {
     const DrawerStyles = Object.assign({ width, backgroundColor: bg, color }, style);
@@ -1755,8 +1755,8 @@ const DeleteIcon = () => {
         React.createElement("path", { d: "M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" })));
 };
 
-var css_248z$b = ".IconButton-Label {\n  border-radius: 50%;\n  cursor: pointer;\n}\n\n.IconButton-Label:hover {\n  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\n}\n\n.IconButton-Label:hover svg.uploadIcon {\n  fill: #0094DA;\n}\n\nsvg.uploadIcon {\n  fill: rgb(45, 56, 67);\n}\n\n.IconButton-Label:hover svg.button-icon-svg {\n  fill: #0094DA;\n}";
-styleInject(css_248z$b);
+var css_248z$c = ".IconButton-Label {\n  border-radius: 50%;\n  cursor: pointer;\n}\n\n.IconButton-Label:hover {\n  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;\n}\n\n.IconButton-Label:hover svg.uploadIcon {\n  fill: #0094DA;\n}\n\nsvg.uploadIcon {\n  fill: rgb(45, 56, 67);\n}\n\n.IconButton-Label:hover svg.button-icon-svg {\n  fill: #0094DA;\n}";
+styleInject(css_248z$c);
 
 const IconButton = (props) => {
     const { children, className, multiple = false, onClick, type = 'button' } = props;
@@ -1808,8 +1808,8 @@ const ClosePassword = () => {
             React.createElement("path", { d: "M8.137 15.147c-.71-.857-1.146-1.947-1.146-3.147 0-2.76 2.241-5 5-5 1.201 0 2.291.435 3.148 1.145l1.897-1.897c-1.441-.738-3.122-1.248-5.035-1.248-6.115 0-10.025 5.355-10.842 6.584.529.834 2.379 3.527 5.113 5.428l1.865-1.865zm6.294-6.294c-.673-.53-1.515-.853-2.44-.853-2.207 0-4 1.792-4 4 0 .923.324 1.765.854 2.439l5.586-5.586zm7.56-6.146l-19.292 19.293-.708-.707 3.548-3.548c-2.298-1.612-4.234-3.885-5.548-6.169 2.418-4.103 6.943-7.576 12.01-7.576 2.065 0 4.021.566 5.782 1.501l3.501-3.501.707.707zm-2.465 3.879l-.734.734c2.236 1.619 3.628 3.604 4.061 4.274-.739 1.303-4.546 7.406-10.852 7.406-1.425 0-2.749-.368-3.951-.938l-.748.748c1.475.742 3.057 1.19 4.699 1.19 5.274 0 9.758-4.006 11.999-8.436-1.087-1.891-2.63-3.637-4.474-4.978zm-3.535 5.414c0-.554-.113-1.082-.317-1.562l.734-.734c.361.69.583 1.464.583 2.296 0 2.759-2.24 5-5 5-.832 0-1.604-.223-2.295-.583l.734-.735c.48.204 1.007.318 1.561.318 2.208 0 4-1.792 4-4z" }))));
 };
 
-var css_248z$a = ".commonInputDiv {\n    border-radius: 6px;\n    padding: 8px;\n    user-select: none;\n}\n\n.combinedInputField {\n    display: flex;\n}\n\n.adornmentContent,\n.oranmentContent {\n    padding: 7.5px;\n}\n\n.commonInputDiv,\n.adornmentContent,\n.oranmentContent,\n.adornInputField,\n.oranInputField {\n    background: transparent;\n    border: 0.4px solid rgba(147, 128, 108, 0.25);\n}\n\n.adornmentContent {\n    border-radius: 6px 0px 0px 6px;\n    border-right: 0;\n}\n\n.adornInputField,\n.oranInputField {\n    display: flex;\n    align-items: start;\n    width: 100%;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    padding: 8px;\n}\n\n.adornInputField,\n.oranmentContent {\n    border-radius: 0px 6px 6px 0px;\n}\n\n.oranInputField {\n    border-radius: 6px 0px 0px 6px;\n}\n\n.oranmentContent {\n    border-left: 0;\n}\n\n.commonInputDiv input:focus,\ninput.InputAddOn-field:focus {\n    background: transparent;\n    border: none;\n    outline: none;\n}\n\n.commonInputDiv:focus-within,\n.combinedInputField:focus-within,\n.error.commonInputDiv,\n.error.combinedInputField {\n    border-radius: 6px;\n    background: transparent;\n}\n\n.commonInputDiv:focus-within,\n.combinedInputField:focus-within {\n    border: 0.4px solid #0094DA;\n}\n\n.error.commonInputDiv,\n.error.combinedInputField {\n    border: 0.4px solid red;\n\n}\n\ninput[type='text'],\ninput[type='email'],\ninput[type='password'] {\n    border: 0;\n    width: 100%;\n}\n\nspan.InputAddOn-item {\n    padding: 0px 4px;\n}\n\n.InputAddOn-item {\n    color: #666666;\n}";
-styleInject(css_248z$a);
+var css_248z$b = ".commonInputDiv {\n    border-radius: 6px;\n    padding: 8px;\n    user-select: none;\n}\n\n.combinedInputField {\n    display: flex;\n}\n\n\n.adornmentContent,\n.oranmentContent {\n    padding: 7.5px;\n}\n\n.commonInputDiv,\n.adornmentContent,\n.oranmentContent,\n.adornInputField,\n.oranInputField {\n    background: transparent;\n    border: 0.4px solid rgba(147, 128, 108, 0.25);\n}\n\n.adornmentContent {\n    border-radius: 6px 0px 0px 6px;\n    border-right: 0;\n}\n\n.adornInputField,\n.oranInputField {\n    display: flex;\n    align-items: start;\n    width: 100%;\n    justify-content: space-between;\n    align-items: center;\n    user-select: none;\n    padding: 8px;\n}\n\n.adornInputField,\n.oranmentContent {\n    border-radius: 0px 6px 6px 0px;\n}\n\n.oranInputField {\n    border-radius: 6px 0px 0px 6px;\n}\n\n.oranmentContent {\n    border-left: 0;\n    border-left: 0px;\n}\n\n.commonInputDiv input:focus,\ninput.InputAddOn-field:focus {\n    background: transparent;\n    border: none;\n    outline: none;\n}\n\n.commonInputDiv:focus-within,\n.combinedInputField:focus-within,\n.error.commonInputDiv,\n.error.combinedInputField {\n    border-radius: 6px;\n    background: transparent;\n}\n\n.commonInputDiv:focus-within,\n.combinedInputField:focus-within {\n    border: 0.4px solid #0094DA;\n}\n\n.combinedInputField:focus-within .adornmentContent,\n.combinedInputField:focus-within .adornInputField,\n.combinedInputField:focus-within .oranmentContent,\n.combinedInputField:focus-within .oranInputField {\n    outline: none;\n    border: 0px;\n}\n\n.combinedInputField:focus-within .adornmentContent {\n    border-right: 0.4px solid rgba(147, 128, 108, 0.25);\n}\n\n.combinedInputField:focus-within .oranmentContent {\n    border-left: 0.4px solid rgba(147, 128, 108, 0.25);\n}\n\n.error.commonInputDiv,\n.error.combinedInputField {\n    border: 0.4px solid red;\n\n}\n\ninput[type='text'],\ninput[type='email'],\ninput[type='password'] {\n    border: 0;\n    width: 100%;\n}\n\nspan.InputAddOn-item {\n    padding: 0px 4px;\n}\n\n.InputAddOn-item {\n    color: #666666;\n}";
+styleInject(css_248z$b);
 
 const Input = (props) => {
     const { className = 'inputArea', placeholder, autoFocus = false, disabled = false, type, adornment, required, onChange, ornament, error = false } = props, rest = __rest(props, ["className", "placeholder", "autoFocus", "disabled", "type", "adornment", "required", "onChange", "ornament", "error"]);
@@ -1849,8 +1849,8 @@ const Input = (props) => {
                     React.createElement("span", { className: "InputAddOn-item", "data-testid": "oranment" }, ornament)))))));
 };
 
-var css_248z$9 = ".NavBarContainer-top {\n  z-index: 1200;\n  padding: 8px 0px;\n  display: flex;\n  position: relative;\n  width: 100%;\n  flex-direction: row;\n  background: #e0f5ff;\n  color: #6c747e;\n  transition: all 0.5s;\n}";
-styleInject(css_248z$9);
+var css_248z$a = ".NavBarContainer-top {\n  z-index: 1200;\n  padding: 8px 0px;\n  display: flex;\n  position: relative;\n  width: 100%;\n  flex-direction: row;\n  background: #e0f5ff;\n  color: #6c747e;\n  transition: all 0.5s;\n}";
+styleInject(css_248z$a);
 
 const NavBar = ({ width, bg, color, style, children }) => {
     const navBarStyles = Object.assign({ width, backgroundColor: bg, color }, style);
@@ -1862,8 +1862,8 @@ const RightArrow = () => {
         React.createElement("path", { d: "M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z" })));
 };
 
-var css_248z$8 = ".menuContainer {\n  background: transparent;\n  color: black;\n  width: 100%;\n}\n\n.menuLinkContainer,\n.menuDropDownIcon,\n.MenuType {\n  transition: all 0.5s;\n}\n\n.menuLinkContainer {\n  place-content: start;\n  gap: 15px;\n  padding: 8px 8px 8px 16px;\n  align-items: center;\n}\n\n.menuLinkContainer,\n.menuChild {\n  cursor: pointer;\n  display: flex;\n  color: #6c747d;\n}\n\n.menuLinkContainer:hover,\nspan.menusText:hover {\n  border-radius: 8px;\n  color: #0094DA;\n  background: transparent;\n}\n\nsvg.greyColor {\n  fill: #6C757D;\n}\n\n.menuLinkContainer:hover .svg-icon path,\n.menuLinkContainer:hover .greyColor path {\n  fill: #0094DA;\n}\n\na.menuLink,\na.menuLink.active {\n  color: black;\n  text-decoration: none;\n}\n\n.MenuType {\n  margin: 4px 4px 8px 4px;\n}\n\n.menuItem_group_title {\n  padding: 8px 16px;\n  color: rgba(0, 0, 0, .45);\n}\n\n.menuChild {\n  text-decoration: none;\n  text-decoration: none;\n  margin-left: 30px;\n  border: none;\n  outline: none;\n  padding: 10px 14px 10px 14px;\n}\n\n.menuChild:hover {\n  border-radius: 8px;\n  color: #0094DA;\n  background: transparent;\n}\n\n.menuDropDownIcon {\n  display: inline-flex;\n  padding-left: 2px;\n  margin-left: 5px;\n  vertical-align: middle;\n  width: 12px;\n}\n\n.menuDropDownIcon.rotateNintee {\n  transform: rotateNintee(90deg);\n  transform: rotate(90deg) translateX(1px);\n}\n\n.menuItem_group_divider {\n  overflow: hidden;\n  line-height: 0;\n  border-color: rgba(5, 5, 5, .06);\n  border-style: solid;\n  border-width: 0;\n  border-top-width: 2px;\n  margin-block: 2px;\n  margin-block-start: 2px;\n  margin-block-end: 2px;\n  padding: 0;\n}";
-styleInject(css_248z$8);
+var css_248z$9 = ".menuContainer {\n  background: transparent;\n  color: black;\n  width: 100%;\n}\n\n.menuLinkContainer,\n.menuDropDownIcon,\n.MenuType {\n  transition: all 0.5s;\n}\n\n.menuLinkContainer {\n  place-content: start;\n  gap: 15px;\n  padding: 8px 8px 8px 16px;\n  align-items: center;\n}\n\n.menuLinkContainer,\n.menuChild {\n  cursor: pointer;\n  display: flex;\n  color: #6c747d;\n}\n\n.menuLinkContainer:hover,\nspan.menusText:hover {\n  border-radius: 8px;\n  color: #0094DA;\n  background: transparent;\n}\n\nsvg.greyColor {\n  fill: #6C757D;\n}\n\n.menuLinkContainer:hover .svg-icon path,\n.menuLinkContainer:hover .greyColor path {\n  fill: #0094DA;\n}\n\na.menuLink,\na.menuLink.active {\n  color: black;\n  text-decoration: none;\n}\n\n.MenuType {\n  margin: 4px 4px 8px 4px;\n}\n\n.menuItem_group_title {\n  padding: 8px 16px;\n  color: rgba(0, 0, 0, .45);\n}\n\n.menuChild {\n  text-decoration: none;\n  text-decoration: none;\n  margin-left: 30px;\n  border: none;\n  outline: none;\n  padding: 10px 14px 10px 14px;\n}\n\n.menuChild:hover {\n  border-radius: 8px;\n  color: #0094DA;\n  background: transparent;\n}\n\n.menuDropDownIcon {\n  display: inline-flex;\n  padding-left: 2px;\n  margin-left: 5px;\n  vertical-align: middle;\n  width: 12px;\n}\n\n.menuDropDownIcon.rotateNintee {\n  transform: rotateNintee(90deg);\n  transform: rotate(90deg) translateX(1px);\n}\n\n.menuItem_group_divider {\n  overflow: hidden;\n  line-height: 0;\n  border-color: rgba(5, 5, 5, .06);\n  border-style: solid;\n  border-width: 0;\n  border-top-width: 2px;\n  margin-block: 2px;\n  margin-block-start: 2px;\n  margin-block-end: 2px;\n  padding: 0;\n}";
+styleInject(css_248z$9);
 
 const Menu = ({ style, menuData, bg, color, onClick }) => {
     const [subItem, setSubItem] = React.useState(false);
@@ -1895,8 +1895,8 @@ const Menu = ({ style, menuData, bg, color, onClick }) => {
         }))));
 };
 
-var css_248z$7 = "span.menuItem-label {\n  min-height: auto;\n  outline: 0px;\n  border: 0px;\n  margin: 0px;\n  border-radius: 0px;\n  cursor: pointer;\n  user-select: none;\n  vertical-align: middle;\n  display: flex;\n  -webkit-box-pack: start;\n  justify-content: flex-start;\n  -webkit-box-align: center;\n  align-items: center;\n  text-decoration: none;\n  box-sizing: border-box;\n}\n\nspan.menuItem-label:hover {\n  color: #1e9de3;\n}\n\n.selected {\n  background: #EFF2FC;\n}\n\n.notSelected {\n  background: transparent;\n}\n\n.removeGutters {\n  padding: 6px 0px;\n}\n\n.addGutters {\n  padding: 6px 16px;\n}";
-styleInject(css_248z$7);
+var css_248z$8 = "span.menuItem-label {\n  min-height: auto;\n  outline: 0px;\n  border: 0px;\n  margin: 0px;\n  border-radius: 0px;\n  cursor: pointer;\n  user-select: none;\n  vertical-align: middle;\n  display: flex;\n  -webkit-box-pack: start;\n  justify-content: flex-start;\n  -webkit-box-align: center;\n  align-items: center;\n  text-decoration: none;\n  box-sizing: border-box;\n}\n\nspan.menuItem-label:hover {\n  color: #1e9de3;\n}\n\n.selected {\n  background: #EFF2FC;\n}\n\n.notSelected {\n  background: transparent;\n}\n\n.removeGutters {\n  padding: 6px 0px;\n}\n\n.addGutters {\n  padding: 6px 16px;\n}";
+styleInject(css_248z$8);
 
 const MenuItem = ({ autofocus = false, children = 'Menu Item', className, disableGutters = false, onClick, value = children }) => {
     const handleClick = () => {
@@ -1910,8 +1910,8 @@ const DownIcon = () => {
         React.createElement("path", { d: "M7 10l5 5 5-5z" })));
 };
 
-var css_248z$6 = ".selectContainer {\n    display: inline-flex;\n    border: 0.4px solid #C4C4C4;\n    justify-content: space-between;\n    align-items: center;\n}\n\n.selectItems {\n    margin-top: 4px;\n    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n    box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 5px -3px, rgba(0, 0, 0, 0.14) 0px 8px 10px 1px, rgba(0, 0, 0, 0.12) 0px 0px 1px 0px;\n    position: absolute;\n    overflow: hidden auto;\n    outline: 0px;\n    transition: all 300ms ease-in-out;\n}\n\n.selectItems,\n.selectContainer {\n    padding: 4px 8px;\n    color: #6c747e;\n    border-radius: 4px;\n    background: transparent;\n}\n\nsvg.downIcon {\n    display: flex;\n    width: 1em;\n    height: 1em;\n    fill: rgba(0, 0, 0, 0.54);\n}\n\n.selctDownIcon,\n.selectItems {\n    transition: all 0.5s;\n}\n\n.selctDownIcon.rotateOneEighty {\n    transform: rotate(180deg) translateX(0px);\n    transition: all 0.5s;\n}\n\n\n\n.select {\n    min-width: 80px;\n}";
-styleInject(css_248z$6);
+var css_248z$7 = ".selectContainer {\n    display: inline-flex;\n    border: 0.4px solid #C4C4C4;\n    justify-content: space-between;\n    align-items: center;\n}\n\n.selectItems {\n    margin-top: 4px;\n    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\n    box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 5px -3px, rgba(0, 0, 0, 0.14) 0px 8px 10px 1px, rgba(0, 0, 0, 0.12) 0px 0px 1px 0px;\n    position: absolute;\n    overflow: hidden auto;\n    outline: 0px;\n    transition: all 300ms ease-in-out;\n}\n\n.selectItems,\n.selectContainer {\n    padding: 4px 8px;\n    color: #6c747e;\n    border-radius: 4px;\n    background: transparent;\n}\n\nsvg.downIcon {\n    display: flex;\n    width: 1em;\n    height: 1em;\n    fill: rgba(0, 0, 0, 0.54);\n}\n\n.selctDownIcon,\n.selectItems {\n    transition: all 0.5s;\n}\n\n.selctDownIcon.rotateOneEighty {\n    transform: rotate(180deg) translateX(0px);\n    transition: all 0.5s;\n}\n\n\n\n.select {\n    min-width: 80px;\n}";
+styleInject(css_248z$7);
 
 const Select = (_a) => {
     var { placeholder = 'select...', onChange, padding, width, option } = _a, props = __rest(_a, ["placeholder", "onChange", "padding", "width", "option"]);
@@ -1958,9 +1958,14 @@ const Stack = ({ align = 'start', direction = 'column', isInline = false, justif
     return (React.createElement("div", { className: `StackContainer ${direction === 'column' ? 'column' : 'row'}`, style: stackStyles }, children));
 };
 
+var css_248z$6 = ".switch {\n  position: relative;\n  display: inline-block;\n  width: 50px;\n  height: 25px;\n}\n\n.switch input[type=\"checkbox\"] {\n  display: none;\n}\n\n.switch label {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: gray;\n  border-radius: 25px;\n  cursor: pointer;\n  transition: background-color 0.3s;\n}\n\n.switch label::after {\n  content: \"\";\n  position: absolute;\n  top: 3px;\n  left: 3px;\n  width: 19px;\n  height: 19px;\n  background-color: white;\n  border-radius: 50%;\n  transition: transform 0.3s;\n}\n\n.switch input:checked+label {\n  background-color: #0094DA;\n}\n\n.switch input:checked+label::after {\n  transform: translateX(26px);\n}";
+styleInject(css_248z$6);
+
 const Switch = (props) => {
-    const { name, disabled, checked, onChange } = props;
-    return React.createElement("input", Object.assign({ name: name, checked: checked, onChange: onChange, disabled: disabled, type: "checkbox" }, props));
+    const { name, disabled, checked = false, onChange } = props;
+    return (React.createElement("div", { className: "switch" },
+        React.createElement("input", Object.assign({ type: "checkbox", id: "switch-toggle", defaultChecked: checked, onChange: onChange, disabled: disabled, name: name }, props)),
+        React.createElement("label", { htmlFor: "switch-toggle" })));
 };
 
 var css_248z$5 = ".table-container {\n    border: 1px solid #dddddd;\n    overflow: hidden;\n    border-radius: 8px;\n}\n\ntable.mainTable {\n    border: 0px;\n    outline: 0;\n    border-collapse: collapse;\n    width: 100%;\n}\n\ntable {\n    border-radius: 15px;\n}";

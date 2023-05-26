@@ -8,7 +8,15 @@ describe('TableCell', () => {
         const className = 'customCell';
         const children = 'Table Cell Content';
 
-        const { getByText } = render(<TableCell className={className}>{children}</TableCell>);
+        const { getByText } = render(
+            <table>
+                <tbody>
+                    <tr>
+                        <TableCell className={className}>{children}</TableCell>
+                    </tr>
+                </tbody>
+            </table>
+        );
 
         const tableCell = getByText('Table Cell Content');
 
@@ -19,7 +27,15 @@ describe('TableCell', () => {
     test('renders the children with default className if className prop is not provided', () => {
         const children = 'Table Cell Content';
 
-        const { getByText } = render(<TableCell>{children}</TableCell>);
+        const { getByText } = render(
+            <table>
+                <tbody>
+                    <tr>
+                        <TableCell>{children}</TableCell>
+                    </tr>
+                </tbody>
+            </table>
+        );
 
         const tableCell = getByText('Table Cell Content');
 
