@@ -588,8 +588,12 @@ DA:7,2
 LF:3
 LH:3
 BRDA:6,0,0,2
-BRF:1
-BRH:1
+BRDA:11,1,0,0
+BRDA:11,1,1,2
+BRDA:11,2,0,0
+BRDA:11,2,1,2
+BRF:5
+BRH:3
 end_of_record
 TN:
 SF:src/components/Table/Table.tsx

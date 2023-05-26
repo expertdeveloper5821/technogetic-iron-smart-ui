@@ -1938,14 +1938,15 @@ const Stack = ({ align = 'start', direction = 'column', isInline = false, justif
     return (React__default.createElement("div", { className: `StackContainer ${direction === 'column' ? 'column' : 'row'}`, style: stackStyles }, children));
 };
 
-var css_248z$6 = ".switch {\n  position: relative;\n  display: inline-block;\n  width: 50px;\n  height: 25px;\n}\n\n.switch input[type=\"checkbox\"] {\n  display: none;\n}\n\n.switch label {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: gray;\n  border-radius: 25px;\n  cursor: pointer;\n  transition: background-color 0.3s;\n}\n\n.switch label::after {\n  content: \"\";\n  position: absolute;\n  top: 3px;\n  left: 3px;\n  width: 19px;\n  height: 19px;\n  background-color: white;\n  border-radius: 50%;\n  transition: transform 0.3s;\n}\n\n.switch input:checked+label {\n  background-color: #0094DA;\n}\n\n.switch input:checked+label::after {\n  transform: translateX(26px);\n}";
+var css_248z$6 = ".switch {\n  position: relative;\n  display: inline-block;\n  width: 60px;\n  height: 30px;\n}\n\n.switch input[type=\"checkbox\"] {\n  display: none;\n}\n\n.switch label {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: gray;\n  border-radius: 25px;\n  cursor: pointer;\n  transition: background-color 0.3s;\n}\n\n.switch label::after {\n  content: \"\";\n  position: absolute;\n  top: 5px;\n  left: 5px;\n  width: 20px;\n  height: 20px;\n  background-color: white;\n  border-radius: 50%;\n  transition: transform 0.3s;\n}\n\n.switch input:checked+label {\n  background-color: #0094DA;\n}\n\n.switch input:checked+label::after {\n  transform: translateX(30px);\n}\n\np.switchleftTag {\n  padding-left: 6px;\n  padding-top: 3px;\n}\n\np.switchrightTag {\n  text-align: end;\n  padding-top: 4px;\n  padding-right: 9px;\n}\n\np.switchrightTag,\np.switchleftTag {\n  color: white;\n  margin: 0;\n  font-weight: 500;\n}";
 styleInject(css_248z$6);
 
 const Switch = (props) => {
     const { name, disabled, checked = false, onChange } = props;
     return (React__default.createElement("div", { className: "switch" },
         React__default.createElement("input", Object.assign({ type: "checkbox", id: "switch-toggle", defaultChecked: checked, onChange: onChange, disabled: disabled, name: name }, props)),
-        React__default.createElement("label", { htmlFor: "switch-toggle" })));
+        React__default.createElement("label", { htmlFor: "switch-toggle" },
+            React__default.createElement("p", { className: checked ? 'switchleftTag' : 'switchrightTag' }, checked ? 'On' : 'Off'))));
 };
 
 var css_248z$5 = ".table-container {\n    border: 1px solid #dddddd;\n    overflow: hidden;\n    border-radius: 8px;\n}\n\ntable.mainTable {\n    border: 0px;\n    outline: 0;\n    border-collapse: collapse;\n    width: 100%;\n}\n\ntable {\n    border-radius: 15px;\n}";
