@@ -8,6 +8,15 @@
     display: flex;
 }
 
+.adornmentContent {
+    border-right: 0px;
+}
+
+.oranmentContent {
+    border-left: 0px;
+}
+
+
 .adornmentContent,
 .oranmentContent {
     padding: 7.5px;
@@ -69,6 +78,22 @@ input.InputAddOn-field:focus {
 .commonInputDiv:focus-within,
 .combinedInputField:focus-within {
     border: 0.4px solid #0094DA;
+}
+
+.combinedInputField:focus-within .adornmentContent,
+.combinedInputField:focus-within .adornInputField,
+.combinedInputField:focus-within .oranmentContent,
+.combinedInputField:focus-within .oranInputField {
+    outline: none;
+    border: 0px;
+}
+
+.combinedInputField:focus-within .adornmentContent {
+    border-right: 0.4px solid rgba(147, 128, 108, 0.25);
+}
+
+.combinedInputField:focus-within .oranmentContent {
+    border-left: 0.4px solid rgba(147, 128, 108, 0.25);
 }
 
 .error.commonInputDiv,
