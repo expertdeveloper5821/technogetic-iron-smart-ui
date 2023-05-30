@@ -1942,11 +1942,17 @@ var css_248z$6 = ".switch {\n  position: relative;\n  display: inline-block;\n  
 styleInject(css_248z$6);
 
 const Switch = (props) => {
-    const { name, disabled, checked = false, onChange } = props;
+    const { name, disabled, checked, onChange } = props;
+    const [switchStatus, setSwitchStatus] = useState$1(false);
+    const handleOnClick = () => {
+        if (!checked) {
+            setSwitchStatus(!switchStatus);
+        }
+    };
     return (React__default.createElement("div", { className: "switch" },
-        React__default.createElement("input", Object.assign({ type: "checkbox", id: "switch-toggle", defaultChecked: checked, onChange: onChange, disabled: disabled, name: name }, props)),
-        React__default.createElement("label", { htmlFor: "switch-toggle" },
-            React__default.createElement("p", { className: checked ? 'switchleftTag' : 'switchrightTag' }, checked ? 'On' : 'Off'))));
+        React__default.createElement("input", Object.assign({ type: "checkbox", id: "switch-toggle", defaultChecked: switchStatus || checked, onChange: onChange, disabled: disabled, name: name }, props)),
+        React__default.createElement("label", { htmlFor: "switch-toggle", onClick: handleOnClick },
+            React__default.createElement("p", { className: checked || switchStatus ? 'switchleftTag' : 'switchrightTag' }, checked || switchStatus ? 'On' : 'Off'))));
 };
 
 var css_248z$5 = ".table-container {\n    border: 1px solid #dddddd;\n    overflow: hidden;\n    border-radius: 8px;\n}\n\ntable.mainTable {\n    border: 0px;\n    outline: 0;\n    border-collapse: collapse;\n    width: 100%;\n}\n\ntable {\n    border-radius: 15px;\n}";
