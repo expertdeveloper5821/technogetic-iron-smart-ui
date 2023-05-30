@@ -21,31 +21,31 @@ Primary.args = {
 
 export const Contained = Template.bind({});
 Contained.args = {
-    varient: 'contained',
+    variant: 'contained',
     disabled: false
 };
 
 export const Outline = Template.bind({});
 Outline.args = {
-    varient: 'outline'
+    variant: 'outline'
 };
 
 export const Upload = Template.bind({});
 Upload.args = {
-    varient: 'contained',
+    variant: 'contained',
     type: 'file'
 };
 
 export const startIcon = Template.bind({});
 startIcon.args = {
-    varient: 'contained',
+    variant: 'contained',
     label: 'Start Icon',
     startIcon: <DeleteIcon />
 };
 
 export const endIcon = Template.bind({});
 endIcon.args = {
-    varient: 'contained',
+    variant: 'contained',
     label: 'End Icon',
     endIcon: <EnterIcon />
 };

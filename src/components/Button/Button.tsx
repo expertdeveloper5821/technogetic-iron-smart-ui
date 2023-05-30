@@ -4,7 +4,7 @@ import '../../commonstyle/commonstyle.css';
 import './Button.css';
 
 export const Button = (props: React.PropsWithChildren<ButtonProps>) => {
-    const { bg, color, varient = 'borderLess', onClick, disabled = false, className, type = 'button', multiple = false, startIcon, endIcon, children } = props;
+    const { bg, color, variant = 'borderLess', onClick, disabled = false, className, type = 'button', multiple = false, startIcon, endIcon, children } = props;
 
     return (
         <>
@@ -12,7 +12,7 @@ export const Button = (props: React.PropsWithChildren<ButtonProps>) => {
                 <button
                     {...props}
                     type="button"
-                    className={`${className ? className : `button button-${varient}`}${disabled ? `button_disabled` : ''} ${startIcon ? 'Icon' : ''} ${endIcon ? 'Icon' : ''}`}
+                    className={`${className ? className : `button button-${variant}`}${disabled ? `button_disabled` : ''} ${startIcon ? 'Icon' : ''} ${endIcon ? 'Icon' : ''}`}
                     onClick={onClick}
                     disabled={disabled}
                 >
@@ -23,7 +23,7 @@ export const Button = (props: React.PropsWithChildren<ButtonProps>) => {
             ) : (
                 <>
                     <input className="uploadFile" type="file" hidden multiple={multiple} id="upload-btn" />
-                    <label className={`${className ? className : `button button-${varient}`}${disabled ? `button_disabled` : ''}`} htmlFor="upload-btn">
+                    <label className={`${className ? className : `button button-${variant}`}${disabled ? `button_disabled` : ''}`} htmlFor="upload-btn">
                         {children ? children : 'Upload Button'}
                     </label>
                 </>

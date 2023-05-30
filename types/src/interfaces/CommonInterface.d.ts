@@ -25,7 +25,7 @@ export interface BadgeProps {
 export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
     bg?: string;
     color?: string;
-    varient?: 'borderLess' | 'contained' | 'outline';
+    variant?: 'borderLess' | 'contained' | 'outline';
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
     disabled?: boolean;
     className?: string;

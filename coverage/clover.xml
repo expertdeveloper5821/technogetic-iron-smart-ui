@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1685355322667" clover="3.2.0">
-  <project timestamp="1685355322668" name="All files">
-    <metrics statements="142" coveredstatements="139" conditionals="220" coveredconditionals="185" methods="52" coveredmethods="51" elements="414" coveredelements="375" complexity="0" loc="142" ncloc="142" packages="24" files="31" classes="31"/>
+<coverage generated="1685426663477" clover="3.2.0">
+  <project timestamp="1685426663477" name="All files">
+    <metrics statements="138" coveredstatements="137" conditionals="213" coveredconditionals="180" methods="51" coveredmethods="51" elements="402" coveredelements="368" complexity="0" loc="138" ncloc="138" packages="24" files="31" classes="31"/>
     <package name="assets">
       <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
       <file name="CloseIcon.tsx" path="/home/technogetic/technogetic-iron-smart-ui/src/assets/CloseIcon.tsx">
@@ -227,16 +227,12 @@
       </file>
     </package>
     <package name="components.Switch">
-      <metrics statements="7" coveredstatements="5" conditionals="12" coveredconditionals="8" methods="2" coveredmethods="1"/>
+      <metrics statements="3" coveredstatements="3" conditionals="5" coveredconditionals="3" methods="1" coveredmethods="1"/>
       <file name="Switch.tsx" path="/home/technogetic/technogetic-iron-smart-ui/src/components/Switch/Switch.tsx">
-        <metrics statements="7" coveredstatements="5" conditionals="12" coveredconditionals="8" methods="2" coveredmethods="1"/>
+        <metrics statements="3" coveredstatements="3" conditionals="5" coveredconditionals="3" methods="1" coveredmethods="1"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
+        <line num="6" count="2" type="cond" truecount="1" falsecount="0"/>
         <line num="7" count="2" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="15" count="2" type="stmt"/>
       </file>
     </package>
     <package name="components.Table">
