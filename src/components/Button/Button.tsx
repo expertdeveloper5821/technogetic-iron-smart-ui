@@ -8,10 +8,10 @@ export const Button = (props: React.PropsWithChildren<ButtonProps>) => {
 
     return (
         <>
-            {type === 'button' && (
+            {(type === 'button' || type === 'submit' || type === 'reset') && (
                 <button
                     {...props}
-                    type="button"
+                    type={type}
                     className={`${className ? className : `button button-${variant}`} ${disabled ? `button_disabled` : ''} ${startIcon ? 'Icon' : ''} ${endIcon ? 'Icon' : ''}`}
                     onClick={onClick}
                     disabled={disabled}

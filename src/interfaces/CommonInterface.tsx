@@ -35,8 +35,8 @@ export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonE
     className?: string;
     type?: string;
     multiple?: boolean;
-    startIcon?: string;
-    endIcon?: string;
+    startIcon?: React.ReactNode;
+    endIcon?: React.ReactNode;
     children?: string | number;
 }
 
