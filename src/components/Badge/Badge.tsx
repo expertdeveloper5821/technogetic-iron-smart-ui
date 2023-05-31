@@ -3,7 +3,7 @@ import { BadgeProps } from '../../interfaces/CommonInterface';
 import '../../commonstyle/commonstyle.css';
 import './Badge.css';
 
-export const Badge: React.FC<BadgeProps> = ({ label, type = 'primary', className, max = 11 }) => {
+export const Badge: React.FC<BadgeProps> = ({ label = 10, type = 'primary', className, max = 11 }) => {
     const displayLabel = label > max ? `${max}+` : label;
 
     return (

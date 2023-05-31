@@ -8,11 +8,11 @@ export const Button = (props: React.PropsWithChildren<ButtonProps>) => {
 
     return (
         <>
-            {type === 'button' ? (
+            {type === 'button' && (
                 <button
                     {...props}
                     type="button"
-                    className={`${className ? className : `button button-${variant}`}${disabled ? `button_disabled` : ''} ${startIcon ? 'Icon' : ''} ${endIcon ? 'Icon' : ''}`}
+                    className={`${className ? className : `button button-${variant}`} ${disabled ? `button_disabled` : ''} ${startIcon ? 'Icon' : ''} ${endIcon ? 'Icon' : ''}`}
                     onClick={onClick}
                     disabled={disabled}
                 >
@@ -20,10 +20,11 @@ export const Button = (props: React.PropsWithChildren<ButtonProps>) => {
                     {children ? children : 'Button'}
                     {endIcon && <span className="end-button-icon">{endIcon}</span>}
                 </button>
-            ) : (
+            )}
+            {type === 'file' && (
                 <>
                     <input className="uploadFile" type="file" hidden multiple={multiple} id="upload-btn" />
-                    <label className={`${className ? className : `button button-${variant}`}${disabled ? `button_disabled` : ''}`} htmlFor="upload-btn">
+                    <label className={`${className ? className : `button button-${variant}`} ${disabled ? `button_disabled` : ''}`} htmlFor="upload-btn">
                         {children ? children : 'Upload Button'}
                     </label>
                 </>
