@@ -1,54 +1,46 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { Select } from './Select';
 import '@testing-library/jest-dom/extend-expect';
 
-describe('Select', () => {
+describe('Select component', () => {
     const options = ['Option 1', 'Option 2', 'Option 3'];
     const mockOnChange = jest.fn();
 
-    test('should render placeholder when no option is selected', () => {
-        const { getByText } = render(<Select option={options} onChange={mockOnChange} />);
-
-        const placeholderElement = getByText('select..');
-        expect(placeholderElement).toBeInTheDocument();
+    beforeEach(() => {
+        render(<Select option={options} onChange={mockOnChange} />);
     });
 
-    test('should render selected option when an option is selected', () => {
-        const { getByText } = render(<Select option={options} onChange={mockOnChange} />);
-
-        const selectContainer = getByText('select..');
-        fireEvent.click(selectContainer);
-
-        const optionElement = getByText('Option 1');
-        fireEvent.click(optionElement);
-
-        const selectedOption = getByText('Option 1');
-        expect(selectedOption).toBeInTheDocument();
+    test('renders placeholder text initially', () => {
+        const placeholderText = screen.getByText('select...');
+        expect(placeholderText).toBeInTheDocument();
     });
 
-    test('should call onChange with selected value', () => {
-        const { getByText } = render(<Select option={options} onChange={mockOnChange} />);
-
-        const selectContainer = getByText('select..');
+    test('opens dropdown menu when clicked', () => {
+        const selectContainer = screen.getByText('select...');
         fireEvent.click(selectContainer);
+        const option1 = screen.getByText('Option 1');
+        const option2 = screen.getByText('Option 2');
+        const option3 = screen.getByText('Option 3');
+        expect(option1).toBeInTheDocument();
+        expect(option2).toBeInTheDocument();
+        expect(option3).toBeInTheDocument();
+    });
 
-        const optionElement = getByText('Option 2');
-        fireEvent.click(optionElement);
-
+    test('calls onChange and closes dropdown when an option is selected', () => {
+        const selectContainer = screen.getByText('select...');
+        fireEvent.click(selectContainer);
+        const option2 = screen.getByText('Option 2');
+        fireEvent.click(option2);
         expect(mockOnChange).toHaveBeenCalledWith('Option 2');
     });
 
-    test('should close the dropdown when clicked outside', () => {
-        const { getByText, queryByText } = render(<Select option={options} onChange={mockOnChange} />);
-
-        const selectContainer = getByText('select..');
+    test('closes dropdown when clicked outside the select container', () => {
+        const selectContainer = screen.getByText('select...');
         fireEvent.click(selectContainer);
-
-        expect(getByText('Option 1')).toBeInTheDocument();
-
-        fireEvent.click(document);
-
-        expect(queryByText('Option 1')).toBeNull();
+        fireEvent.click(document.body);
+        expect(screen.queryByText('Option 1')).not.toBeInTheDocument();
+        expect(screen.queryByText('Option 2')).not.toBeInTheDocument();
+        expect(screen.queryByText('Option 3')).not.toBeInTheDocument();
     });
 });

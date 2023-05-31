@@ -30,9 +30,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.1% </span>
+                <span class="strong">84.21% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>27/29</span>
+                <span class='fraction'>32/38</span>
             </div>
         
             
@@ -155,7 +155,9 @@
 <a name='L90'></a><a href='#L90'>90</a>
 <a name='L91'></a><a href='#L91'>91</a>
 <a name='L92'></a><a href='#L92'>92</a>
-<a name='L93'></a><a href='#L93'>93</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -248,13 +250,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from 'react';
-import './Input.css';
 import { InputProps } from '../../interfaces/CommonInterface';
 import { ShowPassword } from '../../assets/ShowPassword';
 import { ClosePassword } from '../../assets/ClosePassword';
+import '../../commonstyle/commonstyle.css';
+import './Input.css';
 &nbsp;
 export const Input: React.FunctionComponent&lt;InputProps&gt; = (props) =&gt; {
-    const { className = 'inputArea', placeholder, autoFocus = false, disabled = false, type, adornment, required, onChange, ornament, ...rest } = props;
+    const { className = 'inputArea', placeholder, autoFocus = false, disabled = false, type, adornment, required, onChange, ornament, error = false, ...rest } = props;
     const [showPassword, setShowPassword] = useState(false);
     const togglePasswordVisibility = () =&gt; {
         setShowPassword((prevState) =&gt; !prevState);
@@ -273,7 +276,7 @@ export const Input: React.FunctionComponent&lt;InputProps&gt; = (props) =&gt; {
         &lt;&gt;
             {type === 'password' &amp;&amp; (
                 &lt;&gt;
-                    &lt;div className={`commonInputDiv combinedInputField ${className}`}&gt;
+                    &lt;div className={`${error ? <span class="branch-0 cbranch-no" title="branch not covered" >'error' </span>: ''} commonInputDiv combinedInputField ${className}`}&gt;
                         &lt;input {...rest} type={inputType} placeholder={_placeholder} autoFocus={autoFocus} disabled={disabled} required={_required} onChange={onChange} data-testid="passwordInput" /&gt;
                         &lt;span className="passwordIcon" onClick={togglePasswordVisibility} data-testid="passwordVisibility"&gt;
                             {showPassword ? &lt;ClosePassword /&gt; : &lt;ShowPassword /&gt;}
@@ -283,14 +286,14 @@ export const Input: React.FunctionComponent&lt;InputProps&gt; = (props) =&gt; {
             )}
             {type !== 'password' &amp;&amp; !adornment &amp;&amp; !ornament &amp;&amp; (
                 &lt;&gt;
-                    &lt;div className={`commonInputDiv  ${className}`}&gt;
+                    &lt;div className={`${error ? <span class="branch-0 cbranch-no" title="branch not covered" >'error' </span>: ''} commonInputDiv  ${className}`}&gt;
                         &lt;input type={_type} placeholder={_placeholder} autoFocus={autoFocus} disabled={disabled} required={_required} {...rest} onChange={onChange} data-testid="generalInput" /&gt;
                     &lt;/div&gt;
                 &lt;/&gt;
             )}
             {type !== 'password' &amp;&amp; adornment &amp;&amp; (
                 &lt;&gt;
-                    &lt;div className="combinedInputField"&gt;
+                    &lt;div className={`${error ? <span class="branch-0 cbranch-no" title="branch not covered" >'error' </span>: ''} combinedInputField`}&gt;
                         &lt;div className="adornmentContent"&gt;
                             &lt;span className="InputAddOn-item InputAddOn-field" data-testid="adornment"&gt;
                                 {adornment}
@@ -314,7 +317,7 @@ export const Input: React.FunctionComponent&lt;InputProps&gt; = (props) =&gt; {
             )}
             {type !== 'password' &amp;&amp; ornament &amp;&amp; (
                 &lt;&gt;
-                    &lt;div className="combinedInputField"&gt;
+                    &lt;div className={`${error ? <span class="branch-0 cbranch-no" title="branch not covered" >'error' </span>: ''}  combinedInputField`}&gt;
                         &lt;div className={`oranInputField ${className}`}&gt;
                             &lt;input
                                 className="InputAddOn-field"
@@ -346,7 +349,7 @@ export const Input: React.FunctionComponent&lt;InputProps&gt; = (props) =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-18T11:14:55.395Z
+                at 2023-05-30T06:04:23.359Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

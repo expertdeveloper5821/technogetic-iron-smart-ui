@@ -2,13 +2,12 @@
     border-radius: 6px;
     padding: 8px;
     user-select: none;
-    font-family: 'Roboto';
 }
 
 .combinedInputField {
     display: flex;
-    font-family: 'Roboto';
 }
+
 
 .adornmentContent,
 .oranmentContent {
@@ -51,6 +50,7 @@
 
 .oranmentContent {
     border-left: 0;
+    border-left: 0px;
 }
 
 .commonInputDiv input:focus,
@@ -61,10 +61,38 @@ input.InputAddOn-field:focus {
 }
 
 .commonInputDiv:focus-within,
-.combinedInputField:focus-within {
-    border: 0.4px solid #0094DA;
+.combinedInputField:focus-within,
+.error.commonInputDiv,
+.error.combinedInputField {
     border-radius: 6px;
     background: transparent;
+}
+
+.commonInputDiv:focus-within,
+.combinedInputField:focus-within {
+    border: 0.4px solid #0094DA;
+}
+
+.combinedInputField:focus-within .adornmentContent,
+.combinedInputField:focus-within .adornInputField,
+.combinedInputField:focus-within .oranmentContent,
+.combinedInputField:focus-within .oranInputField {
+    outline: none;
+    border: 0px;
+}
+
+.combinedInputField:focus-within .adornmentContent {
+    border-right: 0.4px solid rgba(147, 128, 108, 0.25);
+}
+
+.combinedInputField:focus-within .oranmentContent {
+    border-left: 0.4px solid rgba(147, 128, 108, 0.25);
+}
+
+.error.commonInputDiv,
+.error.combinedInputField {
+    border: 0.4px solid red;
+
 }
 
 input[type='text'],
@@ -80,6 +108,4 @@ span.InputAddOn-item {
 
 .InputAddOn-item {
     color: #666666;
-    font: inherit;
-    font-weight: normal;
 }

@@ -12,11 +12,15 @@ const Template: ComponentStory<typeof Card> = (args) => <Card {...args} />;
 export const Primary = Template.bind({});
 Primary.args = {
     padding: '10px',
-    children: "Hey i am card's children"
+    children: "Hey i am card's children",
+    cardheaderimg: 'https://www.w3schools.com/bootstrap4/img_avatar3.png',
+    footer: 'This is my footer section',
+    height: '200px'
 };
 
-export const cardWithImage = Template.bind({});
-cardWithImage.args = {
+export const NoImg = Template.bind({});
+NoImg.args = {
+    padding: '10px',
     children: "Hey i am card's children",
-    headerImage: 'https://www.w3schools.com/bootstrap4/img_avatar3.png'
+    footer: 'This is my footer section'
 };

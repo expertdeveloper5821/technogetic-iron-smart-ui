@@ -18,7 +18,7 @@ describe('NavBar', () => {
     });
 
     test('renders with custom props', () => {
-        const { getByTestId } = render(<NavBar align="bottom" width="100%" bg="blue" color="white" style={{ padding: '10px' }} />);
+        const { getByTestId } = render(<NavBar width="100%" bg="blue" color="white" style={{ padding: '10px' }} />);
         const navbarComponent = getByTestId('navbarComponent');
 
         expect(navbarComponent).toBeInTheDocument();
@@ -28,6 +28,6 @@ describe('NavBar', () => {
             color: 'white',
             padding: '10px'
         });
-        expect(navbarComponent.classList).toContain('NavBarContainer-bottom');
+        expect(navbarComponent.classList).toContain('NavBarContainer-top');
     });
 });

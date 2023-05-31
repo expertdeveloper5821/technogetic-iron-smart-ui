@@ -1,20 +1,11 @@
-.NavBarContainer-top,
-.NavBarContainer-bottom {
-  position: absolute;
-  padding: 8px;
-  width: 100%;
+.NavBarContainer-top {
+  z-index: 1200;
+  padding: 8px 0px;
   display: flex;
+  position: relative;
+  width: 100%;
   flex-direction: row;
   background: #e0f5ff;
   color: #6c747e;
-  font-family: 'Roboto';
   transition: all 0.5s;
-}
-
-.NavBarContainer-top {
-  top: 0
-}
-
-.NavBarContainer-bottom {
-  bottom: 0;
 }

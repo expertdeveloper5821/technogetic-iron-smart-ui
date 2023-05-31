@@ -4,10 +4,14 @@ textarea.textAreaInput {
   border-radius: 6px;
   padding: 8px;
   outline: none;
-  font-family: 'Roboto';
 }
 
 textarea.textAreaInput:focus {
   border: 0.5px solid #0094DA;
+  outline: none;
+}
+
+textarea.error.textAreaInput {
+  border: 0.5px solid red;
   outline: none;
 }

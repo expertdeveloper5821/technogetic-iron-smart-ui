@@ -7,10 +7,6 @@ span.menuItem-label {
   cursor: pointer;
   user-select: none;
   vertical-align: middle;
-  appearance: none;
-  color: inherit;
-  line-height: 1.5;
-  letter-spacing: 0.00938em;
   display: flex;
   -webkit-box-pack: start;
   justify-content: flex-start;

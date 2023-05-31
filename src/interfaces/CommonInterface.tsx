@@ -29,24 +29,26 @@ export interface BadgeProps {
 export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
     bg?: string;
     color?: string;
-    varient?: 'borderLess' | 'contained' | 'outline';
+    variant?: 'borderLess' | 'contained' | 'outline';
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
     disabled?: boolean;
     className?: string;
-    children?: string | number;
     type?: string;
     multiple?: boolean;
     startIcon?: string;
     endIcon?: string;
+    children?: string | number;
 }
 
 export interface CardProps {
     className?: string;
     padding?: string;
     title?: string;
+    cardbody?: string;
     border?: string;
-    footer?: React.ReactNode;
+    children?: React.ReactNode;
     cardheaderimg?: string;
+    height?: string;
 }
 
 export interface DrawerProps {
@@ -57,13 +59,13 @@ export interface DrawerProps {
     className?: string;
     style?: React.CSSProperties;
     isOpen?: boolean;
-    children?: string;
+    children?: React.ReactNode;
 }
 
 export interface IconButtonProps {
     className?: string;
     multiple?: boolean;
-    children?: string;
+    children?: React.ReactNode;
     type?: string;
     onClick?: () => void;
 }
@@ -80,6 +82,7 @@ export interface InputProps extends React.DetailedHTMLProps<React.InputHTMLAttri
     className?: string;
     adornment?: string;
     ornament?: string;
+    error?: boolean;
 }
 
 export interface subMenuInterface {
@@ -115,12 +118,11 @@ export interface MenuItemProps {
 }
 
 export interface NavBarProps {
-    align?: string;
     width?: string;
     bg?: string;
     color?: string;
     style?: React.CSSProperties;
-    children?: string;
+    children?: React.ReactNode;
 }
 export interface SelectProps {
     option?: string[];
@@ -138,7 +140,7 @@ export interface StackProps {
     spacing?: number;
     wrap?: boolean;
     style?: React.CSSProperties;
-    children?: string;
+    children?: React.ReactNode;
 }
 
 export interface SwitchProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
@@ -147,6 +149,34 @@ export interface SwitchProps extends React.DetailedHTMLProps<React.InputHTMLAttr
     name?: string;
     checked?: boolean;
 }
+export interface TableProps {
+    children?: React.ReactNode;
+    className?: string;
+}
+
+export interface TableBodyProps {
+    children?: React.ReactNode;
+}
+
+export interface TableCellProps {
+    align?: 'center' | 'start' | 'end';
+    children?: React.ReactNode;
+    className?: string;
+}
+
+export interface TableHeadProps {
+    children?: React.ReactNode;
+    className?: string;
+}
+
+export interface TableHeaderProps {
+    children?: React.ReactNode;
+}
+
+export interface TableRowProps {
+    children?: React.ReactNode;
+    className?: string;
+}
 
 export interface TextAreaInputProps extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement> {
     placeholder?: string;
@@ -154,7 +184,7 @@ export interface TextAreaInputProps extends React.DetailedHTMLProps<React.InputH
     rows?: number;
     cols?: number;
     className?: string;
-    form?: string;
+    error?: boolean;
 }
 
 export interface TooltipProps {

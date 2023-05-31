@@ -1,6 +1,7 @@
 import React from 'react';
-import './Drawer.css';
 import { DrawerProps } from '../../interfaces/CommonInterface';
+import '../../commonstyle/commonstyle.css';
+import './Drawer.css';
 
 export const Drawer: React.FC<DrawerProps> = ({ align = 'left', width, bg, color, className, style, isOpen = true, children }) => {
     const DrawerStyles: React.CSSProperties = {

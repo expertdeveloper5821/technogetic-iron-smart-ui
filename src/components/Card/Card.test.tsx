@@ -3,42 +3,41 @@ import { Card } from './Card';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-describe('Card component', () => {
-    test('renders the card with default props', () => {
-        const { getByText } = render(<Card>Card Content</Card>);
+describe('Card', () => {
+    test('should render with default props', () => {
+        const { getByText } = render(<Card />);
+        const titleElement = getByText('Title of Your Card');
+        const bodyElement = getByText('This is the Body Section');
 
-        expect(getByText('Card Title')).toBeInTheDocument();
-        expect(getByText('Card Content')).toBeInTheDocument();
-        expect(getByText('Card Footer')).toBeInTheDocument();
+        expect(titleElement).toBeInTheDocument();
+        expect(bodyElement).toBeInTheDocument();
+
+        expect(titleElement).toHaveClass('cardTitle');
+        expect(bodyElement).toHaveClass('cardDesc');
     });
-
-    test('renders the card with custom props', () => {
-        const { getByText, getByAltText } = render(
-            <Card className="custom-card" padding="10px" footer="Custom Footer" cardheaderimg="image-url.jpg">
-                Custom Card Content
+    test('should render with custom props and apply appropriate classes', () => {
+        const { container } = render(
+            <Card className="customCard" padding="10px" title="Custom Card Title" cardheaderimg="image.png" height="200px">
+                <p>Custom Card Content</p>
             </Card>
         );
 
-        const cardElement = getByText('Custom Card Content');
-        const headerElement = getByAltText('Card Header Image');
-        const footerElement = getByText('Custom Footer');
+        const cardElement = container.querySelector('.customCard');
+        const cardTitle = container.querySelector('.cardHead');
+        const cardFooter = container.querySelector('.cardFooter');
+        const cardContent = container.querySelector('.cardBody');
 
         expect(cardElement).toBeInTheDocument();
-        expect(cardElement).toHaveClass('cardBody');
-        expect(cardElement).toHaveStyle('padding: 10px');
+        expect(cardElement).toHaveClass('customCard');
 
-        expect(headerElement).toBeInTheDocument();
-        expect(headerElement).toHaveAttribute('src', 'image-url.jpg');
+        expect(cardTitle).toBeInTheDocument();
+        expect(cardTitle?.querySelector('img')).toHaveAttribute('src', 'image.png');
 
-        expect(footerElement).toBeInTheDocument();
-    });
+        expect(cardFooter).toBeInTheDocument();
+        expect(cardFooter).toHaveTextContent('Custom Card Content');
 
-    test('renders the card with a custom header image', () => {
-        const { getByAltText } = render(<Card cardheaderimg="image-url.jpg">Card Content</Card>);
-
-        const imageElement = getByAltText('Card Header Image');
-
-        expect(imageElement).toBeInTheDocument();
-        expect(imageElement).toHaveAttribute('src', 'image-url.jpg');
+        expect(cardContent).toBeInTheDocument();
+        expect(cardContent).toHaveTextContent('Custom Card TitleThis is the Body Section');
+        expect(cardContent).toHaveStyle('padding: 10px');
     });
 });

@@ -1,5 +1,6 @@
 import React from 'react';
 import { MenuItemProps } from '../../interfaces/CommonInterface';
+import '../../commonstyle/commonstyle.css';
 import './MenuItem.css';
 
 export const MenuItem: React.FC<MenuItemProps> = ({ autofocus = false, children = 'Menu Item', className, disableGutters = false, onClick, value = children }) => {

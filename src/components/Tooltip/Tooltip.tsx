@@ -1,6 +1,7 @@
 import React, { PropsWithChildren, useState } from 'react';
-import './Tooltip.css';
 import { TooltipProps } from '../../interfaces/CommonInterface';
+import '../../commonstyle/commonstyle.css';
+import './Tooltip.css';
 
 export const Tooltip: React.FunctionComponent<PropsWithChildren<TooltipProps>> = ({ text, children }) => {
     const [showTooltip, setShowTooltip] = useState<boolean>(false);
