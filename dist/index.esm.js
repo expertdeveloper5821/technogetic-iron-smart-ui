@@ -1694,7 +1694,7 @@ styleInject(css_248z$f);
 const Button = (props) => {
     const { bg, color, variant = 'borderLess', onClick, disabled = false, className, type = 'button', multiple = false, startIcon, endIcon, children } = props;
     return (React__default.createElement(React__default.Fragment, null,
-        (type === 'button' || type === 'submit' || type === 'reset') && (React__default.createElement("button", Object.assign({}, props, { type: type, className: `${className || ''} 'button button'-${variant}} ${disabled ? `button_disabled` : ''} ${startIcon ? 'Icon' : ''} ${endIcon ? 'Icon' : ''}`, onClick: onClick, disabled: disabled }),
+        (type === 'button' || type === 'submit' || type === 'reset') && (React__default.createElement("button", Object.assign({}, props, { type: "button", className: `${className || ''} button button-${variant} ${disabled ? 'button_disabled' : ''} ${startIcon ? 'Icon' : ''} ${endIcon ? 'Icon' : ''}`, onClick: onClick, disabled: disabled }),
             startIcon && React__default.createElement("span", { className: "start-button-icon" }, startIcon),
             children ? children : 'Button',
             endIcon && React__default.createElement("span", { className: "end-button-icon" }, endIcon))),
