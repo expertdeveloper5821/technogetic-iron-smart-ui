@@ -12,7 +12,7 @@ export const Button = (props: React.PropsWithChildren<ButtonProps>) => {
                 <button
                     {...props}
                     type={type}
-                    className={`${className ? className : `button button-${variant}`} ${disabled ? `button_disabled` : ''} ${startIcon ? 'Icon' : ''} ${endIcon ? 'Icon' : ''}`}
+                    className={`${className || ''} 'button button'-${variant}} ${disabled ? `button_disabled` : ''} ${startIcon ? 'Icon' : ''} ${endIcon ? 'Icon' : ''}`}
                     onClick={onClick}
                     disabled={disabled}
                 >
