@@ -5,7 +5,9 @@ import './MenuItem.css';
 
 export const MenuItem: React.FC<MenuItemProps> = ({ autofocus = false, children = 'Menu Item', className, disableGutters = false, onClick, value = children }) => {
     const handleClick = () => {
-        onClick(value);
+        if (onClick) {
+            onClick(value);
+        }
     };
     return (
         <span className={`${className ? className : 'menuItem-label'} ${autofocus ? 'selected' : 'notSelected'} ${disableGutters ? 'removeGutters' : 'addGutters'}`} onClick={handleClick} key={value}>

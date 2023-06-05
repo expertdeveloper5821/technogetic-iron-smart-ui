@@ -100,6 +100,7 @@ input[type='email'],
 input[type='password'] {
     border: 0;
     width: 100%;
+    background: transparent;
 }
 
 span.InputAddOn-item {

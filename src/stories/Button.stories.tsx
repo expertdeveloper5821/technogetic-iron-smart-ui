@@ -16,7 +16,9 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-    label: 'Techno Button'
+    variant: 'borderLess',
+    label: 'Techno Button',
+    diabled: false
 };
 
 export const Contained = Template.bind({});

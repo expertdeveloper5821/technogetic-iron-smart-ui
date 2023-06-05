@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>13/13</span>
+                <span class='fraction'>14/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.47% </span>
+                <span class="strong">86.2% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>19/21</span>
+                <span class='fraction'>25/29</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>13/13</span>
+                <span class='fraction'>14/14</span>
             </div>
         
             
@@ -133,7 +133,9 @@
 <a name='L68'></a><a href='#L68'>68</a>
 <a name='L69'></a><a href='#L69'>69</a>
 <a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -155,9 +157,11 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -221,54 +225,56 @@ export const Menu: React.FC&lt;MenuItem&gt; = ({ style, menuData, bg, color, onC
         ...style
     };
 &nbsp;
-    const handleSubItem = (key: number | string) =&gt; {
-        setSubItem(!subItem);
-        setCurrMenu(key);
-        setCurrSubMenu('');
+    const handleSubItem = (key: number | string | undefined) =&gt; {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (key) {
+            setSubItem(!subItem);
+            setCurrMenu(key);
+            setCurrSubMenu('');
+        }
     };
-&nbsp;
     return (
         &lt;BrowserRouter&gt;
             &lt;div className="menuContainer" style={menuStyles}&gt;
-                {menuData.map((menuItem, index) =&gt; (
-                    &lt;React.Fragment key={index}&gt;
-                        {menuItem?.icon &amp;&amp; menuItem?.label &amp;&amp; (
-                            &lt;NavLink to={menuItem.href} className="menuLink"&gt;
-                                &lt;div className="MenuType"&gt;
-                                    {menuItem?.type !== 'divider' &amp;&amp; &lt;div className="menuItem_group_title"&gt;{menuItem.type}&lt;/div&gt;}
-                                    &lt;div
-                                        className="menuLinkContainer"
-                                        onClick={() =&gt; {
-                                            handleSubItem(menuItem.key);
-                                        }}
-                                        style={menuStyles}
-                                    &gt;
-                                        &lt;div className="menuImage"&gt;{menuItem.icon}&lt;/div&gt;
-                                        &lt;div className="menuTitle"&gt;
-                                            &lt;span className="menusText"&gt;{menuItem.label}&lt;/span&gt;
-                                            {menuItem.children &amp;&amp; menuItem.children?.length &gt; 0 &amp;&amp; (
-                                                &lt;div className={`menuDropDownIcon ${subItem &amp;&amp; currmenu === menuItem.key ? 'rotateNintee' : ''}`}&gt;{&lt;RightArrow /&gt;}&lt;/div&gt;
-                                            )}
+                {menuData &amp;&amp;
+                    menuData.map((menuItem, index) =&gt; (
+                        &lt;React.Fragment key={index}&gt;
+                            {menuItem?.icon &amp;&amp; menuItem?.label &amp;&amp; (
+                                &lt;NavLink to={menuItem.href || ''} className="menuLink"&gt;
+                                    &lt;div className="MenuType"&gt;
+                                        {menuItem?.type !== 'divider' &amp;&amp; &lt;div className="menuItem_group_title"&gt;{menuItem.type}&lt;/div&gt;}
+                                        &lt;div
+                                            className="menuLinkContainer"
+                                            onClick={() =&gt; {
+                                                handleSubItem(menuItem.key);
+                                            }}
+                                            style={menuStyles}
+                                        &gt;
+                                            &lt;div className="menuImage"&gt;{menuItem.icon}&lt;/div&gt;
+                                            &lt;div className="menuTitle"&gt;
+                                                &lt;span className="menusText"&gt;{menuItem.label}&lt;/span&gt;
+                                                {menuItem.children &amp;&amp; menuItem.children?.length &gt; 0 &amp;&amp; (
+                                                    &lt;div className={`menuDropDownIcon ${subItem &amp;&amp; currmenu === menuItem.key ? 'rotateNintee' : ''}`}&gt;{&lt;RightArrow /&gt;}&lt;/div&gt;
+                                                )}
+                                            &lt;/div&gt;
                                         &lt;/div&gt;
                                     &lt;/div&gt;
-                                &lt;/div&gt;
-                            &lt;/NavLink&gt;
-                        )}
-                        {currmenu === menuItem.key &amp;&amp; menuItem.children &amp;&amp; currmenu &amp;&amp; subItem &amp;&amp; (
-                            &lt;&gt;
-                                {menuItem.children.map((mapChild) =&gt; (
-                                    &lt;NavLink to={mapChild.href} key={mapChild.key} className="menuLink"&gt;
-                                        &lt;div className="menuChild" key={mapChild.key} style={{ display: subItem ? 'block' : <span class="branch-1 cbranch-no" title="branch not covered" >'none',</span> color: `${color}` }}&gt;
-                                            {mapChild.label}
-                                        &lt;/div&gt;
-                                    &lt;/NavLink&gt;
-                                ))}
-                            &lt;/&gt;
-                        )}
+                                &lt;/NavLink&gt;
+                            )}
+                            {currmenu === menuItem.key &amp;&amp; menuItem.children &amp;&amp; currmenu &amp;&amp; subItem &amp;&amp; (
+                                &lt;&gt;
+                                    {menuItem.children.map((mapChild) =&gt; (
+                                        &lt;NavLink to={mapChild.href || <span class="branch-1 cbranch-no" title="branch not covered" >''}</span> key={mapChild.key} className="menuLink"&gt;
+                                            &lt;div className="menuChild" key={mapChild.key} style={{ display: subItem ? 'block' : <span class="branch-1 cbranch-no" title="branch not covered" >'none',</span> color: `${color}` }}&gt;
+                                                {mapChild.label}
+                                            &lt;/div&gt;
+                                        &lt;/NavLink&gt;
+                                    ))}
+                                &lt;/&gt;
+                            )}
 &nbsp;
-                        {menuItem?.type === 'divider' &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;div className="menuItem_group_divider" key={index}&gt;&lt;/div&gt;}</span>
-                    &lt;/React.Fragment&gt;
-                ))}
+                            {menuItem?.type === 'divider' &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >&lt;div className="menuItem_group_divider" key={index}&gt;&lt;/div&gt;}</span>
+                        &lt;/React.Fragment&gt;
+                    ))}
             &lt;/div&gt;
         &lt;/BrowserRouter&gt;
     );
@@ -280,7 +286,7 @@ export const Menu: React.FC&lt;MenuItem&gt; = ({ style, menuData, bg, color, onC
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-30T06:04:23.359Z
+                at 2023-05-31T13:16:45.418Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
