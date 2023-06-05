@@ -47,7 +47,7 @@ export const Select: React.FC<SelectProps> = ({ placeholder = 'select...', onCha
                 <div className="selectItems select" style={containerStyle}>
                     {option.map((selectData) => {
                         return (
-                            <MenuItem onClick={() => handleSelectClick(selectData)} key={selectData}>
+                            <MenuItem disableGutters={true} onClick={() => handleSelectClick(selectData)} key={selectData}>
                                 {selectData}
                             </MenuItem>
                         );
