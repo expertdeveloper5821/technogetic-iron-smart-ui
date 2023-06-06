@@ -29,7 +29,7 @@ export const Menu: React.FC<MenuItem> = ({ style, menuData, bg, color, onClick }
                 {menuData &&
                     menuData.map((menuItem, index) => (
                         <React.Fragment key={index}>
-                            {menuItem?.icon && menuItem?.label && (
+                            {menuItem?.label && (
                                 <NavLink to={menuItem.href || ''} className="menuLink">
                                     <div className="MenuType">
                                         {menuItem?.type !== 'divider' && <div className="menuItem_group_title">{menuItem.type}</div>}
@@ -40,7 +40,7 @@ export const Menu: React.FC<MenuItem> = ({ style, menuData, bg, color, onClick }
                                             }}
                                             style={menuStyles}
                                         >
-                                            <div className="menuImage">{menuItem.icon}</div>
+                                            {menuItem?.icon && <div className="menuImage">{menuItem.icon}</div>}
                                             <div className="menuTitle">
                                                 <span className="menusText">{menuItem.label}</span>
                                                 {menuItem.children && menuItem.children?.length > 0 && (
