@@ -10,6 +10,7 @@ export * from './components/Input';
 export * from './components/NavBar';
 export * from './components/Menu';
 export * from './components/MenuItem';
+export * from './components/Popover';
 export * from './components/Select';
 export * from './components/Stack';
 export * from './components/Switch';

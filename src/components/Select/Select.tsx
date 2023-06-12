@@ -32,19 +32,19 @@ export const Select: React.FC<SelectProps> = ({ placeholder = 'select...', onCha
     };
     const containerStyle = {
         padding: padding || '',
-        width: placeholder.length > 0 ? `${placeholder.length * 10}px` : ''
+        width: width
     };
 
     return (
         <>
-            <div {...props} className="selectContainer select" style={containerStyle} onClick={handleSelectOpen} ref={selectRef}>
+            <div {...props} className="selectContainer" style={containerStyle} onClick={handleSelectOpen} ref={selectRef}>
                 {selectedValue ? selectedValue : placeholder}
                 <span className={`selctDownIcon ${openSelect ? 'rotateOneEighty' : ''}`}>
                     <DownIcon />
                 </span>
             </div>
             {openSelect && option && (
-                <div className="selectItems select" style={containerStyle}>
+                <div className="selectItems select">
                     {option.map((selectData) => {
                         return (
                             <MenuItem disableGutters={true} onClick={() => handleSelectClick(selectData)} key={selectData}>

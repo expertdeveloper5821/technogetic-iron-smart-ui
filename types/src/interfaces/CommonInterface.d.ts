@@ -170,3 +170,10 @@ export interface TextAreaInputProps extends React.DetailedHTMLProps<React.InputH
 export interface TooltipProps {
     text?: string;
 }
+export type PopoverProps = {
+    content: any;
+    placement: string;
+    children: any;
+    width?: string;
+    height?: string;
+};

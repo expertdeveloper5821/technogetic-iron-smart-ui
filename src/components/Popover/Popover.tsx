@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { PopoverProps } from '../../interfaces/CommonInterface';
 
 type popoverStyles = {
     position: any;
@@ -12,14 +13,6 @@ type popoverStyles = {
     top?: string;
     right?: string;
     backgroundColor: string;
-    width?: string;
-    height?: string;
-};
-
-type PopoverProps = {
-    content: any;
-    placement: string;
-    children: any;
     width?: string;
     height?: string;
 };
@@ -53,13 +46,13 @@ export const Popover = ({ content, children, placement, width, height }: Popover
                 popoverStyles = { ...popoverStyles, bottom: '100%', transform: 'translateX(-50%)' };
                 break;
             case 'bottom':
-                popoverStyles = { ...popoverStyles, top: '100%', transform: 'translateX(-20%)' };
+                popoverStyles = { ...popoverStyles, top: '100%', transform: 'translateX(-40%)' };
                 break;
             case 'left':
-                popoverStyles = { ...popoverStyles, top: '50%', transform: 'translateY(-35%)' };
+                popoverStyles = { ...popoverStyles, top: '50%', left: '-18.5%', transform: 'translateY(-35%)' };
                 break;
             case 'right':
-                popoverStyles = { ...popoverStyles, top: '50%', left: '22%', transform: 'translateY(-50%)' };
+                popoverStyles = { ...popoverStyles, top: '50%', left: '14%', transform: 'translateY(-50%)' };
                 break;
             default:
                 popoverStyles = { ...popoverStyles, top: '100%', transform: 'translateX(-20%)' };

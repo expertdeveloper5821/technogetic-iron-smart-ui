@@ -1904,6 +1904,57 @@ const MenuItem = ({ autofocus = false, children = 'Menu Item', className, disabl
     return (React__default.createElement("span", { className: `${className ? className : 'menuItem-label'} ${autofocus ? 'selected' : 'notSelected'} ${disableGutters ? 'removeGutters' : 'addGutters'}`, onClick: handleClick, key: value }, children));
 };
 
+const Popover = ({ content, children, placement, width, height }) => {
+    const [isPopoverOpen, setIsPopoverOpen] = useState$1(false);
+    const popoverRef = useRef(null);
+    const handlePopoverOpen = () => {
+        setIsPopoverOpen(true);
+    };
+    const getPopoverStyles = () => {
+        let popoverStyles = {
+            position: 'absolute',
+            padding: '10px',
+            borderRadius: '4px',
+            backgroundColor: 'white',
+            boxShadow: '0 2px 5px rgba(0, 0, 0, 0.15)',
+            zIndex: 999,
+            width: width ? width : '150px',
+            height: height ? height : '60px'
+        };
+        switch (placement) {
+            case 'top':
+                popoverStyles = Object.assign(Object.assign({}, popoverStyles), { bottom: '100%', transform: 'translateX(-50%)' });
+                break;
+            case 'bottom':
+                popoverStyles = Object.assign(Object.assign({}, popoverStyles), { top: '100%', transform: 'translateX(-40%)' });
+                break;
+            case 'left':
+                popoverStyles = Object.assign(Object.assign({}, popoverStyles), { top: '50%', left: '-18.5%', transform: 'translateY(-35%)' });
+                break;
+            case 'right':
+                popoverStyles = Object.assign(Object.assign({}, popoverStyles), { top: '50%', left: '14%', transform: 'translateY(-50%)' });
+                break;
+            default:
+                popoverStyles = Object.assign(Object.assign({}, popoverStyles), { top: '100%', transform: 'translateX(-20%)' });
+        }
+        return popoverStyles;
+    };
+    useEffect$1(() => {
+        const handleClickOutside = (event) => {
+            if (popoverRef.current && !popoverRef.current.contains(event.target)) {
+                setIsPopoverOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+    return (React__default.createElement("div", { style: { position: 'relative' } },
+        React__default.createElement("div", { onClick: handlePopoverOpen }, children),
+        isPopoverOpen && (React__default.createElement("div", { ref: popoverRef, style: getPopoverStyles() }, content))));
+};
+
 const DownIcon = () => {
     return (React__default.createElement("svg", { className: "downIcon", viewBox: "0 0 24 24" },
         React__default.createElement("path", { d: "M7 10l5 5 5-5z" })));
@@ -1940,14 +1991,14 @@ const Select = (_a) => {
     };
     const containerStyle = {
         padding: padding || '',
-        width: placeholder.length > 0 ? `${placeholder.length * 10}px` : ''
+        width: width
     };
     return (React__default.createElement(React__default.Fragment, null,
-        React__default.createElement("div", Object.assign({}, props, { className: "selectContainer select", style: containerStyle, onClick: handleSelectOpen, ref: selectRef }),
+        React__default.createElement("div", Object.assign({}, props, { className: "selectContainer", style: containerStyle, onClick: handleSelectOpen, ref: selectRef }),
             selectedValue ? selectedValue : placeholder,
             React__default.createElement("span", { className: `selctDownIcon ${openSelect ? 'rotateOneEighty' : ''}` },
                 React__default.createElement(DownIcon, null))),
-        openSelect && option && (React__default.createElement("div", { className: "selectItems select", style: containerStyle }, option.map((selectData) => {
+        openSelect && option && (React__default.createElement("div", { className: "selectItems select" }, option.map((selectData) => {
             return (React__default.createElement(MenuItem, { disableGutters: true, onClick: () => handleSelectClick(selectData), key: selectData }, selectData));
         })))));
 };
@@ -2032,5 +2083,5 @@ const TextArea = (props) => {
     return (React__default.createElement("textarea", { className: `${error ? 'error' : ''} ${className ? className : 'textAreaInput'}`, rows: rows ? rows : 10, cols: cols ? cols : 50, form: props.form, placeholder: placeholder ? placeholder : 'Text Area...', onChange: onChange }));
 };
 
-export { Alert, AuthHOC, Avatar, Badge, Button, Card, Drawer, IconButton, Input, Menu, MenuItem, NavBar, Select, Stack, Switch, Table, TableBody, TableCell, TableHead, TableHeader, TableRow, TextArea, Tooltip };
+export { Alert, AuthHOC, Avatar, Badge, Button, Card, Drawer, IconButton, Input, Menu, MenuItem, NavBar, Popover, Select, Stack, Switch, Table, TableBody, TableCell, TableHead, TableHeader, TableRow, TextArea, Tooltip };
 //# sourceMappingURL=index.esm.js.map
