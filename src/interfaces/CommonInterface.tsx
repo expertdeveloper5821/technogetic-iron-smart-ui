@@ -148,6 +148,7 @@ export interface SwitchProps extends React.DetailedHTMLProps<React.InputHTMLAttr
     disabled?: boolean;
     name?: string;
     checked?: boolean;
+    className?: string;
 }
 export interface TableProps {
     children?: React.ReactNode;
@@ -190,3 +191,14 @@ export interface TextAreaInputProps extends React.DetailedHTMLProps<React.InputH
 export interface TooltipProps {
     text?: string;
 }
+
+export type PopoverProps = {
+    content: any;
+    placement: string;
+    children: any;
+    width?: string;
+    height?: string;
+    className?: string;
+    isOpen: boolean;
+    setIsOpen: (value: boolean) => void;
+};
