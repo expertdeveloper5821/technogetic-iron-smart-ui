@@ -17,17 +17,17 @@ type popoverStyles = {
     height?: string;
 };
 
-export const Popover = ({ content, children, placement, width, height }: PopoverProps) => {
-    const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+export const Popover = ({ content, children, placement, width, height, className, isOpen, setIsOpen }: PopoverProps) => {
+    // const [isPopoverOpen, setIsPopoverOpen] = useState(false);
     const popoverRef = useRef(null);
 
-    const handlePopoverOpen = () => {
-        setIsPopoverOpen(true);
-    };
+    // const handlePopoverOpen = () => {
+    //     setIsPopoverOpen(true);
+    // };
 
-    const handlePopoverClose = () => {
-        setIsPopoverOpen(false);
-    };
+    // const handlePopoverClose = () => {
+    //     setIsPopoverOpen(false);
+    // };
 
     const getPopoverStyles = () => {
         let popoverStyles: popoverStyles = {
@@ -64,10 +64,9 @@ export const Popover = ({ content, children, placement, width, height }: Popover
     useEffect(() => {
         const handleClickOutside = (event: any) => {
             if (popoverRef.current && !popoverRef.current.contains(event.target)) {
-                setIsPopoverOpen(false);
+                setIsOpen(false);
             }
         };
-
         document.addEventListener('mousedown', handleClickOutside);
 
         return () => {
@@ -76,9 +75,9 @@ export const Popover = ({ content, children, placement, width, height }: Popover
     }, []);
 
     return (
-        <div style={{ position: 'relative' }}>
-            <div onClick={handlePopoverOpen}>{children}</div>
-            {isPopoverOpen && (
+        <div style={{ position: 'relative' }} className={className}>
+            <div>{children}</div>
+            {isOpen && (
                 <div ref={popoverRef} style={getPopoverStyles()}>
                     {content}
                 </div>

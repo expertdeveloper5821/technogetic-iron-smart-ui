@@ -9,7 +9,7 @@ export default {
 
 const Template: ComponentStory<typeof Popover> = (args) => (
     <>
-        <Popover {...args}>
+        <Popover {...args} isOpen={true}>
             <button>Open Popover</button>
         </Popover>
     </>
@@ -19,10 +19,4 @@ export const Primary = Template.bind({});
 Primary.args = {
     content: <div>Popover Content</div>,
     placement: 'right'
-    // onChange: function (e: ChangeEvent<HTMLInputElement>): void {
-    //     console.log('onChange', e.target.value);
-    // },
-    // placeholder: 'I am a placeholder',
-    // type: 'password',
-    // error: false
 };

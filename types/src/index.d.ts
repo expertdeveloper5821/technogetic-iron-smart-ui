@@ -22,3 +22,4 @@ export * from './components/TableHeader';
 export * from './components/TableHead';
 export * from './components/Tooltip';
 export * from './components/TextArea';
+export * from './components/Pagination';
