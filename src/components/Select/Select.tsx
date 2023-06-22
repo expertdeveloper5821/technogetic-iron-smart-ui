@@ -5,10 +5,11 @@ import { MenuItem } from '../MenuItem';
 import '../../commonstyle/commonstyle.css';
 import './Select.css';
 
-export const Select: React.FC<SelectProps> = ({ placeholder = 'select...', onChange, padding, width, option, ...props }) => {
+export const Select: React.FC<SelectProps> = ({ placeholder = 'select...', onChange, padding, containerWidth, optionWidth, option, ...props }) => {
     const [openSelect, setOpenSelect] = useState<boolean>(false);
     const [selectedValue, setSelectedValue] = useState<string | number>('');
     const selectRef = useRef<HTMLDivElement>(null);
+
     const handleSelectOpen = () => {
         setOpenSelect(!openSelect);
     };
@@ -32,7 +33,11 @@ export const Select: React.FC<SelectProps> = ({ placeholder = 'select...', onCha
     };
     const containerStyle = {
         padding: padding || '',
-        width: width
+        width: containerWidth
+    };
+
+    const optionStyle = {
+        width: optionWidth
     };
 
     return (
@@ -44,7 +49,7 @@ export const Select: React.FC<SelectProps> = ({ placeholder = 'select...', onCha
                 </span>
             </div>
             {openSelect && option && (
-                <div className="selectItems select">
+                <div className="selectItems select" style={optionStyle}>
                     {option.map((selectData) => {
                         return (
                             <MenuItem disableGutters={true} onClick={() => handleSelectClick(selectData)} key={selectData}>

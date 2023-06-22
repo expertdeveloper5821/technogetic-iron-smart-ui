@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination Component renders correctly 1`] = `
+<div>
+  <div
+    class="pagination"
+  >
+    <div
+      class="pagination-item disabled"
+    >
+      <svg
+        class="icon flat-color"
+        data-name="Flat Color"
+        fill="#003554"
+        height="14"
+        id="previous"
+        viewBox="0 0 24 24"
+        width="18"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M17.45,2.11a1,1,0,0,0-1.05.09l-12,9a1,1,0,0,0,0,1.6l12,9a1,1,0,0,0,1.05.09A1,1,0,0,0,18,21V3A1,1,0,0,0,17.45,2.11Z"
+          id="primary"
+          style="fill: #003554;"
+        />
+      </svg>
+    </div>
+    <li
+      class="pagination-item active"
+    >
+      1
+    </li>
+    <li
+      class="pagination-item "
+    >
+      2
+    </li>
+    <li
+      class="pagination-item "
+    >
+      3
+    </li>
+    <li
+      class="pagination-item "
+    >
+      4
+    </li>
+    <li
+      class="pagination-item "
+    >
+      5
+    </li>
+    <div
+      class="pagination-item ellipsis"
+    >
+      ...
+    </div>
+    <li
+      class="pagination-item "
+    >
+      10
+    </li>
+    <div
+      class="pagination-item "
+    >
+      <svg
+        class="icon flat-color"
+        data-name="Flat Color"
+        fill="#003554"
+        height="14"
+        id="previous"
+        transform="rotate(0)matrix(-1, 0, 0, 1, 0, 0)"
+        viewBox="0 0 24 24"
+        width="18"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M17.45,2.11a1,1,0,0,0-1.05.09l-12,9a1,1,0,0,0,0,1.6l12,9a1,1,0,0,0,1.05.09A1,1,0,0,0,18,21V3A1,1,0,0,0,17.45,2.11Z"
+          id="primary"
+          style="fill: #003554;"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
