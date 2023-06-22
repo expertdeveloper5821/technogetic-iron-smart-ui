@@ -9,9 +9,13 @@ export default {
 
 const Template: ComponentStory<typeof Pagination> = (args) => (
     <>
-        <Pagination currentPage={1} totalPages={10}></Pagination>
+        <Pagination {...args} />
     </>
 );
 
 export const Primary = Template.bind({});
-Primary.args = {};
+Primary.args = {
+    currentPage: 1,
+    totalPages: 10,
+    onPageChange: (page: number) => console.log(page)
+};

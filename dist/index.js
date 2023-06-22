@@ -1983,11 +1983,11 @@ const DownIcon = () => {
         React.createElement("path", { d: "M7 10l5 5 5-5z" })));
 };
 
-var css_248z$9 = ".selectContainer {\r\n    display: inline-flex;\r\n    border: 0.4px solid #C4C4C4;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n}\r\n\r\n.selectItems {\r\n    margin-top: 4px;\r\n    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\r\n    box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 5px -3px, rgba(0, 0, 0, 0.14) 0px 8px 10px 1px, rgba(0, 0, 0, 0.12) 0px 0px 1px 0px;\r\n    position: absolute;\r\n    overflow: hidden auto;\r\n    outline: 0px;\r\n    transition: all 300ms ease-in-out;\r\n}\r\n\r\n.selectItems,\r\n.selectContainer {\r\n    padding: 4px 8px;\r\n    color: #6c747e;\r\n    border-radius: 4px;\r\n    background: transparent;\r\n}\r\n\r\nsvg.downIcon {\r\n    display: flex;\r\n    width: 1em;\r\n    height: 1em;\r\n    fill: rgba(0, 0, 0, 0.54);\r\n}\r\n\r\n.selctDownIcon,\r\n.selectItems {\r\n    transition: all 0.5s;\r\n}\r\n\r\n.selctDownIcon.rotateOneEighty {\r\n    transform: rotate(180deg) translateX(0px);\r\n    transition: all 0.5s;\r\n}\r\n\r\n.select {\r\n    min-width: 80px;\r\n}";
+var css_248z$9 = ".selectContainer {\r\n    display: inline-flex;\r\n    border: 0.4px solid #c4c4c4;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n}\r\n\r\n.selectItems {\r\n    margin-top: 4px;\r\n    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;\r\n    box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 5px -3px, rgba(0, 0, 0, 0.14) 0px 8px 10px 1px, rgba(0, 0, 0, 0.12) 0px 0px 1px 0px;\r\n    position: absolute;\r\n    overflow: hidden auto;\r\n    z-index: 999;\r\n    outline: 0px;\r\n    transition: all 300ms ease-in-out;\r\n}\r\n\r\n.selectItems,\r\n.selectContainer {\r\n    padding: 4px 8px;\r\n    color: #6c747e;\r\n    border-radius: 4px;\r\n    background: transparent;\r\n}\r\n\r\nsvg.downIcon {\r\n    display: flex;\r\n    width: 1em;\r\n    height: 1em;\r\n    fill: rgba(0, 0, 0, 0.54);\r\n}\r\n\r\n.selctDownIcon,\r\n.selectItems {\r\n    transition: all 0.5s;\r\n}\r\n\r\n.selctDownIcon.rotateOneEighty {\r\n    transform: rotate(180deg) translateX(0px);\r\n    transition: all 0.5s;\r\n}\r\n\r\n.select {\r\n    min-width: 80px;\r\n}\r\n";
 styleInject(css_248z$9);
 
 const Select = (_a) => {
-    var { placeholder = 'select...', onChange, padding, width, option } = _a, props = __rest(_a, ["placeholder", "onChange", "padding", "width", "option"]);
+    var { placeholder = 'select...', onChange, padding, containerWidth, optionWidth, option } = _a, props = __rest(_a, ["placeholder", "onChange", "padding", "containerWidth", "optionWidth", "option"]);
     const [openSelect, setOpenSelect] = React.useState(false);
     const [selectedValue, setSelectedValue] = React.useState('');
     const selectRef = React.useRef(null);
@@ -2014,14 +2014,17 @@ const Select = (_a) => {
     };
     const containerStyle = {
         padding: padding || '',
-        width: width
+        width: containerWidth
+    };
+    const optionStyle = {
+        width: optionWidth
     };
     return (React.createElement(React.Fragment, null,
         React.createElement("div", Object.assign({}, props, { className: "selectContainer", style: containerStyle, onClick: handleSelectOpen, ref: selectRef }),
             selectedValue ? selectedValue : placeholder,
             React.createElement("span", { className: `selctDownIcon ${openSelect ? 'rotateOneEighty' : ''}` },
                 React.createElement(DownIcon, null))),
-        openSelect && option && (React.createElement("div", { className: "selectItems select" }, option.map((selectData) => {
+        openSelect && option && (React.createElement("div", { className: "selectItems select", style: optionStyle }, option.map((selectData) => {
             return (React.createElement(MenuItem, { disableGutters: true, onClick: () => handleSelectClick(selectData), key: selectData }, selectData));
         })))));
 };
@@ -2130,7 +2133,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     };
     const renderPaginationItem = (page, label) => {
         const isActive = currentPage === page;
-        return (React.createElement("li", { key: page, className: `pagination-item ${isActive ? 'active' : ''}`, onClick: () => handlePageChange(page) }, label));
+        return (React.createElement("div", { key: page, className: `pagination-item ${isActive ? 'active' : ''}`, onClick: () => handlePageChange(page) }, label));
     };
     const renderPaginationItems = () => {
         const paginationItems = [];

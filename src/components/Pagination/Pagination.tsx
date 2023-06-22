@@ -5,7 +5,7 @@ import './Pagination.css';
 type PaginationProps = {
     currentPage: number;
     totalPages: number;
-    onPageChange?: (page: number) => void;
+    onPageChange: (page: number) => void;
 };
 
 export const Pagination = ({ currentPage, totalPages, onPageChange }: PaginationProps) => {
@@ -21,9 +21,9 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }: Pagination
     const renderPaginationItem = (page: number, label: string | number) => {
         const isActive = currentPage === page;
         return (
-            <li key={page} className={`pagination-item ${isActive ? 'active' : ''}`} onClick={() => handlePageChange(page)}>
+            <div key={page} className={`pagination-item ${isActive ? 'active' : ''}`} onClick={() => handlePageChange(page)}>
                 {label}
-            </li>
+            </div>
         );
     };
 
