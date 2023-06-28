@@ -27,9 +27,9 @@ export const Avatar: React.FC<AvatarProps> = ({ name = 'K', src, alt = 'avatar',
     return (
         <>
             {src ? (
-                <img className={className ? className : `avatarImage `} onClick={onClick} src={src} alt={alt} style={avatarStyle} />
+                <img className={className ? className : `avatarImage `} data-testid="avatar-container" onClick={onClick} src={src} alt={alt} style={avatarStyle} />
             ) : (
-                <span style={avatarStyle} onClick={onClick}>
+                <span style={avatarStyle} data-testid="avatar-container" onClick={onClick}>
                     {getInitials(name)}
                 </span>
             )}

@@ -41,7 +41,7 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }: Pagination
 
         // Render the previous page link
         paginationItems.push(
-            <div key="previous" className={`pagination-item ${isFirstPage ? 'disabled' : ''}`} onClick={() => handlePageChange(currentPage - 1)}>
+            <div key="previous" className={`pagination-item ${isFirstPage ? 'disabled' : ''}`} data-testid="previousIcon" onClick={() => handlePageChange(currentPage - 1)}>
                 <PreviousIcon />
             </div>
         );
@@ -75,7 +75,7 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }: Pagination
 
         // Render the next page link
         paginationItems.push(
-            <div key="next" className={`pagination-item ${isLastPage ? 'disabled' : ''}`} onClick={() => handlePageChange(currentPage + 1)}>
+            <div key="next" className={`pagination-item ${isLastPage ? 'disabled' : ''}`} data-testid="nextIcon" onClick={() => handlePageChange(currentPage + 1)}>
                 <NextIcon />
             </div>
         );
