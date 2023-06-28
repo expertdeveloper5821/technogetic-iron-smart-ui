@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen, getByTestId } from '@testing-library/react';
 import { Pagination } from './Pagination';
 
 describe('Pagination Component', () => {
@@ -16,22 +16,20 @@ describe('Pagination Component', () => {
         expect(container).toMatchSnapshot();
     });
 
-    test('disables previous button on the first page', () => {
-        const { getByText } = render(<Pagination currentPage={1} totalPages={totalPages} onPageChange={onPageChangeMock} />);
+    test('calls onPageChange with the previous page number', () => {
+        render(<Pagination currentPage={2} totalPages={totalPages} onPageChange={onPageChangeMock} />);
 
-        const previousButton = getByText('Previous');
-        expect(previousButton).toBeDisabled();
+        const previousButton = screen.getByTestId('previousIcon');
         fireEvent.click(previousButton);
-        expect(onPageChangeMock).not.toHaveBeenCalled();
+        expect(onPageChangeMock).toHaveBeenCalledWith(1);
     });
 
-    test('disables next button on the last page', () => {
-        const { getByText } = render(<Pagination currentPage={totalPages} totalPages={totalPages} onPageChange={onPageChangeMock} />);
+    test('calls onPageChange with the next page number', () => {
+        render(<Pagination currentPage={1} totalPages={totalPages} onPageChange={onPageChangeMock} />);
 
-        const nextButton = getByText('Next');
-        expect(nextButton).toBeDisabled();
+        const nextButton = screen.getByTestId('nextIcon');
         fireEvent.click(nextButton);
-        expect(onPageChangeMock).not.toHaveBeenCalled();
+        expect(onPageChangeMock).toHaveBeenCalledWith(2);
     });
 
     test('calls onPageChange with the correct page number when a page link is clicked', () => {

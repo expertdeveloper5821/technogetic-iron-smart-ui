@@ -7,6 +7,7 @@ exports[`Pagination Component renders correctly 1`] = `
   >
     <div
       class="pagination-item disabled"
+      data-testid="previousIcon"
     >
       <svg
         class="icon flat-color"
@@ -25,43 +26,44 @@ exports[`Pagination Component renders correctly 1`] = `
         />
       </svg>
     </div>
-    <li
+    <div
       class="pagination-item active"
     >
       1
-    </li>
-    <li
+    </div>
+    <div
       class="pagination-item "
     >
       2
-    </li>
-    <li
+    </div>
+    <div
       class="pagination-item "
     >
       3
-    </li>
-    <li
+    </div>
+    <div
       class="pagination-item "
     >
       4
-    </li>
-    <li
+    </div>
+    <div
       class="pagination-item "
     >
       5
-    </li>
+    </div>
     <div
       class="pagination-item ellipsis"
     >
       ...
     </div>
-    <li
+    <div
       class="pagination-item "
     >
       10
-    </li>
+    </div>
     <div
       class="pagination-item "
+      data-testid="nextIcon"
     >
       <svg
         class="icon flat-color"

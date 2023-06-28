@@ -54,7 +54,7 @@ const Avatar = ({ name = 'K', src, alt = 'avatar', size = 25, className, onClick
             .join('');
         return initials;
     };
-    return (React__default.createElement(React__default.Fragment, null, src ? (React__default.createElement("img", { className: className ? className : `avatarImage `, onClick: onClick, src: src, alt: alt, style: avatarStyle })) : (React__default.createElement("span", { style: avatarStyle, onClick: onClick }, getInitials(name)))));
+    return (React__default.createElement(React__default.Fragment, null, src ? (React__default.createElement("img", { className: className ? className : `avatarImage `, "data-testid": "avatar-container", onClick: onClick, src: src, alt: alt, style: avatarStyle })) : (React__default.createElement("span", { style: avatarStyle, "data-testid": "avatar-container", onClick: onClick }, getInitials(name)))));
 };
 
 /**
@@ -2126,7 +2126,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             startPage = Math.max(endPage - visiblePages + 1, 1);
         }
         // Render the previous page link
-        paginationItems.push(React__default.createElement("div", { key: "previous", className: `pagination-item ${isFirstPage ? 'disabled' : ''}`, onClick: () => handlePageChange(currentPage - 1) },
+        paginationItems.push(React__default.createElement("div", { key: "previous", className: `pagination-item ${isFirstPage ? 'disabled' : ''}`, "data-testid": "previousIcon", onClick: () => handlePageChange(currentPage - 1) },
             React__default.createElement(PreviousIcon, null)));
         // Render the page links
         if (startPage > 1) {
@@ -2145,7 +2145,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             paginationItems.push(renderPaginationItem(totalPages, totalPages));
         }
         // Render the next page link
-        paginationItems.push(React__default.createElement("div", { key: "next", className: `pagination-item ${isLastPage ? 'disabled' : ''}`, onClick: () => handlePageChange(currentPage + 1) },
+        paginationItems.push(React__default.createElement("div", { key: "next", className: `pagination-item ${isLastPage ? 'disabled' : ''}`, "data-testid": "nextIcon", onClick: () => handlePageChange(currentPage + 1) },
             React__default.createElement(NextIcon, null)));
         return paginationItems;
     };
